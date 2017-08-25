@@ -1,5 +1,9 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
 ///
-/// Formula by Pixelarity
+/// Optics by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -8,6 +12,10 @@
 
 	form {
 		margin: 0 0 _size(element-margin) 0;
+
+		ul.actions {
+			margin-top: _size(element-margin);
+		}
 	}
 
 	label {
@@ -24,9 +32,8 @@
 	textarea {
 		@include vendor('appearance', 'none');
 		border-radius: _size(border-radius);
-		border: none;
-		border: solid _size(border-width);
-		color: inherit;
+		border-style: solid;
+		border-width: _size(border-width);
 		display: block;
 		outline: 0;
 		padding: 0 1em;
@@ -94,7 +101,8 @@
 
 			&:before {
 				border-radius: _size(border-radius);
-				border: solid _size(border-width);
+				border-style: solid;
+				border-width: _size(border-width);
 				content: '';
 				display: inline-block;
 				height: (_size(element-height) * 0.6);
@@ -151,7 +159,6 @@
 	}
 
 	@mixin color-form($p: null) {
-		$highlight: _palette($p, highlight);
 
 		label {
 			color: _palette($p, fg-bold);
@@ -162,63 +169,44 @@
 		input[type="email"],
 		select,
 		textarea {
-			background: _palette($p, border-bg);
+			background-color: _palette($p, border-bg);
 			border-color: _palette($p, border);
+			color: inherit;
 
 			&:focus {
-				@if $p == $highlight {
-					border-color: _palette($p, fg-bold);
-					box-shadow: 0 0 0 _size(border-width) _palette($p, fg-bold);
-				}
-				@else {
-					border-color: _palette(accent1, bg);
-					box-shadow: 0 0 0 _size(border-width) _palette(accent1, bg);
-				}
+				border-color: _palette($p, highlight);
+				box-shadow: 0 0 0 _size(border-width) _palette($p, highlight);
 			}
 		}
 
-		.select-wrapper {
-			&:before {
-				color: _palette($p, border);
-			}
+		.select-wrapper:before {
+			color: _palette($p, border);
 		}
 
 		input[type="checkbox"],
 		input[type="radio"], {
+
 			& + label {
 				color: _palette($p, fg);
 
 				&:before {
-					background: _palette($p, border-bg);
+					background-color: _palette($p, border-bg);
 					border-color: _palette($p, border);
 				}
 			}
 
 			&:checked + label {
 				&:before {
-					@if $p == $highlight {
-						background-color: _palette($p, fg-bold);
-						border-color: _palette($p, fg-bold);
-						color: _palette($p, bg);
-					}
-					@else {
-						background-color: _palette(accent1, bg);
-						border-color: _palette(accent1, bg);
-						color: _palette(accent1, fg-bold);
-					}
+					background-color: _palette($p, highlight);
+					border-color: _palette($p, highlight);
+					color: _palette($p, bg);
 				}
 			}
 
 			&:focus + label {
 				&:before {
-					@if $p == $highlight {
-						border-color: _palette($p, fg-bold);
-						box-shadow: 0 0 0 _size(border-width) _palette($p, fg-bold);
-					}
-					@else {
-						border-color: _palette(accent1, bg);
-						box-shadow: 0 0 0 _size(border-width) _palette(accent1, bg);
-					}
+					border-color: _palette($p, highlight);
+					box-shadow: 0 0 0 _size(border-width) _palette($p, highlight);
 				}
 			}
 		}
@@ -241,6 +229,17 @@
 
 		.formerize-placeholder {
 			color: _palette($p, fg-light) !important;
+		}
+
+		form.alt {
+
+			input[type="text"],
+			input[type="password"],
+			input[type="email"],
+			select,
+			textarea {
+				background-color: transparent;
+			}
 		}
 	}
 
