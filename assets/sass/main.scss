@@ -3,10 +3,10 @@
 @import 'libs/mixins';
 @import 'libs/skel';
 @import 'font-awesome.min.css';
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Lato:400,300');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,500|Oswald:400');
 
 /*
-	Optics by Pixelarity
+	Formula by Pixelarity
 	pixelarity.com | hello@pixelarity.com
 	License: pixelarity.com/license
 */
@@ -34,13 +34,16 @@
 		)
 	));
 
-	@mixin color($p: null) {
+	@mixin color($p) {
 		@include color-typography($p);
+		@include color-box($p);
+		@include color-button($p);
 		@include color-form($p);
 		@include color-list($p);
+		@include color-section($p);
 		@include color-table($p);
-		@include color-button($p);
-		@include color-icon($p);
+		@include color-spotlight($p);
+		@include color-features($p);
 	}
 
 // Base.
@@ -50,22 +53,23 @@
 
 // Component.
 
-	@import 'components/section';
-	@import 'components/form';
 	@import 'components/box';
+	@import 'components/button';
+	@import 'components/form';
 	@import 'components/icon';
 	@import 'components/image';
 	@import 'components/list';
+	@import 'components/section';
 	@import 'components/table';
-	@import 'components/button';
-	@import 'components/wrapper';
-	@import 'components/features';
 	@import 'components/spotlight';
+	@import 'components/features';
 
 // Layout.
 
 	@import 'layout/header';
-	@import 'layout/nav';
+	@import 'layout/menu';
 	@import 'layout/banner';
-	@import 'layout/main';
+	@import 'layout/cta';
 	@import 'layout/footer';
+	@import 'layout/wrapper';
+	@import 'layout/page-wrapper';

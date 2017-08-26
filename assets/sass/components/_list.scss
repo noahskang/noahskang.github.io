@@ -1,9 +1,5 @@
-@import '../libs/vars';
-@import '../libs/functions';
-@import '../libs/mixins';
-
 ///
-/// Optics by Pixelarity
+/// Formula by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -33,9 +29,8 @@
 			list-style: none;
 			padding-left: 0;
 
-			> li {
-				border-top-style: solid;
-				border-top-width: _size(border-width);
+			li {
+				border-top: solid _size(border-width);
 				padding: 0.5em 0;
 
 				&:first-child {
@@ -50,114 +45,18 @@
 			list-style: none;
 			padding-left: 0;
 
-			> li {
+			li {
 				display: inline-block;
-				padding: 0 1em 0 0;
+				padding: 0 0.75em 0 0;
 
 				&:last-child {
 					padding-right: 0;
 				}
-
-				.icon {
-					&:before {
-						font-size: 2em;
-					}
-				}
-			}
-
-			&.major {
-				@include vendor('display', 'flex');
-				@include vendor('justify-content', 'space-between');
-				margin-bottom: (_size(element-margin) * 2);
-
-				> li {
-					padding: 0;
-
-					&:first-child:before {
-						content: '';
-						display: block;
-						height: 2px;
-						left: 0;
-						position: absolute;
-						margin-top: 3.75em;
-						width: 100%;
-					}
-
-					> .icon {
-						border-radius: 100%;
-						border-style: solid;
-						border-width: (_size(border-width) * 2);
-						display: block;
-						height: 100%;
-						text-align: center;
-						width: 4.25em;
-						height: 4.25em;
-						line-height: 4em;
-						font-size: 1.75em;
-
-						&:before {
-							position: relative;
-						}
-					}
-
-					&.special {
-						border-width: 0;
-					}
-				}
-
-				@include breakpoint(small) {
-					li {
-						&:first-child:before {
-							margin-top: 2.5em;
-						}
-
-						> .icon {
-							font-size: 1.25em;
-						}
-					}
-				}
-
-				@include breakpoint(xsmall) {
-					li {
-						&:first-child:before {
-							margin-top: 2em;
-						}
-
-						> .icon {
-							font-size: 1em;
-						}
-					}
-				}
-			}
-		}
-
-		&.labeled-icons {
-			@include vendor('display', 'flex');
-			@include vendor('justify-content', 'center');
-			list-style: none;
-			padding-left: 0;
-			text-align: center;
-
-			> li {
-				border-left-style: solid;
-				border-left-width: _size(border-width);
-				padding: 0 _size(element-margin);
-
-				&:first-child {
-					border-left-width: 0;
-				}
-			}
-
-			.icon:before {
-				display: block
 			}
 
 			@include breakpoint(xsmall) {
-				@include vendor('flex-wrap', 'wrap');
-
-				> li {
-					border-left-width: 0;
-					margin-bottom: (_size(element-margin) * 0.5)
+				li {
+					padding: 0 0.5em 0 0;
 				}
 			}
 		}
@@ -167,7 +66,7 @@
 			list-style: none;
 			padding-left: 0;
 
-			> li {
+			li {
 				display: inline-block;
 				padding: 0 (_size(element-margin) * 0.5) 0 0;
 				vertical-align: middle;
@@ -178,15 +77,15 @@
 			}
 
 			&.small {
-				> li {
+				li {
 					padding: 0 (_size(element-margin) * 0.25) 0 0;
 				}
 			}
 
 			&.vertical {
-				> li {
+				li {
 					display: block;
-					padding: (_size(element-margin) * 0.65) 0 0 0;
+					padding: (_size(element-margin) * 0.675) 0 0 0;
 
 					&:first-child {
 						padding-top: 0;
@@ -198,8 +97,8 @@
 				}
 
 				&.small {
-					> li {
-						padding: (_size(element-margin) * 0.35) 0 0 0;
+					li {
+						padding: (_size(element-margin) * 0.25) 0 0 0;
 
 						&:first-child {
 							padding-top: 0;
@@ -215,7 +114,7 @@
 				table-layout: fixed;
 				width: calc(100% + #{(_size(element-margin) * 0.5)});
 
-				> li {
+				li {
 					display: table-cell;
 					padding: 0 0 0 (_size(element-margin) * 0.5);
 
@@ -228,7 +127,7 @@
 					margin-left: (_size(element-margin) * -0.25);
 					width: calc(100% + #{(_size(element-margin) * 0.25)});
 
-					> li {
+					li {
 						padding: 0 0 0 (_size(element-margin) * 0.25);
 					}
 				}
@@ -237,7 +136,7 @@
 			@include breakpoint(xsmall) {
 				margin: 0 0 _size(element-margin) 0;
 
-				> li {
+				li {
 					padding: (_size(element-margin) * 0.5) 0 0 0;
 					display: block;
 					text-align: center;
@@ -250,17 +149,11 @@
 					> * {
 						width: 100%;
 						margin: 0 !important;
-
-						&.icon {
-							&:before {
-								margin-left: -2em;
-							}
-						}
 					}
 				}
 
 				&.small {
-					> li {
+					li {
 						padding: (_size(element-margin) * 0.25) 0 0 0;
 
 						&:first-child {
@@ -270,33 +163,18 @@
 				}
 			}
 		}
-
-		&.checklist {
-			list-style: none;
-			padding-left: 0;
-
-			li {
-				padding-left: 0;
-				@include icon;
-
-				&:before {
-					content: '\f00c';
-					margin-right: 0.75em;
-				}
-			}
-		}
 	}
 
 	dl {
 		margin: 0 0 _size(element-margin) 0;
 
-		> dt {
+		dt {
 			display: block;
 			font-weight: _font(weight-bold);
 			margin: 0 0 (_size(element-margin) * 0.5) 0;
 		}
 
-		> dd {
+		dd {
 			margin-left: _size(element-margin);
 		}
 	}
@@ -304,66 +182,8 @@
 	@mixin color-list($p: null) {
 		ul {
 			&.alt {
-				> li {
-					border-top-color: _palette($p, border);
-				}
-			}
-
-			&.icons {
-				&.major {
-					> li {
-						&:first-child:before {
-							background-color: _palette($p, border);
-						}
-
-						> .icon {
-							background-color: _palette($p, bg);
-							border-color: _palette($p, border);
-							color: _palette($p, border2);
-
-							&.alt:before {
-								color: _palette($p, bg);
-								text-shadow: 1px 0px 0px _palette($p, border2),
-											-1px 0px 0px _palette($p, border2),
-											0px 1px 0px _palette($p, border2),
-											0px -1px 0px _palette($p, border2);
-							}
-						}
-
-						&.special {
-							> .icon {
-								background-color: _palette($p, highlight);
-								border-color: transparent;
-								color: _palette($p, bg);
-
-								&.alt:before {
-									color: _palette($p, highlight);
-									text-shadow: 1px 0px 0px _palette($p, bg),
-												-1px 0px 0px _palette($p, bg),
-												0px 1px 0px _palette($p, bg),
-												0px -1px 0px _palette($p, bg);
-								}
-							}
-						}
-					}
-				}
-			}
-
-			&.labeled-icons {
-				> li {
-					border-left-color: _palette($p, border);
-
-					> .icon:before {
-						color: _palette($p, highlight);
-					}
-				}
-			}
-
-			&.checklist {
 				li {
-					&:before {
-						color: _palette($p, fg);
-					}
+					border-top-color: _palette($p, border);
 				}
 			}
 		}

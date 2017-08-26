@@ -1,9 +1,5 @@
-@import '../libs/vars';
-@import '../libs/functions';
-@import '../libs/mixins';
-
 ///
-/// Optics by Pixelarity
+/// Formula by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -11,102 +7,92 @@
 /* Features */
 
 	.features {
-		@include vendor('align-items', 'center');
 		@include vendor('display', 'flex');
-		@include vendor('justify-content', 'space-between');
-		font-size: 1.1em;
+		@include vendor('flex-wrap', 'wrap');
+		border: solid 2px;
+		border-radius: _size(border-radius);
+		margin: (_size(element-margin) * 1.75) 0 (_size(element-margin) * 1.75) 0;
 
-		ul {
-			list-style-type: none;
-			padding: 0;
-			flex: auto;
-			-ms-flex: 1 1 auto;
+		> * {
+			@include padding(4em, 4em);
+			border-left: solid 2px;
+			border-top: solid 2px;
+			width: 50%;
 
-			&.right {
-				text-align: right;
+			.icon {
+				@include vendor('transition', (
+					'transform #{_duration(features)} ease',
+					'opacity #{_duration(features)} ease'
+				));
+			}
+		}
 
-				.icon:before {
-					float: right;
+		> :nth-child(1) {
+			border-top-width: 0;
+		}
+
+		> :nth-child(2) {
+			border-top-width: 0;
+		}
+
+		> :nth-child(2n - 1) {
+			border-left-width: 0;
+		}
+
+		@for $i from 1 through _misc(max-features) {
+			> :nth-child(#{$i}) {
+				.icon {
+					@include vendor('transition-delay', '#{(_duration(transition) * 0.75 * $i)}');
 				}
 			}
 		}
 
-		li {
-			margin-bottom: 6em;
-			padding-left: 0;
-
-			&:last-child {
-				margin-bottom: 0;
+		&.inactive {
+			> * {
+				.icon {
+					@include vendor('transform', 'scale(0.9) rotate(45deg)');
+					opacity: 0;
+				}
 			}
-		}
-
-		.icon:before {
-			float: left;
-			font-size: 2.25em;
-			margin-top: 0.4em;
-			width: 1.5em;
-		}
-
-		object {
-			margin: 0 0 _size(element-margin) 0;
-			padding: 0 5%;
-			max-height: 560px;
-			width: 50%;
-			-ms-flex: 1 1 auto;
 		}
 
 		@include breakpoint(medium) {
-			@include vendor('flex-wrap', 'wrap');
-
-			object {
-				max-height: 30em;
-				@include vendor('order', '-1');
-				height: auto;
-				padding: 0;
-				width: 30em;
-				max-width: 75%;
-				margin: 0 auto (_size(element-margin) * 1.5) auto;
-			}
-
-			ul {
-				margin-top: _size(element-margin);
-				text-align: center !important;
-				width: 45%;
-				padding: 0 7.5%;
-
-				.icon:before, &.right .icon:before {
-					display: block;
-					float: none;
-					margin: 0 auto 0.5em;
-				}
-			}
-
-			li {
-				margin-bottom: 4em;
+			> * {
+				@include padding(4em, 2em);
 			}
 		}
 
 		@include breakpoint(small) {
-			font-size: 1em;
+			margin: _size(element-margin) 0 _size(element-margin) 0;
 
-			object {
-				max-height: 20em;
-			}
-
-			ul {
-				width: 100%;
-				padding: 0 15%;
+			> * {
+				@include padding(2em, 1em);
 			}
 		}
 
 		@include breakpoint(xsmall) {
-			ul {
-				margin: 0 0 2em;
+			@include vendor('flex-direction', 'column');
+			@include vendor('flex-wrap', 'nowrap');
+
+			> * {
 				width: 100%;
+				border-left-width: 0;
 			}
 
-			li {
-				margin-bottom: 2em;
+			> :nth-child(2) {
+				border-top-width: 2px;
 			}
 		}
 	}
+
+	@mixin color-features($p: null) {
+		.features {
+			border-color: _palette($p, border);
+
+			> * {
+				border-color: _palette($p, border);
+			}
+		}
+	}
+
+	@include color-features;

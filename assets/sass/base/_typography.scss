@@ -1,50 +1,27 @@
-@import '../libs/vars';
-@import '../libs/functions';
-@import '../libs/mixins';
-
 ///
-/// Optics by Pixelarity
+/// Formula by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
 
 /* Type */
 
-	html, body {
-		background: _palette(bg-alt);
-	}
-
-	#page-wrapper {
-		background: _palette(bg);
-	}
-
 	body {
-		color: _palette(fg-bold);
+		background-color: _palette(invert, bg);
+		color: _palette(fg);
 	}
 
 	body, input, select, textarea {
 		font-family: _font(family);
-		font-size: 13pt;
+		font-size: 16pt;
 		font-weight: _font(weight);
-		line-height: 1.9em;
+		line-height: 1.65;
 
 		@include breakpoint(xlarge) {
-			font-size: 12pt;
+			font-size: 13pt;
 		}
 
 		@include breakpoint(large) {
-			font-size: 11pt;
-		}
-
-		@include breakpoint(medium) {
-			font-size: 12pt;
-		}
-
-		@include breakpoint(small) {
-			font-size: 12pt;
-		}
-
-		@include breakpoint(xsmall) {
 			font-size: 12pt;
 		}
 
@@ -54,10 +31,16 @@
 	}
 
 	a {
-		text-decoration: underline;
+		@include vendor('transition', (
+			'color #{_duration(transition)} ease-in-out',
+			'border-bottom-color #{_duration(transition)} ease-in-out',
+		));
+		color: inherit;
+		text-decoration: none;
+		border-bottom: dotted 1px;
 
 		&:hover {
-			text-decoration: none;
+			border-bottom-color: transparent;
 		}
 	}
 
@@ -74,11 +57,11 @@
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		font-family: _font(family-header);
-		font-weight: _font(weight-header);
-		letter-spacing: _font(letter-spacing);
-		line-height: 1em;
+		font-weight: _font(weight-bold);
+		line-height: 1.5;
 		margin: 0 0 (_size(element-margin) * 0.5) 0;
+		font-weight: _font(weight-bold);
+		letter-spacing: _font(kerning);
 		text-transform: uppercase;
 
 		a {
@@ -87,42 +70,39 @@
 		}
 	}
 
+	h1, h2 {
+		font-family: _font(family-heading);
+		font-weight: _font(weight-heading);
+		letter-spacing: _font(kerning-heading);
+	}
+
+	h1 {
+		font-size: 2.5em;
+	}
+
 	h2 {
-		font-size: 1.75em;
-		line-height: 1.5em;
+		font-size: 1.25em;
 	}
 
 	h3 {
-		font-size: 1.35em;
-		line-height: 1.5em;
+		font-size: 0.8em;
 	}
 
 	h4 {
-		font-size: 1.1em;
-		line-height: 1.5em;
+		font-size: 0.6em;
 	}
 
 	h5 {
-		font-size: 0.9em;
-		line-height: 1.5em;
+		font-size: 0.6em;
 	}
 
 	h6 {
-		font-size: 0.7em;
-		line-height: 1.5em;
+		font-size: 0.6em;
 	}
 
 	@include breakpoint(small) {
-		h2 {
+		h1 {
 			font-size: 1.5em;
-		}
-
-		h3 {
-			font-size: 1.25em;
-		}
-
-		h4 {
-			font-size: 1em;
 		}
 	}
 
@@ -139,8 +119,7 @@
 	}
 
 	blockquote {
-		border-left-style: solid;
-		border-left-width: (_size(border-width) * 4);
+		border-left: solid (_size(border-width) * 4);
 		font-style: italic;
 		margin: 0 0 _size(element-margin) 0;
 		padding: (_size(element-margin) / 4) 0 (_size(element-margin) / 4) _size(element-margin);
@@ -148,8 +127,7 @@
 
 	code {
 		border-radius: _size(border-radius);
-		border-style: solid;
-		border-width: _size(border-width);
+		border: solid _size(border-width);
 		font-family: _font(family-fixed);
 		font-size: 0.9em;
 		margin: 0 0.25em;
@@ -164,7 +142,7 @@
 
 		code {
 			display: block;
-			line-height: 1.75em;
+			line-height: 1.75;
 			padding: 1em 1.5em;
 			overflow-x: auto;
 		}
@@ -172,12 +150,11 @@
 
 	hr {
 		border: 0;
-		border-bottom-style: solid;
-		border-bottom-width: _size(border-width);
-		margin: (_size(element-margin) * 1.5) 0;
+		border-bottom: solid _size(border-width);
+		margin: _size(element-margin) 0;
 
 		&.major {
-			margin: (_size(element-margin) * 2) 0;
+			margin: (_size(element-margin) * 1.5) 0;
 		}
 	}
 
@@ -194,9 +171,11 @@
 	}
 
 	@mixin color-typography($p: null) {
+		$highlight: _palette($p, highlight);
+
 		@if $p != null {
 			background-color: _palette($p, bg);
-			color: _palette($p, fg-bold);
+			color: _palette($p, fg);
 		}
 
 		input, select, textarea {
@@ -204,7 +183,14 @@
 		}
 
 		a {
-			color: _palette($p, highlight);
+			&:hover {
+				@if $p == $highlight {
+					color: _palette($p, fg-bold) !important;
+				}
+				@else {
+					color: _palette(accent1, bg) !important;
+				}
+			}
 		}
 
 		strong, b {

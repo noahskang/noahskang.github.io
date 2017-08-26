@@ -1,143 +1,167 @@
-@import '../libs/vars';
-@import '../libs/functions';
-@import '../libs/mixins';
-
 ///
-/// Optics by Pixelarity
+/// Formula by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
 
 /* Header */
 
-	body {
+	#page-wrapper {
+		position: relative;
 		padding-top: 3.5em;
 
-		&.landing {
-			padding-top: 0;
-		}
-
-		@include breakpoint(medium) {
-			padding-top: 44px;
+		@include breakpoint(small) {
+			padding-top: 2.75em;
 		}
 	}
 
 	#header {
-		@include vendor('transition', 'background-color #{_duration(transition) * 3} ease-in-out');
-		background-color: darken(_palette(accent2, bg), 12);
-		background-color: transparentize(darken(_palette(accent2, bg), 12), 0.025);
-		color: _palette(accent2, fg);
-		cursor: default;
-		font-weight: _font(weight-bold);
+		@include vendor('display', 'flex');
+		@include vendor('justify-content', 'space-between');
+		@include vendor('align-items', 'center');
+		@include vendor('transition', (
+			'border-bottom-color #{_duration(transition)} ease',
+			'color #{_duration(transition)} ease',
+			'background-color #{_duration(transition)} ease'
+		));
+		border-bottom: solid 2px _palette(border);
+		background: _palette(bg);
 		height: 3.5em;
 		left: 0;
-		line-height: 3.65em;
+		line-height: 3.5em;
+		padding: 0 0 0 1.5em;
 		position: fixed;
-		text-align: right;
-		text-transform: uppercase;
 		top: 0;
 		width: 100%;
-		z-index: _misc(z-index-base) + 1;
+		z-index: _misc(z-index-base);
 
-		> h1 {
-			@include vendor('transition', 'color #{_duration(transition)} ease-in-out');
-			color: _palette(accent2, fg-bold);
-			display: inline-block;
-			font-weight: _font(weight-extra-bold);
+		a {
+			color: inherit;
+			font-size: 0.8em;
+			font-weight: _font(weight-bold);
+			letter-spacing: _font(kerning);
+			text-transform: uppercase;
+			border: 0;
+		}
+
+		.logo {
+			display: block;
 			height: inherit;
-			left: 0;
 			line-height: inherit;
-			margin: 0 0 0 1.5em;
-			padding: 0;
-			position: absolute;
-			top: 0;
-
-			a {
-				padding: 0 !important;
-				font-weight: inherit;
-			}
 
 			span {
-				font-weight: _font(weight-bold);
+				font-weight: _font(weight);
 			}
 		}
 
-		a {
-			@include vendor('transition', 'color #{_duration(transition)} ease-in-out');
-			color: inherit;
-			display: inline-block;
-			text-decoration: none;
-			font-weight: _font(weight-bold);
-			letter-spacing: _font(letter-spacing);
+		nav {
+			ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
 
-			&:hover {
-				color: _palette(accent2, fg-bold);
-			}
+				li {
+					display: inline-block;
+					padding: 0;
 
-			&[href="#nav"] {
-				@include icon;
-				-webkit-tap-highlight-color: rgba(0,0,0,0);
-				padding: 0 0.75em 0;
+					a {
+						display: inline-block;
+						padding: 0 1.5em 0 1.5em;
+						position: relative;
 
-				&:before {
-					content: '\f0c9';
-					margin: 0 0.5em 0 0;
+						&[href="#menu"] {
+							padding-right: 3em;
+
+							&:before {
+								content: '';
+								background-image: url('images/menu.svg');
+								background-position: center;
+								background-repeat: no-repeat;
+								display: block;
+								height: 100%;
+								position: absolute;
+								right: 1.5em;
+								text-align: center;
+								top: 0;
+								width: 1em;
+							}
+						}
+					}
 				}
-			}
-
-			&:last-child {
-				padding-right: 1.5em;
 			}
 		}
 
 		&.alt {
-			position: fixed;
 			background-color: transparent;
-			color: #95accf;
+			border-bottom-color: transparent;
+			color: _palette(invert, fg-bold);
 
-			> h1 {
-				color: inherit;
-			}
-		}
-
-		@include breakpoint(medium) {
-			a {
-				&[href="#nav"] {
-					> span {
-						display: none;
-					}
-
-					&:before {
-						margin: 0;
+			nav {
+				ul {
+					li {
+						a {
+							&[href="#menu"] {
+								&:before {
+									background-image: url('images/menu-alt.svg');
+								}
+							}
+						}
 					}
 				}
 			}
+		}
 
-			&.alt {
-				position: absolute;
+		&.with-banner {
+			& + #banner {
+				margin-top: -3.5em;
 			}
 		}
 
 		@include breakpoint(small) {
-			height: 3em;
-			line-height: 3.125em;
+			height: 2.75em;
+			line-height: 2.75em;
+			padding: 0 0 0 0.75em;
 
-			> h1 {
-				margin-left: 1em;
+			nav {
+				ul {
+					li {
+						a {
+							padding: 0 0.75em 0 0.75em;
 
-				a {
-					font-size: 0.8em;
-				}
-			}
+							&[href="#menu"] {
+								padding-right: 2.5em;
 
-			a {
-				&[href="#nav"] {
-					padding: 0 1em !important;
+								&:before {
+									right: 1em;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 
 		@include breakpoint(xsmall) {
-			min-width: 320px;
+			.logo {
+				span {
+					display: none;
+				}
+			}
+
+			nav {
+				ul {
+					li {
+						a {
+							&[href="#menu"] {
+								&:only-child {
+									width: 6em;
+									text-indent: 6em;
+									white-space: nowrap;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
