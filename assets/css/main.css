@@ -2333,15 +2333,15 @@
 			background-color: #38bbe4;
 		}
 
-		.icon.alt.fa-twitter:before {
+		.icon.alt.fa-linkedin:before {
 			background-color: #8cd4e9;
 		}
 
-		.icon.alt.fa-twitter:hover:before {
+		.icon.alt.fa-linkedin:hover:before {
 			background-color: #77cce5;
 		}
 
-		.icon.alt.fa-twitter:active:before {
+		.icon.alt.fa-linkedin:active:before {
 			background-color: #4cbcdd;
 		}
 
@@ -2357,15 +2357,15 @@
 			background-color: #4c93dd;
 		}
 
-		.icon.alt.fa-youtube:before {
+		.icon.alt.fa-github:before {
 			background-color: #e98ca4;
 		}
 
-		.icon.alt.fa-youtube:hover:before {
+		.icon.alt.fa-github:hover:before {
 			background-color: #e57793;
 		}
 
-		.icon.alt.fa-youtube:active:before {
+		.icon.alt.fa-github:active:before {
 			background-color: #dd4c71;
 		}
 
