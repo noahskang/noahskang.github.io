@@ -2381,6 +2381,15 @@
 			background-color: #479ace;
 		}
 
+		.icon.alt.fa-pencil:before {
+			background-color: #83deb2;
+		}
+
+		.icon.alt.fa-pencil:hover:before {
+			background-color: #6fcfa0;
+		}
+
+
 		@media screen and (max-width: 736px) {
 
 			.icon.alt:before {
