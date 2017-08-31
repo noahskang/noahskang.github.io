@@ -3352,7 +3352,7 @@
 		-webkit-justify-content: center;
 		-ms-justify-content: center;
 		justify-content: center;
-		background-image: url("../../images/banner.jpg");
+		background-image: url("../../images/banner3.jpg");
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -3569,7 +3569,7 @@
 			background-color: #333333;
 			height: 100%;
 			left: 0;
-			opacity: 0.45;
+			opacity: 0.2;
 			position: absolute;
 			top: 0;
 			width: 100%;
