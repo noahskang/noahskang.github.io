@@ -2885,6 +2885,14 @@
 
 /* Custom */
 
+	.center-contents{
+		display: flex;
+		justify-content: center;
+	}
+	.center-content-horizontal{
+		display: flex;
+		align-items: center;
+	}
 	.img-link{
 		transition: transform ease 0.4s;
 		border-bottom: none;
@@ -2917,6 +2925,9 @@
 	}
 	._1em-bottom{
 		margin-bottom: 1em;
+	}
+	.content-block{
+		padding-bottom: 2em;
 	}
 
 /* Features */
