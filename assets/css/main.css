@@ -2408,7 +2408,8 @@
 	}
 
 		.image img {
-			border-radius: 4px;
+			/* this means an img inside of .image */
+			border-radius: 25px;
 			display: block;
 		}
 
@@ -2883,6 +2884,75 @@
 			background-color: #eaeaea;
 		}
 
+/* Custom */
+	.img-caption{
+		 background-color: white;
+		 padding: 0.25em;
+		 margin-top: 0.2em;
+		 display: inline-block;
+		 font-size: 14px;
+	}
+	.homepage-img{
+		width: 100%;
+	}
+	.center-contents{
+		display: flex;
+		justify-content: center;
+	}
+	.center-content-horizontal{
+		display: flex;
+		align-items: center;
+	}
+	.img-link{
+		transition: transform ease 0.4s;
+		border-bottom: none;
+	}
+	.img-link:hover{
+		transform: scale(1.03);
+	}
+	.grow-img-scale{
+		transition: transform ease 0.5s;
+	}
+	.grow-img-scale:hover{
+		transform: scale(1.75);
+		z-index: 1;
+	}
+	.grow-img-shadow{
+		transition: filter ease 0.8s;
+	}
+	.grow-img-shadow:hover{
+		filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.25));
+	}
+	.roles{
+		margin-bottom: 2em;
+	}
+	.roles-chip{
+		border-radius: 25px;
+		padding: 4px 15px;
+		margin: 0em 0.5em 1em 0em;
+		border: 1px solid #dfdfdf;
+		background-color: #f1f1f1;
+		white-space: nowrap;
+		display: inline-block;
+	}
+	.subtitle{
+		font-size: 20px;
+	}
+	@media screen and (max-width: 500px) {
+		.subtitle{
+			font-size: 18px;
+		}
+	}
+	.project-inner{
+		width: 45em !important;
+	}
+	._1em-bottom{
+		margin-bottom: 1em;
+	}
+	.content-block{
+		padding-bottom: 2em;
+	}
+
 /* Features */
 
 	.features {
@@ -3352,7 +3422,8 @@
 		-webkit-justify-content: center;
 		-ms-justify-content: center;
 		justify-content: center;
-		background-image: url("../../images/banner3.jpg");
+		/* background-image: url("../../images/banner3.jpg"); */
+		background-color: black;
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;
