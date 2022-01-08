@@ -2408,7 +2408,8 @@
 	}
 
 		.image img {
-			border-radius: 4px;
+			/* this means an img inside of .image */
+			border-radius: 25px;
 			display: block;
 		}
 
@@ -2884,7 +2885,16 @@
 		}
 
 /* Custom */
-
+	.img-caption{
+		 background-color: white;
+		 padding: 0.25em;
+		 margin-top: 0.2em;
+		 display: inline-block;
+		 font-size: 14px;
+	}
+	.homepage-img{
+		width: 100%;
+	}
 	.center-contents{
 		display: flex;
 		justify-content: center;
@@ -2899,6 +2909,19 @@
 	}
 	.img-link:hover{
 		transform: scale(1.03);
+	}
+	.grow-img-scale{
+		transition: transform ease 0.5s;
+	}
+	.grow-img-scale:hover{
+		transform: scale(1.75);
+		z-index: 1;
+	}
+	.grow-img-shadow{
+		transition: filter ease 0.8s;
+	}
+	.grow-img-shadow:hover{
+		filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.25));
 	}
 	.roles{
 		margin-bottom: 2em;
