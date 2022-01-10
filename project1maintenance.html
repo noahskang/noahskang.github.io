@@ -61,9 +61,11 @@
 											Context
 										</h2>
 										<p>
-											NestEgg is a property management app. One key feature is on-demand maintenance. Residents can report maintenance issues, and NestEgg connects landlords with Pros, handles scheduling, and provides live updates to the landlord.
+											NestEgg is an app that aims to replace traditional property managers by empowering mom and pop landlords to easily self-manage their own portfolios. Imagine rent-collection, a maintenance app like Angie's list, and a personal automated concierge, all rolled into one. (To learn more, check out our <a href="https://nestegg.rent/">website.</a>)
 											<br/><br/>
-											A significant percentage of our users were not using our on-demand maintenance feature, and we wanted to figure out why.
+											One of NestEgg's key features is on-demand maintenance coordination. Landlords or residents can report maintenance issues, and NestEgg handles everything else to get it fixed - finding local Pros, handling scheduling, and providing live in-app updates to the landlords.
+											<br/><br/>
+											However, a significant percentage of our users were not using our on-demand maintenance feature. This was severely concerning, since revenue from our maintenance feature was the lynch pin of our business model. Why weren't users taking to this time and cost-saving feature? We ran a research project to figure out how we could improve our User Experience to address their needs.
 										</p>
 									</div>
 									<div class="content-block">
@@ -71,7 +73,7 @@
 											My Role
 										</h2>
 										<p class="_1em-bottom">
-											I worked as the principle UX Researcher and Designer, collaborating with our Product Manager, Chris Le, and the rest of our design team.
+											I worked as the principle UX Researcher and Designer on this project, collaborating with our Product Manager, Chris Le, and the rest of our design team.
 										</p>
 											<div class="roles">
 												<span class="roles-chip">
@@ -158,24 +160,24 @@
 												<thead>
 													<tr>
 														<th>Problem</th>
-														<th>Proposed solution</th>
+														<th>My proposed solution</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<td>Many users were not even aware that we offered a maintenance service</td>
-														<td>Increase visibility of maintenance service by making it more discoverable.</td>
+														<td>Many users were <strong>not even aware</strong> that we offered a maintenance service, and some users could not find where they could order a Pro or view their maintenance requests.</td>
+														<td>Increase discoverability of maintenance service throughout the App.</td>
 													</tr>
 													<tr>
-														<td>Users did not understand how maintenance service worked.</td>
-														<td>Increase in-app education around maintenance service and redesign the experience to be more intuitive.</td>
+														<td>Users <strong>did not understand</strong> how our maintenance service worked. Some users thought that we only provided a way for landlords to be notified about maintenance requests from our residents. They didn't realize that they could also hire Pros on NestEgg.</td>
+														<td>We needed to make the flow more intuitive. One of the most opaque features was the chat bot, so I wanted to AB test it against a more straightforward form, which I believed would be more easily grokable by our users.</td>
 													</tr>
 													<tr>
-														<td>Maintenance process was too long, with multiple drop-off points</td>
+														<td>Maintenance process was <strong>too long, with multiple points of friction.</strong> Landlords were confused by the chat bot. After reporting an issue, landlords had to wait for up to 24 hours for us to diagnose the issue before they were given a price estimate. And during the maintenance process, landlords had no way of directly communicating with their Pros, but had to rely on NestEgg to relay messages back and forth.</td>
 														<td>
 															<ul>
 																<li>Replace our current '2-part flow' with a single flow</li>
-																<li>A/B test a form-reporting interaction against our current chat-bot interaction.</li>
+																<li>Create a more integrated chat experience so that landlords can speak directly to Pros, instead of NestEgg relaying messages back and forth</li>
 															</ul>
 														</td>
 													</tr>
@@ -190,57 +192,72 @@
 											I designed prototypes tackling the key problem points that we identified, beginning with lo-fi mockups, which I honed with the help of internal testing with our team, as well as third-party testers.
 										</p>
 										<h3>
-											Increasing Visibility
+											Increasing Discoverability
 										</h3>
-										<p>here are some of the changes we made to increase visibility of the maintenance feature:</p>
-										<div class="row">
+										<p>here are some of the changes I proposed to increase visibility of the maintenance feature:</p>
+										<div class="row" style="margin-top: 3em;">
 											<div class="4u 12u$(medium)">
-												<img src="images/xsell.jpg" class="image main grow-img-scale" alt="">
+												<img src="images/xsell.jpg" class="discoverability-images grow-img-scale" alt="">
 												<h3>
-													Cross-sell in rent flow
+													Integration with rent
 												</h3>
 												<p>
-													Integrated cross-sell into the rent flow, to build more traction with users who were only using our rent feature.
+													One of our issues was that landlords were coming to our App for rent collection, and never realizing we offered maintenance. To target those users, I integrated maintenance visibility into the rent experience by adding a cross-sell module to the end of the rent onboarding flow.
 												</p>
 											</div>
 											<div class="4u 12u$(medium)">
-												<img src="images/timeline-module.jpg" class="image main grow-img-scale" alt="">
+												<img src="images/timeline-module.jpg" class="discoverability-images grow-img-scale" alt="">
 												<h3>
-													Top of timeline module
+													Top-level visibility
 												</h3>
 												<p>
-													Added a module that would be the first thing that users see when they open the App.
+													I added a module that would be the first thing that users see when they open the App. I was not concerned about this disrupting the user's timeline experience, since our metrics showed that the timeline wasn't being used very much by our users anyway. In a later sprint, we revisited the timeline and <a href="dashboard.html">turned it into a more useful dashboard</a>.
 												</p>
 											</div>
 											<div class="4u 12u$(medium)">
-												<img src="images/takeover.jpg" class="image main grow-img-scale" alt="">
+												<img src="images/takeover.jpg" class="discoverability-images grow-img-scale" alt="">
 												<h3>
-													<strike>Takeover Modal</strike>
+													<strike>Takeover</strike>
 												</h3>
 												<p>
-													We also explored a takeover ad, but decided against it after negative user feedback.
+													I also explored a takeover ad on the home page, but decided against it after receiving negative user feedback about the change. While it elevated the visibility of maintenance, and may have helped our bottom-line, it <strong>was not user-centered.</strong> The takeover felt like an unwanted interruption, and that is antithetical to one of our key values - to make landlord's lives easier.
 												</p>
 											</div>
 										</div>
-										<p><strong>Other changes we made:</strong></p>
+										<p><strong>Other changes:</strong></p>
 										<ul>
 											<li>We worked with our marketing team to roll out an email marketing campaign with a coupon code to drive first-time usage of our maintenance feature (data showed that once a landlord used maintenance once, they were likely to be a repeat customer.)</li>
 											<li><strong>Guest checkout:</strong> Maintenance was previously hidden behind the pay-wall. To drive first time adoption of maintenance, we made some of our maintenance features available from the logged-out experience.</li>
 											</ul>
 										<h3>
-											Decreasing friction: Replacing chat-bot with form.
+											Make the flow more intuitive: Replacie chat-bot with form.
 										</h3>
-										<p>Our hypothesis was also that many users would actually prefer a form to a chat-bot, due to the speed with which a form can be filled out and the discoverability of the process.  We built a fast reporting form, with plans to AB test this against our extant chat reporting method.</p>
+										<p>Our hypothesis was also that many users would actually prefer a form to a chat-bot, due to the speed with which a form can be filled out and the simplicity of the process.  We built a reporting form, with plans to AB test this against our extant chat reporting method.</p>
+										<div class="image main grow-img-scale">
+											<img class="grow-img-shadow" src="images/chat-problems.jpg" alt="old designs" title="old designs"/>
+											<i class="img-caption">chat vs form</i>
+										</div>
 										<h3>
 											Decreasing friction: replacing 2-step with 1-step flow.
 										</h3>
 										<p>After users reported a maintenance issue, they would need to wait for our ops team to generate a price (could take up to 24 hrs). But by that time, many users would already start looking for a different maintenance solution. I realized that if we could automatically show the user a price estimate based on their job type (based on data abt prices of past jobs, categorized by type), we would obviate the need for ops to manually generate a price. We added a field to the form where landlords could select their job type. Based on that selection, we could automatically show a price to the user <strong>cutting 'time-to-price' from 24 hours to minutes.</strong></p>
-									</div>
+										<h2>Old flow</h2>
+										<p>After a user reports an issue, they have to wait for up to 24 hours before they can view a price and book a Pro.</p>
+										<div class="image main grow-img-scale">
+											<img class="grow-img-shadow" src="images/chat-flow.jpg" alt="old designs" title="old designs"/>
+											<i class="img-caption">Old flow with chat.</i>
+										</div>
+										<h2>New flow</h2>
+										<p>We can provide the user with the ability to see a price (based on historic averages for each trade) and book a Pro immediately!</p>
+										<div class="image main grow-img-scale">
+											<img class="grow-img-shadow" src="images/trade-flow.jpg" alt="old designs" title="old designs"/>
+											<i class="img-caption">New flow with up front price information.</i>
+										</div>
 
 									<div class="content-block">
 											<h2>Post-Mortem</h2>
 											<h3>Were we successful?</h3>
-											<p>While we directly addressed some user pain-points, saw increased up-take of our maintenance product, and got positive feedback from our users, we made mistakes in our tracking implementation, which prevented us from obtaining determinative data through AB testing.<br /><br />In the future, I would like to re-do this process incorporating more iterative changes, using AB testing to verify our hypotheses with greater certainty.</p>
+											<p>We directly addressed some user pain-points, saw increased up-take of our maintenance product, and got positive feedback from our users. However, due to technical difficulties, we weren't able to use AB testing in the way that we had intended.<br /><br />One takeaway from this project was to improve our AB testing framework so that we could to verify our hypotheses with greater certainty.</p>
 									</div>
 							</section>
 
