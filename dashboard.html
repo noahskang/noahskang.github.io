@@ -52,19 +52,48 @@
 										<h1>Timeline Redesign</h1>
 										<p class="subtitle">Problem statement: Our timeline / landing page isn't useful to our users.</h2>
 									</header>
-									<h2>Old timeline</h2>
-									<span class="image main"><img src="images/old-timeline.jpg" alt="" /></span>
+									<span class="image main"><img src="images/new-dashboard-hero.jpg" alt="" /></span>
+									<h2>SPRINT 1: investigation and research</h2>
+									<span class="image main"><img src="images/old-timeline.jpg" alt="" style="width: 75%; margin: auto;" /></span>
 									<h3>Usability issues:</h3>
-									<p>Initially, the timeline was supposed to be the one-stop shop for users to check the status of their properties: Check rent-collection progress, view maintenance requests, and get notified about any other changes to their portfolio. However, our metrics showed that users were completely ignoring the timeline. Our research uncovered the following problems:</p>
-									<ul>
-										<li>Notifications could quickly pile up, making the timeline overwhelming and unusable</li>
-										<li>Many users wanted a quick, at-a-glance way of viewing their rent status.</li>
-									</ul>
-									<h2>New dashboard</h2>
-									<p>To ameliorate these issues, I created a dashbaord that had fixed-size modules which gave an at-a-glance viwe that would speak to the three main use-cases that users came to NestEgg for: 1) checking the status of their rent collection, 2) dealing with maintenance issues, and 3) viewing new messages from their residents.</p>
-									<span class="image main"><img src="images/dashboard-mockup.jpg" alt="" /></span>
-									<span class="image main"><img class="img-shadow" src="images/dashboard-desktop.jpg" alt="" /></span>
-									<span class="image main"><img class="img-shadow" src="images/hvac-upkeep-desktop.jpg" alt="" /></span>
+									<p>The Timeline was supposed to be the one-stop shop for users to check the status of their properties: Rent-collection status, Maintenance requests, and important notifications. However, analytics revealed that users were <strong>completely ignoring</strong> the timeline. Our research uncovered the following problems:</p>
+									<h3>OBSERVATION 1: Too much content</h3>
+									<p>We realized that notifications could quickly pile up, making the timeline overwhelming and unusable - especially if the landlord's portfolio included multiple properties.</p>
+									<span class="image main"><img src="images/timeline-problems.jpg" alt="" /></span>
+									<h3>OBSERVATION 2: Users want to know about rent</h3>
+									<p>Based on <strong>heatmaps</strong>, we noticed that the most common action for users when they entered the site was to click 'Transactions' in the navigation. This was further reinforced by user research which showed that the main use case for landlords entering the NestEgg app was to check their rent status. As a property owner, I want to know that I'm making money on my investment! However, our transactions page did not provide an easy, at-a-glance view of the user's rent status, so landlords were forced to manually adding together transaction line items to figure out how much they were still owed for the month.</li>
+									</ul></p>
+									<span class="image main"><img src="images/transactions-desktop.jpg" alt="" /></span>
+									<h2>SPRINT 2: CONCept development and prototyping</h2>
+									<p>The next step was to begin to tackle solutions. We began by wireframing redesigns, which we honed with the help of internal testing and multiple feedback sessions with our stakeholders and product team. We drilled down to a few crucial changes that we wanted to make to our product.</p>
+									<div class="image main">
+										<img src="images/wireframes.jpg" alt="old designs" title="old designs"/>
+										<i class="img-caption">Wireframes</i>
+									</div>
+									<h2>SPRINT 3: USER TESTING & ITERATION</h2>
+									<p>After clarifying our direction, we created hi-fidelity mockups and conducted user research sessions to affirm that our changes would be beneficial to the User Experience. </p>
+									<h3>CHANGE 1: New dashboard</h3>
+									<p>Because the timeline had become unusable, I replaced the timeline with a dashboard that would answer the key question that most of our users were logging into our App with: "has my rent been collected?" To prevent the landing page from becoming overwhelming, I I limited the number of notifications that could appear in each module so that they would remain above the fold.</p>
+									<span class="image main"><img class="img-shadow grow-img-scale" src="images/dashboard-desktop.jpg" alt="" /></span>
+									<h3>Change 2: New rent view</h3>
+									<p>For deeper insights into the user's rent status across their whole portfolio, we added a 'Rent view'. Since users were mainly concerned about which properties had NOT completed rent collection for the month, we allowed users to easily sort the view by 'Outstanding balances'.</p>
+									<div class="image main grow-img-scale">
+										<img class="img-shadow" src="images/rent-view-overview.jpg" alt="" />
+										<i class="img-caption">New rent view, w/ 2 properties</i>
+									</div>
+									<p>Selecting a unit (e.g. '8 Avondale Lndg') in the table of outstanding balances opens a page which shows the rent collection status by resident:</p>
+									<div class="image main grow-img-scale">
+										<img class="img-shadow" src="images/property-page.jpg" alt="" />
+										<i class="img-caption">Rent view for a single property</i>
+									</div>
+									<p>While we were at, I updated our transactions page as well to make it more easily scannable!</p>
+									<div class="image main grow-img-scale">
+										<img class="img-shadow" src="images/all-transactions.jpg" alt="" />
+										<i class="img-caption">New Transactions page</i>
+									</div>
+									<h2>SPRINT 4: development & post-mortem</h2>
+									<p>Once we were ready, we passed off our designs to the engineering team for development.</p>
+									<p>Were we successful? Studying user behavior after we rolled out changes confirmed for me that this project was a success. Negative customer feedback pertaining to the timeline and to the difficulty of answering basic questions about rent decreased drastically. We felt confident that we had improved our product in a way that was vastly improving the fundamental experience for our users.</p>
 							</section>
 
 					</div>
