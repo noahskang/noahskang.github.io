@@ -2885,6 +2885,10 @@
 		}
 
 /* Custom */
+	.bottom-nav{
+		display: flex;
+		justify-content: space-between;
+	}
 	.img-caption{
 		 background-color: white;
 		 padding: 0.25em;
