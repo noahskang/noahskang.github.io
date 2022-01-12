@@ -2913,7 +2913,14 @@
 		border-bottom: none;
 		cursor: pointer;
 	}
+	.img-link-no-cursor{
+		transition: transform ease 0.4s;
+		border-bottom: none;
+	}
 	.img-link:hover{
+		transform: scale(1.03);
+	}
+	.img-link-no-cursor:hover{
 		transform: scale(1.03);
 	}
 	.grow-img-scale{
