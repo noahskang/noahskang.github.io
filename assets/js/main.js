@@ -217,3 +217,11 @@ var TxtType = function(el, toRotate, period) {
         css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
         document.body.appendChild(css);
     };
+
+		$(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+
+		    $('html, body').animate({
+		        scrollTop: $($.attr(this, 'href')).offset().top
+		    }, 500);
+		});
