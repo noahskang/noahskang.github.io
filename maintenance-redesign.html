@@ -56,11 +56,11 @@
 											Context
 										</h2>
 										<p>
-											NestEgg is an app that aims to replace traditional property managers by empowering mom and pop landlords to easily self-manage their own portfolios. Imagine rent-collection, a maintenance app like Angie's list, and a personal automated concierge, all rolled into one. (To learn more, check out our <a href="https://nestegg.rent/">website.</a>)
+											NestEgg is an app that aims to replace traditional property managers by empowering mom and pop landlords to easily self-manage their own portfolios. (To learn more, check out our <a href="https://nestegg.rent/">website.</a>)
 											<br/><br/>
-											One of NestEgg's key features is on-demand maintenance coordination. Landlords or residents can report maintenance issues, and NestEgg handles everything else to get it fixed - finding local Pros, handling scheduling, and providing live in-app updates to the landlords.
+											One of NestEgg's key features is on-demand maintenance coordination. When a resident reports a maintenance issue, NestEgg handles it so that the landlord doesn't need to be bothered - finding local Pros, handling scheduling, and providing live in-app updates to the landlords.
 											<br/><br/>
-											However, a significant percentage of our users were not using our on-demand maintenance feature. This was severely concerning, since revenue from our maintenance feature was the lynch pin of our business model. Why weren't users taking to this time and cost-saving feature? We ran a research project to figure out how we could improve our User Experience to address their needs.
+											A concerning problem we encountered was that a significant percentage of our users were not using our maintenance feature. We ran a research project to figure out why.
 										</p>
 									</div>
 									<div class="content-block">
@@ -133,16 +133,20 @@
 												</p>
 											</div>
 										</div>
+										<div class="image main">
+											<img class="grow-img-scale" src="images/user-personas.jpg" alt="">
+											<i class="img-caption">User personas</i>
+										</div>
 										<h3>
 											User interviews
 										</h3>
-										<p class="">With a focus group assembled from our existing users, we conducted interviews in which we gave the users common tasks (e.g., ‘you have a broken faucet. How would you use NestEgg to get this issue fixed?’) and examined how users interacted with the App.  In addition, we surveyed users about their experience with our site.</p>
+										<p class="">We conducted interviews with our research group in which we gave the users common tasks (e.g., ‘you have a broken faucet. How would you use NestEgg to get this issue fixed?’) and examined how users interacted with the App.  In addition, we surveyed users about their experience with our site. We wanted to know what wasn't working for our users, and what was.</p>
 										<div class="image main">
 											<img src="images/user-interviews.jpg" alt="">
 											<i class="img-caption">User interviews</i>
 										</div>
 
-										<p class="">We consolidated and prioritized our findings, based on several criteria: how often the issue was raised, how much impact we estimated the issue was having on the User experience and our revenue, and how easy it would be to tackle each issue (given the limited dev resources at our startup, we had to assessed proposed fixes with a 'bang-for-buck' mindset.)</p>
+										<p class="">We consolidated and prioritized our findings, based on criteria like how much impact we estimated the issue was having and how easy it would be to tackle each issue (given the limited dev resources at our startup).</p>
 										<div class="image main">
 											<img src="images/notion.jpg" alt="">
 											<i class="img-caption">Notion was the perfect tool for organizing research findings</i>
@@ -160,19 +164,19 @@
 												</thead>
 												<tbody>
 													<tr>
-														<td>Many users were <strong>not even aware</strong> that we offered a maintenance service, and some users could not find where they could order a Pro or view their maintenance requests.</td>
-														<td>Increase discoverability of maintenance service throughout the App.</td>
+														<td>Many users were <strong>not aware</strong> that we offered a maintenance service. Some users could not find where they could order a Pro or view past maintenance requests.</td>
+														<td>Increase discoverability of maintenance service</td>
 													</tr>
 													<tr>
-														<td>Users <strong>did not understand</strong> how our maintenance service worked. Some users thought that we only provided a way for landlords to be notified about maintenance requests from our residents. They didn't realize that they could also hire Pros on NestEgg.</td>
-														<td>We needed to make the flow more intuitive. One of the most opaque features was the chat bot, so I wanted to AB test it against a more straightforward form, which I believed would be more easily grokable by our users.</td>
+														<td>Users <strong>did not understand</strong> how our maintenance service worked. Some users thought that we only provided a way for landlords to be notified about maintenance requests, and didn't realize that they could also hire Pros on NestEgg.</td>
+														<td>Simplify and shorten the flow. Explore  replacing the chat-bot with a form.</td>
 													</tr>
 													<tr>
-														<td>Maintenance process was <strong>too long, with multiple points of friction.</strong> Landlords were confused by the chat bot. After reporting an issue, landlords had to wait for up to 24 hours for us to diagnose the issue before they were given a price estimate. And during the maintenance process, landlords had no way of directly communicating with their Pros, but had to rely on NestEgg to relay messages back and forth.</td>
+														<td>Maintenance process was <strong>too long, with multiple drop-off points.</strong> For instance, after reporting an issue, landlords had to wait for up to 24 hours for us to diagnose the issue before they were given a price estimate. During a job, landlords had no way of directly communicating with their Pros, but had to rely on NestEgg to relay messages.</td>
 														<td>
 															<ul>
 																<li>Replace our current '2-part flow' with a single flow</li>
-																<li>Create a more integrated chat experience so that landlords can speak directly to Pros, instead of NestEgg relaying messages back and forth</li>
+																<li>Create a more integrated chat experience so that landlords can speak directly to Pros.</li>
 															</ul>
 														</td>
 													</tr>
@@ -189,7 +193,7 @@
 										<h3>
 											Increasing Discoverability
 										</h3>
-										<p>here are some of the changes I proposed to increase visibility of the maintenance feature:</p>
+										<p>here are some of the changes we made to increase visibility of the maintenance feature:</p>
 										<div class="row" style="margin-top: 3em;">
 											<div class="4u 12u$(medium)">
 												<img src="images/xsell.jpg" class="discoverability-images grow-img-scale" alt="">
@@ -219,15 +223,15 @@
 												</p>
 											</div>
 										</div>
-										<p><strong>Other changes:</strong></p>
+										<h3>Other changes:</h3>
 										<ul>
-											<li>We worked with our marketing team to roll out an email marketing campaign with a coupon code to drive first-time usage of our maintenance feature (data showed that once a landlord used maintenance once, they were likely to be a repeat customer.)</li>
+											<li>Collaborated with marketing team on <strong>email coupon campaign</strong> to drive first-time adoption of maintenance. (data showed that once a landlord used maintenance once, they were likely to be a repeat customer.)</li>
 											<li><strong>Guest checkout:</strong> Maintenance was previously hidden behind the pay-wall. To drive first time adoption of maintenance, we made some of our maintenance features available from the logged-out experience.</li>
 											</ul>
 										<h3>
-											Make the flow more intuitive: Replac chat-bot with form.
+											Make the flow more intuitive:
 										</h3>
-										<p>Our hypothesis was also that many users would actually prefer a form to a chat-bot, due to the speed with which a form can be filled out and the simplicity of the process.  We built a reporting form, with plans to AB test this against our extant chat reporting method. Anecdotally we were able to verify that the form was an improvement upon our previous chat bot reporting method. Unfortunately, we had difficulties with implementing the AB testing framework at this stage and we weren't able to verify with data the way we had hoped :/</p>
+										<p>We made a series of modifications to our maintenance reporting flow. One of the key changes we made was to replace the chat-bot with a form. Our hypothesis was also that many users would actually prefer a form to a chat-bot, due to the speed with which a form can be filled out. We built a reporting form, with plans to AB test this against our extant chat reporting method./</p>
 										<div class="image main grow-img-scale">
 											<img class="grow-img-shadow" src="images/chat-problems.jpg" alt="old designs" title="old designs"/>
 											<i class="img-caption">chat vs form</i>
@@ -235,7 +239,7 @@
 										<h3>
 											Decreasing friction: replacing 2-step with 1-step flow.
 										</h3>
-										<p>After users reported a maintenance issue, they would need to wait for our ops team to generate a price (could take up to 24 hrs). But by that time, many users would already start looking for a different maintenance solution. I realized that if we could automatically show the user a price estimate based on their job type (based on data abt prices of past jobs, categorized by type), we would obviate the need for ops to manually generate a price. We added a field to the form where landlords could select their job type. Based on that selection, we could automatically show a price to the user <strong>cutting 'time-to-price' from 24 hours to minutes.</strong></p>
+										<p>After users reported a maintenance issue, they would need to wait for our ops team to generate a price (up to 24 hrs). But by that time, many users would already start looking for Pros on their own. I realized that if we could automatically show the user a price estimate based on their job type (based on data abt prices of past jobs, categorized by type), we could show a price to landlords immediately, <strong>cutting 'time-to-price' from 24 hours to minutes.</strong></p>
 										<h2>Old flow</h2>
 										<p>After a user reports an issue, they have to wait for up to 24 hours before they can view a price and book a Pro.</p>
 										<div class="image main grow-img-scale">
@@ -248,17 +252,27 @@
 											<img class="grow-img-shadow" src="images/trade-flow.jpg" alt="old designs" title="old designs"/>
 											<i class="img-caption">New flow with up front price information.</i>
 										</div>
-
-									<div class="content-block">
-											<h2>Post-Mortem</h2>
-											<h3>Were we successful?</h3>
-											<p>We directly addressed some user pain-points, saw increased up-take of our maintenance product, and got positive feedback from our users. However, due to technical difficulties, we weren't able to use AB testing in the way that we had intended.<br /><br />One takeaway from this project was to improve our AB testing framework so that we could to verify our hypotheses with greater certainty.</p>
+										<h2>ITERATE, ITERATE, ITERATE...</h2>
+										<div class="image main grow-img-scale">
+											<img class="grow-img-shadow" src="images/iterations.jpg" alt="old designs" title="old designs"/>
+											<i class="img-caption">We took our flow through multiple iterations.</i>
+										</div>
 									</div>
-
-									<div class="bottom-nav">
-										<a href="nestegg.html">&#8592; Previous Project</a>
-										<a href="dashboard.html" style="float: right;">Next Project &#8594;</a>
 									</div>
+									<div class="content-block center-contents">
+										<img class="homepage-img" style="max-width: 1100px;" src="images/maint-job-finals.png" alt="" />
+									</div>
+									<div class="inner project-inner">
+										<div class="content-block">
+												<h2>conclusion</h2>
+												<h3>Were we successful?</h3>
+												<p>We directly addressed some user pain-points, saw increased up-take of our maintenance product, and got positive feedback from our users.<br /><br /> However, one takeaway from this project was to improve our AB testing framework so that we could to verify our hypotheses with greater certainty.</p>
+										</div>
+
+										<div class="bottom-nav">
+											<a href="nestegg.html">&#8592; Previous Project</a>
+											<a href="dashboard.html" style="float: right;">Next Project &#8594;</a>
+										</div>
 							</section>
 
 					</div>
