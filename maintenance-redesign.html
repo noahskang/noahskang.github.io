@@ -55,7 +55,7 @@
 											Context
 										</h2>
 										<p>
-											NestEgg is an app that aims to replace traditional property managers by empowering mom and pop landlords to easily self-manage their own portfolios. (To learn more, check out our <a href="https://nestegg.rent/">website.</a>)
+											NestEgg aims to help ordinary people achieve financial independence through real-estate. We do this by empowering mom and pop landlords to easily self-manage their own portfolios. (To learn more, check out our <a href="https://nestegg.rent/">website.</a>) We also value putting human relationships at the center of the rental experience, doing with long-term renting what AirBNB did with short-term stays.
 											<br/><br/>
 											One of NestEgg's key features is on-demand maintenance coordination. When a resident reports a maintenance issue, NestEgg handles it so that the landlord doesn't need to be bothered - finding local Pros, handling scheduling, and providing live in-app updates to the landlords.
 										</p>
@@ -142,13 +142,13 @@
 										<h3>
 											User interviews
 										</h3>
-										<p class="">In interviews with our research group we gave the users common tasks (e.g., ‘you have a broken faucet. How would you use NestEgg to get this issue fixed?’) and examined how they interacted with the App. We also surveyed users about their experience with NestEgg.</p>
+										<p class="">In interviews with our research group we gave the users common use cases (e.g., ‘you have a broken faucet. How would you use NestEgg to get this issue fixed?’) and examined how they interacted with the App. We also surveyed users about their experience with NestEgg.</p>
 										<div class="image main">
 											<img src="images/user-interviews.jpg" alt="">
 											<i class="img-caption">User interviews</i>
 										</div>
 
-										<p class="">We consolidated and prioritized each our findings, based on criteria like the estimated impact of each issue and how easily we thought we could solve it.</p>
+										<p class="">We consolidated and prioritized our findings, based on criteria like the estimated impact of each issue and how easily we thought we could solve it.</p>
 										<div class="image main">
 											<img src="images/notion.jpg" alt="">
 											<i class="img-caption">Organizing research findings in Notion</i>
@@ -171,14 +171,23 @@
 													</tr>
 													<tr>
 														<td>Users <strong>did not understand</strong> how our maintenance service worked. Some users thought that we only provided a way for landlords to be notified about maintenance requests, and didn't realize that they could also hire Pros on NestEgg.</td>
-														<td>Simplify and shorten the flow. Explore  replacing the chat-bot with a form.</td>
+														<td><ul>
+															<li>Provide more in-app education.</li>
+															<li>Simplify and shorten the flow.</li>
+															<li>Replace the chat-bot with a form..</li>
+														</ul></td>
 													</tr>
 													<tr>
-														<td>Maintenance process was <strong>too long, with multiple drop-off points.</strong> For instance, after reporting an issue, landlords had to wait for up to 24 hours for us to diagnose the issue before they were given a price estimate. During a job, landlords had no way of directly communicating with their Pros, but had to rely on NestEgg to relay messages.</td>
+														<td>Maintenance process was <strong>too long, with multiple drop-off points.</strong>
+														<ul>
+															<li>After reporting an issue, landlords had to wait for up to 24 hours for us to diagnose the issue before they were given a price estimate.</li>
+															<li>During a job, landlords had no way of directly communicating with their Pros, but had to rely on NestEgg to relay messages.</li>
+														</ul>
+															</td>
 														<td>
 															<ul>
 																<li>Replace our current '2-part flow' with a single flow.</li>
-																<li>Create a more integrated chat experience so that landlords can speak directly to Pros.</li>
+																<li>Create a more integrated messaging experience so that landlords can speak directly to Pros.</li>
 															</ul>
 														</td>
 													</tr>
@@ -190,7 +199,7 @@
 									<div class="content-block">
 										<h2>Step 3: Redesign</h2>
 										<p>
-											I began with flow-charts and lo-fi mockups, which I honed with the help of internal testing with our team and third-party testers.
+											I began with flow-charts and lo-fi mockups, which I honed with the help of internal testing with our team, as well as with third-party testers.
 										</p>
 										<div class="image main">
 											<img class="" src="images/flow-chart.jpg" alt="old designs" title="old designs"/>
@@ -198,7 +207,7 @@
 										</div>
 										<h1 style="margin-bottom: 1em">Summary of changes</h1>
 										<h2>
-											Increasing Discoverability:
+											Increased Discoverability:
 										</h2>
 										<p>Changes we made to increase visibility of the maintenance feature:</p>
 										<div class="row" style="margin-top: 3em;">
@@ -230,19 +239,19 @@
 												</p>
 											</div>
 										</div>
-										<h2>Marketing collaboration:</h2>
-										<p>I know that a key part of driving greater adoption of our maintenance service was marketing, so I intiiated an <strong>email coupon campaign</strong> with our marketing team to drive first-time adoption of maintenance. (data showed that once a landlord used maintenance once, they were likely to be a repeat customer.)
+										<h2>Marketing campaign:</h2>
+										<p>I know that a key part of driving greater adoption of our maintenance service was marketing, so I intiiated an <strong>email coupon campaign</strong> with our marketing team to drive first-time adoption of maintenance. (The data showed that once a landlord used maintenance once, they were likely to be a repeat customer.)
 										</p>
 										<h2>
-											Simplifying the maintenance flow:
+											Simplified issue reporting:
 										</h2>
-										<p>One of the key changes we made to our maintenance flow was to replace the chat-bot with a form. Our hypothesis was also that many users would actually prefer a form to a chat-bot, due to the speed with which a form can be completed. We developed the form with plans to AB test with our chat bot.</p>
+										<p>One of the key changes we made to our maintenance flow was to replace the chat-bot with a form. Our hypothesis was that many users would actually prefer a form to a chat-bot, due to the speed with which a form can be completed. We developed the form with plans to AB test it against our chat bot.</p>
 										<div class="image main grow-img-scale">
 											<img class="grow-img-shadow" src="images/chat-problems.jpg" alt="old designs" title="old designs"/>
 											<i class="img-caption">chat vs form</i>
 										</div>
 										<h2>
-											Decreasing time-to-price:
+											Decreased time-to-price:
 										</h2>
 										<p>After users reported a maintenance issue, they would need to wait for our ops team to generate a price (up to 24 hrs). But by that time, many users would already start looking for Pros on their own. I realized that if we could automatically show the user a price estimate based on their job type (based on data abt prices of past jobs, categorized by type), we could show a price to landlords immediately, <strong>cutting 'time-to-price' from 24 hours to minutes.</strong></p>
 										<h3>Old flow</h3>
@@ -252,7 +261,7 @@
 											<i class="img-caption">Old flow with chat</i>
 										</div>
 										<h3>New flow</h3>
-										<p>We can provide the user with the ability to see a price (based on historic averages for each trade) and book a Pro immediately!</p>
+										<p>After reporting an issue, user sees a price instantly (based on historic averages for the trade that they selected) and can book a Pro immediately!</p>
 										<div class="image main grow-img-scale">
 											<img class="grow-img-shadow" src="images/trade-flow.jpg" alt="old designs" title="old designs"/>
 											<i class="img-caption">New flow with up front price information</i>
@@ -268,7 +277,7 @@
 										<div class="content-block">
 												<h1>conclusion</h1>
 												<h2>Were we successful?</h2>
-												<p>We were able to transform the maintenance service in a way that vastly improved our users' experience. We directly addressed some user pain-points, saw increased up-take of our maintenance product, and received positive feedback from our users.<br /><br /> One takeaway for the future is to improve our AB testing framework so that we can have more data to back our design choices.</p>
+												<p>We were able to transform the maintenance service in a way that vastly improved our users' experience. We directly addressed some user pain-points, saw increased up-take of our maintenance product, and received positive feedback about the changes from our users.<br /><br /> One takeaway for the future is to improve our AB testing framework so that we can have more data to back our design choices.</p>
 										</div>
 									</div>
 									<div class="content-block center-contents">
