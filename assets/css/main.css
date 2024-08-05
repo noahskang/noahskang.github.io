@@ -1641,7 +1641,7 @@
 
 	body {
 		background-color: #333333;
-		color: #8F8F8F;
+		color: #6E6E6E;
 	}
 
 	body, input, select, textarea {
@@ -1819,7 +1819,7 @@
 	}
 
 	input, select, textarea {
-		color: #777777;
+		color: #595959;
 	}
 
 	a:hover {
@@ -1827,11 +1827,11 @@
 	}
 
 	strong, b {
-		color: #777777;
+		color: #595959;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #777777;
+		color: #595959;
 	}
 
 	blockquote {
@@ -1962,7 +1962,7 @@
 	.button {
 		background-color: transparent;
 		box-shadow: inset 0 0 0 2px #eaeaea;
-		color: #777777 !important;
+		color: #595959 !important;
 	}
 
 		input[type="submit"]:hover,
@@ -2181,7 +2181,7 @@
 	}
 
 	label {
-		color: #777777;
+		color: #595959;
 	}
 
 	input[type="text"],
@@ -2208,7 +2208,7 @@
 
 	input[type="checkbox"] + label,
 	input[type="radio"] + label {
-		color: #8F8F8F;
+		color: #6E6E6E;
 	}
 
 		input[type="checkbox"] + label:before,
@@ -2279,7 +2279,7 @@
 		}
 
 			.icon.major:before {
-				background-color: #777777;
+				background-color: #595959;
 				border-radius: 100%;
 				color: #ffffff;
 				display: inline-block;
@@ -2749,7 +2749,7 @@
 		}
 
 	table th {
-		color: #777777;
+		color: #595959;
 	}
 
 	table thead {
@@ -3321,7 +3321,7 @@
 		transition: transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
 		-webkit-overflow-scrolling: touch;
 		background: #ffffff;
-		color: #777777;
+		color: #595959;
 		height: 100%;
 		max-width: 80%;
 		overflow-y: auto;
@@ -3614,7 +3614,7 @@
 			border: 0;
 			border-radius: 4px 4px 0 0;
 			bottom: -3em;
-			color: #8F8F8F;
+			color: #6E6E6E;
 			display: block;
 			height: 3em;
 			left: 50%;
@@ -3816,7 +3816,7 @@
 			border: 0;
 			border-radius: 8px 8px 0 0;
 			bottom: -3em;
-			color: #8F8F8F;
+			color: #6E6E6E;
 			display: block;
 			height: 3em;
 			left: 50%;
