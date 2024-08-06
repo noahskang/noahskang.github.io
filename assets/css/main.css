@@ -2939,6 +2939,10 @@
 		transform: scale(1.2);
 		z-index: 1;
 	}
+	.row-spacer{
+		margin-top: 2em;
+		margin-bottom: 2em;
+	}
 	.discoverability-images{
 		width: 100%;
 		margin: 0 0 1em 0;
