@@ -65,6 +65,12 @@
 		box-sizing: border-box;
 	}
 
+	.horizontally-centered{
+		display: flex;            /* Enable flexbox layout */
+		justify-content: center;  /* Center elements horizontally */
+		align-items: center;
+	}
+
 	.row > * {
 		float: left;
 		-moz-box-sizing: border-box;
@@ -1810,7 +1816,10 @@
 		text-align: left;
 	}
 
-	.align-center {
+	.narrow-centered-text{
+		width: 100%;
+		max-width: 40em;
+		margin: auto;
 		text-align: center;
 	}
 
@@ -2966,6 +2975,9 @@
 	}
 	.project-inner{
 		width: 50em !important;
+	}
+	.project-wider{
+		width: 62em !important;
 	}
 	._1em-bottom{
 		margin-bottom: 1em;
