@@ -403,6 +403,9 @@ nav .nav-links a:hover { color: var(--text); }
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
 }
+.screenshot-gallery .shot.full-width {
+  grid-column: 1 / -1;
+}
 .screenshot-gallery img {
   width: 100%;
   border-radius: 0.5rem;
@@ -622,6 +625,7 @@ const EXPLORATIONS = [
     category: 'Frontend Design + Claude Skills',
     liveUrl: 'https://noahskang.github.io/aapi-erg/',
     screenshots: [
+      { src: 'https://noahskang.github.io/images/ai-explorations/aapi-moodboard.png', caption: 'Figma mood board — the only design input, fed directly to the frontend-design skill' },
       { src: 'https://noahskang.github.io/images/ai-explorations/aapi-home.png', caption: 'Homepage — Heritage Month hero with floating petal animations' },
       { src: 'https://noahskang.github.io/images/ai-explorations/aapi-food.png', caption: 'Food Guide — Interactive Leaflet map with ERG member restaurant picks' },
       { src: 'https://noahskang.github.io/images/ai-explorations/aapi-events.png', caption: 'Events — May 2026 calendar with category-coded event cards' },
@@ -731,8 +735,8 @@ function renderDetail(id) {
           <p>${e.overview}</p>
           ${e.screenshots ? `
           <div class="screenshot-gallery">
-            ${e.screenshots.map(s => `
-              <div class="shot">
+            ${e.screenshots.map((s, i) => `
+              <div class="shot${i === 0 && e.screenshots.length % 2 === 1 ? ' full-width' : ''}">
                 <img src="${s.src}" alt="${s.caption}" onclick="openLightbox(this.src)" loading="lazy">
                 <div class="caption">${s.caption}</div>
               </div>
