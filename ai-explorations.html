@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Explorations — Noah Kang</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #070b14;
+  --surface: #0f1523;
+  --card: #151d2e;
+  --card-hover: #1a2540;
+  --teal: #2dd4bf;
+  --amber: #f0a500;
+  --text: #e0e7ef;
+  --text-muted: #6b7a90;
+  --text-dim: #3a4a60;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Grain overlay --- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* --- Page transitions --- */
+#app { opacity: 1; transition: opacity 0.35s var(--ease); }
+#app.transitioning { opacity: 0; }
+
+/* --- Navigation --- */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+  transition: transform 0.4s var(--ease);
+}
+nav .logo {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+}
+nav .logo span { color: var(--teal); }
+nav .nav-links { display: flex; gap: 2rem; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+nav .nav-links a { transition: color 0.3s; }
+nav .nav-links a:hover { color: var(--text); }
+
+/* --- Hero --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 2.5rem 6rem;
+  overflow: hidden;
+}
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.hero-gradient .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+  transition: transform 2s var(--ease);
+}
+.hero-gradient .orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #164e63 0%, transparent 70%);
+  top: -10%; right: -5%;
+}
+.hero-gradient .orb-2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #1e3a5f 0%, transparent 70%);
+  bottom: 10%; left: -10%;
+}
+.hero-gradient .orb-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(240,165,0,0.4) 0%, transparent 70%);
+  top: 30%; left: 40%;
+}
+.hero-content { position: relative; z-index: 1; max-width: 900px; }
+.hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-label::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--teal);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal);
+}
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 540px;
+}
+
+/* --- Section titles --- */
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--text-dim);
+  opacity: 0.3;
+}
+
+/* --- Bento Grid --- */
+.explorations {
+  padding: 0 2.5rem 8rem;
+}
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+}
+.bento-card {
+  position: relative;
+  border-radius: 1rem;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.04);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), background 0.5s var(--ease);
+}
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.08);
+  background: var(--card-hover);
+}
+.bento-card:nth-child(1) { grid-column: span 7; min-height: 380px; }
+.bento-card:nth-child(2) { grid-column: span 5; min-height: 380px; }
+.bento-card:nth-child(3) { grid-column: span 5; min-height: 340px; }
+.bento-card:nth-child(4) { grid-column: span 7; min-height: 340px; }
+.bento-card:nth-child(5) { grid-column: span 12; min-height: 320px; }
+
+.card-inner {
+  position: relative;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 1;
+}
+.card-glow {
+  position: absolute;
+  top: 0; right: 0;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+  pointer-events: none;
+}
+.bento-card:hover .card-glow { opacity: 0.15; }
+.bento-card:nth-child(1) .card-glow { background: var(--teal); }
+.bento-card:nth-child(2) .card-glow { background: var(--amber); }
+.bento-card:nth-child(3) .card-glow { background: #8b5cf6; }
+.bento-card:nth-child(4) .card-glow { background: #f43f5e; }
+.bento-card:nth-child(5) .card-glow { background: #e8652a; }
+
+.card-number {
+  font-family: var(--serif);
+  font-size: 5rem;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.75rem;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  transition: color 0.5s var(--ease);
+}
+.bento-card:hover .card-number { color: rgba(255,255,255,0.06); }
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.card-status {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  border: 1px solid;
+}
+.status-active { color: var(--teal); border-color: rgba(45,212,191,0.3); }
+.status-completed { color: var(--amber); border-color: rgba(240,165,0,0.3); }
+.status-exploring { color: #8b5cf6; border-color: rgba(139,92,246,0.3); }
+
+.card-category {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.card-title {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.card-tagline {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 400px;
+}
+.card-arrow {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s var(--ease);
+  color: var(--text-muted);
+}
+.bento-card:hover .card-arrow {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: translate(2px, -2px);
+}
+
+/* --- Detail Page --- */
+.detail { padding: 0 2.5rem; }
+.detail-hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 4rem;
+  padding-top: 8rem;
+  position: relative;
+}
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.detail-back:hover { color: var(--teal); }
+.detail-back svg { transition: transform 0.3s var(--ease); }
+.detail-back:hover svg { transform: translateX(-3px); }
+
+.detail-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.detail-hero .card-meta { margin-bottom: 1.5rem; }
+.detail-hero-desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 600px;
+}
+
+.detail-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 8rem;
+}
+.detail-section {
+  margin-bottom: 4rem;
+}
+.detail-section h2 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.detail-section h2 .num {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-right: 0.75rem;
+  font-family: var(--sans);
+  letter-spacing: 0.05em;
+}
+.detail-section p, .detail-section li {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+.detail-section ul {
+  list-style: none;
+  padding: 0;
+}
+.detail-section li {
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+.detail-section li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.tech-pill {
+  font-size: 0.75rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text-muted);
+}
+.detail-divider {
+  width: 3rem;
+  height: 1px;
+  background: var(--text-dim);
+  opacity: 0.3;
+  margin: 4rem 0;
+}
+
+/* --- Scroll animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* --- Footer --- */
+footer {
+  padding: 3rem 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  nav .nav-links { display: none; }
+  .hero { padding: 0 1.5rem 4rem; }
+  .explorations { padding: 0 1.5rem 4rem; }
+  .bento { grid-template-columns: 1fr; }
+  .bento-card:nth-child(n) { grid-column: span 1; min-height: 280px; }
+  .detail { padding: 0 1.5rem; }
+  .detail-content { padding-bottom: 4rem; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="navigate('')">Noah Kang <span>.</span></div>
+  <div class="nav-links">
+    <a href="#" onclick="navigate(''); return false;">Explorations</a>
+    <a href="#about" onclick="return false;">About</a>
+  </div>
+</nav>
+
+<div id="app"></div>
+
+<script>
+const EXPLORATIONS = [
+  {
+    id: 'design-bot',
+    number: '01',
+    title: 'Design Bot',
+    tagline: 'Async Figma generation through Slack — turning natural-language briefs into production mockups.',
+    status: 'active',
+    statusLabel: 'Active',
+    category: 'Slack + Figma + Claude',
+    overview: `A Slack bot that converts natural-language design briefs into Figma mockups, asynchronously. Designers DM the bot with a request, select a product target — Toolbox, Hinge App, Custom, or FigJam — and receive a Figma design link back, typically within minutes. The bot uses a multi-pass workflow for Hinge screens (REF → BUILD → POLISH) that matches requests against a screen catalog, sets up Original/Proposed frames, then iteratively refines the output.`,
+    tech: ['Node.js', 'Slack Bolt', 'Claude API', 'Figma MCP', 'Railway', 'AWS Lambda'],
+    techDesc: `Built on Node.js with the Slack Bolt framework, hosted on Railway via Docker. The handler spawns a Claude Code CLI subprocess, passing the design brief as a system prompt. Claude calls Figma MCP tools to read reference files, create new pages and frames, apply components and styles. AWS Lambda handles webhook processing for async flows.`,
+    impact: `Genuinely useful for rapid first-pass design generation, especially for repetitive screen patterns and when you need to quickly explore a direction before investing design time. The multi-pass workflow produces surprisingly coherent layouts. However, it is not a replacement for intentional design — it is more of a "get me 80% of the way there" tool that removes the blank-canvas problem.`,
+    blockers: [
+      'Figma MCP token expires every ~90 days, requiring manual Lambda env var update',
+      'No image support yet — users must paste document text directly instead of sharing links',
+      'Tool call caps (15–40 per request) needed to prevent runaway loops, which limits complexity',
+      'Socket Mode only — no inbound HTTP, which complicates some integration patterns'
+    ],
+    nextSteps: `Image attachment support is the highest-priority gap. Exploring whether a more persistent Figma session (rather than per-request subprocess spawning) could improve token management and reduce cold-start latency. Also investigating whether the multi-pass workflow could be extended to support more granular design system compliance checking.`
+  },
+  {
+    id: 'mock-hat',
+    number: '02',
+    title: 'Mock Hat',
+    tagline: 'A safe, zero-risk prototyping environment with fabricated data and public cloud tunnels.',
+    status: 'completed',
+    statusLabel: 'Completed',
+    category: 'Prototyping + MSW + Tunnels',
+    overview: `A self-contained, browser-only mock version of Toolbox — Hinge's internal trust & safety moderation application — built for design reviews and stakeholder testing. It runs entirely in-browser with zero backend communication. Stakeholders can open a temporary public URL, interact with realistic-looking moderation screens, and give feedback on new features — all without needing VPN access, Okta credentials, or any development setup.`,
+    tech: ['React 18', 'Redux', 'MSW', 'Vite', 'Cloudflare Tunnel', 'TypeScript'],
+    techDesc: `Mock Service Worker (MSW) sits between React and the network stack, intercepting every fetch() call before it leaves the browser. All requests to a fake API domain are caught and routed to JavaScript handlers returning fabricated JSON. 39 completely fictional user profiles with dummy data are hardcoded. Cloudflare Tunnel exposes the Vite dev server through a temporary public URL that dies when the process stops.`,
+    impact: `Extremely useful. This single tool changed how the design team reviews work. Before Mock Hat, showing a new Toolbox feature to a PM or stakeholder meant either a screen recording, a Figma prototype (static, limited), or asking engineering to spin up a staging environment. Now, a designer can hand someone a link and say "click around." The fidelity of feedback improved dramatically because people could interact with real UI patterns, not approximations.`,
+    blockers: [
+      'Completely separate branch and build config from production — keeping it in sync requires manual effort',
+      'All API responses are hardcoded and static — no dynamic behavior beyond search filtering',
+      'Limited to 39 mock profiles, which does not represent real-world data volumes or edge cases',
+      'Split.io feature flags run in offline mode with all flags forced on — cannot test flag-dependent flows'
+    ],
+    nextSteps: `Exploring whether MSW handlers could be auto-generated from OpenAPI specs to reduce the sync burden. Also considering a lightweight recording mode that captures real API responses (sanitized) to create more realistic mock data sets. The Cloudflare Tunnel approach works well enough that other teams have asked about replicating it.`
+  },
+  {
+    id: 'toolbox-skills',
+    number: '03',
+    title: 'Toolbox Design Skills',
+    tagline: 'Claude skills that generate Figma designs matching the real Toolbox visual system.',
+    status: 'exploring',
+    statusLabel: 'Exploring',
+    category: 'Claude Skills + Design Systems',
+    overview: `A set of Claude skills — toolbox-figma and product-lifecycle — that generate Figma designs matching the real Toolbox visual style. These skills reference live design systems, import real MUI components, apply design tokens, and use auto-layout to produce designs that are structurally consistent with production. The product-lifecycle skill goes further, managing features from PRD analysis through design exploration, design audit, and implementation.`,
+    tech: ['Claude Skills', 'Figma MCP', 'MUI Components', 'Design Tokens'],
+    techDesc: `The toolbox-figma skill contains detailed workflow documentation for 6 core moderation tools (Shield queue, Ruth appeals, First Responder triage, AI Scam Analysis, etc.), including layout patterns and moderator actions. It maps real component keys for buttons, selects, and chips. The product-lifecycle skill orchestrates a 6-phase workflow, launching parallel agents for component discovery, design direction generation, and design system compliance checks.`,
+    impact: `Useful for rapid variant generation when exploring design directions — particularly when the design space is well-defined (e.g., "show me three layouts for the appeal summary panel"). Less useful for genuinely novel design problems where the skill's embedded patterns become constraints rather than accelerators. The product-lifecycle orchestration is ambitious and promising but still requires significant designer oversight at each phase gate.`,
+    blockers: [
+      'Skills encode assumptions about Toolbox UI patterns that become stale as the product evolves',
+      'Design system compliance checking is rule-based, not visual — it can miss spatial and compositional issues',
+      'The 6-phase lifecycle workflow is complex enough that debugging failures requires understanding the full orchestration',
+      'MUI component mapping requires manual updates when the design system ships new components'
+    ],
+    nextSteps: `Investigating whether skills could dynamically read the current design system state rather than relying on hardcoded component maps. Also exploring a feedback loop where designers can flag quality issues in generated designs, and those corrections get incorporated into the skill's future output.`
+  },
+  {
+    id: 'ios-skills',
+    number: '04',
+    title: 'Hinge iOS Design Skills',
+    tagline: 'Bridging Figma design specs and iOS implementation patterns for the Hinge user app.',
+    status: 'exploring',
+    statusLabel: 'Exploring',
+    category: 'iOS + Figma + Claude Skills',
+    overview: `Two Claude skills — spark-ui and spark-figma — built for iOS design work on the Hinge User App. spark-ui targets the UIKit + VIPER architecture, implementing minimum required states (happy, loading, error, empty, disabled) for each screen. spark-figma extracts design specifications from Figma files covering the design refresh phases. Together, they create a bridge between what designers spec in Figma and what engineers need to implement in Swift.`,
+    tech: ['Claude Skills', 'Figma MCP', 'UIKit', 'VIPER Architecture', 'Notion API'],
+    techDesc: `spark-ui follows a 3-phase workflow: Notion research (design requirements and context) → Figma extraction (design specs, states, and interaction patterns) → Repo discovery (component inventory and existing patterns). spark-figma uses a staged retrieval strategy to find the smallest relevant frame sets while preserving variant states and edge cases. Both skills are scope-aware, searching across Hinge modules contextually.`,
+    impact: `Genuinely bridges a gap that has historically caused friction between design and engineering. When a designer specs a screen in Figma, important implementation details (state handling, edge cases, animation specs) often get lost in translation. These skills formalize that handoff by extracting structured requirements from Figma and mapping them to the codebase's actual component patterns. Early results are promising, but the quality depends heavily on how well-structured the Figma files are.`,
+    blockers: [
+      'VIPER architecture adds complexity — the skills need to understand module boundaries and routing',
+      'Figma file structure varies between designers, making reliable extraction fragile',
+      'Notion integration requires stable page structures that can break when docs are reorganized',
+      'State coverage (happy/loading/error/empty/disabled) is necessary but not sufficient for complex flows'
+    ],
+    nextSteps: `Exploring whether the skills can generate interactive state-transition diagrams from Figma specs, giving engineers a clearer picture of flow logic. Also investigating tighter integration with the Hinge design system's Figma library so that component detection is more reliable across different designers' file structures.`
+  },
+  {
+    id: 'aapi-erg',
+    number: '05',
+    title: 'AAPI Heritage Site',
+    tagline: 'A full heritage month website for Hinge\'s AAPI ERG — built end-to-end with AI-assisted design and code generation.',
+    status: 'completed',
+    statusLabel: 'Completed',
+    category: 'Frontend Design + Claude Skills',
+    overview: `A celebratory website for Hinge's AAPI (Asian American and Pacific Islander) Employee Resource Group, built to showcase AAPI Heritage Month in NYC. The site features curated content across five sections — food guides with interactive maps, an events calendar, book recommendations, a cultural holiday calendar spanning the year, and resources on loneliness in AAPI communities. What makes this exploration notable is the build process: the entire site was generated using the frontend-design Claude skill, with a Figma mood board of visual references as the design input — no manual design phase, no Figma comps, straight from inspiration to production code.`,
+    tech: ['Claude Skills', 'Frontend Design Skill', 'Vanilla JS', 'Leaflet.js', 'Google Fonts', 'Figma MCP'],
+    techDesc: `The build process started with a Figma file containing curated screenshots as a mood board — Japanese architecture, watercolor landscapes, cherry blossoms, neon cityscapes, ukiyo-e wave patterns, and travel app UI references. This was fed to the frontend-design skill as visual context alongside the content requirements. The skill generated ~2,600 lines of vanilla JavaScript with no build system or framework dependencies. Leaflet.js handles interactive restaurant maps. The typography stack (Noto Serif JP, Inter, Cinzel) and color system (culture-coded: orange for East Asian, gold for South Asian, teal for Southeast Asian, purple for Persian/Central Asian) were derived from the mood board's aesthetic direction. SVG seigaiha wave textures and floating petal animations add atmospheric depth.`,
+    impact: `This was the most convincing demonstration of AI-assisted design-to-code so far. The site went from a mood board to a fully functional, visually rich website in a single session — something that would typically involve separate design exploration, Figma iteration, and front-end development phases. The output was good enough to ship directly to the ERG without significant manual refinement. The culture-coded color system and atmospheric animations (floating petals, wave textures) gave it a level of polish that felt intentional and designed, not generated. The ERG received it enthusiastically, which validated the approach for internal projects where speed matters more than pixel-perfect brand compliance.`,
+    blockers: [
+      'The mood board approach works well for establishing tone but gives less precise control than proper Figma comps',
+      'At ~2,600 lines of vanilla JS, the output is harder to maintain than a component-based framework would be',
+      'Restaurant and event data is hardcoded — updating content requires editing source files directly',
+      'The skill occasionally made aesthetic choices that needed manual correction (color contrast, spacing edge cases)',
+      'Leaflet map tiles depend on external CDN availability'
+    ],
+    nextSteps: `Exploring whether this mood-board-to-site workflow could become a repeatable pattern for other ERG events and internal microsites. The key question is whether the frontend-design skill can reliably translate visual references into cohesive design systems, or whether this worked because the AAPI aesthetic (rich textures, warm tones, layered compositions) happened to play to the skill's strengths. Also considering whether a lightweight CMS layer could make the content editable by non-engineers.`
+  }
+];
+
+function statusClass(s) {
+  return s === 'active' ? 'status-active' : s === 'completed' ? 'status-completed' : 'status-exploring';
+}
+
+function renderHome() {
+  return `
+    <section class="hero">
+      <div class="hero-gradient">
+        <div class="orb orb-1" id="orb1"></div>
+        <div class="orb orb-2" id="orb2"></div>
+        <div class="orb orb-3" id="orb3"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-label reveal">Field Notes</div>
+        <h1 class="reveal reveal-delay-1">Designing with <em>AI</em></h1>
+        <p class="hero-desc reveal reveal-delay-2">
+          A collection of experiments at the intersection of product design and artificial intelligence.
+          Each exploration is an honest look at what worked, what didn't, and what might be worth pursuing —
+          documented by a designer trying to find genuinely useful applications of AI in real workflows.
+        </p>
+      </div>
+    </section>
+
+    <section class="explorations">
+      <div class="section-label reveal">Explorations</div>
+      <div class="bento">
+        ${EXPLORATIONS.map((e, i) => `
+          <div class="bento-card reveal reveal-delay-${i + 1}" onclick="navigate('${e.id}')">
+            <div class="card-glow"></div>
+            <div class="card-number">${e.number}</div>
+            <div class="card-inner">
+              <div class="card-meta">
+                <span class="card-status ${statusClass(e.status)}">${e.statusLabel}</span>
+                <span class="card-category">${e.category}</span>
+              </div>
+              <h3 class="card-title">${e.title}</h3>
+              <p class="card-tagline">${e.tagline}</p>
+            </div>
+            <div class="card-arrow">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+
+    <footer>
+      <span>Noah Kang — 2025</span>
+      <span>Product Designer at Hinge</span>
+    </footer>
+  `;
+}
+
+function renderDetail(id) {
+  const e = EXPLORATIONS.find(x => x.id === id);
+  if (!e) return renderHome();
+
+  return `
+    <section class="detail">
+      <div class="detail-hero">
+        <div class="detail-back reveal" onclick="navigate('')">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M19 12H5M5 12l6-6M5 12l6 6"/>
+          </svg>
+          Back to explorations
+        </div>
+        <div class="card-meta reveal reveal-delay-1">
+          <span class="card-status ${statusClass(e.status)}">${e.statusLabel}</span>
+          <span class="card-category">${e.category}</span>
+        </div>
+        <h1 class="reveal reveal-delay-1">${e.title}</h1>
+        <p class="detail-hero-desc reveal reveal-delay-2">${e.tagline}</p>
+      </div>
+
+      <div class="detail-content">
+        <div class="detail-section reveal">
+          <h2><span class="num">01</span>Overview</h2>
+          <p>${e.overview}</p>
+        </div>
+
+        <div class="detail-divider reveal"></div>
+
+        <div class="detail-section reveal">
+          <h2><span class="num">02</span>Technology</h2>
+          <p>${e.techDesc}</p>
+          <div class="tech-pills">
+            ${e.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="detail-divider reveal"></div>
+
+        <div class="detail-section reveal">
+          <h2><span class="num">03</span>Impact & Usefulness</h2>
+          <p>${e.impact}</p>
+        </div>
+
+        <div class="detail-divider reveal"></div>
+
+        <div class="detail-section reveal">
+          <h2><span class="num">04</span>Blockers & Challenges</h2>
+          <ul>
+            ${e.blockers.map(b => `<li>${b}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="detail-divider reveal"></div>
+
+        <div class="detail-section reveal">
+          <h2><span class="num">05</span>Next Steps</h2>
+          <p>${e.nextSteps}</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Noah Kang — 2025</span>
+      <span>Product Designer at Hinge</span>
+    </footer>
+  `;
+}
+
+// --- Router ---
+const app = document.getElementById('app');
+
+function navigate(route) {
+  app.classList.add('transitioning');
+  setTimeout(() => {
+    window.location.hash = route;
+  }, 350);
+}
+
+function render() {
+  const hash = window.location.hash.slice(1);
+  app.innerHTML = hash ? renderDetail(hash) : renderHome();
+  app.classList.remove('transitioning');
+  window.scrollTo(0, 0);
+  observeReveals();
+  if (!hash) initOrbs();
+}
+
+window.addEventListener('hashchange', render);
+render();
+
+// --- Scroll reveal ---
+function observeReveals() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// --- Orb parallax ---
+function initOrbs() {
+  const orb1 = document.getElementById('orb1');
+  const orb2 = document.getElementById('orb2');
+  const orb3 = document.getElementById('orb3');
+  if (!orb1) return;
+
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 2;
+    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+    orb1.style.transform = `translate(${x * 30}px, ${y * 20}px)`;
+    orb2.style.transform = `translate(${x * -20}px, ${y * -25}px)`;
+    orb3.style.transform = `translate(${x * 15}px, ${y * -10}px)`;
+  });
+}
+</script>
+</body>
+</html>
