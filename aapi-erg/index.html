@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AAPI Heritage Month 2026 — Hinge ERG</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WPcM=" crossorigin=""></script>
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --bg:           #0a0d14;
+      --bg-section:   #080b11;
+      --bg-card:      rgba(255, 255, 255, 0.04);
+      --bg-card-hover:rgba(255, 255, 255, 0.07);
+      --border:       rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.18);
+      --accent:       #E8652A;
+      --accent-red:   #C94B2D;
+      --gold:         #D4A853;
+      --teal:         #2A9D8F;
+      --purple:       #6B4E9E;
+      --text:         #F5EDE0;
+      --text-2:       #A8C0D8;
+      --text-3:       #6B8CAE;
+      --shadow:       0 8px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Holiday color classes */
+    .east-asian      { --hcolor: #E8652A; }
+    .south-asian     { --hcolor: #D4A853; }
+    .southeast-asian { --hcolor: #2A9D8F; }
+    .persian         { --hcolor: #6B4E9E; }
+    .muslim          { --hcolor: #4A90C4; }
+    .heritage        { --hcolor: #C94B2D; }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Background texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cdefs%3E%3Cpattern id='seigaiha' x='0' y='0' width='60' height='52' patternUnits='userSpaceOnUse'%3E%3Cpath d='M30 0 A30 30 0 0 1 60 30 A30 30 0 0 1 0 30 A30 30 0 0 1 30 0Z' fill='none' stroke='white' stroke-width='0.7'/%3E%3Cpath d='M0 30 A30 30 0 0 1 30 52' fill='none' stroke='white' stroke-width='0.7'/%3E%3Cpath d='M60 30 A30 30 0 0 0 30 52' fill='none' stroke='white' stroke-width='0.7'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='600' height='600' fill='url(%23seigaiha)'/%3E%3Cg transform='translate(150%2C120) scale(0.8)' opacity='0.6'%3E%3Cpath d='M0%2C0 L20%2C-15 L40%2C5 L55%2C-20 L65%2C-10 L45%2C10 L60%2C30 L40%2C20 L30%2C35 L20%2C20 L0%2C30 L10%2C10 Z' fill='white'/%3E%3C/g%3E%3Cg transform='translate(420%2C280) scale(0.9)' opacity='0.5'%3E%3Cpath d='M0%2C0 L18%2C-12 L36%2C4 L50%2C-18 L60%2C-8 L42%2C9 L55%2C28 L36%2C18 L28%2C32 L18%2C18 L0%2C26 L9%2C8 Z' fill='white'/%3E%3C/g%3E%3Cg transform='translate(80%2C380) scale(0.7)' opacity='0.55'%3E%3Cpath d='M0%2C0 L22%2C-16 L44%2C5 L58%2C-22 L68%2C-11 L47%2C11 L62%2C33 L42%2C22 L32%2C37 L22%2C22 L0%2C32 L11%2C11 Z' fill='white'/%3E%3C/g%3E%3Cg transform='translate(500%2C80)'%3E%3Ccircle cx='0' cy='-8' r='4' fill='white' opacity='0.5'/%3E%3Ccircle cx='7.6' cy='-2.5' r='4' fill='white' opacity='0.5'/%3E%3Ccircle cx='4.7' cy='6.5' r='4' fill='white' opacity='0.5'/%3E%3Ccircle cx='-4.7' cy='6.5' r='4' fill='white' opacity='0.5'/%3E%3Ccircle cx='-7.6' cy='-2.5' r='4' fill='white' opacity='0.5'/%3E%3C/g%3E%3Cg transform='translate(200%2C480)'%3E%3Ccircle cx='0' cy='-8' r='3.5' fill='white' opacity='0.45'/%3E%3Ccircle cx='6.6' cy='-2.2' r='3.5' fill='white' opacity='0.45'/%3E%3Ccircle cx='4.1' cy='5.7' r='3.5' fill='white' opacity='0.45'/%3E%3Ccircle cx='-4.1' cy='5.7' r='3.5' fill='white' opacity='0.45'/%3E%3Ccircle cx='-6.6' cy='-2.2' r='3.5' fill='white' opacity='0.45'/%3E%3C/g%3E%3Cg transform='translate(350%2C520)'%3E%3Ccircle cx='0' cy='-8' r='3' fill='white' opacity='0.4'/%3E%3Ccircle cx='5.7' cy='-1.9' r='3' fill='white' opacity='0.4'/%3E%3Ccircle cx='3.5' cy='4.9' r='3' fill='white' opacity='0.4'/%3E%3Ccircle cx='-3.5' cy='4.9' r='3' fill='white' opacity='0.4'/%3E%3Ccircle cx='-5.7' cy='-1.9' r='3' fill='white' opacity='0.4'/%3E%3C/g%3E%3Cpath d='M50%2C300 Q60%2C280 80%2C285 Q85%2C265 105%2C270 Q120%2C265 125%2C280 Q140%2C275 145%2C295 Q135%2C310 110%2C305 Q100%2C315 85%2C310 Q65%2C315 50%2C300Z' fill='none' stroke='white' stroke-width='0.7' opacity='0.4'/%3E%3Cpath d='M450%2C40 Q462%2C20 484%2C25 Q490%2C5 512%2C11 Q528%2C5 533%2C21 Q549%2C16 554%2C37 Q543%2C53 517%2C47 Q506%2C58 490%2C53 Q469%2C58 450%2C40Z' fill='none' stroke='white' stroke-width='0.7' opacity='0.4'/%3E%3Cpath d='M380%2C160 Q390%2C142 410%2C147 Q415%2C128 435%2C133 Q449%2C128 454%2C143 Q468%2C138 472%2C157 Q462%2C171 438%2C165 Q428%2C175 413%2C170 Q394%2C175 380%2C160Z' fill='none' stroke='white' stroke-width='0.7' opacity='0.35'/%3E%3Cpath d='M10%2C550 Q20%2C532 40%2C537 Q45%2C518 65%2C523 Q79%2C518 84%2C533 Q98%2C528 102%2C547 Q92%2C561 68%2C555 Q58%2C565 43%2C560 Q24%2C565 10%2C550Z' fill='none' stroke='white' stroke-width='0.7' opacity='0.35'/%3E%3C/svg%3E");
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL ANIMATIONS
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s cubic-bezier(.4,0,.2,1), transform 0.65s cubic-bezier(.4,0,.2,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .stagger.visible > *:nth-child(1)  { transition-delay: 0.05s; }
+    .stagger.visible > *:nth-child(2)  { transition-delay: 0.12s; }
+    .stagger.visible > *:nth-child(3)  { transition-delay: 0.19s; }
+    .stagger.visible > *:nth-child(4)  { transition-delay: 0.26s; }
+    .stagger.visible > *:nth-child(5)  { transition-delay: 0.33s; }
+    .stagger.visible > *:nth-child(6)  { transition-delay: 0.40s; }
+    .stagger.visible > *:nth-child(7)  { transition-delay: 0.47s; }
+    .stagger.visible > *:nth-child(8)  { transition-delay: 0.54s; }
+    .stagger.visible > * { opacity: 1; transform: none; }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-alt {
+      background: var(--bg-section);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-2);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       VIEW TOGGLE
+    ============================================================ */
+    .view-toggle {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .toggle-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-btn:hover {
+      color: var(--text-2);
+      border-color: var(--border-hover);
+    }
+
+    .toggle-btn.active {
+      background: rgba(232, 101, 42, 0.15);
+      border-color: rgba(232, 101, 42, 0.4);
+      color: var(--accent);
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 13, 20, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: background 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    #nav.scrolled {
+      background: rgba(10, 13, 20, 0.95);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .nav-logo:hover { color: var(--accent); }
+
+    .nav-logo svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(10, 13, 20, 0.97);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 0;
+      }
+
+      .nav-links a {
+        padding: 14px 24px;
+        width: 100%;
+      }
+
+      #nav.menu-open .nav-links {
+        display: flex;
+      }
+
+      .nav-hamburger { display: block; }
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #060d1e 0%, #0a1525 50%, #06101e 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,101,42,0.18) 0%, rgba(201,75,45,0.08) 40%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+
+    .hero-skyline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .petal {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, rgba(232,101,42,0.7) 0%, rgba(201,75,45,0.4) 60%, transparent 100%);
+      border-radius: 50% 0 50% 0;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.8; }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 20px;
+      animation: heroIn 0.8s cubic-bezier(.4,0,.2,1) 0.1s both;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.1;
+      animation: heroIn 0.8s cubic-bezier(.4,0,.2,1) 0.2s both;
+    }
+
+    .hero-title-accent {
+      background: linear-gradient(135deg, #E8652A 0%, #C94B2D 50%, #D4A853 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-year {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(32px, 5vw, 64px);
+      color: var(--gold);
+      opacity: 0.7;
+      margin: 12px 0;
+      animation: heroIn 0.8s cubic-bezier(.4,0,.2,1) 0.3s both;
+    }
+
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      color: var(--text-2);
+      max-width: 460px;
+      margin: 0 auto 40px;
+      animation: heroIn 0.8s cubic-bezier(.4,0,.2,1) 0.4s both;
+    }
+
+    .hero-nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      animation: heroIn 0.8s cubic-bezier(.4,0,.2,1) 0.5s both;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-pill:hover {
+      background: rgba(232,101,42,0.15);
+      border-color: rgba(232,101,42,0.5);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .hero-pill-icon { font-size: 16px; }
+
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ============================================================
+       FOOD SECTION — RESTAURANT CARDS
+    ============================================================ */
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .restaurant-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .restaurant-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow);
+    }
+
+    .card-photos { display: flex; flex-direction: column; }
+
+    .card-photo-main {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-photo-row {
+      display: flex;
+      gap: 2px;
+    }
+
+    .card-photo-row img {
+      width: 50%;
+      height: 90px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body { padding: 20px; }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .card-title-group { flex: 1; }
+
+    .card-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .card-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-3);
+    }
+
+    .card-price {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      color: var(--gold);
+      padding: 4px 8px;
+      border: 1px solid rgba(212, 168, 83, 0.25);
+      border-radius: 8px;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+
+    .card-recommender {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .recommender-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .recommender-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .recommender-role {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--text-3);
+    }
+
+    .card-blurb {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-2);
+      font-style: italic;
+      line-height: 1.6;
+      margin: 12px 0;
+    }
+
+    .card-expanded {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 8px;
+    }
+
+    .card-detail span:first-child { flex-shrink: 0; }
+
+    .card-dishes {
+      margin: 12px 0;
+    }
+
+    .card-dishes > span {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-3);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .dishes-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .dish-tag {
+      background: rgba(232, 101, 42, 0.1);
+      border: 1px solid rgba(232, 101, 42, 0.2);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    .card-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-3);
+    }
+
+    .card-toggle {
+      width: 100%;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: none;
+      border: none;
+      border-top: 1px solid var(--border);
+      padding: 12px;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+      margin-top: 12px;
+    }
+
+    .card-toggle:hover {
+      background: rgba(232, 101, 42, 0.06);
+    }
+
+    /* Map */
+    .map-view-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    #map {
+      height: 560px;
+      border-radius: 16px;
+    }
+
+    .map-sidebar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 360px;
+      height: 100%;
+      background: rgba(10, 13, 20, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-left: 1px solid var(--border);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .map-sidebar.open { transform: translateX(0); }
+
+    .sidebar-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: var(--text-2);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .sidebar-close:hover { background: rgba(255,255,255,0.15); }
+
+    .sidebar-restaurant-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 40px 0 4px;
+    }
+
+    .sidebar-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-3);
+      margin-bottom: 16px;
+    }
+
+    .sidebar-photo {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-recommender {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding: 12px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+    }
+
+    .sidebar-blurb {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-2);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-detail {
+      display: flex;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-dishes-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-3);
+      margin: 14px 0 8px;
+    }
+
+    @media (max-width: 600px) {
+      .map-sidebar {
+        width: 100%;
+        height: 60%;
+        top: auto;
+        bottom: 0;
+        transform: translateY(100%);
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+      .map-sidebar.open { transform: translateY(0); }
+    }
+
+    /* ============================================================
+       EVENTS SECTION
+    ============================================================ */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .event-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .event-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .event-card.featured {
+      border-left: 3px solid var(--accent);
+    }
+
+    .event-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .event-icon { font-size: 28px; }
+
+    .event-badges {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .event-category {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(232, 101, 42, 0.15);
+      color: var(--accent);
+    }
+
+    .event-price {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--text-3);
+    }
+
+    .event-price.free {
+      background: rgba(42, 157, 143, 0.15);
+      color: var(--teal);
+    }
+
+    .event-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 12px 0 8px;
+      line-height: 1.3;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .event-meta span {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-3);
+    }
+
+    .event-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin: 12px 0;
+    }
+
+    .event-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      transition: text-decoration 0.2s;
+    }
+
+    .event-link:hover { text-decoration: underline; }
+
+    /* ============================================================
+       BOOKS SECTION
+    ============================================================ */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .books-grid { grid-template-columns: 1fr; }
+    }
+
+    .book-card {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .book-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .book-spine {
+      width: 56px;
+      flex-shrink: 0;
+      background: var(--spine-color, #8B1A1A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 0;
+    }
+
+    .spine-title {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.08em;
+      overflow: hidden;
+      max-height: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .book-info {
+      flex: 1;
+      padding: 20px;
+      background: var(--bg-card);
+    }
+
+    .book-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .book-byline {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-3);
+      margin: 4px 0 8px;
+    }
+
+    .book-genre {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .book-quote {
+      font-style: italic;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-2);
+      border-left: 2px solid var(--accent);
+      padding-left: 12px;
+      margin: 12px 0;
+      line-height: 1.5;
+    }
+
+    .book-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .book-awards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .award-badge {
+      background: rgba(212, 168, 83, 0.12);
+      color: var(--gold);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+    }
+
+    /* ============================================================
+       HOLIDAYS SECTION
+    ============================================================ */
+    .holiday-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+      justify-content: center;
+    }
+
+    .legend-item {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-item::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--hcolor);
+      flex-shrink: 0;
+    }
+
+    .legend-item.east-asian      { --hcolor: #E8652A; background: rgba(232,101,42,0.12); color: #E8652A; }
+    .legend-item.south-asian     { --hcolor: #D4A853; background: rgba(212,168,83,0.12); color: #D4A853; }
+    .legend-item.southeast-asian { --hcolor: #2A9D8F; background: rgba(42,157,143,0.12); color: #2A9D8F; }
+    .legend-item.persian         { --hcolor: #9B7DD0; background: rgba(107,78,158,0.12); color: #9B7DD0; }
+    .legend-item.muslim          { --hcolor: #4A90C4; background: rgba(74,144,196,0.12); color: #4A90C4; }
+    .legend-item.heritage        { --hcolor: #C94B2D; background: rgba(201,75,45,0.12); color: #C94B2D; }
+
+    /* Calendar grid */
+    .holidays-calendar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) { .holidays-calendar { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px) { .holidays-calendar { grid-template-columns: repeat(2, 1fr); } }
+
+    .month-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .month-card:hover { border-color: var(--border-hover); }
+    .month-card.has-holiday { border-color: rgba(232, 101, 42, 0.25); }
+
+    .month-name {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      text-align: center;
+    }
+
+    .cal-day-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      color: var(--text-3);
+      padding: 4px 0;
+    }
+
+    .cal-day {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--text-2);
+      padding: 4px 2px;
+      border-radius: 4px;
+      cursor: default;
+      position: relative;
+    }
+
+    .cal-day.empty { color: transparent; cursor: default; }
+
+    .cal-day.today {
+      background: rgba(232,101,42,0.15);
+      color: var(--accent);
+    }
+
+    .cal-day.holiday {
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 50%;
+      padding: 4px 0;
+    }
+
+    .cal-day.holiday:hover { filter: brightness(1.3); }
+
+    .cal-day.holiday.east-asian      { background: rgba(232,101,42,0.25); color: #E8652A; }
+    .cal-day.holiday.south-asian     { background: rgba(212,168,83,0.25); color: #D4A853; }
+    .cal-day.holiday.southeast-asian { background: rgba(42,157,143,0.25); color: #2A9D8F; }
+    .cal-day.holiday.persian         { background: rgba(107,78,158,0.25); color: #9B7DD0; }
+    .cal-day.holiday.muslim          { background: rgba(74,144,196,0.25); color: #4A90C4; }
+    .cal-day.holiday.heritage        { background: rgba(201,75,45,0.25); color: #C94B2D; }
+
+    .month-holidays {
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+
+    .month-holiday-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--text-2);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .month-holiday-item:hover { color: var(--text); }
+
+    .month-holiday-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Holiday list view */
+    .holidays-list-view {
+      padding: 0;
+    }
+
+    .holiday-month-group {
+      margin-bottom: 48px;
+    }
+
+    .holiday-month-heading {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .holiday-list-items { display: flex; flex-direction: column; gap: 8px; }
+
+    .holiday-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .holiday-list-item:hover {
+      border-color: var(--hcolor, var(--border-hover));
+      transform: translateX(4px);
+    }
+
+    .hli-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .hli-emoji { font-size: 28px; }
+
+    .hli-color-bar {
+      width: 3px;
+      height: 100%;
+      min-height: 40px;
+      background: var(--hcolor);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .hli-body { flex: 1; }
+
+    .hli-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .hli-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .hli-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .hli-culture {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-3);
+      margin-bottom: 4px;
+    }
+
+    .hli-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    /* Holiday detail panel */
+    #holiday-detail {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-height: 70vh;
+      background: rgba(10, 13, 20, 0.97);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-top: 1px solid var(--border);
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+      overflow-y: auto;
+      z-index: 2000;
+      padding: 32px;
+    }
+
+    #holiday-detail.open { transform: translateY(0); }
+
+    .panel-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: var(--text-2);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .panel-close:hover { background: rgba(255,255,255,0.15); }
+
+    .panel-emoji {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .panel-culture-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin: 0 auto 16px;
+    }
+
+    .panel-culture-badge.east-asian      { background: rgba(232,101,42,0.15); color: #E8652A; }
+    .panel-culture-badge.south-asian     { background: rgba(212,168,83,0.15); color: #D4A853; }
+    .panel-culture-badge.southeast-asian { background: rgba(42,157,143,0.15); color: #2A9D8F; }
+    .panel-culture-badge.persian         { background: rgba(107,78,158,0.15); color: #9B7DD0; }
+    .panel-culture-badge.muslim          { background: rgba(74,144,196,0.15); color: #4A90C4; }
+    .panel-culture-badge.heritage        { background: rgba(201,75,45,0.15); color: #C94B2D; }
+
+    .panel-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .panel-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .panel-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.7;
+      max-width: 680px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+
+    .panel-countries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .country-tag {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-3);
+    }
+
+    /* Panel center wrapper */
+    .panel-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: #060810;
+      border-top: 1px solid var(--border);
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-inner { max-width: 600px; margin: 0 auto; }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .footer-logo svg { width: 28px; height: 28px; }
+
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-3);
+      margin-bottom: 8px;
+    }
+
+    .footer-year {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      color: var(--gold);
+      opacity: 0.5;
+      margin-bottom: 24px;
+    }
+
+    .footer-credit {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-3);
+      margin-bottom: 16px;
+    }
+
+    .footer-petals {
+      font-size: 20px;
+      letter-spacing: 8px;
+      opacity: 0.4;
+    }
+
+    /* ============================================================
+       SECTION PREVIEW CARDS (homepage)
+    ============================================================ */
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 700px) {
+      .preview-grid { grid-template-columns: 1fr; }
+    }
+
+    .preview-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .preview-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--card-glow, rgba(232,101,42,0.06));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .preview-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--card-border, rgba(232,101,42,0.35));
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+
+    .preview-card:hover::before { opacity: 1; }
+
+    .preview-card-icon {
+      font-size: 36px;
+      margin-bottom: 4px;
+    }
+
+    .preview-card-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--card-accent, var(--accent));
+    }
+
+    .preview-card-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .preview-card-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .preview-card-cta {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--card-accent, var(--accent));
+      margin-top: 8px;
+      transition: gap 0.2s;
+    }
+
+    .preview-card:hover .preview-card-cta::after {
+      content: ' →';
+    }
+
+
+    /* Card-specific color overrides */
+    .preview-card.food   { --card-accent: #E8652A; --card-glow: rgba(232,101,42,0.06); --card-border: rgba(232,101,42,0.35); }
+    .preview-card.events { --card-accent: #2A9D8F; --card-glow: rgba(42,157,143,0.06); --card-border: rgba(42,157,143,0.35); }
+    .preview-card.books  { --card-accent: #7B8FD4; --card-glow: rgba(74,100,196,0.06); --card-border: rgba(74,100,196,0.35); }
+    .preview-card.holidays { --card-accent: #D4A853; --card-glow: rgba(212,168,83,0.06); --card-border: rgba(212,168,83,0.35); }
+
+    /* About section */
+    .about-section {
+      padding: 80px 0;
+      position: relative;
+      z-index: 1;
+      background: var(--bg-section);
+    }
+
+    .about-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .about-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .about-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .about-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+
+    .about-divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      margin: 28px auto;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <!-- Crane SVG icon -->
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 4 L18 8 L22 6 L20 11 L24 13 L19 14 L20 19 L14 16 L10 22 L10 16 L4 18 L8 13 L4 10 L9 11 L8 6 L12 8 Z" fill="currentColor" opacity="0.85"/>
+        </svg>
+        <span>Asian at Hinge</span>
+      </a>
+      <div class="nav-links">
+        <a href="food.html">Food</a>
+        <a href="events.html">Events</a>
+        <a href="books.html">Books</a>
+        <a href="holidays.html">Holidays</a>
+        <a href="loneliness.html">Loneliness</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <!-- Glow orb -->
+    <div class="hero-glow"></div>
+
+    <!-- NYC Skyline SVG -->
+    <svg class="hero-skyline" viewBox="0 0 1440 250" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+      <path d="M0,250 L0,190 L30,190 L30,175 L45,175 L45,155 L55,155 L55,135 L60,135 L60,110 L65,110 L65,100 L70,100 L70,95 L72,95 L72,100 L75,100 L75,110 L80,110 L80,130 L85,130 L85,145 L90,145 L90,120 L95,120 L95,90 L98,90 L98,85 L100,85 L100,90 L105,90 L105,115 L110,115 L110,95 L115,95 L115,70 L118,70 L118,60 L121,60 L121,70 L125,70 L125,95 L130,95 L130,80 L135,80 L135,65 L138,65 L138,55 L140,50 L142,55 L145,65 L145,80 L150,80 L150,95 L155,95 L155,85 L160,85 L160,100 L165,100 L165,75 L170,75 L170,60 L173,60 L173,50 L175,45 L177,50 L180,60 L180,75 L185,75 L185,100 L190,100 L190,115 L195,115 L195,95 L200,95 L200,80 L205,80 L205,70 L208,70 L208,62 L210,58 L212,62 L215,70 L215,80 L220,80 L220,95 L225,95 L225,115 L230,115 L230,105 L235,105 L235,85 L240,85 L240,70 L243,70 L243,60 L246,55 L249,60 L252,70 L255,70 L255,85 L260,85 L260,105 L265,105 L265,95 L270,95 L270,80 L275,80 L275,65 L278,65 L278,55 L280,50 L282,55 L285,65 L285,80 L290,80 L290,95 L295,95 L295,115 L300,115 L300,130 L305,130 L305,115 L310,115 L310,95 L315,95 L315,80 L320,80 L320,70 L323,70 L323,60 L326,55 L329,60 L332,70 L335,70 L335,80 L340,80 L340,95 L345,95 L345,120 L350,120 L350,105 L355,105 L355,90 L360,90 L360,75 L363,75 L363,65 L365,60 L367,65 L370,75 L370,90 L375,90 L375,105 L380,105 L380,120 L385,120 L385,110 L390,110 L390,90 L395,90 L395,75 L398,75 L398,65 L400,60 L402,65 L405,75 L405,90 L410,90 L410,110 L415,110 L415,125 L420,125 L420,110 L425,110 L425,90 L430,90 L430,75 L435,75 L435,60 L438,60 L438,50 L440,45 L442,50 L445,60 L445,75 L450,75 L450,90 L455,90 L455,110 L460,110 L460,130 L465,130 L465,115 L470,115 L470,95 L475,95 L475,80 L480,80 L480,65 L483,65 L483,55 L485,50 L487,55 L490,65 L490,80 L495,80 L495,95 L500,95 L500,115 L505,115 L505,130 L510,130 L510,115 L515,115 L515,100 L520,100 L520,85 L525,85 L525,70 L528,70 L528,60 L530,55 L532,60 L535,70 L535,85 L540,85 L540,100 L545,100 L545,120 L550,120 L550,105 L555,105 L555,90 L560,90 L560,75 L565,75 L565,60 L568,60 L568,50 L570,45 L572,50 L575,60 L575,75 L580,75 L580,90 L585,90 L585,110 L590,110 L590,130 L595,130 L595,115 L600,115 L600,100 L605,100 L605,85 L610,85 L610,70 L613,70 L613,60 L616,55 L619,60 L622,70 L625,70 L625,85 L630,85 L630,100 L635,100 L635,120 L640,120 L640,105 L645,105 L645,90 L650,90 L650,75 L655,75 L655,60 L658,60 L658,50 L660,45 L662,50 L665,60 L665,75 L670,75 L670,90 L675,90 L675,110 L680,110 L680,130 L685,130 L685,115 L690,115 L690,100 L695,100 L695,85 L700,85 L700,70 L703,70 L703,60 L705,55 L707,60 L710,70 L710,85 L715,85 L715,100 L720,100 L720,120 L725,120 L725,105 L730,105 L730,90 L735,90 L735,75 L740,75 L740,60 L743,60 L743,50 L745,45 L747,50 L750,60 L750,75 L755,75 L755,90 L760,90 L760,110 L765,110 L765,130 L770,130 L770,115 L775,115 L775,100 L780,100 L780,85 L785,85 L785,70 L788,70 L788,60 L790,55 L792,60 L795,70 L795,85 L800,85 L800,100 L805,100 L805,120 L810,120 L810,110 L815,110 L815,95 L820,95 L820,80 L825,80 L825,65 L828,65 L828,55 L830,50 L832,55 L835,65 L835,80 L840,80 L840,95 L845,95 L845,115 L850,115 L850,130 L855,130 L855,115 L860,115 L860,100 L865,100 L865,85 L870,85 L870,70 L875,70 L875,60 L878,60 L878,55 L880,50 L882,55 L885,60 L885,70 L890,70 L890,85 L895,85 L895,100 L900,100 L900,120 L905,120 L905,108 L910,108 L910,95 L915,95 L915,80 L920,80 L920,68 L923,68 L923,58 L925,53 L927,58 L930,68 L930,80 L935,80 L935,95 L940,95 L940,112 L945,112 L945,130 L950,130 L950,115 L955,115 L955,100 L960,100 L960,85 L965,85 L965,70 L968,70 L968,60 L970,55 L972,60 L975,70 L975,85 L980,85 L980,100 L985,100 L985,120 L990,120 L990,108 L995,108 L995,95 L1000,95 L1000,80 L1005,80 L1005,68 L1008,68 L1008,58 L1010,53 L1012,58 L1015,68 L1015,80 L1020,80 L1020,95 L1025,95 L1025,112 L1030,112 L1030,130 L1035,130 L1035,115 L1040,115 L1040,100 L1045,100 L1045,85 L1050,85 L1050,70 L1055,70 L1055,58 L1058,58 L1058,50 L1060,45 L1062,50 L1065,58 L1065,70 L1070,70 L1070,85 L1075,85 L1075,105 L1080,105 L1080,125 L1085,125 L1085,110 L1090,110 L1090,95 L1095,95 L1095,80 L1100,80 L1100,68 L1103,68 L1103,58 L1105,53 L1107,58 L1110,68 L1110,80 L1115,80 L1115,95 L1120,95 L1120,115 L1125,115 L1125,130 L1130,130 L1130,115 L1135,115 L1135,100 L1140,100 L1140,85 L1145,85 L1145,70 L1150,70 L1150,58 L1153,58 L1153,50 L1155,45 L1157,50 L1160,58 L1160,70 L1165,70 L1165,85 L1170,85 L1170,105 L1175,105 L1175,130 L1180,130 L1180,115 L1185,115 L1185,100 L1190,100 L1190,85 L1195,85 L1195,70 L1200,70 L1200,85 L1205,85 L1205,100 L1210,100 L1210,115 L1215,115 L1215,130 L1220,130 L1220,120 L1225,120 L1225,105 L1230,105 L1230,95 L1235,95 L1235,110 L1240,110 L1240,125 L1245,125 L1245,140 L1250,140 L1250,150 L1260,150 L1260,160 L1280,160 L1280,170 L1300,170 L1300,180 L1320,180 L1320,190 L1360,190 L1360,200 L1440,200 L1440,250 Z" fill="rgba(255,255,255,0.04)"/>
+    </svg>
+
+    <!-- Floating petals -->
+    <div class="petal" style="left:8%;  top:-10%; animation-duration:12s; animation-delay:0s;   width:10px;height:10px;"></div>
+    <div class="petal" style="left:18%; top:-5%;  animation-duration:15s; animation-delay:1.5s; width:7px; height:7px;"></div>
+    <div class="petal" style="left:30%; top:-15%; animation-duration:18s; animation-delay:3s;   width:12px;height:12px;"></div>
+    <div class="petal" style="left:42%; top:-8%;  animation-duration:11s; animation-delay:0.8s; width:8px; height:8px;"></div>
+    <div class="petal" style="left:55%; top:-12%; animation-duration:16s; animation-delay:2.3s; width:9px; height:9px;"></div>
+    <div class="petal" style="left:65%; top:-6%;  animation-duration:13s; animation-delay:4s;   width:6px; height:6px;"></div>
+    <div class="petal" style="left:74%; top:-18%; animation-duration:20s; animation-delay:1s;   width:11px;height:11px;"></div>
+    <div class="petal" style="left:83%; top:-10%; animation-duration:14s; animation-delay:3.5s; width:8px; height:8px;"></div>
+    <div class="petal" style="left:91%; top:-7%;  animation-duration:17s; animation-delay:2s;   width:7px; height:7px;"></div>
+    <div class="petal" style="left:50%; top:-20%; animation-duration:19s; animation-delay:5s;   width:10px;height:10px;"></div>
+
+    <!-- Hero content -->
+    <div class="hero-content">
+      <p class="hero-eyebrow">Hinge ERG Presents</p>
+      <h1 class="hero-title">
+        Asian American<br>
+        <span class="hero-title-accent">Heritage Month</span>
+      </h1>
+      <p class="hero-year">2026</p>
+      <p class="hero-sub">Celebrating culture, community &amp; cuisine across New York City</p>
+      <nav class="hero-nav-pills" aria-label="Explore sections">
+        <a href="food.html" class="hero-pill"><span class="hero-pill-icon">🍜</span> Food</a>
+        <a href="events.html" class="hero-pill"><span class="hero-pill-icon">🎋</span> Events</a>
+        <a href="books.html" class="hero-pill"><span class="hero-pill-icon">📚</span> Books</a>
+        <a href="holidays.html" class="hero-pill"><span class="hero-pill-icon">🏮</span> Holidays</a>
+        <a href="loneliness.html" class="hero-pill"><span class="hero-pill-icon">🪷</span> Loneliness</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION PREVIEW CARDS
+  ============================================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="preview-grid stagger">
+
+        <a href="food.html" class="preview-card food reveal">
+          <div class="preview-card-icon">🍜</div>
+          <p class="preview-card-eyebrow">ERG Member Picks</p>
+          <h2 class="preview-card-title">Eats We Love</h2>
+          <p class="preview-card-desc">10 team-recommended AAPI restaurants across New York City, with a Leaflet map and recommender blurbs from people you know.</p>
+          <span class="preview-card-cta">Explore restaurants</span>
+        </a>
+
+        <a href="events.html" class="preview-card events reveal">
+          <div class="preview-card-icon">🎋</div>
+          <p class="preview-card-eyebrow">New York City · May 2026</p>
+          <h2 class="preview-card-title">Things to Do</h2>
+          <p class="preview-card-desc">Film screenings, performances, food festivals, and cultural gatherings happening across the five boroughs this Heritage Month.</p>
+          <span class="preview-card-cta">See all events</span>
+        </a>
+
+        <a href="books.html" class="preview-card books reveal">
+          <div class="preview-card-icon">📚</div>
+          <p class="preview-card-eyebrow">AAPI Voices</p>
+          <h2 class="preview-card-title">Reading List</h2>
+          <p class="preview-card-desc">Classic and contemporary books by Asian American and Pacific Islander authors — from Joy Luck Club to Demon Copperhead.</p>
+          <span class="preview-card-cta">Browse books</span>
+        </a>
+
+        <a href="holidays.html" class="preview-card holidays reveal">
+          <div class="preview-card-icon">🏮</div>
+          <p class="preview-card-eyebrow">Full Year 2026</p>
+          <h2 class="preview-card-title">Mark Your Calendar</h2>
+          <p class="preview-card-desc">23 Asian and AAPI cultural holidays across all 12 months — Lunar New Year, Diwali, Eid, and more, with a full calendar view.</p>
+          <span class="preview-card-cta">View calendar</span>
+        </a>
+
+      </div>
+
+      <!-- 5th card — full width, 3rd row -->
+      <div style="margin-top:24px;">
+        <a href="loneliness.html" class="preview-card loneliness reveal" style="--card-accent:#6B7DD4;--card-glow:rgba(107,125,212,0.06);--card-border:rgba(107,125,212,0.35);">
+          <div class="preview-card-icon">🪷</div>
+          <p class="preview-card-eyebrow">AAPI Mental Health</p>
+          <h2 class="preview-card-title">The Cost of Keeping It Together</h2>
+          <p class="preview-card-desc">Asian Americans are 3× less likely to seek mental health support. A curated collection of essays, research, and organizations exploring AAPI loneliness — and what it means to build genuine connection across cultural silence.</p>
+          <span class="preview-card-cta">Read &amp; reflect</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section class="about-section">
+    <div class="about-inner reveal">
+      <p class="about-eyebrow">About This Site</p>
+      <h2 class="about-title">Built by the Asian at Hinge ERG</h2>
+      <div class="about-divider"></div>
+      <p class="about-body">
+        Every May, Asian American and Pacific Islander Heritage Month gives us a chance to celebrate the richness and diversity of AAPI cultures — through food, art, literature, and gathering. This site was made with love by Hinge's AAPI Employee Resource Group to share our community's favorite spots, events, reads, and traditions with the broader Hinge team.
+      </p>
+      <div class="about-divider"></div>
+      <p class="about-body" style="font-size:14px;color:var(--text-3);">
+        Want to add a restaurant, event, or book recommendation? Reach out to the Asian at Hinge ERG on Slack.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="footer-logo" href="#">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 4 L18 8 L22 6 L20 11 L24 13 L19 14 L20 19 L14 16 L10 22 L10 16 L4 18 L8 13 L4 10 L9 11 L8 6 L12 8 Z" fill="currentColor" opacity="0.85"/>
+        </svg>
+        <span>Asian at Hinge</span>
+      </a>
+      <p class="footer-tagline">Asian American &amp; Pacific Islander Heritage Month</p>
+      <p class="footer-year">May 2026</p>
+      <p class="footer-credit">Made with 🌸 by the Asian at Hinge ERG</p>
+      <div class="footer-petals">🌸 🌸 🌸</div>
+    </div>
+  </footer>
+
+  <script src="scripts/shared.js"></script>
+
+</body>
+</html>

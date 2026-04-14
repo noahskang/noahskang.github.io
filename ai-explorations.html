@@ -396,6 +396,80 @@ nav .nav-links a:hover { color: var(--text); }
   border: 1px solid rgba(255,255,255,0.06);
   color: var(--text-muted);
 }
+/* --- Screenshot gallery --- */
+.screenshot-gallery {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.screenshot-gallery img {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+  cursor: pointer;
+}
+.screenshot-gallery img:hover {
+  transform: scale(1.02);
+  border-color: rgba(255,255,255,0.12);
+}
+.screenshot-gallery .caption {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 0.35rem;
+  letter-spacing: 0.04em;
+}
+.screenshot-gallery .shot { display: flex; flex-direction: column; }
+
+.live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 100px;
+  border: 1px solid rgba(45,212,191,0.3);
+  color: var(--teal);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  transition: all 0.3s var(--ease);
+  text-decoration: none;
+}
+.live-link:hover {
+  background: rgba(45,212,191,0.08);
+  border-color: var(--teal);
+}
+.live-link svg { transition: transform 0.3s var(--ease); }
+.live-link:hover svg { transform: translate(2px, -2px); }
+
+/* --- Lightbox --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease);
+  cursor: zoom-out;
+}
+.lightbox.active { opacity: 1; pointer-events: all; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 768px) {
+  .screenshot-gallery { grid-template-columns: 1fr; }
+}
+
 .detail-divider {
   width: 3rem;
   height: 1px;
@@ -546,6 +620,13 @@ const EXPLORATIONS = [
     status: 'completed',
     statusLabel: 'Completed',
     category: 'Frontend Design + Claude Skills',
+    liveUrl: 'https://noahskang.github.io/aapi-erg/',
+    screenshots: [
+      { src: 'https://noahskang.github.io/images/ai-explorations/aapi-home.png', caption: 'Homepage — Heritage Month hero with floating petal animations' },
+      { src: 'https://noahskang.github.io/images/ai-explorations/aapi-food.png', caption: 'Food Guide — Interactive Leaflet map with ERG member restaurant picks' },
+      { src: 'https://noahskang.github.io/images/ai-explorations/aapi-events.png', caption: 'Events — May 2026 calendar with category-coded event cards' },
+      { src: 'https://noahskang.github.io/images/ai-explorations/aapi-holidays.png', caption: 'Holidays — Year-round cultural calendar by region' },
+    ],
     overview: `A celebratory website for Hinge's AAPI (Asian American and Pacific Islander) Employee Resource Group, built to showcase AAPI Heritage Month in NYC. The site features curated content across five sections — food guides with interactive maps, an events calendar, book recommendations, a cultural holiday calendar spanning the year, and resources on loneliness in AAPI communities. What makes this exploration notable is the build process: the entire site was generated using the frontend-design Claude skill, with a Figma mood board of visual references as the design input — no manual design phase, no Figma comps, straight from inspiration to production code.`,
     tech: ['Claude Skills', 'Frontend Design Skill', 'Vanilla JS', 'Leaflet.js', 'Google Fonts', 'Figma MCP'],
     techDesc: `The build process started with a Figma file containing curated screenshots as a mood board — Japanese architecture, watercolor landscapes, cherry blossoms, neon cityscapes, ukiyo-e wave patterns, and travel app UI references. This was fed to the frontend-design skill as visual context alongside the content requirements. The skill generated ~2,600 lines of vanilla JavaScript with no build system or framework dependencies. Leaflet.js handles interactive restaurant maps. The typography stack (Noto Serif JP, Inter, Cinzel) and color system (culture-coded: orange for East Asian, gold for South Asian, teal for Southeast Asian, purple for Persian/Central Asian) were derived from the mood board's aesthetic direction. SVG seigaiha wave textures and floating petal animations add atmospheric depth.`,
@@ -635,12 +716,28 @@ function renderDetail(id) {
         </div>
         <h1 class="reveal reveal-delay-1">${e.title}</h1>
         <p class="detail-hero-desc reveal reveal-delay-2">${e.tagline}</p>
+        ${e.liveUrl ? `
+        <a href="${e.liveUrl}" target="_blank" rel="noopener" class="live-link reveal reveal-delay-3">
+          View live site
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
+        </a>` : ''}
       </div>
 
       <div class="detail-content">
         <div class="detail-section reveal">
           <h2><span class="num">01</span>Overview</h2>
           <p>${e.overview}</p>
+          ${e.screenshots ? `
+          <div class="screenshot-gallery">
+            ${e.screenshots.map(s => `
+              <div class="shot">
+                <img src="${s.src}" alt="${s.caption}" onclick="openLightbox(this.src)" loading="lazy">
+                <div class="caption">${s.caption}</div>
+              </div>
+            `).join('')}
+          </div>` : ''}
         </div>
 
         <div class="detail-divider reveal"></div>
@@ -735,6 +832,21 @@ function initOrbs() {
     orb2.style.transform = `translate(${x * -20}px, ${y * -25}px)`;
     orb3.style.transform = `translate(${x * 15}px, ${y * -10}px)`;
   });
+}
+
+// --- Lightbox ---
+function openLightbox(src) {
+  let lb = document.getElementById('lightbox');
+  if (!lb) {
+    lb = document.createElement('div');
+    lb.id = 'lightbox';
+    lb.className = 'lightbox';
+    lb.innerHTML = '<img>';
+    lb.addEventListener('click', () => lb.classList.remove('active'));
+    document.body.appendChild(lb);
+  }
+  lb.querySelector('img').src = src;
+  requestAnimationFrame(() => lb.classList.add('active'));
 }
 </script>
 </body>

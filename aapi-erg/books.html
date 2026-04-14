@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asian at Hinge — Reading List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0a0d14;--bg-section:#080b11;
+      --bg-card:rgba(255,255,255,0.04);--bg-card-hover:rgba(255,255,255,0.07);
+      --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.18);
+      --accent:#E8652A;--accent-red:#C94B2D;--gold:#D4A853;
+      --teal:#2A9D8F;--purple:#6B4E9E;
+      --text:#F5EDE0;--text-2:#A8C0D8;--text-3:#6B8CAE;
+      --shadow:0 8px 40px rgba(0,0,0,0.5);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cdefs%3E%3Cpattern id='s' x='0' y='0' width='60' height='52' patternUnits='userSpaceOnUse'%3E%3Cpath d='M30 0 A30 30 0 0 1 60 30 A30 30 0 0 1 0 30 A30 30 0 0 1 30 0Z' fill='none' stroke='white' stroke-width='0.7'/%3E%3Cpath d='M0 30 A30 30 0 0 1 30 52' fill='none' stroke='white' stroke-width='0.7'/%3E%3Cpath d='M60 30 A30 30 0 0 0 30 52' fill='none' stroke='white' stroke-width='0.7'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='600' height='600' fill='url(%23s)'/%3E%3C/svg%3E");opacity:0.06;pointer-events:none;z-index:0;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1);}
+    .reveal.visible{opacity:1;transform:none;}
+    .stagger>*{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+    .stagger.visible>*:nth-child(1){transition-delay:.05s}.stagger.visible>*:nth-child(2){transition-delay:.12s}.stagger.visible>*:nth-child(3){transition-delay:.19s}.stagger.visible>*:nth-child(4){transition-delay:.26s}.stagger.visible>*:nth-child(5){transition-delay:.33s}.stagger.visible>*:nth-child(6){transition-delay:.40s}.stagger.visible>*:nth-child(7){transition-delay:.47s}.stagger.visible>*:nth-child(8){transition-delay:.54s}.stagger.visible>*:nth-child(9){transition-delay:.61s}.stagger.visible>*:nth-child(10){transition-delay:.68s}
+    .stagger.visible>*{opacity:1;transform:none;}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+    .section{padding:80px 0;position:relative;z-index:1;}
+    .view-toggle{display:flex;gap:8px;justify-content:center;margin-bottom:40px;}
+    .toggle-btn{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);background:var(--bg-card);border:1px solid var(--border);border-radius:24px;padding:10px 20px;cursor:pointer;transition:all .2s ease;}
+    .toggle-btn:hover{color:var(--text-2);border-color:var(--border-hover);}
+    .toggle-btn.active{background:rgba(232,101,42,0.15);border-color:rgba(232,101,42,0.4);color:var(--accent);}
+    #nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,13,20,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:background .3s ease;}
+    #nav.scrolled{background:rgba(10,13,20,0.95);border-bottom:1px solid var(--border);}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Cinzel',serif;font-size:15px;letter-spacing:.1em;color:var(--text);transition:color .2s;}
+    .nav-logo:hover{color:var(--accent);}
+    .nav-logo svg{width:28px;height:28px;flex-shrink:0;}
+    .nav-links{display:flex;gap:32px;align-items:center;}
+    .nav-links a{font-family:'Cinzel',serif;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-2);text-decoration:none;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent);}
+    .nav-hamburger{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:8px;}
+    @media(max-width:700px){
+      .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:rgba(10,13,20,0.97);border-bottom:1px solid var(--border);padding:16px 0;}
+      .nav-links a{padding:14px 24px;width:100%;}
+      #nav.menu-open .nav-links{display:flex;}
+      .nav-hamburger{display:block;}
+    }
+    .footer{background:#060810;border-top:1px solid var(--border);padding:80px 20px;text-align:center;position:relative;z-index:1;}
+    .footer-inner{max-width:600px;margin:0 auto;}
+    .footer-logo{display:flex;align-items:center;gap:10px;justify-content:center;font-family:'Cinzel',serif;font-size:16px;letter-spacing:.1em;color:var(--text);margin-bottom:16px;text-decoration:none;}
+    .footer-logo svg{width:28px;height:28px;}
+    .footer-tagline{font-family:'Inter',sans-serif;font-size:14px;color:var(--text-3);margin-bottom:8px;}
+    .footer-year{font-family:'Cinzel',serif;font-size:28px;color:var(--gold);opacity:.5;margin-bottom:24px;}
+    .footer-credit{font-family:'Inter',sans-serif;font-size:13px;color:var(--text-3);margin-bottom:16px;}
+    .footer-petals{font-size:20px;letter-spacing:8px;opacity:.4;}
+    /* Page hero */
+    .page-hero{padding:140px 24px 72px;text-align:center;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 50% 0%,rgba(74,100,196,0.12) 0%,transparent 70%);pointer-events:none;}
+    .page-hero-eyebrow{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;position:relative;z-index:1;}
+    .page-hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(40px,6vw,72px);font-weight:300;color:var(--text);margin-bottom:16px;line-height:1.1;position:relative;z-index:1;}
+    .page-hero-sub{font-family:'Inter',sans-serif;font-size:17px;color:var(--text-2);max-width:540px;margin:0 auto;line-height:1.6;position:relative;z-index:1;}
+    /* Books grid */
+    .books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
+    .book-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;}
+    .book-card:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:var(--shadow);}
+    .book-spine{width:100%;height:220px;display:flex;align-items:center;justify-content:center;background:var(--spine-color,var(--accent));position:relative;overflow:hidden;}
+    .book-cover-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease;}
+    .book-card:hover .book-cover-img{transform:scale(1.04);}
+    .spine-title{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.9);position:relative;z-index:1;line-height:1.2;padding:16px;}
+    .book-info{padding:20px;flex:1;display:flex;flex-direction:column;gap:8px;}
+    .book-culture{font-family:'Cinzel',serif;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);}
+    .book-title{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:400;color:var(--text);line-height:1.3;}
+    .book-byline{font-family:'Inter',sans-serif;font-size:13px;color:var(--text-3);}
+    .book-genre{font-family:'Inter',sans-serif;font-size:12px;color:var(--gold);font-style:italic;}
+    .book-quote{font-family:'Noto Serif JP',serif;font-size:13px;color:var(--text-2);font-style:italic;line-height:1.6;border-left:2px solid rgba(232,101,42,0.4);padding-left:12px;margin:4px 0;}
+    .book-desc{font-family:'Inter',sans-serif;font-size:13px;color:var(--text-2);line-height:1.6;flex:1;}
+    .book-awards{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+    .award-badge{background:rgba(212,168,83,0.1);border:1px solid rgba(212,168,83,0.25);border-radius:20px;padding:3px 10px;font-family:'Inter',sans-serif;font-size:11px;color:var(--gold);}
+    @media(max-width:600px){.books-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <nav id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 4 L18 8 L22 6 L20 11 L24 13 L19 14 L20 19 L14 16 L10 22 L10 16 L4 18 L8 13 L4 10 L9 11 L8 6 L12 8 Z" fill="currentColor" opacity="0.85"/></svg>
+        <span>Asian at Hinge</span>
+      </a>
+      <div class="nav-links">
+        <a href="food.html">Food</a>
+        <a href="events.html">Events</a>
+        <a href="books.html" class="active">Books</a>
+        <a href="holidays.html">Holidays</a>
+        <a href="loneliness.html">Loneliness</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-hero-eyebrow">AAPI Voices</p>
+      <h1 class="page-hero-title">Reading List</h1>
+      <p class="page-hero-sub">Essential books by Asian American and Pacific Islander authors — timeless classics and contemporary voices shaping literature today</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="view-toggle reveal">
+        <button class="toggle-btn active" data-books="classic">📚 Classic</button>
+        <button class="toggle-btn" data-books="recent">✨ Contemporary</button>
+      </div>
+      <div id="books-classic" class="books-grid stagger"></div>
+      <div id="books-recent" class="books-grid stagger" style="display:none;"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="footer-logo" href="index.html">
+        <svg viewBox="0 0 28 28" fill="none"><path d="M14 4 L18 8 L22 6 L20 11 L24 13 L19 14 L20 19 L14 16 L10 22 L10 16 L4 18 L8 13 L4 10 L9 11 L8 6 L12 8 Z" fill="currentColor" opacity="0.85"/></svg>
+        <span>Asian at Hinge</span>
+      </a>
+      <p class="footer-tagline">Asian American &amp; Pacific Islander Heritage Month</p>
+      <p class="footer-year">May 2026</p>
+      <p class="footer-credit">Made with 🌸 by the Asian at Hinge ERG</p>
+      <div class="footer-petals">🌸 🌸 🌸</div>
+    </div>
+  </footer>
+
+  <script src="scripts/data.js"></script>
+  <script src="scripts/shared.js"></script>
+  <script src="scripts/books.js"></script>
+</body>
+</html>

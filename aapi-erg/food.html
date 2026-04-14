@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asian at Hinge — Eats We Love</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    :root {
+      --bg:#0a0d14;--bg-section:#080b11;
+      --bg-card:rgba(255,255,255,0.04);--bg-card-hover:rgba(255,255,255,0.07);
+      --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.18);
+      --accent:#E8652A;--accent-red:#C94B2D;--gold:#D4A853;
+      --teal:#2A9D8F;--purple:#6B4E9E;
+      --text:#F5EDE0;--text-2:#A8C0D8;--text-3:#6B8CAE;
+      --shadow:0 8px 40px rgba(0,0,0,0.5);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cdefs%3E%3Cpattern id='s' x='0' y='0' width='60' height='52' patternUnits='userSpaceOnUse'%3E%3Cpath d='M30 0 A30 30 0 0 1 60 30 A30 30 0 0 1 0 30 A30 30 0 0 1 30 0Z' fill='none' stroke='white' stroke-width='0.7'/%3E%3Cpath d='M0 30 A30 30 0 0 1 30 52' fill='none' stroke='white' stroke-width='0.7'/%3E%3Cpath d='M60 30 A30 30 0 0 0 30 52' fill='none' stroke='white' stroke-width='0.7'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='600' height='600' fill='url(%23s)'/%3E%3C/svg%3E");opacity:0.06;pointer-events:none;z-index:0;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1);}
+    .reveal.visible{opacity:1;transform:none;}
+    .stagger>*{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+    .stagger.visible>*:nth-child(1){transition-delay:.05s}.stagger.visible>*:nth-child(2){transition-delay:.12s}.stagger.visible>*:nth-child(3){transition-delay:.19s}.stagger.visible>*:nth-child(4){transition-delay:.26s}.stagger.visible>*:nth-child(5){transition-delay:.33s}.stagger.visible>*:nth-child(6){transition-delay:.40s}.stagger.visible>*:nth-child(7){transition-delay:.47s}.stagger.visible>*:nth-child(8){transition-delay:.54s}.stagger.visible>*:nth-child(9){transition-delay:.61s}.stagger.visible>*:nth-child(10){transition-delay:.68s}
+    .stagger.visible>*{opacity:1;transform:none;}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+    .section{padding:80px 0;position:relative;z-index:1;}
+    #nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,13,20,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:background .3s ease;}
+    #nav.scrolled{background:rgba(10,13,20,0.95);border-bottom:1px solid var(--border);}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Cinzel',serif;font-size:15px;letter-spacing:.1em;color:var(--text);transition:color .2s;}
+    .nav-logo:hover{color:var(--accent);}
+    .nav-logo svg{width:28px;height:28px;flex-shrink:0;}
+    .nav-links{display:flex;gap:32px;align-items:center;}
+    .nav-links a{font-family:'Cinzel',serif;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-2);text-decoration:none;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent);}
+    .nav-hamburger{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:8px;}
+    @media(max-width:700px){
+      .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:rgba(10,13,20,0.97);border-bottom:1px solid var(--border);padding:16px 0;}
+      .nav-links a{padding:14px 24px;width:100%;}
+      #nav.menu-open .nav-links{display:flex;}
+      .nav-hamburger{display:block;}
+    }
+    .footer{background:#060810;border-top:1px solid var(--border);padding:80px 20px;text-align:center;position:relative;z-index:1;}
+    .footer-inner{max-width:600px;margin:0 auto;}
+    .footer-logo{display:flex;align-items:center;gap:10px;justify-content:center;font-family:'Cinzel',serif;font-size:16px;letter-spacing:.1em;color:var(--text);margin-bottom:16px;text-decoration:none;}
+    .footer-logo svg{width:28px;height:28px;}
+    .footer-tagline{font-family:'Inter',sans-serif;font-size:14px;color:var(--text-3);margin-bottom:8px;}
+    .footer-year{font-family:'Cinzel',serif;font-size:28px;color:var(--gold);opacity:.5;margin-bottom:24px;}
+    .footer-credit{font-family:'Inter',sans-serif;font-size:13px;color:var(--text-3);margin-bottom:16px;}
+    .footer-petals{font-size:20px;letter-spacing:8px;opacity:.4;}
+    .view-toggle{display:flex;gap:8px;justify-content:center;margin-bottom:40px;}
+    .toggle-btn{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);background:var(--bg-card);border:1px solid var(--border);border-radius:24px;padding:10px 20px;cursor:pointer;transition:all .2s ease;}
+    .toggle-btn:hover{color:var(--text-2);border-color:var(--border-hover);}
+    .toggle-btn.active{background:rgba(232,101,42,0.15);border-color:rgba(232,101,42,0.4);color:var(--accent);}
+    /* Page hero */
+    .page-hero{padding:140px 24px 72px;text-align:center;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 50% 0%,rgba(232,101,42,0.12) 0%,transparent 70%);pointer-events:none;}
+    .page-hero-eyebrow{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;position:relative;z-index:1;}
+    .page-hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(40px,6vw,72px);font-weight:300;color:var(--text);margin-bottom:16px;line-height:1.1;position:relative;z-index:1;}
+    .page-hero-sub{font-family:'Inter',sans-serif;font-size:17px;color:var(--text-2);max-width:540px;margin:0 auto;line-height:1.6;position:relative;z-index:1;}
+    /* Restaurant grid */
+    .restaurant-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;}
+    .restaurant-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;}
+    .restaurant-card:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:var(--shadow);}
+    .card-photos{display:flex;flex-direction:column;}
+    .card-photo-main{width:100%;height:190px;object-fit:cover;display:block;}
+    .card-photo-row{display:flex;gap:2px;}
+    .card-photo-row img{width:50%;height:90px;object-fit:cover;display:block;}
+    .card-body{padding:20px;}
+    .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+    .card-title-group{flex:1;}
+    .card-name{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:400;color:var(--text);margin-bottom:4px;}
+    .card-meta{font-family:'Inter',sans-serif;font-size:12px;color:var(--text-3);}
+    .card-price{font-family:'Cinzel',serif;font-size:13px;color:var(--gold);padding:4px 8px;border:1px solid rgba(212,168,83,0.25);border-radius:8px;flex-shrink:0;margin-left:12px;}
+    .card-recommender{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+    .recommender-avatar{width:38px;height:38px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:white;flex-shrink:0;}
+    .recommender-name{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;}
+    .recommender-role{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-3);}
+    .card-blurb{font-family:'Inter',sans-serif;font-size:14px;color:var(--text-2);font-style:italic;line-height:1.6;margin:12px 0;}
+    .card-expanded{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+    .card-detail{display:flex;align-items:flex-start;gap:8px;font-family:'Inter',sans-serif;font-size:13px;color:var(--text-2);margin-bottom:8px;}
+    .card-detail span:first-child{flex-shrink:0;}
+    .card-dishes{margin:12px 0;}
+    .card-dishes>span{font-family:'Inter',sans-serif;font-size:12px;color:var(--text-3);display:block;margin-bottom:8px;}
+    .dishes-tags{display:flex;flex-wrap:wrap;gap:6px;}
+    .dish-tag{background:rgba(232,101,42,0.1);border:1px solid rgba(232,101,42,0.2);border-radius:20px;padding:4px 10px;font-family:'Inter',sans-serif;font-size:12px;color:var(--accent);}
+    .card-tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+    .tag{background:rgba(255,255,255,0.06);border-radius:20px;padding:4px 10px;font-family:'Inter',sans-serif;font-size:12px;color:var(--text-3);}
+    .card-toggle{width:100%;text-align:center;font-family:'Cinzel',serif;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);background:none;border:none;border-top:1px solid var(--border);padding:12px;cursor:pointer;transition:color .2s,background .2s;margin-top:12px;}
+    .card-toggle:hover{background:rgba(232,101,42,0.06);}
+    /* Map */
+    .map-view-container{position:relative;overflow:hidden;border-radius:16px;}
+    #map{height:560px;border-radius:16px;}
+    .map-sidebar{position:absolute;top:0;right:0;width:360px;height:100%;background:rgba(10,13,20,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-left:1px solid var(--border);transform:translateX(100%);transition:transform .3s ease;overflow-y:auto;z-index:1000;padding:20px;}
+    .map-sidebar.open{transform:translateX(0);}
+    .sidebar-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.08);border:none;color:var(--text-2);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+    .sidebar-close:hover{background:rgba(255,255,255,0.15);}
+    .sidebar-restaurant-name{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:400;color:var(--text);margin:40px 0 4px;}
+    .sidebar-meta{font-family:'Inter',sans-serif;font-size:12px;color:var(--text-3);margin-bottom:16px;}
+    .sidebar-photo{width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:14px;}
+    .sidebar-recommender{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:12px;background:rgba(255,255,255,0.03);border-radius:10px;}
+    .sidebar-blurb{font-family:'Inter',sans-serif;font-size:13px;color:var(--text-2);font-style:italic;line-height:1.6;margin-bottom:14px;}
+    .sidebar-detail{display:flex;gap:8px;font-family:'Inter',sans-serif;font-size:13px;color:var(--text-2);margin-bottom:8px;}
+    .sidebar-dishes-label{font-family:'Inter',sans-serif;font-size:12px;color:var(--text-3);margin:14px 0 8px;}
+    @media(max-width:600px){
+      .map-sidebar{width:100%;height:60%;top:auto;bottom:0;transform:translateY(100%);border-left:none;border-top:1px solid var(--border);}
+      .map-sidebar.open{transform:translateY(0);}
+      .restaurant-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <nav id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 4 L18 8 L22 6 L20 11 L24 13 L19 14 L20 19 L14 16 L10 22 L10 16 L4 18 L8 13 L4 10 L9 11 L8 6 L12 8 Z" fill="currentColor" opacity="0.85"/></svg>
+        <span>Asian at Hinge</span>
+      </a>
+      <div class="nav-links">
+        <a href="food.html" class="active">Food</a>
+        <a href="events.html">Events</a>
+        <a href="books.html">Books</a>
+        <a href="holidays.html">Holidays</a>
+        <a href="loneliness.html">Loneliness</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-hero-eyebrow">ERG Member Picks</p>
+      <h1 class="page-hero-title">Eats We Love</h1>
+      <p class="page-hero-sub">Our team's favorite AAPI restaurants across New York City — from Xi'an noodles to Korean fine dining</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="view-toggle reveal">
+        <button class="toggle-btn active" data-view="map">🗺 Map View</button>
+        <button class="toggle-btn" data-view="list">☰ List View</button>
+      </div>
+      <div id="map-view" class="map-view-container">
+        <div id="map"></div>
+        <div id="map-sidebar" class="map-sidebar">
+          <button id="sidebar-close" class="sidebar-close">✕</button>
+          <div id="sidebar-content"></div>
+        </div>
+      </div>
+      <div id="list-view" style="display:none;">
+        <div id="restaurant-grid" class="restaurant-grid stagger"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="footer-logo" href="index.html">
+        <svg viewBox="0 0 28 28" fill="none"><path d="M14 4 L18 8 L22 6 L20 11 L24 13 L19 14 L20 19 L14 16 L10 22 L10 16 L4 18 L8 13 L4 10 L9 11 L8 6 L12 8 Z" fill="currentColor" opacity="0.85"/></svg>
+        <span>Asian at Hinge</span>
+      </a>
+      <p class="footer-tagline">Asian American &amp; Pacific Islander Heritage Month</p>
+      <p class="footer-year">May 2026</p>
+      <p class="footer-credit">Made with 🌸 by the Asian at Hinge ERG</p>
+      <div class="footer-petals">🌸 🌸 🌸</div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="scripts/data.js"></script>
+  <script src="scripts/shared.js"></script>
+  <script src="scripts/food.js"></script>
+</body>
+</html>
