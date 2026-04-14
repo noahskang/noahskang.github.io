@@ -196,7 +196,8 @@ nav .nav-links a:hover { color: var(--text); }
 .bento-card:nth-child(2) { grid-column: span 5; min-height: 380px; }
 .bento-card:nth-child(3) { grid-column: span 5; min-height: 340px; }
 .bento-card:nth-child(4) { grid-column: span 7; min-height: 340px; }
-.bento-card:nth-child(5) { grid-column: span 12; min-height: 320px; }
+.bento-card:nth-child(5) { grid-column: span 7; min-height: 320px; }
+.bento-card:nth-child(6) { grid-column: span 5; min-height: 320px; }
 
 .card-inner {
   position: relative;
@@ -224,6 +225,7 @@ nav .nav-links a:hover { color: var(--text); }
 .bento-card:nth-child(3) .card-glow { background: #8b5cf6; }
 .bento-card:nth-child(4) .card-glow { background: #f43f5e; }
 .bento-card:nth-child(5) .card-glow { background: #e8652a; }
+.bento-card:nth-child(6) .card-glow { background: #6366f1; }
 
 .card-number {
   font-family: var(--serif);
@@ -643,6 +645,27 @@ const EXPLORATIONS = [
       'Leaflet map tiles depend on external CDN availability'
     ],
     nextSteps: `Exploring whether this mood-board-to-site workflow could become a repeatable pattern for other ERG events and internal microsites. The key question is whether the frontend-design skill can reliably translate visual references into cohesive design systems, or whether this worked because the AAPI aesthetic (rich textures, warm tones, layered compositions) happened to play to the skill's strengths. Also considering whether a lightweight CMS layer could make the content editable by non-engineers.`
+  },
+  {
+    id: 'mobile-mouse',
+    number: '06',
+    title: 'MobileMouse',
+    tagline: 'Turn your iPhone into a Bluetooth trackpad for your Mac — or slide it across the table like an actual mouse.',
+    status: 'exploring',
+    statusLabel: 'Exploring',
+    category: 'iOS + macOS + Bluetooth',
+    overview: `A two-app system — an iOS app and a macOS companion — that turns an iPhone into a full-featured wireless trackpad over Bluetooth Low Energy. The phone screen becomes a multi-touch surface supporting cursor movement, left/right click, scroll, drag, pinch-to-zoom, and three-finger swipe gestures. A second "Physical Mouse" mode uses ARKit world tracking to let the user physically slide the phone across a table to move the cursor, like an actual mouse. The two apps communicate over a custom BLE GATT protocol since iOS blocks standard HID mouse profiles.`,
+    tech: ['SwiftUI', 'CoreBluetooth', 'ARKit', 'CGEvent', 'CoreMotion', 'BLE GATT'],
+    techDesc: `The iOS app acts as a BLE peripheral using CBPeripheralManager, advertising a custom GATT service with three characteristics: mouse input (6 bytes — button flags, finger count, dx/dy as Int16), scroll (4 bytes), and gesture events (5 bytes — type + float data). Touch input is captured via a UIView subclass with raw touchesBegan/Moved/Ended handling at ~100Hz via CADisplayLink, wrapped in SwiftUI through UIViewRepresentable. The physical mouse mode uses ARKit's ARWorldTrackingConfiguration for sub-centimeter positional tracking via visual-inertial odometry. The macOS companion runs as an unsandboxed menu bar app, connecting as a BLE central and translating received data into cursor actions via CGWarpMouseCursorPosition and CGEventPost.`,
+    impact: `Too early to assess — currently in the planning and architecture phase. The concept addresses a real annoyance (reaching for a mouse/trackpad when your phone is already in hand), and the ARKit physical mouse mode is a genuinely novel interaction pattern. Whether BLE latency is low enough to feel responsive and whether the ARKit tracking holds up on varied table surfaces are open questions that can only be answered by building it.`,
+    blockers: [
+      'BLE latency at 100Hz update rate is unvalidated — may feel laggy compared to native trackpad',
+      'CoreBluetooth has no Simulator support — all testing requires two physical Apple devices',
+      'macOS app must be unsandboxed for CGEvent cursor control, ruling out Mac App Store distribution',
+      'ARKit physical mouse mode requires camera access and A12+ chip, limiting device compatibility',
+      'iOS backgrounding can interrupt BLE advertising even with background mode entitlement'
+    ],
+    nextSteps: `Phase 1 is establishing the BLE connection pipe between devices with test data — the highest-risk component. Once Bluetooth connectivity is validated, cursor control and touch input follow. The ARKit physical mouse mode is intentionally deferred to a later phase as an independent input source that feeds the same protocol.`
   }
 ];
 
