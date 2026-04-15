@@ -198,6 +198,8 @@ nav .nav-links a:hover { color: var(--text); }
 .bento-card:nth-child(4) { grid-column: span 7; min-height: 340px; }
 .bento-card:nth-child(5) { grid-column: span 7; min-height: 320px; }
 .bento-card:nth-child(6) { grid-column: span 5; min-height: 320px; }
+.bento-card:nth-child(7) { grid-column: span 5; min-height: 340px; }
+.bento-card:nth-child(8) { grid-column: span 7; min-height: 340px; }
 
 .card-inner {
   position: relative;
@@ -226,6 +228,8 @@ nav .nav-links a:hover { color: var(--text); }
 .bento-card:nth-child(4) .card-glow { background: #f43f5e; }
 .bento-card:nth-child(5) .card-glow { background: #e8652a; }
 .bento-card:nth-child(6) .card-glow { background: #6366f1; }
+.bento-card:nth-child(7) .card-glow { background: #06b6d4; }
+.bento-card:nth-child(8) .card-glow { background: #10b981; }
 
 .card-number {
   font-family: var(--serif);
@@ -666,6 +670,48 @@ const EXPLORATIONS = [
       'iOS backgrounding can interrupt BLE advertising even with background mode entitlement'
     ],
     nextSteps: `Phase 1 is establishing the BLE connection pipe between devices with test data — the highest-risk component. Once Bluetooth connectivity is validated, cursor control and touch input follow. The ARKit physical mouse mode is intentionally deferred to a later phase as an independent input source that feeds the same protocol.`
+  },
+  {
+    id: 'text-style-matcher',
+    number: '07',
+    title: 'Text Style Matcher',
+    tagline: 'A Figma plugin that automatically links unlinked text nodes to typography styles across files and libraries.',
+    status: 'completed',
+    statusLabel: 'Completed',
+    category: 'Figma Plugin',
+    overview: `A Figma plugin that scans a file for text nodes missing text style assignments and intelligently matches them to available styles — both local and from connected design libraries. It supports three scopes (current page, selection, or entire file) and uses a deterministic scoring algorithm to auto-match text nodes to the most likely style. After scanning, designers can review matches, manually override selections, exclude variants (like system fonts), and apply changes in bulk. Built to solve a real pain point: large Figma files accumulate unlinked text over time, especially after imports, copy-pastes, and handoffs between designers.`,
+    tech: ['Figma Plugin API', 'TypeScript', 'Figma REST API', 'HTML/CSS UI'],
+    techDesc: `The auto-match algorithm uses a weighted scoring system: font family match (+50), font size match (+30 exact / +20 within 2px / +10 within 4px), and style/weight match (+20, with normalization for variants like "semi bold" vs "semibold"). Only matches scoring ≥50 are auto-selected. Library style import uses the Figma REST API (/v1/files/{fileKey}/styles) with a Personal Access Token. The plugin loads fonts asynchronously before applying styles and handles mixed font/size properties gracefully. The UI is a 480×620px modal with progress tracking, color-coded tags for font properties, and grouped dropdowns separating local from library styles.`,
+    impact: `Solves a real, tedious problem that designers encounter regularly. Relinking text styles manually is one of those tasks that can eat an entire afternoon on a large file — this plugin reduces it to minutes. The auto-match scoring is pragmatic and handles the vast majority of cases correctly. Library integration is particularly valuable because it means imported or pasted text can be relinked to the canonical design system styles rather than creating local duplicates.`,
+    blockers: [
+      'No undo or history after applying style changes — destructive operation with no rollback',
+      'Library API access requires a valid Personal Access Token stored locally',
+      'Cannot match text nodes with mixed font or size properties (Figma limitation)',
+      'Auto-match heuristics can produce false positives when multiple styles share the same family and size',
+      'No visual diff preview — changes are shown as dropdowns, not before/after comparisons'
+    ],
+    nextSteps: `Exploring whether the scoring algorithm could be improved with additional signals like line height and letter spacing to reduce false positives. Also considering a dry-run preview mode that shows a visual diff of what would change before applying. Batch undo support would require persisting pre-change state, which adds complexity but would make the plugin significantly less risky to use on production files.`
+  },
+  {
+    id: 'component-linker',
+    number: '08',
+    title: 'Component Linker',
+    tagline: 'A Figma plugin that retroactively converts frames into component instances while preserving overrides.',
+    status: 'completed',
+    statusLabel: 'Completed',
+    category: 'Figma Plugin',
+    overview: `A Figma plugin that solves one of Figma's most frustrating gaps: retroactively converting frames and groups into component instances. Designers often build screens using detached copies or raw frames before a component exists in the design system. Once the component is defined, there is no native way to "link" those existing frames back to it. Component Linker does exactly that — it takes selected frames, diffs them against a master component, and replaces them with properly linked instances while preserving text overrides, fills, effects, visibility, and opacity changes.`,
+    tech: ['Figma Plugin API', 'TypeScript', 'esbuild'],
+    techDesc: `The core of the plugin is a sophisticated override diffing system. It uses path-based matching — layers are matched by name within sibling groups, with positional indexing for same-named siblings (mirroring Figma's internal component-swap logic). Before replacing a frame with an instance, the plugin captures all override-worthy properties (text content, fills, effects, visibility, opacity) as plain data. Structural properties like fonts, strokes, corner radius, and auto-layout are intentionally excluded — those belong to the master definition. Text overrides pre-load required fonts asynchronously. The plugin supports two flows: creating a new master component from the first selection and linking to an existing component via a searchable picker.`,
+    impact: `Addresses a genuine workflow gap in Figma that has no native solution. The ability to retroactively link frames to components is transformative for design system adoption — it means designers can work freely and componentize later without starting over. The override preservation is the critical feature: without it, linking to a component would lose all the customization that makes each instance unique. The confirmation modal showing categorized diffs (text, fills, effects) gives designers confidence about exactly what will change.`,
+    blockers: [
+      'Layer matching is name-based — renaming layers after the fact breaks override paths silently',
+      'Cannot preserve structural differences like layout modes or border radius as overrides',
+      'ES2017 target required by Figma sandbox — no optional chaining, which complicates the diffing code',
+      'Extra layers (present in frame but not in master) require cloning into the master component, which can bloat it',
+      'No batch undo — if override application produces unexpected results, manual cleanup is required'
+    ],
+    nextSteps: `Investigating whether a hybrid matching strategy (name + visual similarity) could make the diffing more resilient to layer renames. Also exploring whether the plugin could integrate with Figma's variant system to automatically suggest variant properties based on the overrides it detects across linked instances.`
   }
 ];
 
