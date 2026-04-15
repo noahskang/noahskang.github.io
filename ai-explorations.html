@@ -654,22 +654,22 @@ const EXPLORATIONS = [
     id: 'mobile-mouse',
     number: '06',
     title: 'MobileMouse',
-    tagline: 'Turn your iPhone into a Bluetooth trackpad for your Mac — or slide it across the table like an actual mouse.',
-    status: 'exploring',
-    statusLabel: 'Exploring',
+    tagline: 'Turn your iPhone into a Bluetooth trackpad for your Mac — and a lesson in why "slide your phone like a mouse" is harder than it sounds.',
+    status: 'active',
+    statusLabel: 'Active',
     category: 'iOS + macOS + Bluetooth',
-    overview: `A two-app system — an iOS app and a macOS companion — that turns an iPhone into a full-featured wireless trackpad over Bluetooth Low Energy. The phone screen becomes a multi-touch surface supporting cursor movement, left/right click, scroll, drag, pinch-to-zoom, and three-finger swipe gestures. A second "Physical Mouse" mode uses ARKit world tracking to let the user physically slide the phone across a table to move the cursor, like an actual mouse. The two apps communicate over a custom BLE GATT protocol since iOS blocks standard HID mouse profiles.`,
-    tech: ['SwiftUI', 'CoreBluetooth', 'ARKit', 'CGEvent', 'CoreMotion', 'BLE GATT'],
-    techDesc: `The iOS app acts as a BLE peripheral using CBPeripheralManager, advertising a custom GATT service with three characteristics: mouse input (6 bytes — button flags, finger count, dx/dy as Int16), scroll (4 bytes), and gesture events (5 bytes — type + float data). Touch input is captured via a UIView subclass with raw touchesBegan/Moved/Ended handling at ~100Hz via CADisplayLink, wrapped in SwiftUI through UIViewRepresentable. The physical mouse mode uses ARKit's ARWorldTrackingConfiguration for sub-centimeter positional tracking via visual-inertial odometry. The macOS companion runs as an unsandboxed menu bar app, connecting as a BLE central and translating received data into cursor actions via CGWarpMouseCursorPosition and CGEventPost.`,
-    impact: `Too early to assess — currently in the planning and architecture phase. The concept addresses a real annoyance (reaching for a mouse/trackpad when your phone is already in hand), and the ARKit physical mouse mode is a genuinely novel interaction pattern. Whether BLE latency is low enough to feel responsive and whether the ARKit tracking holds up on varied table surfaces are open questions that can only be answered by building it.`,
+    overview: `A two-app system — an iOS app and a macOS companion — that turns an iPhone into a wireless trackpad over Bluetooth Low Energy. The phone screen becomes a multi-touch surface supporting cursor movement, left/right click, scroll, drag, pinch-to-zoom, and three-finger swipe gestures. The trackpad mode works reliably. A "Physical Mouse" mode — where sliding the phone on a table moves the cursor — was the more ambitious goal. Three approaches were evaluated (ARKit world tracking, optical flow, gyroscope), each with fundamental tradeoffs that made the interaction model harder to nail than expected.`,
+    tech: ['SwiftUI', 'CoreBluetooth', 'ARKit', 'Vision', 'CGEvent', 'CoreMotion', 'BLE GATT'],
+    techDesc: `The iOS app acts as a BLE peripheral using CBPeripheralManager, advertising a custom GATT service with three characteristics: mouse input (6 bytes — button flags, finger count, dx/dy as Int16), scroll (4 bytes), and gesture events (5 bytes — type + float data). Touch input is captured via a raw UIView subclass with touchesBegan/Moved/Ended at ~100Hz via CADisplayLink, wrapped in SwiftUI through UIViewRepresentable. A custom binary protocol was necessary because iOS blocks standard HID mouse profiles over BLE. The macOS companion runs as an unsandboxed menu bar app, connecting as a BLE central and translating received data into cursor actions via CGEvent posted to .cghidEventTap. The physical mouse mode was prototyped with ARKit's ARWorldTrackingConfiguration, which tracks device position using visual-inertial odometry — but drift and poor tracking conditions (camera pointed at ceiling when phone is on table) made it impractical.`,
+    impact: `The trackpad mode is genuinely useful and surprisingly responsive — BLE latency is low enough that finger-to-cursor feels natural. The real value of this exploration was the physical mouse investigation. Three approaches were assessed, each revealing a different fundamental constraint: ARKit drifts when the camera lacks visual landmarks (a ceiling is featureless), optical flow requires the phone face-down which makes the screen inaccessible for clicking, and gyroscope tilt-to-move works but feels nothing like a mouse. The project demonstrated that the "phone as mouse" concept has an inherent input/output tension — the best surface for tracking (face-down camera) eliminates the best surface for interaction (the touchscreen).`,
     blockers: [
-      'BLE latency at 100Hz update rate is unvalidated — may feel laggy compared to native trackpad',
-      'CoreBluetooth has no Simulator support — all testing requires two physical Apple devices',
-      'macOS app must be unsandboxed for CGEvent cursor control, ruling out Mac App Store distribution',
-      'ARKit physical mouse mode requires camera access and A12+ chip, limiting device compatibility',
-      'iOS backgrounding can interrupt BLE advertising even with background mode entitlement'
+      'ARKit world tracking drifts when the phone is flat on a table — the rear camera sees the ceiling, which lacks the visual features needed for stable position tracking',
+      'Optical flow (Vision framework) solves the tracking problem with the phone face-down, but makes the touchscreen completely inaccessible — clicking requires accelerometer knock detection, which is fragile',
+      'Gyroscope air-mouse mode is responsive but changes the interaction model entirely — tilting a phone does not feel like using a mouse',
+      'macOS accessibility permission resets every time Xcode rebuilds the binary (new code signature), making development iteration painful',
+      'CoreBluetooth has no Simulator support — every test cycle requires deploying to a physical iPhone'
     ],
-    nextSteps: `Phase 1 is establishing the BLE connection pipe between devices with test data — the highest-risk component. Once Bluetooth connectivity is validated, cursor control and touch input follow. The ARKit physical mouse mode is intentionally deferred to a later phase as an independent input source that feeds the same protocol.`
+    nextSteps: `The trackpad mode is solid and could be polished into a real utility. For the physical mouse mode, the most promising unexplored path is optical flow with accelerometer knock-to-click — the movement tracking would be accurate, but the clicking UX needs real-world testing to see if tapping the back of a face-down phone feels acceptable. Alternatively, a hybrid mode (optical flow for movement, with a small dedicated click zone on the screen edge visible when slightly tilted) could bridge the gap.`
   },
   {
     id: 'text-style-matcher',
