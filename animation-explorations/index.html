@@ -86,6 +86,180 @@
     header.hero { padding: 80px 24px 60px; }
   }
 
+  /* ---------- HINGIE SHARED ---------- */
+  .hingie-stage { position: relative; aspect-ratio: 16/10; display: grid; place-items: center; overflow: hidden; }
+  .hingie-stage .ground { position: absolute; left: 10%; right: 10%; bottom: 22%; height: 1px; background: var(--line); opacity: 0.7; }
+  .hingie-stage .hint { position: absolute; top: 14px; right: 16px; font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.08em; }
+  .hingie { width: clamp(180px, 30vw, 260px); aspect-ratio: 1/1; position: relative; }
+  .hingie svg { width: 100%; height: 100%; overflow: visible; }
+  .hingie .body-outline, .hingie .fur-stroke { fill: none; stroke: var(--ink); stroke-linecap: round; stroke-linejoin: round; }
+  .hingie .body-outline { stroke-width: 2.2; }
+  .hingie .fur-stroke { stroke-width: 1.6; }
+  .hingie .eye-white { fill: var(--bg); stroke: var(--ink); stroke-width: 2.2; }
+  .hingie .eye-pupil { fill: var(--ink); }
+  .hingie .face { fill: var(--ink); font-family: var(--serif); font-weight: 700; }
+  .hingie .eyes-x, .hingie .heart-eye { opacity: 0; }
+
+  /* H01 HOPPING */
+  .stage-hop { background: var(--panel); }
+  .stage-hop .hingie { animation: hingie-hop 1.4s cubic-bezier(.3,0,.3,1) infinite; transform-origin: 50% 100%; }
+  .stage-hop .hingie .body-group { animation: hingie-squash 1.4s cubic-bezier(.3,0,.3,1) infinite; transform-origin: 50% 100%; transform-box: fill-box; }
+  .stage-hop .hingie .eyes-group { animation: hingie-eyes-bobble 1.4s cubic-bezier(.3,0,.3,1) infinite; transform-origin: 50% 50%; transform-box: fill-box; }
+  .stage-hop .shadow-disc { position: absolute; bottom: 22%; left: 50%; width: 140px; height: 18px; margin-left: -70px; background: radial-gradient(ellipse, rgba(20,20,19,0.28), rgba(20,20,19,0) 70%); border-radius: 50%; animation: shadow-squeeze 1.4s cubic-bezier(.3,0,.3,1) infinite; }
+  .stage-hop .dust { position: absolute; bottom: 22%; left: 50%; width: 10px; height: 10px; border-radius: 50%; background: var(--muted); opacity: 0; animation: dust-puff 1.4s cubic-bezier(.3,0,.3,1) infinite; }
+  .stage-hop .dust.d1 { --dx: -40px; }
+  .stage-hop .dust.d2 { --dx: 0px; margin-left: -20px; animation-delay: 0.02s; }
+  .stage-hop .dust.d3 { --dx: 40px; margin-left: 10px; animation-delay: 0.04s; }
+  @keyframes hingie-hop {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-110px); }
+    50% { transform: translateY(-120px); }
+    85% { transform: translateY(0); }
+    88% { transform: translateY(-8px); }
+  }
+  @keyframes hingie-squash {
+    0%, 100% { transform: scale(1, 1); }
+    8% { transform: scale(0.88, 1.12); }
+    20% { transform: scale(1.05, 0.95); }
+    40%, 85% { transform: scale(1, 1); }
+    90% { transform: scale(1.18, 0.82); }
+  }
+  @keyframes hingie-eyes-bobble {
+    0%, 40%, 85%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(0, -4px); }
+    90% { transform: translate(0, 4px); }
+  }
+  @keyframes shadow-squeeze {
+    0%, 85%, 100% { transform: scaleX(1); opacity: 0.9; }
+    40% { transform: scaleX(0.55); opacity: 0.5; }
+  }
+  @keyframes dust-puff {
+    0%, 82% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+    86% { opacity: 0.6; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--dx, 40px), -10px) scale(0.2); }
+  }
+
+  /* H02 QUESTION MARK */
+  .stage-q { background: var(--panel); }
+  .stage-q .hingie { animation: hingie-tilt 3.4s ease-in-out infinite; }
+  .stage-q .hingie .eye-pupil { animation: pupils-dart 2.6s ease-in-out infinite; transform-origin: center; }
+  .stage-q .floaty-q { position: absolute; font-family: var(--serif); font-weight: 700; color: var(--ink); opacity: 0; animation: float-up 2.4s ease-out infinite; }
+  .stage-q .floaty-q.q1 { left: 58%; top: 35%; font-size: 32px; animation-delay: 0s; }
+  .stage-q .floaty-q.q2 { left: 36%; top: 32%; font-size: 22px; animation-delay: 0.8s; }
+  .stage-q .floaty-q.q3 { left: 65%; top: 42%; font-size: 18px; animation-delay: 1.6s; }
+  @keyframes hingie-tilt {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+  @keyframes pupils-dart {
+    0%, 100% { transform: translate(-4px, 1px); }
+    25% { transform: translate(4px, -1px); }
+    50% { transform: translate(-3px, 2px); }
+    75% { transform: translate(3px, 0); }
+  }
+  @keyframes float-up {
+    0% { opacity: 0; transform: translate(0, 10px) rotate(-4deg) scale(0.6); }
+    15% { opacity: 1; }
+    100% { opacity: 0; transform: translate(0, -80px) rotate(12deg) scale(1); }
+  }
+
+  /* H03 ARROW DEATH */
+  .stage-death { background: #0f0e0c; color: #f3ece0; }
+  .stage-death .ground { background: rgba(243, 236, 224, 0.2); }
+  .stage-death .hint { color: rgba(243, 236, 224, 0.5); }
+  .stage-death .hingie .body-outline, .stage-death .hingie .fur-stroke { stroke: #f3ece0; }
+  .stage-death .hingie .eye-white { fill: #0f0e0c; stroke: #f3ece0; }
+  .stage-death .hingie .eye-pupil { fill: #f3ece0; }
+  .stage-death .hingie .face { fill: #f3ece0; }
+  .stage-death .hingie { animation: hingie-die 4s cubic-bezier(.4,0,.2,1) infinite; transform-origin: 50% 85%; position: relative; }
+  .stage-death .hingie .eye-white, .stage-death .hingie .eye-pupil { animation: eyes-normal 4s linear infinite; }
+  .stage-death .hingie .eyes-x { animation: eyes-x-show 4s linear infinite; }
+  .stage-death .arrow { position: absolute; width: 240px; height: 14px; top: 50%; left: 50%; margin-top: -7px; opacity: 0; animation: arrow-fly 4s cubic-bezier(.3,0,.2,1) infinite; }
+  .stage-death .arrow-stuck { position: absolute; width: 180px; height: 14px; top: 38%; left: 50%; margin-left: -90px; margin-top: -7px; opacity: 0; animation: arrow-stuck 4s cubic-bezier(.3,0,.2,1) infinite; pointer-events: none; }
+  .stage-death .fur-puff { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #f3ece0; opacity: 0; }
+  .stage-death .fur-puff.p1 { top: 45%; left: 48%; --px: -40px; --py: -30px; animation: puff 4s ease-out infinite; }
+  .stage-death .fur-puff.p2 { top: 48%; left: 52%; --px: 40px; --py: -25px; animation: puff 4s ease-out infinite 0.05s; }
+  .stage-death .fur-puff.p3 { top: 42%; left: 50%; --px: 0px; --py: -50px; animation: puff 4s ease-out infinite 0.1s; }
+  .stage-death .fur-puff.p4 { top: 46%; left: 46%; --px: -25px; --py: -45px; animation: puff 4s ease-out infinite 0.08s; }
+  @keyframes arrow-fly {
+    0% { transform: translateX(50vw) translateX(120px); opacity: 0; }
+    6% { opacity: 1; }
+    18% { transform: translateX(-120px); opacity: 1; }
+    19% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes arrow-stuck {
+    0%, 17% { opacity: 0; }
+    19%, 85% { opacity: 1; }
+    95%, 100% { opacity: 0; }
+  }
+  @keyframes hingie-die {
+    0%, 19% { transform: translate(0, 0) rotate(0); }
+    20% { transform: translate(-8px, 0) rotate(0); }
+    23% { transform: translate(6px, -4px) rotate(2deg); }
+    30% { transform: translate(0, 2px) rotate(-4deg); }
+    45%, 85% { transform: translate(4px, 40px) rotate(-72deg); }
+    95% { transform: translate(4px, 40px) rotate(-72deg); opacity: 0; }
+    100% { transform: translate(0, 0) rotate(0); opacity: 0; }
+  }
+  @keyframes eyes-normal {
+    0%, 18% { opacity: 1; }
+    20%, 100% { opacity: 0; }
+  }
+  @keyframes eyes-x-show {
+    0%, 19% { opacity: 0; }
+    21%, 94% { opacity: 1; }
+    96%, 100% { opacity: 0; }
+  }
+  @keyframes puff {
+    0%, 18% { opacity: 0; transform: translate(0, 0) scale(0.3); }
+    22% { opacity: 0.9; transform: translate(var(--px, 20px), var(--py, -20px)) scale(1); }
+    40% { opacity: 0; transform: translate(calc(var(--px, 20px) * 2), calc(var(--py, -20px) * 2)) scale(0.2); }
+    100% { opacity: 0; }
+  }
+
+  /* H04 HEART BLOOM */
+  .stage-love { background: var(--panel); cursor: pointer; user-select: none; }
+  .stage-love .hingie { transition: transform 0.3s cubic-bezier(.4,1.6,.5,1); }
+  .stage-love.active .hingie { animation: hingie-shimmy 0.9s cubic-bezier(.3,0,.3,1); }
+  .stage-love.active .face-h { opacity: 0; transition: opacity 0.2s; }
+  .stage-love .face-h { opacity: 1; transition: opacity 0.3s; }
+  .stage-love .heart-burst { position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; margin-left: -30px; margin-top: -30px; opacity: 0; pointer-events: none; }
+  .stage-love.active .heart-burst { animation: heart-burst 0.9s cubic-bezier(.3,0,.2,1); }
+  .stage-love .floaty-heart { position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin-left: -12px; margin-top: -12px; opacity: 0; pointer-events: none; }
+  .stage-love.active .floaty-heart { animation: float-heart 1.4s cubic-bezier(.3,0,.2,1); }
+  .stage-love .floaty-heart.h1 { --dx: -90px; --dy: -120px; animation-delay: 0s !important; }
+  .stage-love .floaty-heart.h2 { --dx: 70px; --dy: -140px; animation-delay: 0.08s !important; }
+  .stage-love .floaty-heart.h3 { --dx: -130px; --dy: -70px; animation-delay: 0.14s !important; }
+  .stage-love .floaty-heart.h4 { --dx: 120px; --dy: -90px; animation-delay: 0.2s !important; }
+  .stage-love .floaty-heart.h5 { --dx: -30px; --dy: -160px; animation-delay: 0.06s !important; }
+  .stage-love .floaty-heart.h6 { --dx: 30px; --dy: -100px; animation-delay: 0.12s !important; }
+  .stage-love.active .eye-pupil, .stage-love.active .eye-white { opacity: 0; transition: opacity 0.15s; }
+  .stage-love.active .heart-eye { opacity: 1; animation: heart-eye-pop 0.8s cubic-bezier(.3,1.8,.4,1); transform-origin: center; transform-box: fill-box; }
+  @keyframes hingie-shimmy {
+    0%, 100% { transform: rotate(0) scale(1); }
+    15% { transform: rotate(-4deg) scale(1.06); }
+    30% { transform: rotate(4deg) scale(1.1); }
+    50% { transform: rotate(-3deg) scale(1.04); }
+    70% { transform: rotate(2deg) scale(1.02); }
+  }
+  @keyframes heart-burst {
+    0% { opacity: 0; transform: scale(0); }
+    30% { opacity: 1; transform: scale(1.8); }
+    70% { opacity: 0.6; transform: scale(3); }
+    100% { opacity: 0; transform: scale(4); }
+  }
+  @keyframes float-heart {
+    0% { opacity: 0; transform: translate(0, 0) scale(0.3) rotate(0); }
+    20% { opacity: 1; transform: translate(calc(var(--dx, 0) * 0.3), calc(var(--dy, 0) * 0.3)) scale(1) rotate(-8deg); }
+    100% { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)) scale(0.8) rotate(12deg); }
+  }
+  @keyframes heart-eye-pop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+  }
+
   /* ---------- 01 ORGANIC LOADERS ---------- */
   .loaders-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
   .loaders-grid .cell { aspect-ratio: 1/1; display: grid; place-items: center; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; }
@@ -263,27 +437,122 @@
 </nav>
 
 <header class="hero">
-  <div class="eyebrow">A survey of motion — nine studies</div>
+  <div class="eyebrow">A survey of motion — thirteen studies</div>
   <h1>Motion, shape, and <em>reaction</em><br/>prompted into being.</h1>
-  <p>A small gallery of animation studies built in single prompts. Each panel shows a different class of motion — from blobby morphing loaders, to reactive shaders, to magnetic fields — to give a feel for the range of animation work a frontier model can generate end-to-end.</p>
+  <p>A small gallery of animation studies built in single prompts. Each panel shows a different class of motion — from blobby morphing loaders, to reactive shaders, to Hingie himself losing a fight with an arrow — to give a feel for the range of animation work a frontier model can generate end-to-end.</p>
 
   <nav class="index">
-    <a href="#e1"><span class="num">01</span> Organic loaders</a>
-    <a href="#e2"><span class="num">02</span> Text streaming</a>
-    <a href="#e3"><span class="num">03</span> Shader wallpaper</a>
-    <a href="#e4"><span class="num">04</span> Cosmic particles</a>
-    <a href="#e5"><span class="num">05</span> Icon reactions</a>
-    <a href="#e6"><span class="num">06</span> Morphing icons</a>
-    <a href="#e7"><span class="num">07</span> Path drawing</a>
-    <a href="#e8"><span class="num">08</span> Magnetic field</a>
-    <a href="#e9"><span class="num">09</span> Elastic cards</a>
+    <a href="#h1"><span class="num">01</span> Hingie hops</a>
+    <a href="#h2"><span class="num">02</span> Hingie is confused</a>
+    <a href="#h3"><span class="num">03</span> Hingie meets arrow</a>
+    <a href="#h4"><span class="num">04</span> Hingie feels love</a>
+    <a href="#e1"><span class="num">05</span> Organic loaders</a>
+    <a href="#e2"><span class="num">06</span> Text streaming</a>
+    <a href="#e3"><span class="num">07</span> Shader wallpaper</a>
+    <a href="#e4"><span class="num">08</span> Cosmic particles</a>
+    <a href="#e5"><span class="num">09</span> Icon reactions</a>
+    <a href="#e6"><span class="num">10</span> Morphing icons</a>
+    <a href="#e7"><span class="num">11</span> Path drawing</a>
+    <a href="#e8"><span class="num">12</span> Magnetic field</a>
+    <a href="#e9"><span class="num">13</span> Elastic cards</a>
   </nav>
 </header>
+
+<!-- H01 — HINGIE HOPS -->
+<section class="exploration" id="h1">
+  <div class="meta">
+    <div class="num">01 — squash & stretch</div>
+    <h2>Hingie hops</h2>
+    <p class="prompt">Hingie — Hinge's fuzzy mascot — bouncing up and down like he just had too much coffee. Squash on landing, stretch on takeoff, shadow that squeezes on impact.</p>
+    <div class="notes">Classic squash/stretch on the body group, with an inverse bobble on the eyes so they lag the body. A radial shadow scales horizontally on ground contact. Small dust puffs flick outward when he lands.</div>
+  </div>
+  <div class="canvas">
+    <div class="hingie-stage stage-hop">
+      <div class="ground"></div>
+      <div class="shadow-disc"></div>
+      <div class="dust d1"></div>
+      <div class="dust d2"></div>
+      <div class="dust d3"></div>
+      <div class="hingie" data-hingie="hop" data-face="H"></div>
+      <div class="hint">LOOPING</div>
+    </div>
+  </div>
+</section>
+
+<!-- H02 — HINGIE IS CONFUSED -->
+<section class="exploration" id="h2">
+  <div class="meta">
+    <div class="num">02 — confusion</div>
+    <h2>Hingie is confused</h2>
+    <p class="prompt">Hingie has no idea what's going on. Big question mark on his chest, eyes darting around, little question marks floating up out of his fur.</p>
+    <div class="notes">Head tilts slowly side to side with an ease-in-out curve. Pupils dart to four corners on a faster loop. Three floating ?s staggered on the same float-up keyframe.</div>
+  </div>
+  <div class="canvas">
+    <div class="hingie-stage stage-q">
+      <span class="floaty-q q1">?</span>
+      <span class="floaty-q q2">?</span>
+      <span class="floaty-q q3">?</span>
+      <div class="hingie" data-hingie="q" data-face="?"></div>
+      <div class="hint">LOOPING</div>
+    </div>
+  </div>
+</section>
+
+<!-- H03 — HINGIE MEETS ARROW -->
+<section class="exploration" id="h3">
+  <div class="meta">
+    <div class="num">03 — narrative loop</div>
+    <h2>Hingie meets arrow</h2>
+    <p class="prompt">Dark scene. Arrow flies in from the side, lodges itself in Hingie. Eyes go X, he tips over, fur puffs out. Beat. Reset.</p>
+    <div class="notes">The loop is orchestrated across four synchronized 4-second timelines (arrow flight, body rotation, eye swap, puff particles). The stuck arrow is parented to Hingie so it rotates with him when he falls.</div>
+  </div>
+  <div class="canvas">
+    <div class="hingie-stage stage-death">
+      <div class="ground"></div>
+      <div class="hingie" data-hingie="death" data-face="H"></div>
+      <svg class="arrow" viewBox="0 0 240 14" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="16" y1="7" x2="220" y2="7" stroke="#f3ece0" stroke-width="2.5"/>
+        <polygon points="16,1 0,7 16,13" fill="#f3ece0"/>
+        <polygon points="220,1 240,7 220,13 228,7" fill="#f3ece0"/>
+        <line x1="226" y1="3" x2="232" y2="7" stroke="#f3ece0" stroke-width="1.5"/>
+        <line x1="226" y1="11" x2="232" y2="7" stroke="#f3ece0" stroke-width="1.5"/>
+      </svg>
+      <div class="fur-puff p1"></div>
+      <div class="fur-puff p2"></div>
+      <div class="fur-puff p3"></div>
+      <div class="fur-puff p4"></div>
+      <div class="hint">LOOPING</div>
+    </div>
+  </div>
+</section>
+
+<!-- H04 — HINGIE FEELS LOVE -->
+<section class="exploration" id="h4">
+  <div class="meta">
+    <div class="num">04 — interaction</div>
+    <h2>Hingie feels love</h2>
+    <p class="prompt">Click Hingie and he gets overwhelmed with affection. Heart blooms from his chest, eyes turn into hearts, a flurry of smaller hearts float up around him.</p>
+    <div class="notes">Click-driven. The .active class on the stage triggers six animations at once — body shimmy, heart burst, eye swap, and six staggered floating hearts on individual vectors. Resets after 1500ms.</div>
+  </div>
+  <div class="canvas">
+    <div class="hingie-stage stage-love" id="love-stage">
+      <svg class="heart-burst" viewBox="0 0 32 32"><path d="M16 28 C 5 20 2 14 6 10 C 10 6 14 8 16 12 C 18 8 22 6 26 10 C 30 14 27 20 16 28Z" fill="#e04e62"/></svg>
+      <svg class="floaty-heart h1" viewBox="0 0 32 32"><path d="M16 28 C 5 20 2 14 6 10 C 10 6 14 8 16 12 C 18 8 22 6 26 10 C 30 14 27 20 16 28Z" fill="#e04e62"/></svg>
+      <svg class="floaty-heart h2" viewBox="0 0 32 32"><path d="M16 28 C 5 20 2 14 6 10 C 10 6 14 8 16 12 C 18 8 22 6 26 10 C 30 14 27 20 16 28Z" fill="#e04e62"/></svg>
+      <svg class="floaty-heart h3" viewBox="0 0 32 32"><path d="M16 28 C 5 20 2 14 6 10 C 10 6 14 8 16 12 C 18 8 22 6 26 10 C 30 14 27 20 16 28Z" fill="#e04e62"/></svg>
+      <svg class="floaty-heart h4" viewBox="0 0 32 32"><path d="M16 28 C 5 20 2 14 6 10 C 10 6 14 8 16 12 C 18 8 22 6 26 10 C 30 14 27 20 16 28Z" fill="#e04e62"/></svg>
+      <svg class="floaty-heart h5" viewBox="0 0 32 32"><path d="M16 28 C 5 20 2 14 6 10 C 10 6 14 8 16 12 C 18 8 22 6 26 10 C 30 14 27 20 16 28Z" fill="#e04e62"/></svg>
+      <svg class="floaty-heart h6" viewBox="0 0 32 32"><path d="M16 28 C 5 20 2 14 6 10 C 10 6 14 8 16 12 C 18 8 22 6 26 10 C 30 14 27 20 16 28Z" fill="#e04e62"/></svg>
+      <div class="hingie" data-hingie="love" data-face="H"></div>
+      <div class="hint">CLICK HINGIE</div>
+    </div>
+  </div>
+</section>
 
 <!-- 01 — ORGANIC LOADERS -->
 <section class="exploration" id="e1">
   <div class="meta">
-    <div class="num">01 — SVG / path morph</div>
+    <div class="num">05 — SVG / path morph</div>
     <h2>Organic loaders</h2>
     <p class="prompt">Six tasteful indeterminate loading indicators that fit in a 200×200 space, on a wrapping grid. All black and white, no text. All should have an organic, blobby feeling.</p>
     <div class="notes">Procedural SVG blobs driven by sine fields. Gooey filter for the merging pair.</div>
@@ -303,7 +572,7 @@
 <!-- 02 — TEXT STREAMING -->
 <section class="exploration" id="e2">
   <div class="meta">
-    <div class="num">02 — text animation</div>
+    <div class="num">06 — text animation</div>
     <h2>Text streaming</h2>
     <p class="prompt">On a responsive grid, animate four different text-streaming animations for a chat app; show a user question and stream a response below. Loop it. Monochrome.</p>
     <div class="notes">Each cell loops on its own rhythm. Typewriter uses a blinking caret; char-blur uses a per-character filter animation.</div>
@@ -321,7 +590,7 @@
 <!-- 03 — SHADER WALLPAPER -->
 <section class="exploration" id="e3">
   <div class="meta">
-    <div class="num">03 — canvas / shader</div>
+    <div class="num">07 — canvas / shader</div>
     <h2>Interactive wallpaper</h2>
     <p class="prompt">Imagine a wallpaper for a futuristic operating system. It should feel interactive and fun to fidget with — react to mouse position, and maybe clicks.</p>
     <div class="notes">Three modes, each a different 2D-canvas field. Cursor warps the field; clicks drop a ripple.</div>
@@ -342,7 +611,7 @@
 <!-- 04 — COSMIC PARTICLES -->
 <section class="exploration" id="e4">
   <div class="meta">
-    <div class="num">04 — particles</div>
+    <div class="num">08 — particles</div>
     <h2>Cosmic drift</h2>
     <p class="prompt">Create a particle field that rolls through space and occasionally whispers a fun fact about the distances and sizes of celestial bodies.</p>
     <div class="notes">Parallax three-layer starfield on canvas. Nearby particles connect with faint lines; a rotating fact-feed cycles every few seconds.</div>
@@ -358,7 +627,7 @@
 <!-- 05 — ICON REACTIONS -->
 <section class="exploration" id="e5">
   <div class="meta">
-    <div class="num">05 — micro-interaction</div>
+    <div class="num">09 — micro-interaction</div>
     <h2>Icon reactions</h2>
     <p class="prompt">A row of reaction icons. Each click should feel satisfying — unique spring, unique burst.</p>
     <div class="notes">Tap anywhere in a cell. Each icon has a distinct reaction: scale-bounce, rotate, stroke-draw, shake, particle burst, confetti.</div>
@@ -408,7 +677,7 @@
 <!-- 06 — MORPHING ICONS -->
 <section class="exploration" id="e6">
   <div class="meta">
-    <div class="num">06 — state transitions</div>
+    <div class="num">10 — state transitions</div>
     <h2>Morphing icons</h2>
     <p class="prompt">Build four icon pairs where clicking morphs one state into another — snappy, satisfying, never jarring.</p>
     <div class="notes">All four use pure CSS transforms and clip-paths — no SVG path interpolation. Click each cell to toggle.</div>
@@ -451,7 +720,7 @@
 <!-- 07 — PATH DRAWING -->
 <section class="exploration" id="e7">
   <div class="meta">
-    <div class="num">07 — stroke animation</div>
+    <div class="num">11 — stroke animation</div>
     <h2>Line drawing</h2>
     <p class="prompt">Make a row of icons that draw themselves in, as if hand-sketched. Natural, slightly playful timing.</p>
     <div class="notes">SVG stroke-dashoffset animated on a loop. Each icon uses a single continuous path wherever possible for a smooth draw.</div>
@@ -481,7 +750,7 @@
 <!-- 08 — MAGNETIC -->
 <section class="exploration" id="e8">
   <div class="meta">
-    <div class="num">08 — force field</div>
+    <div class="num">12 — force field</div>
     <h2>Magnetic dots</h2>
     <p class="prompt">A field of dots that lean toward the cursor as it moves, like iron filings near a magnet.</p>
     <div class="notes">Grid of 20×12 dots. Each dot computes its vector to the cursor on mousemove and translates proportionally to 1/distance².</div>
@@ -497,7 +766,7 @@
 <!-- 09 — ELASTIC CARDS -->
 <section class="exploration" id="e9">
   <div class="meta">
-    <div class="num">09 — 3D tilt</div>
+    <div class="num">13 — 3D tilt</div>
     <h2>Elastic cards</h2>
     <p class="prompt">Three cards that feel physical — tilt under the cursor, catch the light, and snap back when you leave.</p>
     <div class="notes">Perspective transform with a parallax content layer and a radial "shine" that tracks the cursor. Spring return on mouseleave.</div>
@@ -546,6 +815,154 @@ document.getElementById("year").textContent = new Date().getFullYear();
     el.textContent = d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   }
   tick(); setInterval(tick, 30000);
+})();
+
+/* =========================================================
+   H — Hingie (procedural character + 4 scenes)
+   ========================================================= */
+(function hingieScenes() {
+  function buildHingie(hostEl) {
+    const face = hostEl.dataset.face || "H";
+    const seed = Math.random() * 1000;
+    function rand(i) {
+      const x = Math.sin(seed + i * 12.9898) * 43758.5453;
+      return x - Math.floor(x);
+    }
+
+    const bodyLeft = -60, bodyRight = 60, bodyTop = -55, bodyBottom = 65;
+    const corner = 14;
+    const furStrokes = [];
+    const perimeter = [];
+    const stepsPerEdge = 22;
+    const stepsPerCorner = 6;
+    function addPt(x, y, ox, oy) { perimeter.push({ x, y, ox, oy }); }
+
+    for (let i = 0; i < stepsPerEdge; i++) {
+      const t = i / stepsPerEdge;
+      addPt(bodyLeft + corner + t * (bodyRight - bodyLeft - corner * 2), bodyTop, 0, -1);
+    }
+    for (let i = 0; i <= stepsPerCorner; i++) {
+      const a = -Math.PI/2 + (i / stepsPerCorner) * (Math.PI/2);
+      addPt(bodyRight - corner + Math.cos(a) * corner, bodyTop + corner + Math.sin(a) * corner, Math.cos(a), Math.sin(a));
+    }
+    for (let i = 1; i < stepsPerEdge; i++) {
+      const t = i / stepsPerEdge;
+      addPt(bodyRight, bodyTop + corner + t * (bodyBottom - bodyTop - corner * 2), 1, 0);
+    }
+    for (let i = 0; i <= stepsPerCorner; i++) {
+      const a = 0 + (i / stepsPerCorner) * (Math.PI/2);
+      addPt(bodyRight - corner + Math.cos(a) * corner, bodyBottom - corner + Math.sin(a) * corner, Math.cos(a), Math.sin(a));
+    }
+    for (let i = 1; i < stepsPerEdge; i++) {
+      const t = i / stepsPerEdge;
+      addPt(bodyRight - corner - t * (bodyRight - bodyLeft - corner * 2), bodyBottom, 0, 1);
+    }
+    for (let i = 0; i <= stepsPerCorner; i++) {
+      const a = Math.PI/2 + (i / stepsPerCorner) * (Math.PI/2);
+      addPt(bodyLeft + corner + Math.cos(a) * corner, bodyBottom - corner + Math.sin(a) * corner, Math.cos(a), Math.sin(a));
+    }
+    for (let i = 1; i < stepsPerEdge; i++) {
+      const t = i / stepsPerEdge;
+      addPt(bodyLeft, bodyBottom - corner - t * (bodyBottom - bodyTop - corner * 2), -1, 0);
+    }
+    for (let i = 0; i <= stepsPerCorner; i++) {
+      const a = Math.PI + (i / stepsPerCorner) * (Math.PI/2);
+      addPt(bodyLeft + corner + Math.cos(a) * corner, bodyTop + corner + Math.sin(a) * corner, Math.cos(a), Math.sin(a));
+    }
+
+    perimeter.forEach((p, i) => {
+      if (rand(i * 3) < 0.12) return;
+      const len = 5 + rand(i * 5) * 7;
+      const wobble = (rand(i * 7) - 0.5) * 0.6;
+      const baseAngle = Math.atan2(p.oy, p.ox);
+      const seg = len / 3;
+      let x1 = p.x, y1 = p.y;
+      let a = baseAngle + wobble;
+      let path = `M ${x1.toFixed(2)} ${y1.toFixed(2)}`;
+      for (let s = 0; s < 3; s++) {
+        a += (rand(i * 11 + s) - 0.5) * 0.9;
+        x1 += Math.cos(a) * seg;
+        y1 += Math.sin(a) * seg;
+        path += ` L ${x1.toFixed(2)} ${y1.toFixed(2)}`;
+      }
+      furStrokes.push(path);
+    });
+
+    const innerTufts = [];
+    for (let i = 0; i < 22; i++) {
+      const x = bodyLeft + 8 + rand(i * 17) * (bodyRight - bodyLeft - 16);
+      const y = bodyTop + 12 + rand(i * 19) * (bodyBottom - bodyTop - 18);
+      if (Math.abs(x) < 30 && y > -35 && y < 40) continue;
+      const a = rand(i * 23) * Math.PI * 2;
+      const len = 3 + rand(i * 29) * 3;
+      innerTufts.push(`M ${x.toFixed(2)} ${y.toFixed(2)} l ${(Math.cos(a) * len).toFixed(2)} ${(Math.sin(a) * len).toFixed(2)}`);
+    }
+
+    const faceSize = face === "?" ? 80 : 72;
+    const faceY = face === "?" ? 30 : 32;
+
+    const svg = `
+      <svg viewBox="-100 -110 200 220" xmlns="http://www.w3.org/2000/svg">
+        <g class="body-group">
+          <rect class="body-outline" x="${bodyLeft}" y="${bodyTop}" width="${bodyRight - bodyLeft}" height="${bodyBottom - bodyTop}" rx="${corner}" ry="${corner}"/>
+          ${furStrokes.map(p => `<path class="fur-stroke" d="${p}"/>`).join("")}
+          ${innerTufts.map(p => `<path class="fur-stroke" d="${p}" stroke-width="1.2" opacity="0.55"/>`).join("")}
+          <text class="face face-h" x="0" y="${faceY}" font-size="${faceSize}" text-anchor="middle" dominant-baseline="middle">${face}</text>
+        </g>
+        <g class="eyes-group">
+          <g class="eye left">
+            <circle class="eye-white" cx="-26" cy="-68" r="16"/>
+            <circle class="eye-pupil" cx="-26" cy="-66" r="6.5"/>
+            <g class="eyes-x">
+              <line x1="-36" y1="-78" x2="-16" y2="-58" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <line x1="-36" y1="-58" x2="-16" y2="-78" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <path class="heart-eye" d="M -26 -60 C -34 -66 -36 -72 -32 -75 C -29 -77 -26 -75 -26 -71 C -26 -75 -23 -77 -20 -75 C -16 -72 -18 -66 -26 -60Z" fill="#e04e62"/>
+          </g>
+          <g class="eye right">
+            <circle class="eye-white" cx="26" cy="-68" r="16"/>
+            <circle class="eye-pupil" cx="26" cy="-66" r="6.5"/>
+            <g class="eyes-x">
+              <line x1="16" y1="-78" x2="36" y2="-58" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <line x1="16" y1="-58" x2="36" y2="-78" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <path class="heart-eye" d="M 26 -60 C 18 -66 16 -72 20 -75 C 23 -77 26 -75 26 -71 C 26 -75 29 -77 32 -75 C 36 -72 34 -66 26 -60Z" fill="#e04e62"/>
+          </g>
+        </g>
+      </svg>
+    `;
+    hostEl.innerHTML = svg;
+  }
+
+  document.querySelectorAll(".hingie").forEach(hostEl => {
+    buildHingie(hostEl);
+    if (hostEl.dataset.hingie === "death") {
+      const stuck = document.createElement("div");
+      stuck.className = "arrow-stuck";
+      stuck.innerHTML = `
+        <svg viewBox="0 0 180 14" preserveAspectRatio="none" style="width:100%;height:100%;overflow:visible;">
+          <line x1="20" y1="7" x2="160" y2="7" stroke="#f3ece0" stroke-width="2.5"/>
+          <polygon points="20,1 0,7 20,13" fill="#f3ece0"/>
+          <polygon points="160,1 180,7 160,13 168,7" fill="#f3ece0"/>
+          <line x1="166" y1="3" x2="172" y2="7" stroke="#f3ece0" stroke-width="1.5"/>
+          <line x1="166" y1="11" x2="172" y2="7" stroke="#f3ece0" stroke-width="1.5"/>
+        </svg>
+      `;
+      hostEl.appendChild(stuck);
+    }
+  });
+
+  const loveStage = document.getElementById("love-stage");
+  if (loveStage) {
+    let resetTimer = null;
+    loveStage.addEventListener("click", () => {
+      loveStage.classList.remove("active");
+      void loveStage.offsetWidth;
+      loveStage.classList.add("active");
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => loveStage.classList.remove("active"), 1500);
+    });
+  }
 })();
 
 /* =========================================================
