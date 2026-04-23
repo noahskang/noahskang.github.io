@@ -712,6 +712,28 @@ const EXPLORATIONS = [
       'No batch undo — if override application produces unexpected results, manual cleanup is required'
     ],
     nextSteps: `Investigating whether a hybrid matching strategy (name + visual similarity) could make the diffing more resilient to layer renames. Also exploring whether the plugin could integrate with Figma's variant system to automatically suggest variant properties based on the overrides it detects across linked instances.`
+  },
+  {
+    id: 'animation-explorations',
+    number: '09',
+    title: 'Animation Explorations',
+    tagline: 'A survey of motion — nine single-prompt animation studies covering loaders, shaders, particles, and physical interactions.',
+    status: 'completed',
+    statusLabel: 'Completed',
+    category: 'Motion + Frontend',
+    hidden: true,
+    liveUrl: 'https://noahskang.github.io/animation-explorations/',
+    overview: `A small gallery of nine animation studies, each generated in a single prompt, exploring the range of motion work a frontier model can produce end-to-end. The studies span organic SVG path morphing loaders, chat text-streaming variants, interactive canvas shader wallpapers, parallax starfields, reactive micro-interactions, CSS state-morph icons, stroke-drawn line art, cursor-driven magnetic fields, and perspective-tilted elastic cards. The point is less the individual pieces and more the breadth — showing where single-pass generation holds up and where it starts to strain.`,
+    tech: ['Vanilla JS', 'SVG', 'Canvas 2D', 'CSS Transforms', 'CADisplayLink-style RAF loops', 'Custom Shaders'],
+    techDesc: `Single self-contained HTML file, no build system, no framework. Procedural SVG with gooey filter compositing for the blob loaders. Per-character filter animation for text-streaming variants. Three canvas shader modes (aurora field, liquid chrome, cell bloom) driven by cursor warping and ripple drops. A three-layer parallax starfield with proximity-based edge connections. CSS-only morph transitions using transforms and clip-paths — no SVG path interpolation. Stroke-dashoffset for hand-drawn path animation. A 20×12 dot grid computing per-dot vectors against cursor position with 1/distance² falloff. Perspective-transformed cards with parallax content layers and radial cursor-tracking shine, plus a spring return on mouseleave.`,
+    impact: `Useful as a portfolio-level demonstration of what a single frontier-model prompt can produce for motion work. The loaders, morph icons, and line drawings are polished enough to lift directly into production UI. The shaders and cosmic drift are more "feel" demos than shippable components — they show the model can produce the vocabulary of modern motion design without a dedicated motion pass. The weakest areas are physics-feel interactions (magnetic dots, elastic cards) where tuning the easing curves by hand still matters.`,
+    blockers: [
+      'Single-prompt generation means no iteration pass — tuning spring curves or timing offsets required manual edits after the fact',
+      'Canvas shaders run on main-thread 2D canvas rather than WebGL, limiting complexity before framerate drops',
+      'All nine studies live in one HTML file (~54KB) — splitting them would improve reuse but adds build tooling the page was designed to avoid',
+      'No mobile-specific touch handling for the cursor-reactive studies (magnetic field, elastic cards)'
+    ],
+    nextSteps: `Each of the nine studies is a candidate for extraction into a reusable component. The shader wallpaper and cosmic drift studies would benefit most from a WebGL port. The bigger open question is whether a multi-pass prompting workflow — one prompt for structure, a second for motion tuning — would close the gap on the physics-feel studies without sacrificing the single-file simplicity.`
   }
 ];
 
@@ -741,7 +763,7 @@ function renderHome() {
     <section class="explorations">
       <div class="section-label reveal">Explorations</div>
       <div class="bento">
-        ${EXPLORATIONS.map((e, i) => `
+        ${EXPLORATIONS.filter(e => !e.hidden).map((e, i) => `
           <div class="bento-card reveal reveal-delay-${i + 1}" onclick="navigate('${e.id}')">
             <div class="card-glow"></div>
             <div class="card-number">${e.number}</div>
