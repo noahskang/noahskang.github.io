@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On What We're Building — A Distinctives Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F2EBDD;
+  --paper-deep: #E8DFCC;
+  --paper-warm: #EFE6D2;
+  --ink: #15130F;
+  --ink-soft: #3A352D;
+  --ink-faint: #837A6B;
+  --rule: #C9BFA8;
+  --gold: #B58A38;
+  --gold-light: #C9A961;
+  --brick: #9A4628;
+  --forest: #1A3328;
+  --leaf: #6B8A5E;
+
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'Inter Tight', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.32;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* nav */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(242,235,221,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nav .brand { font-weight: 600; }
+.nav .brand span { color: var(--brick); }
+.nav-links { display: flex; gap: 1.8rem; }
+.nav-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a:hover { color: var(--forest); }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.back { color: var(--brick); font-weight: 600; }
+.nav-links a.back::before { content: "← "; }
+
+@media (max-width: 720px) {
+  .nav { padding: 0.9rem 1.2rem; }
+  .nav-links { display: none; }
+  .nav-links.compact { display: flex; gap: 1rem; }
+  .nav-links a { font-size: 0.65rem; }
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+@media (max-width: 720px) { .container { padding: 0 1.2rem; } }
+.container-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+@media (max-width: 720px) { .container-narrow { padding: 0 1.2rem; } }
+
+section { padding: 7rem 0; position: relative; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px; height: 1px;
+  background: currentColor;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+p { font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); }
+
+/* ============ COVER ============ */
+.cover {
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  position: relative;
+}
+
+.cover-meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cover-title {
+  font-size: clamp(2.8rem, 8vw, 7.5rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  line-height: 0.98;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.035em;
+}
+.cover-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--brick);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.cover-title .quiet {
+  display: block;
+  font-size: 0.42em;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+.cover-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  max-width: 640px;
+  color: var(--ink);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  line-height: 1.55;
+  margin-bottom: 3rem;
+}
+
+.cover-foot {
+  margin-top: auto;
+  padding-top: 3rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ornament */
+.ornament-mark {
+  position: absolute;
+  top: 9rem;
+  right: 2.5rem;
+  width: 70px;
+  opacity: 0.5;
+}
+@media (max-width: 720px) {
+  .ornament-mark { top: 8rem; right: 1.2rem; width: 50px; }
+}
+
+/* ============ POSTURE ============ */
+.posture {
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.posture-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 5rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .posture-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+.posture h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  line-height: 1;
+}
+.posture h2 em {
+  font-style: italic;
+  color: var(--forest);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.posture-text > p:first-child {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+  font-weight: 300;
+}
+.posture-text p { margin-bottom: 1.2rem; font-size: 1.05rem; }
+
+/* shared inheritance grid */
+.inheritance {
+  margin-top: 3.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--rule);
+}
+.inheritance h3 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+.inheritance-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 3rem;
+  list-style: none;
+}
+@media (max-width: 720px) { .inheritance-list { grid-template-columns: 1fr; gap: 1rem; } }
+.inheritance-list li {
+  padding: 0.9rem 0 0.9rem 2rem;
+  position: relative;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--ink);
+  border-bottom: 1px dashed var(--rule);
+}
+.inheritance-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  font-family: var(--mono);
+  color: var(--leaf);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.inheritance-list li strong {
+  font-family: var(--serif);
+  font-weight: 500;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 1.1rem;
+}
+
+/* ============ DISTINCTIVE SPREADS ============ */
+.spread {
+  position: relative;
+  padding: 10rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.spread:nth-child(odd) { background: var(--paper); }
+.spread:nth-child(even) { background: var(--paper-warm); }
+
+.spread-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  font-size: clamp(8rem, 22vw, 18rem);
+  line-height: 0.85;
+  color: var(--gold);
+  letter-spacing: -0.05em;
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
+  opacity: 0.18;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 720px) {
+  .spread-num { top: 3rem; right: 1rem; font-size: 9rem; }
+}
+
+.spread-content { position: relative; z-index: 1; }
+
+.spread-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brick);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.spread-eyebrow::before {
+  content: "";
+  width: 22px; height: 1px;
+  background: currentColor;
+}
+
+.spread-title {
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  margin-bottom: 2rem;
+  max-width: 880px;
+}
+.spread-title em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  color: var(--brick);
+}
+
+.spread-lede {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 760px;
+  margin-bottom: 4rem;
+}
+
+/* from / to comparison */
+.from-to {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  margin: 4rem 0;
+  max-width: 920px;
+}
+@media (max-width: 720px) {
+  .from-to { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.ft-cell {
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--rule);
+  background: rgba(255,255,255,0.4);
+  position: relative;
+}
+.ft-cell.from { border-color: var(--rule); background: rgba(131, 122, 107, 0.04); }
+.ft-cell.to { border-color: var(--brick); background: rgba(154, 70, 40, 0.04); }
+.ft-cell .label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+.ft-cell.from .label { color: var(--ink-faint); }
+.ft-cell.to .label { color: var(--brick); }
+.ft-cell .text {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.ft-cell.from .text { color: var(--ink-soft); }
+
+.ft-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ft-arrow svg {
+  width: 36px;
+  height: 36px;
+  color: var(--brick);
+}
+@media (max-width: 720px) {
+  .ft-arrow svg { transform: rotate(90deg); }
+}
+
+/* body text */
+.spread-body {
+  max-width: 720px;
+  margin-top: 3rem;
+}
+.spread-body h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 2.5rem 0 1rem;
+  font-weight: 500;
+}
+.spread-body h4:first-child { margin-top: 0; }
+.spread-body p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+}
+
+/* in practice list */
+.in-practice {
+  margin-top: 3.5rem;
+  padding: 2.5rem;
+  background: rgba(196, 154, 74, 0.06);
+  border-left: 3px solid var(--gold);
+  max-width: 880px;
+}
+.in-practice h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brick);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.in-practice ul {
+  list-style: none;
+}
+.in-practice li {
+  padding: 0.7rem 0 0.7rem 2rem;
+  position: relative;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--ink);
+  border-bottom: 1px dashed var(--rule);
+}
+.in-practice li:last-child { border: none; }
+.in-practice li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--brick);
+  font-family: var(--mono);
+}
+.in-practice li strong {
+  font-family: var(--serif);
+  font-weight: 500;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+}
+
+/* pull quote */
+.pq {
+  margin: 5rem 0;
+  padding: 3rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+  max-width: 880px;
+}
+.pq p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.pq p em { color: var(--brick); font-style: normal; }
+
+/* ============ CLOSING ============ */
+.closing {
+  background: var(--forest);
+  color: #EFE8D6;
+  padding: 8rem 0;
+}
+.closing h2 {
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  line-height: 1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.025em;
+}
+.closing h2 em {
+  font-style: italic;
+  color: var(--gold-light);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.closing-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  line-height: 1.5;
+  color: rgba(239, 232, 214, 0.88);
+  max-width: 760px;
+  margin-bottom: 3rem;
+}
+.closing-text strong {
+  color: #EFE8D6;
+  font-weight: 400;
+  font-style: normal;
+  font-family: var(--sans);
+}
+.signature {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.signature .meta {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(239, 232, 214, 0.5);
+}
+.signature .back-link {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  text-decoration: none;
+  border: 1px solid rgba(196,154,74,0.4);
+  padding: 0.9rem 1.5rem;
+  transition: all 0.3s;
+}
+.signature .back-link:hover {
+  background: rgba(196,154,74,0.1);
+  border-color: var(--gold-light);
+}
+
+/* footer */
+.footer {
+  padding: 3rem 0 2rem;
+  background: var(--ink);
+  color: rgba(242,235,221,0.5);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.footer-row span:first-child { color: var(--gold-light); }
+
+/* fade-in */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.fade-up.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="brand">Field <span>Guide</span> — Vol. I</div>
+  <div class="nav-links compact">
+    <a href="two_cities.html" class="back">Field Guide</a>
+    <a href="#shared">Shared</a>
+    <a href="#community">I.</a>
+    <a href="#elders">II.</a>
+    <a href="#local">III.</a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section class="cover container">
+  <div class="cover-meta">
+    <span>Companion Document</span>
+    <span>Distinctives &nbsp;·&nbsp; Vol. I / Appendix A</span>
+    <span>For Internal Use</span>
+  </div>
+
+  <h1 class="cover-title">
+    <span class="quiet">on what we're</span>
+    Build<em>ing</em>.
+  </h1>
+
+  <p class="cover-sub">
+    A working articulation of the church we are planting — what we've inherited, what we hold to, and the three places we've chosen to take a different shape.
+  </p>
+
+  <div class="cover-foot">
+    <span>Three Distinctives — One Posture</span>
+    <span>Independent of Acts 2 Network</span>
+    <span>Aligned in mission</span>
+  </div>
+
+  <svg class="ornament-mark" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="48" stroke="#15130F" stroke-width="0.6"/>
+    <path d="M 30 50 L 50 30 L 70 50 L 50 70 Z" stroke="#15130F" stroke-width="0.4" fill="none"/>
+    <circle cx="50" cy="50" r="4" fill="#9A4628"/>
+    <text x="50" y="20" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#15130F">III</text>
+  </svg>
+</section>
+
+<!-- POSTURE / SHARED INHERITANCE -->
+<section class="posture" id="shared">
+  <div class="container">
+    <div class="posture-grid">
+      <div>
+        <div class="eyebrow">§ I. Posture</div>
+        <h2>What we <em>inherit</em>.<br>What we hold.</h2>
+      </div>
+      <div class="posture-text">
+        <p>We are planting independently of the Acts 2 Network — but not in opposition to it. The values that shaped many of us still shape us. We owe a real debt to the formation we received, and we are clear-eyed about what we want to carry forward.</p>
+
+        <p>What follows is, first, a brief account of the inheritance we are keeping — the convictions that any reader who knows us would recognize as ours. Then, three places where we are choosing a different shape, and why. The list is short on purpose. We are not trying to build a different gospel; we are trying to build a different structure around the same one.</p>
+
+        <div class="inheritance">
+          <h3>— Convictions we are keeping —</h3>
+          <ul class="inheritance-list">
+            <li>
+              <strong>Preaching the gospel</strong>
+              The unapologetic centrality of Christ crucified, risen, and reigning — in every sermon, every gathering, every conversation.
+            </li>
+            <li>
+              <strong>Raising kingdom workers from college students</strong>
+              The conviction that the 18-22 window is one of the highest-leverage discipleship windows in a person's life — and that we should treat it that way.
+            </li>
+            <li>
+              <strong>Investing in student leaders</strong>
+              Identifying, training, and entrusting real responsibility to undergraduates — not as helpers, but as leaders learning to lead.
+            </li>
+            <li>
+              <strong>A global missions vision</strong>
+              Sending. From day one, with the assumption that some of the people we disciple will end up far from us, and that this is a feature, not a loss.
+            </li>
+            <li>
+              <strong>High view of Scripture</strong>
+              Expository, careful, contextually serious — Scripture as authority, not accessory.
+            </li>
+            <li>
+              <strong>Earnest community</strong>
+              Real friendship, real hospitality, real confession — not a programmed approximation of community.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTINCTIVE I — COMMUNITY + COLLEGE -->
+<section class="spread" id="community">
+  <div class="spread-num">I.</div>
+  <div class="container spread-content">
+    <div class="spread-eyebrow">Distinctive I</div>
+    <h2 class="spread-title">A church for the <em>whole city</em> — not a college ministry that calls itself a church.</h2>
+
+    <p class="spread-lede">
+      Reaching college students has always been part of our calling. But a church built only around college students is a closed ecosystem — and that closure quietly costs the students themselves the very thing they most need to see.
+    </p>
+
+    <div class="from-to">
+      <div class="ft-cell from">
+        <div class="label">From</div>
+        <div class="text">A church whose primary identity is its college ministry — with post-grads, families, and city residents as adjunct populations.</div>
+      </div>
+      <div class="ft-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <polyline points="14 5 21 12 14 19"/>
+        </svg>
+      </div>
+      <div class="ft-cell to">
+        <div class="label">To</div>
+        <div class="text">A church for the whole city — where college, post-grads, young pros, and families are <em>all</em> primary, and the college ministry is one arm of a body, not the body itself.</div>
+      </div>
+    </div>
+
+    <div class="spread-body">
+      <h4>— Why this matters —</h4>
+      <p>The deepest evangelism a college student can be discipled into is not what we say to them; it's what they see modeled by the Christians a decade older than them. When a 20-year-old watches a 30-year-old engineer share Christ at her workplace, watches a 35-year-old couple host neighbors and pray with them, watches a 28-year-old husband walk through grief with the church around him — that is formation no sermon can replicate. A church made only of college students cannot offer that, because it has no Christians a decade older than its members.</p>
+
+      <p>The second loss is downstream. When a college student spends four years in a fellowship that can only meet them as a college student, graduation becomes a small bereavement. They lose their community, their teaching, their friendships, and the language of their faith all at once. We have watched too many people drift from Jesus in the eighteen months after college precisely because the only church they knew was one they had to leave.</p>
+
+      <p>We don't want to build that. We want to be a church a college student can join at 19 and stay in at 29 and be sent from at 39 — without the church needing to become a different church to accommodate them. The college ministry is not the engine that drags the rest of the church along. It is one arm of a body that already knows how to be a body.</p>
+
+      <h4>— What this is not —</h4>
+      <p>This is not a downgrading of college ministry. We are arguing for <em>more</em> serious college ministry, not less. We will hire a college pastor from launch. We will run a distinct college community with its own rhythms — weekly gatherings, retreats, mentoring tracks, on-campus presence. The argument is structural, not tonal: the college arm sits inside a church that is already a church for everyone else, rather than being the church around which everything else is reverse-engineered.</p>
+    </div>
+
+    <div class="in-practice">
+      <h4>— In practice —</h4>
+      <ul>
+        <li><strong>Sunday gathering bridges all life stages.</strong> Undergrads, young pros, families. Same room. Same teaching.</li>
+        <li><strong>Distinct college ministry within the church.</strong> Its own pastor, its own midweek rhythm, its own retreats. But a real, living connection to the broader body.</li>
+        <li><strong>Distinct young-pro ministry.</strong> Vocational discipleship, neighborhood community, marriage and family on-ramps — not an afterthought.</li>
+        <li><strong>Modeling, not just teaching.</strong> Students see post-grads sharing faith in workplaces, hosting neighbors, walking through real adult realities. That is the curriculum.</li>
+        <li><strong>No graduation bereavement.</strong> When a senior graduates, they don't lose their church — they just shift which arm of it they're most active in.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DISTINCTIVE II — ELDER-LED -->
+<section class="spread" id="elders">
+  <div class="spread-num">II.</div>
+  <div class="container spread-content">
+    <div class="spread-eyebrow">Distinctive II</div>
+    <h2 class="spread-title">Led by a <em>plurality of elders</em> — not by a single executive couple.</h2>
+
+    <p class="spread-lede">
+      The shape of leadership shapes the shape of everything else. We believe the New Testament pattern of plurality is not a stylistic preference; it is a structural protection — for the church, for the leaders themselves, and for the people watching them.
+    </p>
+
+    <div class="from-to">
+      <div class="ft-cell from">
+        <div class="label">From</div>
+        <div class="text">A single executive couple at the top, making the substantial majority of strategic, theological, and pastoral decisions.</div>
+      </div>
+      <div class="ft-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <polyline points="14 5 21 12 14 19"/>
+        </svg>
+      </div>
+      <div class="ft-cell to">
+        <div class="label">To</div>
+        <div class="text">A small council of elders — first among equals — with individuals serving in clear role-based responsibilities (executive, teaching, college, etc.).</div>
+      </div>
+    </div>
+
+    <div class="spread-body">
+      <h4>— Why this matters —</h4>
+      <p>Acts 14:23 has Paul and Barnabas appointing <em>elders</em> — plural — in every church. Titus 1:5 commissions Titus to do the same. 1 Peter 5:1-3 addresses elders as a body, jointly shepherding and not lording. The pattern is not incidental. It exists because plurality is how the New Testament protects against the predictable failures of singular authority.</p>
+
+      <p>We have watched, painfully and at close range, what the executive-couple model costs when it goes wrong — and even when it goes right, what it costs the couple themselves. A single husband-and-wife pair carrying the strategic, theological, financial, pastoral, and emotional weight of a whole church is not a sustainable architecture. It produces lead pastors who are exhausted before their fortieth birthdays, churches whose direction depends entirely on one couple's emotional state in any given week, and successions that go badly because the church has been organized around a person rather than a body.</p>
+
+      <p>Plurality also produces better decisions. Different elders have different gifts, different blind spots, different life experiences. When five people agree, the decision is usually right. When one person decides and four people execute, the decision is whatever the one person could see — which, on hard questions, is rarely enough.</p>
+
+      <h4>— Role-based, not flat —</h4>
+      <p>We are not arguing for a flat eldership in which no one has clear lanes. That is its own dysfunction. We are arguing for a small body — three to five elders at first — in which the executive pastor handles operations, the teaching pastor carries the bulk of preaching, the college pastor leads the college arm, and so on. Each elder has a clear role. The whole body decides direction. The lead pastor is not absent; he is first among equals, with real responsibility but not unilateral authority.</p>
+    </div>
+
+    <div class="in-practice">
+      <h4>— In practice —</h4>
+      <ul>
+        <li><strong>Three to five elders from launch</strong> — not as a future aspiration, but as the structure on day one.</li>
+        <li><strong>Clear role definitions.</strong> Executive Pastor (operations + finance), Teaching Pastor (preaching + theology), College Pastor (college arm), and so on. Spelled out in writing.</li>
+        <li><strong>Decisions made in elder meetings</strong> — not by the lead pastor over coffee. Substantial decisions require the body's discernment.</li>
+        <li><strong>Lead pastor is "first among equals."</strong> Real leadership; not unilateral authority. The role is to chair and shepherd, not to rule.</li>
+        <li><strong>Spouses are partners in life and ministry — not co-decision-makers in church governance.</strong> This is a clarity that protects marriages and protects the church.</li>
+        <li><strong>Built-in accountability and succession.</strong> No single person's absence breaks the church.</li>
+      </ul>
+    </div>
+
+    <div class="pq">
+      <p>"The shape of leadership <em>shapes the shape</em> of everything else."</p>
+    </div>
+  </div>
+</section>
+
+<!-- DISTINCTIVE III — LOCAL FOCUS -->
+<section class="spread" id="local">
+  <div class="spread-num">III.</div>
+  <div class="container spread-content">
+    <div class="spread-eyebrow">Distinctive III</div>
+    <h2 class="spread-title">A <em>local body</em> with local rhythms — not a satellite of a centralized network.</h2>
+
+    <p class="spread-lede">
+      A church is an embodied community in a particular place. The more of its life is lived locally — taught, prayed, planned, retreated together — the more it actually becomes the kind of church it claims to be.
+    </p>
+
+    <div class="from-to">
+      <div class="ft-cell from">
+        <div class="label">From</div>
+        <div class="text">Centralized teaching streamed weekly to all plants. Twice-yearly leadership retreats in Chicago. A network-shaped vision, calendar, and language.</div>
+      </div>
+      <div class="ft-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <polyline points="14 5 21 12 14 19"/>
+        </svg>
+      </div>
+      <div class="ft-cell to">
+        <div class="label">To</div>
+        <div class="text">Local teaching from local pastors. Local team times for prayer and vision. Twice-yearly retreats within driving distance of our city, planned and led by our team.</div>
+      </div>
+    </div>
+
+    <div class="spread-body">
+      <h4>— Why this matters —</h4>
+      <p>A streamed sermon from a thousand miles away can be excellent and still be the wrong instrument for forming a local church. The pastor on the screen does not know that one of the people in the room buried her father this week. He has never met the Tech sophomore in row three. He does not know the city, its idolatries, its histories, or its hopes. None of this is a moral failing on his part — it is a definition of what he is and is not. He is a teacher of the network. We need teachers of the church.</p>
+
+      <p>The same logic applies to centralized leadership rhythms. When our two big retreats every year happen in Chicago, they shape us as a network of churches; they do not shape us as a particular church. They build the brand of the network and the friendships of leaders across cities — both real goods. But they also subtly tell our local team that the most important conversations about our future happen somewhere else, with people from somewhere else, in a calendar set by someone else. We don't think that's the right shape for what we are trying to build.</p>
+
+      <p>Going local is not insularity. We will partner widely. We will read what other churches are reading. We will keep friendships across networks and learn from anyone willing to teach us. But the center of gravity of our church's life — the teaching, the planning, the prayer, the retreats, the vision-casting — needs to be in this city, with these people, on a calendar we set ourselves.</p>
+
+      <h4>— What this is not —</h4>
+      <p>This is not anti-network or anti-collaboration. We expect to maintain real relational and theological ties with churches and networks we trust, including A2N. We will go to conferences. We will host visiting teachers. We will travel. The argument is about <em>where the rhythm lives</em>, not about whether to have any external relationships at all. The rhythm lives here.</p>
+    </div>
+
+    <div class="in-practice">
+      <h4>— In practice —</h4>
+      <ul>
+        <li><strong>Local teaching from local pastors.</strong> Our teaching pastor delivers the bulk of sermons. Guest preachers are guests, not the default.</li>
+        <li><strong>Weekly local team meetings.</strong> Our staff and elders meet face to face — for prayer, planning, teaching prep, and pastoral care of one another.</li>
+        <li><strong>Twice-yearly local retreats.</strong> Within driving distance of the city. Planned and led by our core team. Vision-casting, prayer, rest.</li>
+        <li><strong>Sermon prep happens here.</strong> Built around the people in our pews, the city around us, and the lectionary we set.</li>
+        <li><strong>Cross-network learning, on our terms.</strong> Conferences, visiting teachers, written resources — embraced widely. The center of gravity stays local.</li>
+        <li><strong>External accountability where it matters.</strong> Theological, financial, governance. Not by streamed video. By ongoing relationships with trusted churches and leaders.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="container">
+    <div class="eyebrow" style="color: var(--gold-light);">§ V. Posture, in closing</div>
+    <h2>Three distinctives.<br>One <em>church</em>.</h2>
+    <p class="closing-text">
+      None of these three changes is, by itself, original. Plurality of elders is older than we are. City-wide churches with arms for college students have existed in every healthy era. Local teaching is the historic norm, not the exception. <strong>What is ours is the choice to hold all three at once</strong> — and to build what we are building from those three structural commitments rather than around a single charismatic couple, a streamed pulpit, and a college-only frame.
+    </p>
+    <p class="closing-text">
+      We owe much of what we know about ministry to the network that formed us. The decision to plant independently is not a rejection of that formation; it is the result of it. We learned to think structurally about ministry from people who taught us to. This document is what that thinking has produced.
+    </p>
+
+    <div class="signature">
+      <div class="meta">
+        <div>Distinctives — Vol. I / Appendix A</div>
+        <div style="margin-top: 0.4rem; opacity: 0.7;">Internal · Working Document</div>
+      </div>
+      <a href="two_cities.html" class="back-link">← Back to Field Guide</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-row">
+    <span>Field Guide Vol. I</span>
+    <span>Distinctives — Three Structural Commitments</span>
+    <span>Internal · Working Document</span>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.spread-content > *, .posture-grid > *, .inheritance, .from-to, .in-practice, .pq, .signature').forEach(el => {
+  el.classList.add('fade-up');
+  io.observe(el);
+});
+</script>
+
+</body>
+</html>

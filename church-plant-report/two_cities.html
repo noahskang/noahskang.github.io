@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Cities, One Calling — A Strategic Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* base */
+  --paper: #F2EBDD;
+  --paper-deep: #E8DFCC;
+  --ink: #15130F;
+  --ink-soft: #3A352D;
+  --ink-faint: #837A6B;
+  --rule: #C9BFA8;
+
+  /* atlanta */
+  --atl-deep: #1A3328;
+  --atl-mid: #2C5440;
+  --atl-gold: #C49A4A;
+  --atl-brick: #9A4628;
+  --atl-leaf: #6B8A5E;
+  --atl-paper: #EFE8D6;
+
+  /* phoenix */
+  --phx-rust: #B14C2C;
+  --phx-sienna: #8C3517;
+  --phx-sage: #768870;
+  --phx-sand: #E2D5B6;
+  --phx-dusk: #2D4654;
+  --phx-paper: #F0E4CB;
+
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'Inter Tight', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* nav */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(242,235,221,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nav .brand { font-weight: 600; }
+.nav .brand span { color: var(--atl-brick); }
+.nav-links { display: flex; gap: 1.8rem; }
+.nav-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a:hover { color: var(--atl-deep); }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+
+@media (max-width: 720px) {
+  .nav { padding: 0.9rem 1.2rem; }
+  .nav-links { display: none; }
+}
+
+/* layout */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+@media (max-width: 720px) { .container { padding: 0 1.2rem; } }
+
+section { padding: 7rem 0; position: relative; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px; height: 1px;
+  background: currentColor;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
+
+/* photo treatment — editorial duotone */
+.photo {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.04) brightness(0.97) saturate(0.85);
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.photo:hover img { transform: scale(1.02); }
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.photo-atl::after { background: var(--atl-deep); opacity: 0.50; }
+.photo-phx::after { background: var(--phx-sienna); opacity: 0.50; }
+.photo-frame {
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 6px;
+}
+.photo-cap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.photo-cap .credit { font-size: 0.6rem; opacity: 0.55; }
+
+/* ============ COVER ============ */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  position: relative;
+}
+
+.cover-meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cover-title {
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  line-height: 0.95;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.035em;
+}
+.cover-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--atl-brick);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+.cover-sub {
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  max-width: 640px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 3rem;
+}
+
+.cover-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.cover-grid > div span:first-child {
+  display: block;
+  color: var(--ink-faint);
+  margin-bottom: 0.4rem;
+  font-size: 0.65rem;
+}
+.cover-grid > div span:last-child {
+  color: var(--ink);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+@media (max-width: 720px) {
+  .cover-grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+.cover-mark {
+  position: absolute;
+  bottom: 4rem;
+  right: 2.5rem;
+  width: 80px;
+  opacity: 0.6;
+}
+
+/* ============ THE QUESTION ============ */
+.question {
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.q-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .q-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+.q-grid h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+}
+.q-grid h2 em {
+  font-style: italic;
+  color: var(--atl-deep);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.q-text p { margin-bottom: 1.2rem; font-size: 1.08rem; }
+.q-text p:first-child {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--ink);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+.context-card {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--paper);
+  border-left: 3px solid var(--atl-gold);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+.context-card .label {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+}
+.context-card .item { margin-bottom: 0.7rem; display: flex; }
+.context-card .item strong {
+  display: inline-block;
+  min-width: 110px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ============ SCORECARD ============ */
+.scorecard h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+}
+.scorecard h2 em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.scorecard-intro {
+  max-width: 580px;
+  margin-bottom: 4rem;
+  font-size: 1.05rem;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+}
+.score-table thead th {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 1.4rem 1rem;
+  border-bottom: 1.5px solid var(--ink);
+  color: var(--ink);
+  font-weight: 500;
+}
+.score-table thead th:nth-child(2) { color: var(--atl-deep); }
+.score-table thead th:nth-child(3) { color: var(--phx-rust); }
+.score-table thead th:nth-child(4) { width: 90px; text-align: right; }
+
+.score-table tbody td {
+  padding: 1.4rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+  font-size: 0.95rem;
+}
+.score-table tbody tr:hover { background: rgba(196,154,74,0.06); }
+.score-table tbody tr td:first-child {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+}
+.score-table tbody td:nth-child(2),
+.score-table tbody td:nth-child(3) { color: var(--ink-soft); }
+.score-table tbody td:last-child {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.tag-atl { background: var(--atl-deep); color: var(--paper); padding: 0.3rem 0.7rem; border-radius: 2px; }
+.tag-phx { background: var(--phx-rust); color: var(--paper); padding: 0.3rem 0.7rem; border-radius: 2px; }
+.tag-tie { background: var(--ink-faint); color: var(--paper); padding: 0.3rem 0.7rem; border-radius: 2px; }
+
+@media (max-width: 720px) {
+  .score-table thead th, .score-table tbody td { padding: 0.9rem 0.5rem; }
+  .score-table tbody tr td:first-child { font-size: 0.95rem; }
+  .score-table tbody td { font-size: 0.85rem; }
+}
+
+/* ============ DOSSIER ============ */
+.dossier {
+  position: relative;
+  padding: 8rem 0 7rem;
+}
+.dossier-atl {
+  background: var(--atl-deep);
+  color: var(--atl-paper);
+}
+.dossier-phx {
+  background: var(--phx-rust);
+  color: var(--phx-paper);
+}
+
+.dossier-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+.dossier-no {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.dossier-name {
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+}
+.dossier-name em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.dossier-atl .dossier-name em { color: var(--atl-gold); }
+.dossier-phx .dossier-name em { color: var(--phx-sand); }
+
+.dossier-tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-align: right;
+  max-width: 280px;
+  opacity: 0.85;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  line-height: 1.3;
+}
+@media (max-width: 720px) {
+  .dossier-header { flex-direction: column; align-items: start; gap: 1.5rem; }
+  .dossier-tag { text-align: left; max-width: 100%; }
+}
+
+/* hero photo */
+.dossier-hero {
+  margin-bottom: 5rem;
+  height: 480px;
+}
+.dossier-hero .photo,
+.dossier-hero img {
+  height: 100%;
+}
+.dossier-hero .photo-cap {
+  color: rgba(239,232,214,0.7);
+}
+.dossier-phx .dossier-hero .photo-cap {
+  color: rgba(240,228,203,0.7);
+}
+@media (max-width: 720px) {
+  .dossier-hero { height: 280px; margin-bottom: 3rem; }
+}
+
+/* stat ribbon */
+.stat-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: 5rem;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+.stat-cell {
+  padding: 1.8rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell .num {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  margin-bottom: 0.3rem;
+}
+.dossier-atl .stat-cell .num { color: var(--atl-gold); }
+.dossier-phx .stat-cell .num { color: var(--phx-sand); }
+.stat-cell .lbl {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  line-height: 1.4;
+}
+@media (max-width: 720px) {
+  .stat-ribbon { grid-template-columns: repeat(2, 1fr); }
+  .stat-cell { border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .stat-cell:nth-child(2) { border-right: none; }
+}
+
+/* dossier blocks */
+.dossier-block {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 4rem;
+  margin-bottom: 5rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .dossier-block { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.dossier-block .label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  padding-top: 0.4rem;
+}
+.dossier-block .label .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  letter-spacing: -0.02em;
+}
+.dossier-atl .dossier-block .label .num { color: var(--atl-gold); }
+.dossier-phx .dossier-block .label .num { color: var(--phx-sand); }
+
+.dossier-block h3 {
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.015em;
+}
+.dossier-block h3 em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.dossier-atl .dossier-block h3 em { color: var(--atl-gold); }
+.dossier-phx .dossier-block h3 em { color: var(--phx-sand); }
+.dossier-block p {
+  color: rgba(239,232,214,0.82);
+  font-size: 1.04rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.dossier-phx .dossier-block p { color: rgba(240,228,203,0.82); }
+
+/* secondary photo (mid-section) */
+.dossier-photo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 4rem 0 5rem;
+}
+.dossier-photo-pair .photo {
+  aspect-ratio: 4 / 5;
+}
+.dossier-photo-pair .photo:first-child {
+  aspect-ratio: 4 / 5;
+  margin-top: 3rem;
+}
+.dossier-photo-pair .photo:last-child {
+  aspect-ratio: 4 / 5;
+}
+@media (max-width: 720px) {
+  .dossier-photo-pair { grid-template-columns: 1fr; gap: 2rem; }
+  .dossier-photo-pair .photo:first-child { margin-top: 0; }
+}
+
+/* bars */
+.bars { margin-top: 1.5rem; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 70px;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+.bar-row .name { opacity: 0.85; letter-spacing: 0.04em; }
+.bar-row .num { text-align: right; font-weight: 500; letter-spacing: 0.04em; }
+.dossier-atl .bar-row .num { color: var(--atl-gold); }
+.dossier-phx .bar-row .num { color: var(--phx-sand); }
+.bar-track {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  transform-origin: left;
+  animation: barGrow 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.dossier-atl .bar-fill { background: linear-gradient(90deg, var(--atl-gold), #E0B96A); }
+.dossier-phx .bar-fill { background: linear-gradient(90deg, var(--phx-sand), #F0E0BC); }
+@keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ministry list */
+.ministry-list {
+  margin-top: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.83rem;
+}
+.ministry-list .item {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.ministry-list .item .nm { letter-spacing: 0.02em; }
+.ministry-list .item .nt { opacity: 0.55; font-size: 0.72rem; text-align: right; }
+
+/* pull quote */
+.pullquote {
+  margin: 4rem 0;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  text-align: center;
+}
+.pullquote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: inherit;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.dossier-atl .pullquote p em { color: var(--atl-gold); font-style: normal; }
+.dossier-phx .pullquote p em { color: var(--phx-sand); font-style: normal; }
+
+/* verdict box */
+.verdict {
+  margin-top: 4rem;
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+@media (max-width: 720px) { .verdict { grid-template-columns: 1fr; } }
+.verdict h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+.dossier-atl .verdict h4 { color: var(--atl-gold); opacity: 1; }
+.dossier-phx .verdict h4 { color: var(--phx-sand); opacity: 1; }
+.verdict ul { list-style: none; }
+.verdict ul li {
+  padding: 0.7rem 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+.verdict ul li:last-child { border: none; }
+
+/* ============ RETENTION ============ */
+.retention {
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
+}
+.retention-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 4rem;
+}
+@media (max-width: 900px) {
+  .retention-head { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.retention-head h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  line-height: 1;
+}
+.retention-head h2 em {
+  font-style: italic;
+  color: var(--atl-deep);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.retention-head p { font-size: 1.05rem; max-width: 480px; }
+
+.flow-viz {
+  margin: 3rem 0;
+  background: var(--paper);
+  padding: 3rem 2rem;
+  border: 1px solid var(--rule);
+  position: relative;
+}
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+@media (max-width: 900px) { .flow-grid { grid-template-columns: 1fr; } }
+.flow-cell h4 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.flow-atl h4 { color: var(--atl-deep); }
+.flow-phx h4 { color: var(--phx-rust); }
+.flow-cell .city-name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  font-weight: 300;
+}
+.flow-cell .city-name em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100; }
+.flow-atl .city-name em { color: var(--atl-deep); }
+.flow-phx .city-name em { color: var(--phx-rust); }
+.flow-svg { width: 100%; height: auto; display: block; }
+
+.retention-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 4rem;
+}
+@media (max-width: 900px) { .retention-grid { grid-template-columns: 1fr; } }
+.retention-card {
+  padding: 2.5rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.retention-card.atl { border-top: 4px solid var(--atl-deep); }
+.retention-card.phx { border-top: 4px solid var(--phx-rust); }
+.retention-card h3 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+}
+.retention-card h3 em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100; }
+.retention-card.atl h3 em { color: var(--atl-deep); }
+.retention-card.phx h3 em { color: var(--phx-rust); }
+.retention-card ul { list-style: none; margin-top: 1rem; }
+.retention-card ul li {
+  padding: 0.7rem 0;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed var(--rule);
+  color: var(--ink-soft);
+  position: relative;
+  padding-left: 1.4rem;
+}
+.retention-card ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  font-family: var(--mono);
+  font-weight: 500;
+}
+.retention-card.atl ul li::before { color: var(--atl-deep); }
+.retention-card.phx ul li::before { color: var(--phx-rust); }
+.retention-card ul li:last-child { border: none; }
+
+/* ============ FAMILY FACTOR ============ */
+.family {
+  background: var(--atl-deep);
+  color: var(--atl-paper);
+  position: relative;
+  overflow: hidden;
+}
+.family::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(196,154,74,0.12), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(154,70,40,0.1), transparent 50%);
+}
+.family > * { position: relative; }
+
+.family-head { margin-bottom: 4rem; }
+.family-head h2 {
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+.family-head h2 em {
+  font-style: italic;
+  color: var(--atl-gold);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.family-head p {
+  max-width: 720px;
+  color: rgba(239,232,214,0.85);
+  font-size: 1.1rem;
+  line-height: 1.65;
+}
+
+.partnership-viz {
+  margin: 4rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+@media (max-width: 900px) { .partner-grid { grid-template-columns: 1fr; } }
+.partner-cell {
+  padding: 2rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.partner-cell .role {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--atl-gold);
+  margin-bottom: 0.7rem;
+}
+.partner-cell h4 {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+}
+.partner-cell h4 em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100; color: var(--atl-gold); }
+.partner-cell ul { list-style: none; margin-top: 1.2rem; }
+.partner-cell ul li {
+  padding: 0.6rem 0;
+  font-size: 0.92rem;
+  color: rgba(239,232,214,0.85);
+  border-bottom: 1px dashed rgba(255,255,255,0.08);
+}
+.partner-cell ul li:last-child { border: none; }
+
+/* ============ STRATEGY ============ */
+.strategy { background: var(--paper); }
+.strategy-head { margin-bottom: 5rem; }
+.strategy-head .eyebrow { color: var(--atl-brick); }
+.strategy-head h2 {
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+.strategy-head h2 em {
+  font-style: italic;
+  color: var(--atl-brick);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.strategy-head .lede {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  max-width: 720px;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 5rem;
+}
+@media (max-width: 900px) { .pillars { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .pillars { grid-template-columns: 1fr; } }
+.pillar {
+  padding: 2.2rem 1.5rem;
+  border-right: 1px solid var(--rule);
+  position: relative;
+}
+.pillar:last-child { border-right: none; }
+.pillar .pno {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--atl-brick);
+  margin-bottom: 1rem;
+}
+.pillar h4 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+.pillar p { font-size: 0.9rem; line-height: 1.55; }
+
+.pipeline-section { margin-top: 5rem; }
+.pipeline-section h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 300;
+  margin-bottom: 1rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+}
+.pipeline-section h3 em {
+  font-style: italic;
+  color: var(--atl-brick);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.pipeline-section > p { max-width: 580px; margin-bottom: 3rem; }
+
+.pipeline-viz {
+  background: var(--paper-deep);
+  padding: 3rem 2rem;
+  border: 1px solid var(--rule);
+  margin-bottom: 4rem;
+}
+
+.tactics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 4rem;
+  border: 1px solid var(--rule);
+}
+@media (max-width: 720px) { .tactics-grid { grid-template-columns: 1fr; } }
+.tactic {
+  padding: 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  background: var(--paper);
+}
+.tactic:nth-child(2n) { border-right: none; }
+.tactic:nth-last-child(-n+2) { border-bottom: none; }
+@media (max-width: 720px) {
+  .tactic { border-right: none; }
+  .tactic:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+  .tactic:last-child { border-bottom: none; }
+}
+.tactic .tno {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--atl-brick);
+  margin-bottom: 0.8rem;
+}
+.tactic h4 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+.tactic h4 em { font-style: italic; color: var(--atl-deep); font-variation-settings: 'opsz' 144, 'SOFT' 100; }
+.tactic p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.6rem; }
+.tactic .meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--rule);
+}
+
+/* ============ DECISION (NEUTRAL) ============ */
+.decision {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8rem 0;
+}
+.decision .eyebrow { color: var(--atl-gold); }
+.decision h2 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin-bottom: 2rem;
+}
+.decision h2 em {
+  font-style: italic;
+  color: var(--atl-gold);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.decision .lede {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.3vw, 1.8rem);
+  font-weight: 300;
+  max-width: 760px;
+  line-height: 1.5;
+  color: rgba(242,235,221,0.85);
+  margin-bottom: 4rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+.frame-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin: 4rem 0 5rem;
+}
+@media (max-width: 720px) { .frame-grid { grid-template-columns: 1fr; } }
+.frame-cell {
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.02);
+}
+.frame-cell .label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.frame-cell.atl .label { color: var(--atl-gold); }
+.frame-cell.phx .label { color: var(--phx-sand); }
+.frame-cell h4 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  line-height: 1.2;
+}
+.frame-cell h4 em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100; }
+.frame-cell.atl h4 em { color: var(--atl-gold); }
+.frame-cell.phx h4 em { color: var(--phx-sand); }
+.frame-cell ul { list-style: none; }
+.frame-cell ul li {
+  padding: 0.6rem 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(242,235,221,0.7);
+  border-bottom: 1px dashed rgba(255,255,255,0.08);
+}
+.frame-cell ul li:last-child { border: none; }
+
+.questions-list {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+.questions-list h3 {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  color: var(--atl-gold);
+}
+.questions-list ol {
+  list-style: none;
+  counter-reset: q;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 3rem;
+}
+@media (max-width: 720px) { .questions-list ol { grid-template-columns: 1fr; } }
+.questions-list ol li {
+  counter-increment: q;
+  padding-left: 3.5rem;
+  position: relative;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 300;
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  line-height: 1.45;
+  color: rgba(242,235,221,0.92);
+}
+.questions-list ol li::before {
+  content: counter(q, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--atl-gold);
+  font-weight: 500;
+}
+
+/* footer */
+.footer {
+  padding: 3rem 0 2rem;
+  background: var(--ink);
+  color: rgba(242,235,221,0.5);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.footer-row span:first-child { color: var(--atl-gold); }
+
+/* fade-in */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.fade-up.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="brand">Field <span>Guide</span> — Vol. I</div>
+  <div class="nav-links">
+    <a href="#question">Question</a>
+    <a href="#scorecard">Scorecard</a>
+    <a href="#atlanta">Atlanta</a>
+    <a href="#phoenix">Phoenix</a>
+    <a href="#retention">Retention</a>
+    <a href="#strategy">Strategy</a>
+    <a href="distinctives.html" style="color: var(--atl-brick); font-weight: 600;">Distinctives →</a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section class="cover container">
+  <div class="cover-meta">
+    <span>A Strategic Field Guide</span>
+    <span>Vol. I &nbsp;·&nbsp; Issue 01</span>
+    <span>For Internal Use</span>
+  </div>
+
+  <h1 class="cover-title">
+    Two Cities,<br>
+    one <em>calling</em>.
+  </h1>
+
+  <p class="cover-sub">
+    A side-by-side reading of Atlanta and Phoenix as candidate launch cities for a multi-campus college and young-professional ministry — bridging campus and city, undergrad and post-grad, the gathered and the sent.
+  </p>
+
+  <div class="cover-grid">
+    <div>
+      <span>Subject</span>
+      <span>Atlanta &nbsp;·&nbsp; Phoenix</span>
+    </div>
+    <div>
+      <span>Reach</span>
+      <span>College + Young Professionals</span>
+    </div>
+    <div>
+      <span>Core Question</span>
+      <span>Where should we go?</span>
+    </div>
+  </div>
+
+  <svg class="cover-mark" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="48" stroke="#15130F" stroke-width="0.6"/>
+    <circle cx="50" cy="50" r="34" stroke="#15130F" stroke-width="0.4"/>
+    <line x1="50" y1="2" x2="50" y2="98" stroke="#15130F" stroke-width="0.4"/>
+    <line x1="2" y1="50" x2="98" y2="50" stroke="#15130F" stroke-width="0.4"/>
+    <text x="50" y="20" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#15130F">N</text>
+    <text x="83" y="52" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#15130F">E</text>
+    <text x="50" y="86" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#15130F">S</text>
+    <text x="17" y="52" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#15130F">W</text>
+    <polygon points="50,30 47,50 50,52 53,50" fill="#9A4628"/>
+  </svg>
+</section>
+
+<!-- THE QUESTION -->
+<section class="question" id="question">
+  <div class="container">
+    <div class="q-grid">
+      <div>
+        <div class="eyebrow">§ I. The Question</div>
+        <h2>What's the <em>shape</em> of the call?</h2>
+      </div>
+      <div class="q-text">
+        <p>A bivocational team of ten, gathered from across the country. An Asian-American leadership shape. The pull of a major university campus and a vision for a midweek young-adult gathering at scale. These are the inputs.</p>
+
+        <p>The output is supposed to be a city, a neighborhood, and a strategy. But before we choose a city, we need to be honest about what's genuinely distinctive in this calling, and what the surrounding landscape will reward or punish.</p>
+
+        <p>This document is a working comparison of the two strongest candidates — Atlanta and Phoenix — and a proposal for a Midtown-anchored strategy that takes seriously what's already on the field, including a brother's plant.</p>
+
+        <div class="context-card">
+          <div class="label">— Working Inputs —</div>
+          <div class="item"><strong>Team</strong><span>10 bivocational, multi-school, willing to relocate</span></div>
+          <div class="item"><strong>Leadership</strong><span>Asian American, multi-ethnic posture</span></div>
+          <div class="item"><strong>Reach</strong><span>College + young professionals, multi-campus</span></div>
+          <div class="item"><strong>Format</strong><span>Sunday church + midweek young-adult gathering</span></div>
+          <div class="item"><strong>Pipeline</strong><span>Several team members did college ministry at UNC — Carolina alumni network in play</span></div>
+          <div class="item"><strong>On the field</strong><span>Brother Isaiah Kang (son of Ed) — A2N plant, Emory + GT + UGA, lives in Duluth</span></div>
+          <div class="item"><strong>Identity</strong><span>Independent plant — see <a href="distinctives.html" style="color: var(--atl-brick); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;">Distinctives →</a></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCORECARD -->
+<section class="scorecard" id="scorecard">
+  <div class="container">
+    <div class="eyebrow">§ II. At a Glance</div>
+    <h2>The <em>scorecard</em>.</h2>
+    <p class="scorecard-intro">A surface read of the two cities across the dimensions that matter for a college + young-pro plant. Caveats and nuance live below; this is the first pass.</p>
+
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Atlanta</th>
+          <th>Phoenix</th>
+          <th>Edge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Anchor campus</td><td>Georgia Tech — 47K, ~45% Asian</td><td>ASU Tempe — 80K (largest US campus)</td><td><span class="tag-phx">Phoenix</span></td></tr>
+        <tr><td>Multi-campus reach</td><td>GT + Emory + GSU + AUC + SCAD ≈ 125K</td><td>ASU Tempe + Downtown + GCU ≈ 118K</td><td><span class="tag-atl">Atlanta</span></td></tr>
+        <tr><td>Christian-formation campus pipeline</td><td>None at scale</td><td>GCU — 25K residential Christian students, 25 min away</td><td><span class="tag-phx">Phoenix</span></td></tr>
+        <tr><td>Asian American population</td><td>6.5% metro / strong concentration NE</td><td>4.0% metro / clustered Tempe + Chandler</td><td><span class="tag-atl">Atlanta</span></td></tr>
+        <tr><td>AA proximity to anchor</td><td>30+ min from Tech (Gwinnett corridor)</td><td>Adjacent to ASU (Tempe 8.8%, Chandler 11%)</td><td><span class="tag-phx">Phoenix</span></td></tr>
+        <tr><td>Cost (1BR, core)</td><td>$1,900 – 2,200 (Midtown)</td><td>$1,500 – 1,800 (Tempe)</td><td><span class="tag-phx">Phoenix</span></td></tr>
+        <tr><td>Ministry saturation (young adult)</td><td>Heavy: 5+ established large gatherings</td><td>Moderate: no clear large midweek equivalent</td><td><span class="tag-phx">Phoenix</span></td></tr>
+        <tr><td>Existing AA ministry depth</td><td>Mature (dozens of pan-Asian congregations)</td><td>Sparse (handful, mostly ethnic-specific)</td><td><span class="tag-atl">Atlanta</span></td></tr>
+        <tr><td>Bible Belt baseline</td><td>High — easier on-ramp, more church-fluent</td><td>Low — more nones, post-Mormon, secular</td><td><span class="tag-tie">Trade-off</span></td></tr>
+        <tr><td>Local-bivocational retention</td><td>Strong — Tech grads stay, Fortune 500 anchors</td><td>Mixed — improving with TSMC, Intel</td><td><span class="tag-atl">Atlanta</span></td></tr>
+        <tr><td>Bivocational job market</td><td>Tech, finance, healthcare, corporate (16 F500)</td><td>Tech, semis, banking, ops</td><td><span class="tag-atl">Atlanta</span></td></tr>
+        <tr><td>Metro growth rate</td><td>~1.0% / yr</td><td>~1.1 – 1.6% / yr (4th fastest US)</td><td><span class="tag-phx">Phoenix</span></td></tr>
+        <tr><td>Climate friction</td><td>Hot humid summers, mild winters</td><td>110°+ summers, students disperse</td><td><span class="tag-atl">Atlanta</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DOSSIER ATLANTA -->
+<section class="dossier dossier-atl" id="atlanta">
+  <div class="container">
+    <div class="dossier-header">
+      <div>
+        <div class="dossier-no">§ III. Dossier — File 01</div>
+        <h1 class="dossier-name">A<em>tl</em>anta.</h1>
+      </div>
+      <div class="dossier-tag">A mature southern capital with a real cluster — and a crowded ministry shelf.</div>
+    </div>
+
+    <!-- HERO PHOTO -->
+    <div class="dossier-hero">
+      <div class="photo photo-atl">
+        <img src="https://images.unsplash.com/photo-1575917649705-5b59aaa12e6b?w=1800&q=80&auto=format&fit=crop" alt="Midtown Atlanta skyline at sunset">
+      </div>
+      <div class="photo-cap">
+        <span>Midtown Atlanta &nbsp;·&nbsp; from Piedmont Park</span>
+        <span class="credit">Photo: Brad Huchteman / Unsplash</span>
+      </div>
+    </div>
+
+    <!-- stat ribbon -->
+    <div class="stat-ribbon">
+      <div class="stat-cell">
+        <div class="num">125K</div>
+        <div class="lbl">Students within<br>30 min of Midtown</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">~6.5%</div>
+        <div class="lbl">Metro AA share<br>≈ 400K people</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">17</div>
+        <div class="lbl">Fortune 500 HQs<br>in metro</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">$5.3B</div>
+        <div class="lbl">Annual GT economic<br>impact in Georgia</div>
+      </div>
+    </div>
+
+    <!-- block 1: campus density -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">01</span>Campus Density</div>
+      <div>
+        <h3>Five <em>real</em> campuses inside thirty minutes.</h3>
+        <p>Atlanta is one of a small number of US metros where a single anchor — Midtown — sits inside a genuine multi-campus cluster. Tech is the obvious centerpiece, but Georgia State sits a single MARTA stop away, and Emory's 16,000 students are a 15-minute drive east. Add the Atlanta University Center and SCAD, and the population reachable on a Tuesday night runs into six figures.</p>
+
+        <div class="bars">
+          <div class="bar-row"><div class="name">Georgia State</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">≈ 50K</div></div>
+          <div class="bar-row"><div class="name">Georgia Tech</div><div class="bar-track"><div class="bar-fill" style="width: 94%"></div></div><div class="num">≈ 47K</div></div>
+          <div class="bar-row"><div class="name">Emory</div><div class="bar-track"><div class="bar-fill" style="width: 32%"></div></div><div class="num">≈ 16K</div></div>
+          <div class="bar-row"><div class="name">AUC (Morehouse / Spelman / Clark)</div><div class="bar-track"><div class="bar-fill" style="width: 20%"></div></div><div class="num">≈ 10K</div></div>
+          <div class="bar-row"><div class="name">SCAD Atlanta</div><div class="bar-track"><div class="bar-fill" style="width: 4%"></div></div><div class="num">≈ 2K</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHOTO PAIR — Midtown context -->
+    <div class="dossier-photo-pair">
+      <div>
+        <div class="photo photo-atl photo-frame">
+          <img src="https://images.unsplash.com/photo-1702913508519-d900f4604e18?w=900&q=80&auto=format&fit=crop" alt="Aerial view of Midtown Atlanta">
+        </div>
+        <div class="photo-cap">
+          <span>Tech Square &nbsp;·&nbsp; aerial</span>
+          <span class="credit">Sean Davis / Unsplash</span>
+        </div>
+      </div>
+      <div>
+        <div class="photo photo-atl photo-frame">
+          <img src="https://images.unsplash.com/photo-1736512642636-423ec6799e76?w=900&q=80&auto=format&fit=crop" alt="Midtown Atlanta skyline from Piedmont Park">
+        </div>
+        <div class="photo-cap">
+          <span>Piedmont Park &nbsp;·&nbsp; Midtown</span>
+          <span class="credit">Stephen Harlan / Unsplash</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 2: AA population -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">02</span>Asian American Reality</div>
+      <div>
+        <h3>Mature, dense, and <em>twenty miles away</em>.</h3>
+        <p>Atlanta has roughly twice the Asian American density of Phoenix metro and one of the fastest-growing AAPI communities in the South. Between 2013 and 2019 metro Atlanta added more than 75,000 AAPI residents — the 10th-largest absolute increase among US metros.</p>
+        <p>The catch: that density lives in Gwinnett (Duluth 22%, Suwanee 24%) and North Fulton (Johns Creek 29%). It is not in Midtown. The team will live, eat, and recruit in two different worlds — campus / Midtown by day, Buford Highway / Duluth on weekends. This is workable, and arguably advantageous, but it has to be designed for.</p>
+
+        <div class="bars">
+          <div class="bar-row"><div class="name">Johns Creek</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">29.4%</div></div>
+          <div class="bar-row"><div class="name">Suwanee</div><div class="bar-track"><div class="bar-fill" style="width: 82%"></div></div><div class="num">24.0%</div></div>
+          <div class="bar-row"><div class="name">Doraville</div><div class="bar-track"><div class="bar-fill" style="width: 80%"></div></div><div class="num">23.5%</div></div>
+          <div class="bar-row"><div class="name">Duluth</div><div class="bar-track"><div class="bar-fill" style="width: 75%"></div></div><div class="num">22.1%</div></div>
+          <div class="bar-row"><div class="name">Alpharetta</div><div class="bar-track"><div class="bar-fill" style="width: 69%"></div></div><div class="num">20.4%</div></div>
+          <div class="bar-row"><div class="name">Atlanta (city)</div><div class="bar-track"><div class="bar-fill" style="width: 16%"></div></div><div class="num">~5%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"A mature southern capital with a real cluster, real AA infrastructure, and a <em>crowded ministry shelf.</em>"</p>
+    </div>
+
+    <!-- block 3: ministry saturation -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">03</span>The Ministry Shelf</div>
+      <div>
+        <h3>The lane is <em>crowded</em>.</h3>
+        <p>Five churches in Atlanta are already running serious young-adult plays — most with infrastructure, staff, and venues hard to match in year one. Differentiation is non-trivial. The team's AA-led identity, multi-campus scope, and integrated college-to-young-pro model are the realest levers on hand.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">Passion City Church</span><span class="nt">Lindbergh / Cumberland · 700–1,500 / svc</span></div>
+          <div class="item"><span class="nm">Buckhead Church</span><span class="nt">North Point system · large young-pro draw</span></div>
+          <div class="item"><span class="nm">Grace Midtown</span><span class="nt">English Ave near GT · 300–500 / svc</span></div>
+          <div class="item"><span class="nm">Free Chapel Midtown</span><span class="nt">Midtown · multi-site campus</span></div>
+          <div class="item"><span class="nm">Christ Covenant — Armour Collective</span><span class="nt">young-adult Tuesday night, 221 Armour Dr</span></div>
+          <div class="item"><span class="nm">Journey Church</span><span class="nt">"Midtown" college ministry across GT, Emory, GSU</span></div>
+          <div class="item"><span class="nm">Rooted Church</span><span class="nt">2025 plant — GT, Emory, UGA</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 4: cost & runway -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">04</span>Runway</div>
+      <div>
+        <h3>Liveable for ten <em>bivocationals</em> — but not cheap.</h3>
+        <p>Midtown 1BR rent runs $1,900 – $2,200; West Midtown and Old Fourth Ward shave 10–15% off. Home Park and points west get cheaper still. Bivocational employment is genuinely abundant — Tech, Microsoft, Google ATL, Mailchimp/Intuit, Salesforce, Coca-Cola, Delta, Home Depot, NCR, Cox, Inspire Brands, plus the Emory / CDC / Emory Healthcare cluster on the east side. White-collar work for a high-caliber team is not a worry here.</p>
+      </div>
+    </div>
+
+    <!-- block 5: Carolina pipeline -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">05</span>The Carolina Pipeline</div>
+      <div>
+        <h3>An <em>unfair advantage</em> the team already has.</h3>
+        <p>Several of the team did college ministry at UNC. That's not a footnote — it's a structural asset for an Atlanta plant in a way it simply isn't for a Phoenix one. Chapel Hill is a 6.5-hour drive or a 90-minute direct flight from Atlanta. There are daily nonstops. UNC has roughly 32K students, a deep evangelical campus-ministry tradition, and an alumni population in metro Atlanta that runs into the tens of thousands.</p>
+        <p>Three downstream implications:</p>
+
+        <div class="bars" style="margin-top: 1.8rem;">
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Team backfill.</strong> &nbsp; UNC ministry alumni — the tier just behind your launch ten — are far more likely to consider relocating to Atlanta than to Phoenix. Years 2–5 recruiting has a real pool to draw from.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Summer pipeline back to Chapel Hill.</strong> &nbsp; Easy summer trips for recruiting Carolina seniors who'd otherwise scatter. Easy joint events with whoever's still doing campus ministry there. Easy intern exchanges.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Future sister plants.</strong> &nbsp; The same alumni network that feeds the Atlanta plant could seed future Southeast plants — Charlotte, Nashville, Raleigh-Durham — without building a recruiting funnel from scratch.
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.8rem;">From Phoenix, this advantage essentially disappears. Chapel Hill to Phoenix is a five-hour flight with a layover; the casual drive-or-fly cadence that makes UNC a live partner from Atlanta becomes a planned, expensive logistics problem from the desert.</p>
+      </div>
+    </div>
+
+    <!-- verdict -->
+    <div class="verdict">
+      <div>
+        <h4>— Where Atlanta wins —</h4>
+        <ul>
+          <li>Genuine multi-campus thesis — the cluster is real</li>
+          <li>2× the AA density and absolute population vs. Phoenix</li>
+          <li>Mature post-grad job market keeps disciples in-city</li>
+          <li>Bible Belt baseline shortens evangelistic on-ramp</li>
+          <li>Existing AA ministry network = potential partners and feeders</li>
+          <li>UNC alumni / ministry pipeline is geographically live</li>
+        </ul>
+      </div>
+      <div>
+        <h4>— Where Atlanta costs you —</h4>
+        <ul>
+          <li>Crowded young-adult shelf — differentiation is real work</li>
+          <li>AA density lives 30 min from Tech, not in Midtown</li>
+          <li>Higher COL than Phoenix (~20–25%)</li>
+          <li>Brother's plant already operating in this exact ecosystem</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOSSIER PHOENIX -->
+<section class="dossier dossier-phx" id="phoenix">
+  <div class="container">
+    <div class="dossier-header">
+      <div>
+        <div class="dossier-no">§ IV. Dossier — File 02</div>
+        <h1 class="dossier-name">Pho<em>e</em>nix.</h1>
+      </div>
+      <div class="dossier-tag">A growth metro with a market gap — and one big campus carrying the load.</div>
+    </div>
+
+    <!-- HERO PHOTO -->
+    <div class="dossier-hero">
+      <div class="photo photo-phx">
+        <img src="https://images.unsplash.com/photo-1700784218610-7bf000cc6257?w=1800&q=80&auto=format&fit=crop" alt="Tempe Arizona skyline with mountains in background">
+      </div>
+      <div class="photo-cap">
+        <span>Tempe &nbsp;·&nbsp; with the East Valley beyond</span>
+        <span class="credit">Photo: Haripriya K / Unsplash</span>
+      </div>
+    </div>
+
+    <!-- stat ribbon -->
+    <div class="stat-ribbon">
+      <div class="stat-cell">
+        <div class="num">80K</div>
+        <div class="lbl">ASU Tempe — largest<br>single US campus</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">~4%</div>
+        <div class="lbl">Metro AA share<br>≈ 210K people</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">5.2M</div>
+        <div class="lbl">Metro pop. — 10th US<br>4th fastest growing</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">~25%</div>
+        <div class="lbl">Lower cost of<br>living vs. Atlanta</div>
+      </div>
+    </div>
+
+    <!-- block 1: campus reality -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">01</span>Two Anchor Schools</div>
+      <div>
+        <h3>The largest single university in the country — <em>plus a sleeper</em>.</h3>
+        <p>The first chapter of the Phoenix campus story is ASU. Tempe alone is 80,000 students, the largest single-campus enrollment in the United States. The second chapter, easy to miss from the outside, is Grand Canyon University — a 25,000-student residential Christian university 25 minutes northwest of Tempe, with the largest on-campus housing community of any private university in the country. Combined with ASU's downtown campus, the count of accessible students crosses 130,000.</p>
+        <p>The two anchors play very different roles in the strategy. ASU is a vast secular mission field. GCU is a pre-formed Christian student body — and that distinction has structural implications we treat in Block 05.</p>
+
+        <div class="bars">
+          <div class="bar-row"><div class="name">ASU Tempe</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">≈ 80K</div></div>
+          <div class="bar-row"><div class="name">Grand Canyon U. (residential)</div><div class="bar-track"><div class="bar-fill" style="width: 31%"></div></div><div class="num">≈ 25K</div></div>
+          <div class="bar-row"><div class="name">ASU Downtown PHX</div><div class="bar-track"><div class="bar-fill" style="width: 16%"></div></div><div class="num">≈ 13K</div></div>
+          <div class="bar-row"><div class="name">ASU West / Polytechnic</div><div class="bar-track"><div class="bar-fill" style="width: 12%"></div></div><div class="num">≈ 10K</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHOTO PAIR — Tempe context -->
+    <div class="dossier-photo-pair">
+      <div>
+        <div class="photo photo-phx photo-frame">
+          <img src="https://images.unsplash.com/photo-1574552246628-023a4d4cb0ff?w=900&q=80&auto=format&fit=crop" alt="Tempe Town Lake at night">
+        </div>
+        <div class="photo-cap">
+          <span>Tempe Town Lake &nbsp;·&nbsp; night</span>
+          <span class="credit">Jimmy Larry / Unsplash</span>
+        </div>
+      </div>
+      <div>
+        <div class="photo photo-phx photo-frame">
+          <img src="https://images.unsplash.com/photo-1614018247701-64b615ece5a5?w=900&q=80&auto=format&fit=crop" alt="ASU Tempe architecture at night">
+        </div>
+        <div class="photo-cap">
+          <span>ASU Tempe &nbsp;·&nbsp; campus</span>
+          <span class="credit">Andrew Ruiz / Unsplash</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 2: AA reality -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">02</span>The AA Tailwind</div>
+      <div>
+        <h3>Smaller, but <em>concentrated</em> right where you'd plant.</h3>
+        <p>Phoenix metro is only ~4% Asian American — about half of Atlanta's share. But the population that exists is clustered in the East Valley, adjacent to ASU. Chandler is 11% Asian (the most Asian city in Arizona); Tempe itself is nearly 9%. The TSMC fab, Intel's Ocotillo expansion, and the broader semiconductor build-out are pulling AA tech families into Chandler and Gilbert at a rate the census hasn't caught up to.</p>
+
+        <div class="bars">
+          <div class="bar-row"><div class="name">Chandler</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">11.3%</div></div>
+          <div class="bar-row"><div class="name">Tempe</div><div class="bar-track"><div class="bar-fill" style="width: 78%"></div></div><div class="num">8.8%</div></div>
+          <div class="bar-row"><div class="name">Gilbert</div><div class="bar-track"><div class="bar-fill" style="width: 50%"></div></div><div class="num">5.6%</div></div>
+          <div class="bar-row"><div class="name">Phoenix (city)</div><div class="bar-track"><div class="bar-fill" style="width: 35%"></div></div><div class="num">~4.0%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"The higher-conviction, higher-asymmetry play. <em>Build something that doesn't exist</em> in a city the country is still moving to."</p>
+    </div>
+
+    <!-- block 3: ministry gap -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">03</span>The Open Lane</div>
+      <div>
+        <h3>No real <em>large midweek equivalent</em> here.</h3>
+        <p>The valley has serious churches — Christ's Church of the Valley (CCV), Redemption Church, Dream City — but none are running a polished, midweek, college + young-pro gathering at scale. The lane Atlanta has five contestants in is, as best we can tell, empty in Phoenix.</p>
+        <p>The flip side: Phoenix is also less religious by baseline. There is no Bible-Belt warm pool to start with. Initial traction will look slower; downstream conviction is often deeper.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">Christ's Church of the Valley (CCV)</span><span class="nt">Megachurch — family / suburban</span></div>
+          <div class="item"><span class="nm">Redemption Church</span><span class="nt">Multi-site, solid young-adult work</span></div>
+          <div class="item"><span class="nm">Dream City</span><span class="nt">Pentecostal / large Sunday</span></div>
+          <div class="item"><span class="nm">— No clear midweek young-adult gathering at scale —</span><span class="nt">opportunity</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 4: cost -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">04</span>Runway</div>
+      <div>
+        <h3>The bivocational <em>math</em> works.</h3>
+        <p>Tempe 1BR rent runs $1,500–$1,800; Chandler and Gilbert offer real family housing well under Atlanta numbers. Bivocational employment is real and growing — TSMC's Phoenix fabs, Intel Ocotillo, Honeywell, American Express, USAA, plus Amazon's massive operations footprint. For a ten-family team, the cost-of-living delta translates to roughly 18–24 extra months of runway versus Atlanta at the same fundraising level.</p>
+      </div>
+    </div>
+
+    <!-- block 5: GCU pipeline -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">05</span>The GCU Pipeline</div>
+      <div>
+        <h3>A 25,000-student <em>Christian campus</em> down the road.</h3>
+        <p>Twenty-five minutes from Tempe sits a structural asset most planters overlook: Grand Canyon University. 25,000 traditional residential students. 17,000 living in on-campus housing — second only to Michigan State among all American universities. Founded in 1949 as a Christian college, still explicitly Christian today, with a curriculum built around Christian-worldview formation and a campus culture that fights the broader cultural tide of college-age deconstruction.</p>
+        <p>The Barna number is the one to sit with: nationally, ~70% of college students lose their faith during college. GCU's internal surveys show the inverse — over 90% of students feel their faith is supported and developing. Those students are not the same evangelistic field as ASU. They are something else entirely.</p>
+
+        <div class="bars" style="margin-top: 1.8rem;">
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Pre-formed leaders, not seekers.</strong> &nbsp; A church plant in Phoenix can recruit GCU students as student leaders — running small groups, leading worship, doing campus outreach at ASU — in their second or third year, with theology classes already done.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Bivocational backfill.</strong> &nbsp; GCU graduates considering ministry, missions, or the marketplace are already pointed toward kingdom work. They are exactly the demographic a bivocational team needs to recruit from in years 2–5.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Sending base.</strong> &nbsp; Many GCU students arrive intending to plant or go overseas. A church that can be their home base for 4–6 years and then send them is well-positioned to feed the second and third paths of the flywheel — plant elsewhere, missions — even where local-bivocational retention is weaker.
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.8rem;">The role-split is structurally clean: <strong>ASU is the mission field; GCU is the leadership pipeline.</strong> A weekly gathering near Tempe reaches the unchurched 80K; intentional partnership with GCU recruits and trains the leaders who reach them. This dual-anchor logic doesn't exist in Atlanta with anything like the same shape.</p>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <div>
+        <h4>— Where Phoenix wins —</h4>
+        <ul>
+          <li>Real market gap — no incumbent at this scale</li>
+          <li>~25% lower cost of living = longer bivocational runway</li>
+          <li>ASU as mission field + GCU as leadership pipeline — a structural dual-anchor</li>
+          <li>AA population concentrated adjacent to ASU</li>
+          <li>4th-fastest-growing US metro — demographic tailwind</li>
+        </ul>
+      </div>
+      <div>
+        <h4>— Where Phoenix costs you —</h4>
+        <ul>
+          <li>Multi-campus thesis still narrower than Atlanta's true cluster</li>
+          <li>Half the AA density vs. Atlanta</li>
+          <li>Less mature AA ministry partner ecosystem</li>
+          <li>Weaker local-bivocational retention (improving but newer)</li>
+          <li>Summer student dispersal — programming gap</li>
+          <li>The team's UNC ministry pipeline is geographically inert from here</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RETENTION -->
+<section class="retention" id="retention">
+  <div class="container">
+    <div class="retention-head">
+      <div>
+        <div class="eyebrow">§ V. The Retention Question</div>
+        <h2>Do they <em>stay</em>?</h2>
+      </div>
+      <div>
+        <p>Three sending paths come out of every graduating class — local bivocational, plant elsewhere, missions. The first path requires that graduates stay in your metro. The other two don't. Retention math doesn't determine whether the flywheel works; it determines what proportion of it stays nearby to become the church's own sending base.</p>
+      </div>
+    </div>
+
+    <div class="flow-viz">
+      <div class="flow-grid">
+        <div class="flow-cell flow-atl">
+          <h4>— Atlanta Pipeline —</h4>
+          <div class="city-name">Tech grad <em>stays</em>.</div>
+          <svg class="flow-svg" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="20" width="80" height="200" fill="#1A3328"/>
+            <text x="40" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">100% grads</text>
+            <text x="40" y="13" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">enter</text>
+
+            <path d="M 80 20 C 200 20, 280 30, 380 40 L 380 165 C 280 155, 200 175, 80 175 Z" fill="#1A3328" opacity="0.85"/>
+            <text x="230" y="100" font-family="JetBrains Mono" font-size="11" fill="#EFE8D6" font-weight="500">~55–60%</text>
+            <text x="230" y="116" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.8">stay in metro</text>
+
+            <path d="M 80 175 L 380 165 L 380 220 L 80 220 Z" fill="#1A3328" opacity="0.35"/>
+            <text x="230" y="200" font-family="JetBrains Mono" font-size="9" fill="#3A352D">~40–45% leave</text>
+
+            <rect x="380" y="40" width="80" height="125" fill="#C49A4A"/>
+            <text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">retained</text>
+            <text x="420" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#1A3328" font-weight="600">~58%</text>
+
+            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">17 F500 HQs anchor demand</text>
+          </svg>
+        </div>
+
+        <div class="flow-cell flow-phx">
+          <h4>— Phoenix Pipeline —</h4>
+          <div class="city-name">ASU grad <em>often leaves</em>.</div>
+          <svg class="flow-svg" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="20" width="80" height="200" fill="#B14C2C"/>
+            <text x="40" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">100% grads</text>
+            <text x="40" y="13" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">enter</text>
+
+            <path d="M 80 20 C 200 20, 280 60, 380 90 L 380 165 C 280 145, 200 165, 80 145 Z" fill="#B14C2C" opacity="0.85"/>
+            <text x="230" y="105" font-family="JetBrains Mono" font-size="11" fill="#F0E4CB" font-weight="500">~40–45%</text>
+            <text x="230" y="121" font-family="JetBrains Mono" font-size="9" fill="#F0E4CB" opacity="0.8">stay (rising)</text>
+
+            <path d="M 80 145 L 380 165 L 380 220 L 80 220 Z" fill="#B14C2C" opacity="0.35"/>
+            <text x="200" y="200" font-family="JetBrains Mono" font-size="9" fill="#3A352D">~55–60% leave for LA / SEA / BAY</text>
+
+            <rect x="380" y="90" width="80" height="75" fill="#E2D5B6"/>
+            <text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">retained</text>
+            <text x="420" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#8C3517" font-weight="600">~42%</text>
+
+            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">TSMC + Intel are changing this fast</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="retention-grid">
+      <div class="retention-card atl">
+        <h3>Atlanta — <em>retention is structural</em>.</h3>
+        <p>The Tech "Yellow Jacket Mafia" is not a meme. Tech alone supports an estimated 33,000 Georgia jobs and contributes ~$5.3B to the state's economy annually. Atlanta hosts 17 Fortune 500 headquarters — Coca-Cola, Delta, Home Depot, UPS, Cox, Inspire Brands, Genuine Parts, NCR, Equifax, Aflac, Truist, Southern Co. — alongside major Microsoft, Google, Salesforce, and Mailchimp/Intuit footprints. Emory anchors a healthcare cluster with the CDC across the street.</p>
+        <ul>
+          <li>Tech + Emory grads recruited heavily by local F500 / Big Tech ATL offices</li>
+          <li>Cost still permits new grads to live in Midtown / O4W / West Midtown</li>
+          <li>Deep young-professional culture: people stay 3 – 7 years post-grad</li>
+          <li>Implication: <strong>students discipled at 19 can become bivocational team at 23</strong> — in the same metro, on the local sending base</li>
+        </ul>
+      </div>
+
+      <div class="retention-card phx">
+        <h3>Phoenix — <em>retention is in transition</em>.</h3>
+        <p>Historically, ASU grads trended toward LA, Seattle, Austin, and the Bay Area for higher-paying tech work. That picture is changing rapidly: TSMC's $40B+ fab investment, Intel's Ocotillo expansion, the East Valley semiconductor corridor, Amazon's massive operations footprint, and a swelling finance/insurance presence are creating reasons to stay that didn't exist five years ago.</p>
+        <ul>
+          <li>AAPI tech grads increasingly retained by Chandler corridor employers</li>
+          <li>Cheap rent makes staying viable for 22-year-olds with internships only</li>
+          <li>But: post-grad ecosystem still less mature than Atlanta or DFW</li>
+          <li>Implication: <strong>the local-bivocational path is thinner here</strong> — the plant-elsewhere and missions paths still run normally</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY FACTOR -->
+<section class="family">
+  <div class="container">
+    <div class="family-head">
+      <div class="eyebrow" style="color: var(--atl-gold);">§ VI. The Family Factor</div>
+      <h2>Two ministries. <em>Parallel, not overlapping.</em><br>Occasional collaboration.</h2>
+      <p>Isaiah Kang's A2N plant — bridging Emory, Georgia Tech, and UGA from Duluth — works the same campuses we'd be working. The realistic shape of that relationship isn't shared students. Asking a 19-year-old to be a full participant in two parallel ministries is unrealistic; the time and emotional bandwidth aren't there. What's actually workable is two parallel works, reaching different students, with deliberate collaboration at a few touchpoints each year.</p>
+    </div>
+
+    <!-- partnership viz -->
+    <div class="partnership-viz">
+      <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 760px;">
+        <!-- isaiah's circle (positioned left, no overlap) -->
+        <g>
+          <circle cx="180" cy="200" r="125" fill="none" stroke="#C49A4A" stroke-width="1.2" stroke-dasharray="3,4" opacity="0.7"/>
+          <circle cx="180" cy="200" r="125" fill="#C49A4A" opacity="0.06"/>
+          <text x="180" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#C49A4A" letter-spacing="2">— ISAIAH / A2N —</text>
+          <text x="180" y="100" text-anchor="middle" font-family="Fraunces" font-size="20" fill="#EFE8D6" font-weight="300" font-style="italic">campus fellowship.</text>
+          <text x="180" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.85">Emory · GT · UGA</text>
+          <text x="180" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.85">BCM-style discipleship</text>
+          <text x="180" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">based in Duluth</text>
+          <text x="180" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">reaching their students</text>
+        </g>
+
+        <!-- your circle (positioned right, no overlap) -->
+        <g>
+          <circle cx="520" cy="200" r="125" fill="none" stroke="#9A4628" stroke-width="1.2" stroke-dasharray="3,4" opacity="0.7"/>
+          <circle cx="520" cy="200" r="125" fill="#9A4628" opacity="0.08"/>
+          <text x="520" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#9A4628" letter-spacing="2">— YOUR PLANT —</text>
+          <text x="520" y="100" text-anchor="middle" font-family="Fraunces" font-size="20" fill="#EFE8D6" font-weight="300" font-style="italic">local church.</text>
+          <text x="520" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.85">Midtown anchor</text>
+          <text x="520" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.85">college + young-pro arms</text>
+          <text x="520" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">Sunday + midweek</text>
+          <text x="520" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">reaching our students</text>
+        </g>
+
+        <!-- collaboration bridge between -->
+        <g>
+          <!-- arrow tips and dotted line -->
+          <line x1="305" y1="200" x2="395" y2="200" stroke="#C49A4A" stroke-width="1" stroke-dasharray="2,3" opacity="0.5"/>
+          <circle cx="305" cy="200" r="3" fill="#C49A4A" opacity="0.7"/>
+          <circle cx="395" cy="200" r="3" fill="#9A4628" opacity="0.7"/>
+
+          <text x="350" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#C49A4A" letter-spacing="2">— OCCASIONAL —</text>
+          <text x="350" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#C49A4A" letter-spacing="2">COLLABORATION</text>
+          <text x="350" y="195" text-anchor="middle" font-family="Fraunces" font-size="13" font-style="italic" fill="#EFE8D6" font-weight="300">2–3x / year</text>
+          <text x="350" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#EFE8D6" opacity="0.65">summer events</text>
+          <text x="350" y="245" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#EFE8D6" opacity="0.65">leader trainings</text>
+          <text x="350" y="260" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#EFE8D6" opacity="0.65">missions trips</text>
+        </g>
+
+        <!-- bottom rule -->
+        <line x1="60" y1="345" x2="640" y2="345" stroke="#EFE8D6" stroke-width="0.4" opacity="0.3"/>
+        <text x="60" y="362" font-family="JetBrains Mono" font-size="8" fill="#EFE8D6" opacity="0.55">FIG. 06 — Two parallel works in the same field. Different students. Friendly cooperation, not shared membership.</text>
+      </svg>
+    </div>
+
+    <div class="partner-grid">
+      <div class="partner-cell">
+        <div class="role">Isaiah / A2N — primary work</div>
+        <h4>Their <em>campus fellowship</em>.</h4>
+        <ul>
+          <li>Campus-embedded, BCM-style relational discipleship</li>
+          <li>Across Emory, GT, UGA — multi-school</li>
+          <li>Reaches its own pool of students through its own networks</li>
+          <li>Operates from Duluth — within the AA family network</li>
+        </ul>
+      </div>
+      <div class="partner-cell">
+        <div class="role">Your plant — primary work</div>
+        <h4>Our <em>local church</em>.</h4>
+        <ul>
+          <li>Midtown-anchored church with our own college ministry</li>
+          <li>Reaches students through our gatherings, our teams, our friendships</li>
+          <li>Different student profile, different relational network</li>
+          <li>Friendly with A2N — not competing for the same names</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section class="strategy" id="strategy">
+  <div class="container">
+    <div class="strategy-head">
+      <div class="eyebrow">§ VII. The Midtown Strategy</div>
+      <h2>Plant in <em>Midtown</em>.<br>Bridge campus and city.</h2>
+      <p class="lede">A college-and-young-professional church anchored in Midtown Atlanta — within walking distance of Tech, MARTA-accessible to GSU, drivable from Emory, and embedded in the post-grad neighborhood where 22–30s already live, work, and look for community.</p>
+    </div>
+
+    <!-- pillars -->
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pno">— Pillar 01 —</div>
+        <h4>Sunday gathering.<br>Midweek front door.</h4>
+        <p>Sunday morning is for the church family — undergrads, young pros, a few young families. Tuesday or Wednesday night is the public-facing gathering: large, polished, evangelistic, where students bring friends.</p>
+      </div>
+      <div class="pillar">
+        <div class="pno">— Pillar 02 —</div>
+        <h4>College ministry as a <br>core arm.</h4>
+        <p>Not a feeder, not an afterthought. A dedicated college pastor, weekly college community, semester-paced rhythms, fall and spring retreats. Students should know this church is for them — not just a stepping-stone to the young-pro thing.</p>
+      </div>
+      <div class="pillar">
+        <div class="pno">— Pillar 03 —</div>
+        <h4>Young-pro ministry as the <br>parallel arm.</h4>
+        <p>Vocational discipleship, neighborhood small groups in West Midtown / O4W / Buckhead, marriage and family on-ramps, third-place hospitality. The rhythm of life after 22 is structurally different from college; programming has to reflect that.</p>
+      </div>
+      <div class="pillar">
+        <div class="pno">— Pillar 04 —</div>
+        <h4>AA sensibility,<br>multi-ethnic table.</h4>
+        <p>Cultural touchstones, food, hospitality, leadership shape — but not a membership requirement. Tech and Midtown are too multi-ethnic to do anything else; the AA-led identity is the flavor, not the gate.</p>
+      </div>
+    </div>
+
+    <!-- pipeline -->
+    <div class="pipeline-section">
+      <h3>The <em>six-year</em> flywheel.</h3>
+      <p>The model is faster than it sounds. A student arrives as a freshman, becomes a leader by sophomore or junior year, graduates ready to serve, and within a year or two of graduation is functioning as a kingdom worker — locally, in another US city, or overseas. Six years from welcome to deployment.</p>
+
+      <div class="pipeline-viz">
+        <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+          <!-- main timeline -->
+          <line x1="60" y1="180" x2="700" y2="180" stroke="#C9BFA8" stroke-width="1"/>
+
+          <!-- Stage 1: Freshman -->
+          <g>
+            <circle cx="120" cy="180" r="22" fill="#1A3328"/>
+            <text x="120" y="185" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#EFE8D6" font-weight="500">18</text>
+            <text x="120" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D" letter-spacing="1.5">FRESHMAN</text>
+            <foreignObject x="40" y="210" width="160" height="100">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter Tight'; font-size: 11px; color: #3A352D; line-height: 1.4; text-align: center;">
+                <em style="font-family: Fraunces; font-style: italic; color: #1A3328; font-size: 13px;">Welcomed in</em><br/>
+                Plugged into church college ministry. Discipleship begins.
+              </div>
+            </foreignObject>
+          </g>
+
+          <!-- Stage 2: Student Leader -->
+          <g>
+            <circle cx="310" cy="180" r="22" fill="#2C5440"/>
+            <text x="310" y="185" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#EFE8D6" font-weight="500">19–20</text>
+            <text x="310" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D" letter-spacing="1.5">STUDENT LEADER</text>
+            <foreignObject x="225" y="210" width="170" height="100">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter Tight'; font-size: 11px; color: #3A352D; line-height: 1.4; text-align: center;">
+                <em style="font-family: Fraunces; font-style: italic; color: #2C5440; font-size: 13px;">Sophomore / Junior</em><br/>
+                Leading a small group. Real responsibility. Being trained.
+              </div>
+            </foreignObject>
+          </g>
+
+          <!-- Stage 3: Senior -->
+          <g>
+            <circle cx="500" cy="180" r="22" fill="#9A4628"/>
+            <text x="500" y="185" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#EFE8D6" font-weight="500">21</text>
+            <text x="500" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D" letter-spacing="1.5">SENIOR</text>
+            <foreignObject x="420" y="210" width="160" height="100">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter Tight'; font-size: 11px; color: #3A352D; line-height: 1.4; text-align: center;">
+                <em style="font-family: Fraunces; font-style: italic; color: #9A4628; font-size: 13px;">Sent.</em><br/>
+                Discerning next step. Commissioned. Trained. Ready.
+              </div>
+            </foreignObject>
+          </g>
+
+          <!-- Stage 4: Kingdom Worker (the fork) -->
+          <g>
+            <circle cx="690" cy="180" r="26" fill="#C49A4A"/>
+            <text x="690" y="185" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#1A3328" font-weight="600">22–24</text>
+            <text x="690" y="132" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D" letter-spacing="1.5">KINGDOM WORKER</text>
+          </g>
+
+          <!-- arrows along timeline -->
+          <path d="M 145 180 L 285 180" stroke="#C9BFA8" stroke-width="1" marker-end="url(#arrSm)"/>
+          <path d="M 335 180 L 475 180" stroke="#C9BFA8" stroke-width="1" marker-end="url(#arrSm)"/>
+          <path d="M 525 180 L 661 180" stroke="#C9BFA8" stroke-width="1" marker-end="url(#arrSm)"/>
+
+          <!-- the three sending paths from kingdom worker -->
+          <!-- Path 1: Bivocational locally (top) -->
+          <path d="M 716 168 Q 820 130, 920 90" stroke="#9A4628" stroke-width="1.2" stroke-dasharray="4,3" fill="none" marker-end="url(#arrLg)"/>
+          <foreignObject x="850" y="50" width="220" height="80">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter Tight'; font-size: 11px; color: #3A352D; line-height: 1.4;">
+              <em style="font-family: Fraunces; font-style: italic; color: #1A3328; font-size: 13px;">Stay local.</em><br/>
+              Bivocational worker on the team. Builds the church's sending base.
+            </div>
+          </foreignObject>
+
+          <!-- Path 2: Plant elsewhere in US (middle) -->
+          <path d="M 716 180 L 920 180" stroke="#9A4628" stroke-width="1.2" stroke-dasharray="4,3" fill="none" marker-end="url(#arrLg)"/>
+          <foreignObject x="930" y="142" width="220" height="80">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter Tight'; font-size: 11px; color: #3A352D; line-height: 1.4;">
+              <em style="font-family: Fraunces; font-style: italic; color: #2C5440; font-size: 13px;">Plant.</em><br/>
+              Joins a US plant team in another city. Charlotte, Nashville, anywhere.
+            </div>
+          </foreignObject>
+
+          <!-- Path 3: Missions / strategic city (bottom) -->
+          <path d="M 716 192 Q 820 230, 920 270" stroke="#9A4628" stroke-width="1.2" stroke-dasharray="4,3" fill="none" marker-end="url(#arrLg)"/>
+          <foreignObject x="850" y="280" width="220" height="80">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Inter Tight'; font-size: 11px; color: #3A352D; line-height: 1.4;">
+              <em style="font-family: Fraunces; font-style: italic; color: #9A4628; font-size: 13px;">Go.</em><br/>
+              Overseas missions, or church-planting in a strategic global city.
+            </div>
+          </foreignObject>
+
+          <defs>
+            <marker id="arrSm" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M 0 0 L 5 3 L 0 6 z" fill="#C9BFA8"/>
+            </marker>
+            <marker id="arrLg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M 0 0 L 7 4 L 0 8 z" fill="#9A4628"/>
+            </marker>
+          </defs>
+
+          <text x="550" y="38" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#9A4628" letter-spacing="2">— FIG. 07: THE SIX-YEAR DISCIPLESHIP FLYWHEEL —</text>
+          <text x="550" y="53" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7" letter-spacing="1">freshman → student leader → sent → kingdom worker (three paths)</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- tactics grid -->
+    <div class="tactics-grid">
+      <div class="tactic">
+        <div class="tno">Tactic 01 — Venue</div>
+        <h4>Anchor near <em>Tech Square</em>.</h4>
+        <p>Walking distance for Tech students, one MARTA stop from GSU, 15 min from Emory. Either rent a midweek venue (Tabernacle, Center Stage, Variety Playhouse, hotel ballrooms) or partner with an existing Midtown church for shared space.</p>
+        <div class="meta">Cost order — $4–8K / month rented · $0 partnership</div>
+      </div>
+      <div class="tactic">
+        <div class="tno">Tactic 02 — Cadence</div>
+        <h4>Tuesday is the <em>front door</em>.</h4>
+        <p>Worship + teaching + invitation-friendly, designed so undergrads can bring friends. Sunday is a smaller, family-feel gathering for members and regulars. Midweek can be larger than Sunday by design.</p>
+        <div class="meta">Pattern — large gathering + church family</div>
+      </div>
+      <div class="tactic">
+        <div class="tno">Tactic 03 — College Pastor</div>
+        <h4>Hire a <em>college pastor</em> from day one.</h4>
+        <p>Not a "young adult" pastor who treats college as a sub-population. A dedicated leader for the 18-22 ministry: weekly college community, on-campus presence at Tech and GSU, fall/spring retreats, mentoring pipelines into the church's young-pro arm.</p>
+        <div class="meta">Lead — within first 12 months</div>
+      </div>
+      <div class="tactic">
+        <div class="tno">Tactic 04 — Living Map</div>
+        <h4>Team lives in <em>Midtown / West Midtown / O4W</em>.</h4>
+        <p>Bivocational families need to be neighbors to the people they're reaching. Avoid the Duluth-commute trap that breaks most ATL young-adult ministries. Rent comes with the territory.</p>
+        <div class="meta">Cluster — 30308 / 30318 / 30312</div>
+      </div>
+      <div class="tactic">
+        <div class="tno">Tactic 05 — Coordinate with Isaiah</div>
+        <h4>Parallel works, <em>occasional collaboration</em>.</h4>
+        <p>Different students, different relational networks, different programs. We don't try to share members; the time math doesn't work. What we do share: 2–3 collaboration points a year — a joint summer gathering, a leader training, a missions trip. Friendly cooperation, not entangled membership.</p>
+        <div class="meta">Cadence — quarterly leadership alignment + 2-3 joint events / year</div>
+      </div>
+      <div class="tactic">
+        <div class="tno">Tactic 06 — Partner Church</div>
+        <h4>Land an <em>Atlanta sponsor</em>.</h4>
+        <p>Large gatherings of this kind work in part because they piggyback on a partner church's venue, 501(c)(3), and operations. Identify one large Atlanta church (Passion, Buckhead, Christ Covenant, Grace Midtown) willing to host or back the plant. This decision shapes everything else.</p>
+        <div class="meta">First conversations — months 1–3</div>
+      </div>
+      <div class="tactic">
+        <div class="tno">Tactic 07 — Bivocational Slates</div>
+        <h4>Pre-place the <em>ten</em>.</h4>
+        <p>Before launch, line up jobs for all ten team members within Midtown commute radius. Tech roles at MSFT/Google/Mailchimp, healthcare at Emory, design and corporate at the Coca-Cola / Delta / Home Depot tier. Pre-placing is the survival difference.</p>
+        <div class="meta">Lead time — 6–12 months pre-launch</div>
+      </div>
+      <div class="tactic">
+        <div class="tno">Tactic 08 — Measure What Matters</div>
+        <h4>Count <em>retained five-year disciples</em>.</h4>
+        <p>Not Tuesday-night attendance. Not Sunday baptisms alone. Track the retention curve from first-time visitor → small group → leader → bivocational worker. The flywheel is a ten-year compound machine; build instrumentation that measures the compounding.</p>
+        <div class="meta">KPI — # of 25-year-olds in vocational + ministry rhythm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISION (NEUTRAL) -->
+<section class="decision">
+  <div class="container">
+    <div class="eyebrow">§ VIII. The Verdict</div>
+    <h2>Two paths.<br>One <em>question</em>.</h2>
+    <p class="lede">
+      The data is on the table. Atlanta and Phoenix each have a coherent thesis, and the right answer depends less on which city is "better" in the abstract than on which trade-offs the team is built to absorb. What follows is the framework — not the conclusion.
+    </p>
+
+    <div class="frame-grid">
+      <div class="frame-cell atl">
+        <div class="label">— Choose Atlanta if —</div>
+        <h4>The <em>cluster</em> is the call.</h4>
+        <ul>
+          <li>Multi-campus reach (Tech + Emory + GSU + AUC) is non-negotiable</li>
+          <li>An AA ministry ecosystem to belong to and partner with matters more than market gap</li>
+          <li>The brother's plant feels like a partnership opportunity, not a constraint</li>
+          <li>The UNC ministry pipeline being live (drive / 90-min flight) is part of the recruiting math</li>
+          <li>Long retention compounding (10-year disciples → bivocational team) is core to the vision</li>
+          <li>Higher cost is offset by higher F500 / Big Tech bivocational job density</li>
+        </ul>
+      </div>
+
+      <div class="frame-cell phx">
+        <div class="label">— Choose Phoenix if —</div>
+        <h4>The <em>open lane</em> is the call.</h4>
+        <ul>
+          <li>Building something that doesn't yet exist matters more than slotting into a scene</li>
+          <li>The dual-anchor logic (ASU as field + GCU as pipeline) is the strategic asymmetry you want</li>
+          <li>~25% lower cost of living changes the bivocational math meaningfully</li>
+          <li>The team is willing to pioneer without an established AA partner network</li>
+          <li>Riding a fast-growing metro's demographic wave is part of the strategic bet</li>
+          <li>Sending (plant + missions) matters as much to the vision as local retention</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="questions-list">
+      <h3>— Questions to sit with before deciding —</h3>
+      <ol>
+        <li>What is genuinely non-negotiable about the calling — multi-campus reach, AA infrastructure, market gap, or low-cost runway?</li>
+        <li>Is the partnership with Isaiah's plant a feature of the Atlanta thesis, or could it become a structural tension?</li>
+        <li>How long is the team committed for? Five years favors Phoenix's gap; fifteen favors Atlanta's compounding.</li>
+        <li>Which trade-off is the team built to absorb — higher saturation, or higher pioneer cost?</li>
+        <li>Where does the team's spouses, children, and aging-parent infrastructure point?</li>
+        <li>Which city does the team actually <em>want</em> to live in for a decade?</li>
+      </ol>
+    </div>
+
+    <a href="distinctives.html" style="display: block; margin-top: 5rem; padding: 2.5rem; border: 1px solid rgba(196,154,74,0.5); text-decoration: none; transition: all 0.3s; background: rgba(196,154,74,0.03);" onmouseover="this.style.background='rgba(196,154,74,0.08)';this.style.borderColor='var(--atl-gold)'" onmouseout="this.style.background='rgba(196,154,74,0.03)';this.style.borderColor='rgba(196,154,74,0.5)'">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+        <div>
+          <div style="font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--atl-gold); margin-bottom: 0.7rem;">— Companion Document —</div>
+          <div style="font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 300; font-variation-settings: 'opsz' 144, 'SOFT' 50; color: var(--paper); line-height: 1.2;">
+            Read next: <em style="font-style: italic; color: var(--atl-gold); font-variation-settings: 'opsz' 144, 'SOFT' 100;">On What We're Building.</em>
+          </div>
+          <div style="font-family: var(--sans); font-size: 0.95rem; color: rgba(242,235,221,0.7); margin-top: 0.7rem; max-width: 540px;">
+            The city question is one half of the picture. The other half — what kind of church we're planting, regardless of where — is the subject of the distinctives document.
+          </div>
+        </div>
+        <div style="font-family: var(--serif); font-size: 2.5rem; font-style: italic; color: var(--atl-gold); font-variation-settings: 'opsz' 144, 'SOFT' 100;">→</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-row">
+    <span>Field Guide Vol. I</span>
+    <span>Two Cities — One Calling</span>
+    <span>Internal · Working Document</span>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('section > .container > *, .dossier-block, .pillar, .tactic, .frame-cell, .partner-cell, .retention-card, .dossier-photo-pair > *').forEach(el => {
+  el.classList.add('fade-up');
+  io.observe(el);
+});
+
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = ['question', 'scorecard', 'atlanta', 'phoenix', 'retention', 'strategy'].map(id => document.getElementById(id));
+window.addEventListener('scroll', () => {
+  const y = window.scrollY + 200;
+  let active = null;
+  sections.forEach(s => { if (s && s.offsetTop <= y) active = s.id; });
+  navLinks.forEach(a => {
+    if (a.getAttribute('href') === '#' + active) a.style.color = 'var(--atl-brick)';
+    else a.style.color = '';
+  });
+});
+</script>
+
+</body>
+</html>
