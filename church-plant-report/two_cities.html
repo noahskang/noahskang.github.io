@@ -26,7 +26,7 @@
   --atl-paper: #EFE8D6;
 
   /* phoenix */
-  --phx-rust: #B14C2C;
+  --phx-rust: #9E3F22;
   --phx-sienna: #8C3517;
   --phx-sage: #768870;
   --phx-sand: #E2D5B6;
@@ -1896,11 +1896,16 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
         <p>The two anchors play very different roles in the strategy. ASU is a vast secular mission field. GCU is a pre-formed Christian student body — and that distinction has structural implications we treat in Block 05.</p>
 
         <div class="bars">
-          <div class="bar-row"><div class="name">ASU Tempe</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">≈ 80K</div></div>
-          <div class="bar-row"><div class="name">Grand Canyon U. (residential)</div><div class="bar-track"><div class="bar-fill" style="width: 31%"></div></div><div class="num">≈ 25K</div></div>
-          <div class="bar-row"><div class="name">ASU Downtown PHX</div><div class="bar-track"><div class="bar-fill" style="width: 16%"></div></div><div class="num">≈ 13K</div></div>
-          <div class="bar-row"><div class="name">ASU West / Polytechnic</div><div class="bar-track"><div class="bar-fill" style="width: 12%"></div></div><div class="num">≈ 10K</div></div>
+          <div style="display: flex; gap: 1.6rem; align-items: center; margin-bottom: 1.1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; opacity: 0.8;">
+            <div style="display: flex; align-items: center; gap: 0.55rem;"><div style="width: 16px; height: 6px; background: linear-gradient(90deg, var(--phx-sand), #F0E0BC); border-radius: 1px;"></div>UNDERGRAD</div>
+            <div style="display: flex; align-items: center; gap: 0.55rem;"><div style="width: 16px; height: 6px; background: linear-gradient(90deg, #6F6242, #8B7B58); border-radius: 1px; opacity: 0.95;"></div>GRADUATE</div>
+          </div>
+          <div class="bar-row"><div class="name">ASU Tempe</div><div class="bar-track"><div class="bar-fill" style="width: 100%; background: linear-gradient(to right, var(--phx-sand) 0%, #F0E0BC 75%, #6F6242 75%, #8B7B58 100%);"></div></div><div class="num">≈ 80K<br><span style="font-size: 0.65rem; opacity: 0.7; font-weight: 400; letter-spacing: 0.02em;">~25% grad</span></div></div>
+          <div class="bar-row"><div class="name">Grand Canyon U. (residential)</div><div class="bar-track"><div class="bar-fill" style="width: 31%; background: linear-gradient(to right, var(--phx-sand) 0%, #F0E0BC 95%, #6F6242 95%, #8B7B58 100%);"></div></div><div class="num">≈ 25K<br><span style="font-size: 0.65rem; opacity: 0.7; font-weight: 400; letter-spacing: 0.02em;">~5% grad</span></div></div>
+          <div class="bar-row"><div class="name">ASU Downtown PHX</div><div class="bar-track"><div class="bar-fill" style="width: 16%; background: linear-gradient(to right, var(--phx-sand) 0%, #F0E0BC 70%, #6F6242 70%, #8B7B58 100%);"></div></div><div class="num">≈ 13K<br><span style="font-size: 0.65rem; opacity: 0.7; font-weight: 400; letter-spacing: 0.02em;">~30% grad</span></div></div>
+          <div class="bar-row"><div class="name">ASU West / Polytechnic</div><div class="bar-track"><div class="bar-fill" style="width: 12%; background: linear-gradient(to right, var(--phx-sand) 0%, #F0E0BC 85%, #6F6242 85%, #8B7B58 100%);"></div></div><div class="num">≈ 10K<br><span style="font-size: 0.65rem; opacity: 0.7; font-weight: 400; letter-spacing: 0.02em;">~15% grad</span></div></div>
         </div>
+        <p style="margin-top: 1.4rem; font-size: 0.85rem; opacity: 0.8; font-style: italic;">Note: Bars show in-person enrollment, with the right-hand portion of each bar showing the graduate share. ASU Tempe's nominal 80K becomes a ~60K undergrad reachable population once grad programs are excluded; GCU's residential 25K is essentially undergrad. ASU Downtown PHX skews more graduate-heavy due to the concentration of Cronkite, Health Solutions, and Public Service grad programs there.</p>
       </div>
     </div>
 
