@@ -1365,6 +1365,81 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .dossier-bky .bar-fill { background: linear-gradient(90deg, var(--bky-gold), #E0B564); }
 .dossier-bky .dossier-hero .photo-cap { color: rgba(235,228,210,0.7); }
 
+/* ============ SIDE NAV (hovering, per-tab page contents) ============ */
+.sidenav {
+  position: fixed;
+  right: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: none;
+  flex-direction: column;
+  gap: 0.55rem;
+  align-items: flex-end;
+  pointer-events: none;
+  --sidenav-accent: var(--atl-brick);
+}
+.sidenav.has-items { display: flex; }
+.sidenav a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: auto;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  padding: 0.22rem 0;
+  white-space: nowrap;
+}
+.sidenav a .label-txt {
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, max-width 0.3s ease;
+  max-width: 0;
+  overflow: hidden;
+  font-weight: 500;
+}
+.sidenav a .num {
+  font-weight: 500;
+  opacity: 0.5;
+  min-width: 14px;
+  text-align: right;
+  transition: opacity 0.2s;
+}
+.sidenav a .dot {
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+  transition: width 0.25s ease, opacity 0.25s;
+  flex-shrink: 0;
+}
+.sidenav:hover a .label-txt {
+  opacity: 0.85;
+  transform: translateX(0);
+  max-width: 260px;
+}
+.sidenav:hover a .num { opacity: 0.8; }
+.sidenav a:hover { color: var(--ink); }
+.sidenav a:hover .dot { width: 28px; opacity: 1; }
+.sidenav a.active { color: var(--sidenav-accent); }
+.sidenav a.active .dot { width: 28px; opacity: 1; }
+.sidenav a.active .num { opacity: 1; }
+
+/* on dark dossier backgrounds, the sidenav needs lighter colors */
+body.dark-bg .sidenav a { color: rgba(255,255,255,0.4); }
+body.dark-bg .sidenav a:hover { color: rgba(255,255,255,0.95); }
+body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
+
+@media (max-width: 1100px) {
+  .sidenav { display: none !important; }
+}
+
 /* warning callout — used in Berkeley brand-collision block (on dark Cal-blue bg) */
 .warn-callout {
   margin: 2.2rem 0;
@@ -3449,6 +3524,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 
 </main>
 
+<aside class="sidenav" aria-label="Page contents"></aside>
+
 <footer class="footer">
   <div class="container footer-row">
     <span>Field Guide Vol. I</span>
@@ -3461,6 +3538,15 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 // ============ TABS ============
 const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'richmond', 'berkeley', 'verdict'];
 
+const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'richmond', 'berkeley', 'verdict']);
+const CITY_ACCENTS = {
+  atlanta: 'var(--atl-gold)',
+  phoenix: 'var(--phx-sand)',
+  charlotte: 'var(--clt-gold)',
+  richmond: 'var(--rva-gold)',
+  berkeley: 'var(--bky-gold)',
+};
+
 function activateTab(tabId, opts = {}) {
   if (!VALID_TABS.includes(tabId)) tabId = 'open';
   document.querySelectorAll('.tab-panel').forEach(p => {
@@ -3469,13 +3555,88 @@ function activateTab(tabId, opts = {}) {
   document.querySelectorAll('.tab-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.tab === tabId);
   });
+  // toggle dark-bg helper on body so sidenav (and others) can adapt
+  document.body.classList.toggle('dark-bg', DARK_BG_TABS.has(tabId));
   // mark fade-up children of the active panel as in immediately, so content is visible without scroll-trigger
   const active = document.querySelector(`.tab-panel[data-panel="${tabId}"]`);
   if (active) {
     active.querySelectorAll('.fade-up').forEach(el => el.classList.add('in'));
   }
+  rebuildSidenav();
   if (opts.scroll !== false) window.scrollTo({ top: 0, behavior: 'instant' });
 }
+
+// ============ SIDE NAV ============
+const sidenav = document.querySelector('.sidenav');
+
+function rebuildSidenav() {
+  if (!sidenav) return;
+  const activePanel = document.querySelector('.tab-panel.active');
+  if (!activePanel) return;
+
+  const tab = activePanel.dataset.panel;
+  const blocks = Array.from(activePanel.querySelectorAll('.dossier-block'));
+
+  // hide sidenav on tabs without enough sections to bother navigating
+  if (blocks.length < 2) {
+    sidenav.classList.remove('has-items');
+    sidenav.innerHTML = '';
+    return;
+  }
+
+  // accent per city
+  if (CITY_ACCENTS[tab]) {
+    sidenav.style.setProperty('--sidenav-accent', CITY_ACCENTS[tab]);
+  } else {
+    sidenav.style.setProperty('--sidenav-accent', 'var(--atl-brick)');
+  }
+
+  const links = blocks.map((block, i) => {
+    if (!block.id) block.id = `${tab}-block-${i + 1}`;
+    const labelEl = block.querySelector('.label');
+    let num = `${i + 1}`;
+    let title = '';
+    if (labelEl) {
+      const numEl = labelEl.querySelector('.num');
+      if (numEl) num = numEl.textContent.trim();
+      const clone = labelEl.cloneNode(true);
+      const numClone = clone.querySelector('.num');
+      if (numClone) numClone.remove();
+      title = clone.textContent.trim();
+    }
+    return `<a href="#${block.id}" data-target="${block.id}"><span class="label-txt">${title}</span><span class="num">${num}</span><span class="dot"></span></a>`;
+  }).join('');
+
+  sidenav.innerHTML = links;
+  sidenav.classList.add('has-items');
+
+  sidenav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById(a.dataset.target);
+      if (target) {
+        const y = target.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
+
+  updateActiveNav();
+}
+
+function updateActiveNav() {
+  if (!sidenav || !sidenav.classList.contains('has-items')) return;
+  const links = sidenav.querySelectorAll('a');
+  const scrollY = window.scrollY + 200;
+  let activeId = null;
+  links.forEach(a => {
+    const target = document.getElementById(a.dataset.target);
+    if (target && target.offsetTop <= scrollY) activeId = a.dataset.target;
+  });
+  links.forEach(a => a.classList.toggle('active', a.dataset.target === activeId));
+}
+
+window.addEventListener('scroll', updateActiveNav, { passive: true });
 
 function readHashTab() {
   const h = (location.hash || '').replace('#', '').toLowerCase();
