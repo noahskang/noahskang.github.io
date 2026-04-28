@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Five Cities, One Calling — A Strategic Field Guide</title>
+<title>Four Cities, One Calling — A Strategic Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -49,13 +49,6 @@
   --rva-river: #4F6671;
   --rva-paper: #EEE5D0;
 
-  /* berkeley — cal blue + redwood + bay fog */
-  --bky-deep: #002F5C;
-  --bky-mid: #355E84;
-  --bky-gold: #C9943A;
-  --bky-brick: #6B3520;
-  --bky-fog: #B7B0A1;
-  --bky-paper: #EBE4D2;
 
   --serif: 'Fraunces', 'Times New Roman', serif;
   --sans: 'Inter Tight', system-ui, sans-serif;
@@ -379,7 +372,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 .score-table {
   width: 100%;
-  min-width: 980px;
+  min-width: 880px;
   border-collapse: collapse;
   font-family: var(--sans);
 }
@@ -408,8 +401,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .score-table thead th:nth-child(3) { color: var(--phx-rust); }
 .score-table thead th:nth-child(4) { color: var(--clt-deep); }
 .score-table thead th:nth-child(5) { color: var(--rva-brick); }
-.score-table thead th:nth-child(6) { color: var(--bky-deep); }
-.score-table thead th:last-child { width: 110px; text-align: right; }
+.score-table thead th:last-child { width: 110px; text-align: right; color: var(--ink); }
 
 .score-table tbody td {
   padding: 1.1rem 0.85rem;
@@ -427,7 +419,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   font-variation-settings: 'opsz' 144, 'SOFT' 50;
   white-space: nowrap;
 }
-.score-table tbody td:nth-child(n+2):nth-child(-n+6) { color: var(--ink-soft); }
+.score-table tbody td:nth-child(n+2):nth-child(-n+5) { color: var(--ink-soft); }
 .score-table tbody td:last-child {
   text-align: right;
   font-family: var(--mono);
@@ -441,7 +433,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .tag-phx { background: var(--phx-rust); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
 .tag-clt { background: var(--clt-deep); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
 .tag-rva { background: var(--rva-brick); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
-.tag-bky { background: var(--bky-deep); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
 .tag-tie { background: var(--ink-faint); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
 .tag-note { background: transparent; color: var(--ink-faint); padding: 0.28rem 0; font-style: italic; text-transform: none; letter-spacing: 0; }
 
@@ -792,7 +783,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 .flow-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.4rem;
 }
 @media (max-width: 900px) { .flow-grid { grid-template-columns: 1fr; } }
@@ -808,7 +799,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .flow-phx h4 { color: var(--phx-rust); }
 .flow-clt h4 { color: var(--clt-deep); }
 .flow-rva h4 { color: var(--rva-brick); }
-.flow-bky h4 { color: var(--bky-deep); }
 .flow-cell .city-name {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -821,12 +811,11 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .flow-phx .city-name em { color: var(--phx-rust); }
 .flow-clt .city-name em { color: var(--clt-deep); }
 .flow-rva .city-name em { color: var(--rva-brick); }
-.flow-bky .city-name em { color: var(--bky-deep); }
 .flow-svg { width: 100%; height: auto; display: block; }
 
 .retention-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.4rem;
   margin-top: 4rem;
 }
@@ -840,7 +829,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .retention-card.phx { border-top: 4px solid var(--phx-rust); }
 .retention-card.clt { border-top: 4px solid var(--clt-deep); }
 .retention-card.rva { border-top: 4px solid var(--rva-brick); }
-.retention-card.bky { border-top: 4px solid var(--bky-deep); }
 .retention-card h3 {
   font-family: var(--serif);
   font-size: 1.45rem;
@@ -854,7 +842,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .retention-card.phx h3 em { color: var(--phx-rust); }
 .retention-card.clt h3 em { color: var(--clt-deep); }
 .retention-card.rva h3 em { color: var(--rva-brick); }
-.retention-card.bky h3 em { color: var(--bky-deep); }
 .retention-card p { font-size: 0.92rem; line-height: 1.55; }
 .retention-card ul { list-style: none; margin-top: 1rem; }
 .retention-card ul li {
@@ -877,7 +864,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .retention-card.phx ul li::before { color: var(--phx-rust); }
 .retention-card.clt ul li::before { color: var(--clt-deep); }
 .retention-card.rva ul li::before { color: var(--rva-brick); }
-.retention-card.bky ul li::before { color: var(--bky-deep); }
 .retention-card ul li:last-child { border: none; }
 
 /* ============ FAMILY FACTOR ============ */
@@ -1150,7 +1136,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .frame-cell.phx .label { color: var(--phx-sand); }
 .frame-cell.clt .label { color: var(--clt-gold); }
 .frame-cell.rva .label { color: var(--rva-gold); }
-.frame-cell.bky .label { color: var(--bky-gold); }
 .frame-cell h4 {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -1164,7 +1149,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .frame-cell.phx h4 em { color: var(--phx-sand); }
 .frame-cell.clt h4 em { color: var(--clt-gold); }
 .frame-cell.rva h4 em { color: var(--rva-gold); }
-.frame-cell.bky h4 em { color: var(--bky-gold); }
 .frame-cell ul { list-style: none; }
 .frame-cell ul li {
   padding: 0.6rem 0;
@@ -1307,7 +1291,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .tab-btn[data-city="phoenix"].active { color: var(--phx-rust); border-bottom-color: var(--phx-rust); }
 .tab-btn[data-city="charlotte"].active { color: var(--clt-deep); border-bottom-color: var(--clt-gold); }
 .tab-btn[data-city="richmond"].active { color: var(--rva-brick); border-bottom-color: var(--rva-gold); }
-.tab-btn[data-city="berkeley"].active { color: var(--bky-deep); border-bottom-color: var(--bky-gold); }
 @media (max-width: 900px) {
   .tabnav-inner { padding: 0 1rem; gap: 0.6rem; }
   .tabnav .brand { font-size: 0.65rem; padding: 0.85rem 0; }
@@ -1350,20 +1333,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .dossier-rva .ministry-list .item .nt { color: rgba(238,229,208,0.6); }
 .dossier-rva .bar-fill { background: linear-gradient(90deg, var(--rva-gold), #C99560); }
 .dossier-rva .dossier-hero .photo-cap { color: rgba(238,229,208,0.7); }
-
-/* berkeley dossier theming — Cal blue background with cream text + Cal-gold accents */
-.dossier-bky { background: var(--bky-deep); color: var(--bky-paper); }
-.dossier-bky .dossier-name em { color: var(--bky-gold); }
-.dossier-bky .dossier-block .label .num { color: var(--bky-gold); }
-.dossier-bky .dossier-block h3 em { color: var(--bky-gold); }
-.dossier-bky .dossier-block p { color: rgba(235,228,210,0.85); }
-.dossier-bky .stat-cell .num { color: var(--bky-gold); }
-.dossier-bky .pullquote p em { color: var(--bky-gold); }
-.dossier-bky .verdict h4 { color: var(--bky-gold); opacity: 1; }
-.dossier-bky .ministry-list .item .nm { color: var(--bky-paper); }
-.dossier-bky .ministry-list .item .nt { color: rgba(235,228,210,0.6); }
-.dossier-bky .bar-fill { background: linear-gradient(90deg, var(--bky-gold), #E0B564); }
-.dossier-bky .dossier-hero .photo-cap { color: rgba(235,228,210,0.7); }
 
 /* ============ SIDE NAV (hovering, per-tab page contents) ============ */
 .sidenav {
@@ -1440,26 +1409,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   .sidenav { display: none !important; }
 }
 
-/* warning callout — used in Berkeley brand-collision block (on dark Cal-blue bg) */
-.warn-callout {
-  margin: 2.2rem 0;
-  padding: 1.6rem 1.8rem;
-  background: rgba(255,255,255,0.06);
-  border-left: 3px solid var(--bky-gold);
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: rgba(235,228,210,0.92);
-}
-.warn-callout .warn-label {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--bky-gold);
-  margin-bottom: 0.6rem;
-  font-weight: 600;
-}
 </style>
 </head>
 <body>
@@ -1475,7 +1424,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <button class="tab-btn" data-tab="phoenix" data-city="phoenix" role="tab">Phoenix</button>
       <button class="tab-btn" data-tab="charlotte" data-city="charlotte" role="tab">Charlotte</button>
       <button class="tab-btn" data-tab="richmond" data-city="richmond" role="tab">Richmond</button>
-      <button class="tab-btn" data-tab="berkeley" data-city="berkeley" role="tab">Berkeley</button>
       <button class="tab-btn" data-tab="verdict" role="tab">Verdict</button>
     </div>
   </div>
@@ -1495,18 +1443,18 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   </div>
 
   <h1 class="cover-title">
-    Five Cities,<br>
+    Four Cities,<br>
     one <em>calling</em>.
   </h1>
 
   <p class="cover-sub">
-    A side-by-side reading of Atlanta, Phoenix, Charlotte, Richmond, and a UC Berkeley re-plant as candidate launch contexts for a multi-campus college and young-professional ministry — bridging campus and city, undergrad and post-grad, the gathered and the sent.
+    A side-by-side reading of Atlanta, Phoenix, Charlotte, and Richmond as candidate launch cities for a multi-campus college and young-professional ministry — bridging campus and city, undergrad and post-grad, the gathered and the sent.
   </p>
 
   <div class="cover-grid">
     <div>
       <span>Subject</span>
-      <span>ATL &nbsp;·&nbsp; PHX &nbsp;·&nbsp; CLT &nbsp;·&nbsp; RVA &nbsp;·&nbsp; Berkeley</span>
+      <span>Atlanta &nbsp;·&nbsp; Phoenix &nbsp;·&nbsp; Charlotte &nbsp;·&nbsp; Richmond</span>
     </div>
     <div>
       <span>Reach</span>
@@ -1544,7 +1492,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
         <p>The output is supposed to be a city, a neighborhood, and a strategy. But before we choose a city, we need to be honest about what's genuinely distinctive in this calling, and what the surrounding landscape will reward or punish.</p>
 
-        <p>This document started as a working comparison of the two strongest candidates — Atlanta and Phoenix — with a proposal for a Midtown-anchored strategy that took seriously what was already on the field, including a related AA-led plant already operating in the metro. It has since expanded to include three additional candidates: Charlotte (a Carolina-pipeline-live banking metro), Richmond (an under-saturated capital with one R1 anchor), and a UC Berkeley re-plant (a structurally different problem — a saturated campus where the existing AA-led incumbent sits at the center of an active and publicly contested conversation).</p>
+        <p>This document started as a working comparison of the two strongest candidates — Atlanta and Phoenix — with a proposal for a Midtown-anchored strategy that took seriously what was already on the field, including a related AA-led plant already operating in the metro. It has since expanded to include two additional candidates: Charlotte (a Carolina-pipeline-live banking metro with banking corporate depth) and Richmond (an under-saturated state capital with one in-city R1 anchor and an unusually diverse F500 cluster).</p>
 
         <div class="context-card">
           <div class="label">— Working Inputs —</div>
@@ -1584,18 +1532,24 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <th>Phoenix</th>
             <th>Charlotte</th>
             <th>Richmond</th>
-            <th>Berkeley</th>
             <th>Edge</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Anchor campus</td>
-            <td>Georgia Tech — 47K, ~45% Asian</td>
+            <td>Anchor campus — academic tier</td>
+            <td>Georgia Tech — top-10 engineering, flagship R1</td>
+            <td>ASU Tempe — improving R1, Barrett honors</td>
+            <td>UNC Charlotte — mid-tier R1, commuter-leaning</td>
+            <td>VCU — mid-tier R1, in-city walkable</td>
+            <td><span class="tag-atl">Atlanta</span></td>
+          </tr>
+          <tr>
+            <td>Anchor campus — scale</td>
+            <td>GT — ~47K total, ~21K reachable undergrad</td>
             <td>ASU Tempe — 80K (largest US campus)</td>
-            <td>UNC Charlotte — 32K (record fall '25)</td>
-            <td>VCU — 29K, in-city walkable</td>
-            <td>UC Berkeley — ~45K, ~38% AAPI</td>
+            <td>UNCC — 32K (record fall '25)</td>
+            <td>VCU — 29K</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1604,7 +1558,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>ASU (4 sites) + GCU ≈ 128K</td>
             <td>UNCC + Davidson + Queens + JCSU + 12-school consortium</td>
             <td>VCU + U-Richmond + VUU</td>
-            <td>Cal + Bay Area off-campus ecosystem</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1613,26 +1566,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>GCU — 25K residential Christian students, 25 min</td>
             <td>None at scale (Davidson, Belmont Abbey small)</td>
             <td>None at scale</td>
-            <td>None at scale</td>
             <td><span class="tag-phx">Phoenix</span></td>
-          </tr>
-          <tr>
-            <td>Asian American population</td>
-            <td>~6.5% metro · strong NE concentration</td>
-            <td>~4.0% metro · clustered Tempe + Chandler</td>
-            <td>~6.5% city · S. suburb boom (Ballantyne, Concord)</td>
-            <td>~5.2% Henrico · ~2.1% city · lightest of candidates</td>
-            <td>Densest US AA metro · Cal undergrad ~38% AAPI</td>
-            <td><span class="tag-bky">Berkeley</span></td>
-          </tr>
-          <tr>
-            <td>AA proximity to anchor</td>
-            <td>30+ min from Tech (Gwinnett corridor)</td>
-            <td>Adjacent to ASU (Tempe 8.8%, Chandler 11%)</td>
-            <td>15–25 min from UNCC (S. suburbs)</td>
-            <td>15 min Henrico from VCU</td>
-            <td>On-campus / city-scale density</td>
-            <td><span class="tag-bky">Berkeley</span></td>
           </tr>
           <tr>
             <td>Cost (1BR, core)</td>
@@ -1640,26 +1574,15 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>$1,500 – 1,800 (Tempe)</td>
             <td>$1,650 – 2,000 (South End)</td>
             <td>$1,400 – 1,750 (Fan / Scott's Addition)</td>
-            <td>$2,400 – 3,200 (Berkeley)</td>
             <td><span class="tag-rva">Richmond</span></td>
           </tr>
           <tr>
             <td>Ministry saturation (young adult)</td>
-            <td>Heavy — 5+ established large gatherings</td>
+            <td>Heavy — 7+ established large gatherings</td>
             <td>Moderate — Salt Co + Hope Church on college side</td>
             <td>Moderate — Elevation gravity + 5 mid-size</td>
             <td>Light — Hill City + Movement + Third + Redeemer Anglican</td>
-            <td>Heavy — every major rail at Cal + off-campus ecosystem</td>
             <td><span class="tag-rva">Richmond</span></td>
-          </tr>
-          <tr>
-            <td>Existing AA ministry depth</td>
-            <td>Mature — dozens of pan-Asian congregations</td>
-            <td>Sparse — handful, ethnic-specific</td>
-            <td>Younger, growing</td>
-            <td>Light — mature ecosystem lives in NoVA, not RVA</td>
-            <td>Mature + active public conversation around incumbent</td>
-            <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
             <td>Bible Belt baseline</td>
@@ -1667,17 +1590,15 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Low — nones, post-Mormon, secular</td>
             <td>High — Carolina church culture</td>
             <td>Mid-South — mixed Episcopal / Baptist heritage</td>
-            <td>Low — Bay Area secular baseline</td>
             <td><span class="tag-tie">Trade-off</span></td>
           </tr>
           <tr>
             <td>Local-bivocational retention</td>
-            <td>Strong — Tech grads stay, F500 anchors</td>
-            <td>Mixed — improving (TSMC, Intel)</td>
-            <td>Strong — banking + post-NYC migration</td>
-            <td>Mid — verticals-specific (insurance, energy, food)</td>
-            <td>High but expensive — Big Tech / biotech / finance</td>
-            <td><span class="tag-atl">Atlanta</span></td>
+            <td>~58% — Tech grads stay, F500 anchors</td>
+            <td>~42% — improving (TSMC, Intel)</td>
+            <td>~62% — banking + post-NYC migration</td>
+            <td>~48% — verticals-specific (healthcare, Capital One)</td>
+            <td><span class="tag-clt">Charlotte</span></td>
           </tr>
           <tr>
             <td>Bivocational job market</td>
@@ -1685,7 +1606,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Tech, semis, banking, ops</td>
             <td>Banking, fintech, energy, mfg (7 F500 + 19 F1000)</td>
             <td>Insurance, energy, food, used-car (8 F500 + Capital One West Creek)</td>
-            <td>Big Tech, biotech, finance, consulting</td>
             <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
@@ -1694,7 +1614,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>~1.1–1.6% / yr (4th fastest US)</td>
             <td>~1.2–1.5% / yr (top-10 Sun Belt)</td>
             <td>~0.5–0.8% / yr</td>
-            <td>~0.0–0.3% / yr (Bay Area flat / declining)</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1703,8 +1622,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>110°+ summers — students disperse</td>
             <td>Hot humid summers, mild winters</td>
             <td>Mild four seasons, humid summer</td>
-            <td>Mediterranean, mild year-round</td>
-            <td><span class="tag-bky">Berkeley</span></td>
+            <td><span class="tag-rva">Richmond</span></td>
           </tr>
           <tr>
             <td>Carolina pipeline geometry</td>
@@ -1712,8 +1630,15 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Inert — 5h flight + layover</td>
             <td>Most live — 2.5h drive, daily nonstops</td>
             <td>Usable — 3.5h drive, no longer native</td>
-            <td>Inert — 5h+ flight</td>
             <td><span class="tag-clt">Charlotte</span></td>
+          </tr>
+          <tr>
+            <td>Elite peer ecosystem within 2h drive</td>
+            <td>Emory + UGA (1h) · UNC at 6.5h drive</td>
+            <td>None — closest elite is Caltech (370mi / 6h)</td>
+            <td>Davidson 25m · UNC + Duke at 2.5h</td>
+            <td>UVA at 1h west · W&M at 50m east</td>
+            <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
             <td>A2N footprint</td>
@@ -1721,7 +1646,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>None</td>
             <td>None</td>
             <td>None in RVA · UVA at 1h W is A2N (Axiom)</td>
-            <td>Yes — A2F at Cal (Klesis rebrand 2023)</td>
             <td><span class="tag-note">Constraint, not edge</span></td>
           </tr>
           <tr>
@@ -1730,7 +1654,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Moderate — two college incumbents</td>
             <td>Lowest — open lane on team's profile</td>
             <td>Low — top-3 in 5 years is realistic</td>
-            <td>Highest — built deliberately through name, network, posture</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
         </tbody>
@@ -1847,34 +1770,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           </svg>
         </div>
 
-        <div class="flow-cell flow-bky">
-          <h4>— Berkeley Pipeline —</h4>
-          <div class="city-name">Cal grad <em>stays in the Bay</em> — but not in <em>Berkeley</em>.</div>
-          <svg class="flow-svg" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="20" width="80" height="200" fill="#002F5C"/>
-            <text x="40" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">100% grads</text>
-            <text x="40" y="13" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">enter</text>
-
-            <!-- top band: stay in greater Bay Area -->
-            <path d="M 80 20 C 200 20, 280 35, 380 50 L 380 130 C 280 115, 200 135, 80 110 Z" fill="#002F5C" opacity="0.85"/>
-            <text x="230" y="68" font-family="JetBrains Mono" font-size="10" fill="#EBE4D2" font-weight="500">~55% Bay Area</text>
-            <text x="230" y="84" font-family="JetBrains Mono" font-size="8" fill="#EBE4D2" opacity="0.8">but mostly South Bay</text>
-
-            <!-- middle band: stay in immediate East Bay (church-reachable) -->
-            <path d="M 80 110 L 380 130 L 380 175 L 80 165 Z" fill="#002F5C" opacity="0.5"/>
-            <text x="200" y="150" font-family="JetBrains Mono" font-size="9" fill="#EBE4D2" opacity="0.95">~30% East Bay (reachable)</text>
-
-            <!-- bottom band: leave Bay entirely -->
-            <path d="M 80 165 L 380 175 L 380 220 L 80 220 Z" fill="#002F5C" opacity="0.28"/>
-            <text x="200" y="202" font-family="JetBrains Mono" font-size="9" fill="#3A352D">~45% leave Bay (LA / NYC / Asia)</text>
-
-            <rect x="380" y="130" width="80" height="45" fill="#C9943A"/>
-            <text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">reachable</text>
-            <text x="420" y="158" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#002F5C" font-weight="600">~30%</text>
-
-            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">Cost pushes grads out of Berkeley itself</text>
-          </svg>
-        </div>
       </div>
     </div>
 
@@ -1923,16 +1818,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         </ul>
       </div>
 
-      <div class="retention-card bky">
-        <h3>Berkeley — <em>retention is in the Bay, not in Berkeley</em>.</h3>
-        <p>The Bay Area retains Cal graduates at a high rate by national standards (~55%), but Berkeley itself doesn't hold them. Cost of living in Berkeley pushes new graduates south — to Cupertino, Mountain View, San Jose, Sunnyvale — where Big Tech employers are concentrated and rent runs lower than Berkeley's. The fraction who remain in the East Bay (Berkeley, Oakland, Albany, Emeryville) within a 30-minute church-reachable radius is closer to ~30%. AAPI graduates additionally migrate at meaningful rates to LA, NYC, and back to Asia for work or family reasons.</p>
-        <ul>
-          <li>Big Tech keeps engineering grads in the Bay — but in the South Bay, not East Bay</li>
-          <li>Berkeley rent forces new grads out within the first two post-grad years</li>
-          <li>AAPI grads scatter to LA / NYC / Asia at higher rates than other UC populations</li>
-          <li>Implication: <strong>the local-bivocational path requires a 30-minute church-reach radius</strong> — South Bay grads are functionally outside the plant's catchment unless intentionally engineered for</li>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
@@ -2706,7 +2591,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   <div class="container">
     <div class="dossier-header">
       <div>
-        <div class="dossier-no">§ IX. Dossier — File 03</div>
+        <div class="dossier-no">§ VIII. Dossier — File 03</div>
         <h1 class="dossier-name">Char<em>lo</em>tte.</h1>
       </div>
       <div class="dossier-tag">A banking capital with a Carolina pipeline still live and a college shelf the team can actually compete on.</div>
@@ -2960,7 +2845,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   <div class="container">
     <div class="dossier-header">
       <div>
-        <div class="dossier-no">§ X. Dossier — File 04</div>
+        <div class="dossier-no">§ IX. Dossier — File 04</div>
         <h1 class="dossier-name">Rich<em>mo</em>nd.</h1>
       </div>
       <div class="dossier-tag">A capital with one strong anchor, modest AA, an unusually diverse F500 cluster — and a UVA-shaped adjacency risk.</div>
@@ -3198,227 +3083,16 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 </div>
 <!-- ============ /TAB: RICHMOND ============ -->
 
-<!-- ============ TAB: BERKELEY ============ -->
-<div class="tab-panel" data-panel="berkeley">
-
-<!-- DOSSIER BERKELEY -->
-<section class="dossier dossier-bky" id="berkeley">
-  <div class="container">
-    <div class="dossier-header">
-      <div>
-        <div class="dossier-no">§ XI. Dossier — File 05</div>
-        <h1 class="dossier-name">Ber<em>ke</em>ley.</h1>
-      </div>
-      <div class="dossier-tag">A re-plant on a campus where the established AA-led incumbent sits at the center of an active public conversation — different problem than every other city in this guide.</div>
-    </div>
-
-    <!-- HERO PHOTO -->
-    <div class="dossier-hero">
-      <div class="photo">
-        <img src="https://images.unsplash.com/photo-1584825453032-f2c1baad3796?w=1800&q=80&auto=format&fit=crop" alt="UC Berkeley campus and Bay Area skyline">
-      </div>
-      <div class="photo-cap">
-        <span>UC Berkeley &nbsp;·&nbsp; Sather Tower over the campus</span>
-        <span class="credit">Photo: Unsplash</span>
-      </div>
-    </div>
-
-    <!-- stat ribbon -->
-    <div class="stat-ribbon">
-      <div class="stat-cell">
-        <div class="num">~45K</div>
-        <div class="lbl">UC Berkeley enrollment<br>~33K undergrad</div>
-      </div>
-      <div class="stat-cell">
-        <div class="num">~38%</div>
-        <div class="lbl">Asian + AAPI<br>undergraduate share</div>
-      </div>
-      <div class="stat-cell">
-        <div class="num">A2N</div>
-        <div class="lbl">already at Cal<br>(A2F · Klesis rebrand 2023)</div>
-      </div>
-      <div class="stat-cell">
-        <div class="num">$$$$</div>
-        <div class="lbl">Highest COL of any<br>candidate by a wide margin</div>
-      </div>
-    </div>
-
-    <!-- block 1: the unique posture -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">01</span>Why This Dossier Is Different</div>
-      <div>
-        <h3>Berkeley is not a green-field metro. It's a <em>re-plant</em>.</h3>
-        <p>Every other dossier in this guide asks the same question: where does the team's distinctive posture have room to breathe in a market that doesn't yet have it? Berkeley flips the question. UC Berkeley already has Acts 2 Fellowship — formerly Klesis, rebranded in Fall 2023 — a long-established AA-led campus ministry connected to Gracepoint Ministries, with decades of fruit, generations of alumni in vocational ministry, and a current student body of real depth. A new AA-led, multi-ethnic, college-and-young-pro plant at Cal would be entering a campus where the team's network shape has a generation of incumbency, where the existing operation has both committed defenders and committed critics, and where any new entrant has to make their own posture legible inside an already-loaded conversation.</p>
-        <p>The honest framing: Berkeley is not a Sun Belt growth bet. It is a <strong>re-plant in a market with a contested information environment</strong> — which is a different kind of strategic problem than any of the other four candidates. The math of "open lane" doesn't apply. The math of "Carolina pipeline" doesn't apply. The math that does apply is whether the team can build a clearly distinct work on a campus where students arrive with prior associations — positive and negative — about ministries that look, from the outside, similar to what the team would build.</p>
-      </div>
-    </div>
-
-    <!-- block 2: the public conversation -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">02</span>The Public Conversation</div>
-      <div>
-        <h3>The information environment is <em>real, contested, and unavoidable</em>.</h3>
-        <p>A2F / Gracepoint sits at the center of an unusually visible public conversation among Bay Area Christian college students. There is mainstream-press coverage on both sides: Christianity Today's September 2022 long-form piece <em>"At Gracepoint Ministries, 'Whole-Life Discipleship' Took Its Toll"</em> presented a critical account drawing on former-member testimony. The Triton (UCSD's student paper) published a November 2021 investigation citing similar concerns from UC-system students. There are also public defenses from current members, alumni who report life-changing positive experiences, and pastors inside the network who argue the criticisms misrepresent the ministry's actual practice. Reddit, blog posts, and ministry-review sites carry years of discussion in both directions, and the evidentiary weight varies widely from anonymous reports to on-record interviews.</p>
-        <p>None of this is the team's responsibility to adjudicate, and the report does not take a position on the underlying claims. What is unambiguous is the information environment: a Cal undergrad doing thirty seconds of research before walking into a Bible study will encounter both critical and supportive accounts, will see that the network has operated under multiple names (Klesis, Koinonia, Kairos, WAV, A2F, ISMP), and will form a quick first impression that any new AA-led ministry has to work through — whether or not that impression is fair to A2F itself.</p>
-
-        <div class="warn-callout">
-          <div class="warn-label">— Information environment, not adjudication —</div>
-          The point of this block is not to validate or reject any specific claim about A2F / Gracepoint. Public critics and public defenders both exist; mainstream and student journalism have run pieces that take both views seriously; and the team is not in a position to settle the disagreement. The point is recognition: a new plant at Cal lands inside this conversation by default, and a planting team should read primary sources directly — both critical and supportive — before deciding the city is workable.
-        </div>
-      </div>
-    </div>
-
-    <!-- PHOTO PAIR — Cal context -->
-    <div class="dossier-photo-pair">
-      <div>
-        <div class="photo photo-frame">
-          <img src="https://images.unsplash.com/photo-1559813999-fbcb70afa3eb?w=900&q=80&auto=format&fit=crop" alt="Sather Tower at UC Berkeley">
-        </div>
-        <div class="photo-cap">
-          <span>Sather Tower &nbsp;·&nbsp; Cal's Campanile</span>
-          <span class="credit">Photo: Unsplash</span>
-        </div>
-      </div>
-      <div>
-        <div class="photo photo-frame">
-          <img src="https://images.unsplash.com/photo-1519302959554-a75be0afc82a?w=900&q=80&auto=format&fit=crop" alt="Berkeley street scene with Bay Bridge in distance">
-        </div>
-        <div class="photo-cap">
-          <span>Berkeley &nbsp;·&nbsp; the Bay beyond Telegraph Ave</span>
-          <span class="credit">Photo: Unsplash</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="pullquote">
-      <p>"Different problem than every other city in this guide. Not <em>open lane</em> — <em>occupied lane in a contested conversation</em>."</p>
-    </div>
-
-    <!-- block 3: the campus prize -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">03</span>What Makes Cal Worth Considering Anyway</div>
-      <div>
-        <h3>The <em>raw demographic case</em> is the strongest of any candidate.</h3>
-        <p>The reason this dossier exists at all is that UC Berkeley's underlying numbers are exceptional. ~33K undergraduates. AAPI undergraduate share approaching 38% — by far the highest of any candidate surveyed and one of the highest at any major US public university. The Bay Area is the densest Asian-American metropolitan area in the United States by absolute population. The cultural climate around AA Christian formation is unusually generative: AACF (Asian American Christian Fellowship) operates at Berkeley alongside InterVarsity, Cru, and a dense ecosystem of campus ministries. The students themselves are theologically curious in disproportionate numbers.</p>
-        <p>The plant's distinctive posture — AA-led, multi-ethnic, integrated college-and-young-pro, vocationally serious in a tech-and-finance metro — fits the Cal undergraduate population in a way it does not fit any Sun Belt city's undergrad demographics. The fit, on its own terms, is the highest of any candidate. The cost is the brand collision and the second-highest cost-of-living problem in the country.</p>
-      </div>
-    </div>
-
-    <!-- block 4: the campus shelf -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">04</span>The Berkeley Campus Shelf</div>
-      <div>
-        <h3>Saturated and <em>tradition-rich</em> — every major rail is here.</h3>
-        <p>The campus shelf at Cal is among the most developed of any US public university. Beyond Acts 2 Fellowship, Berkeley hosts AACF (Asian American Christian Fellowship), Cru, InterVarsity, and a long-running ecosystem of denominational and ethnic-specific Christian fellowships. The University Christian Ministries (UiC) directory lists a substantial number of active student-led groups. Newman Hall serves the Catholic community; Gracepoint Ministries (the parent network of A2F) operates from its own campus-adjacent property. Bay-area churches with college arms — Reality SF, City Church SF, Crossroads in Hayward, Cornerstone Berkeley — round out the off-campus shelf.</p>
-        <p>The strategic read: a new plant at Cal would not face an "is anyone doing this" problem. It would face a "how do we read as different from the dozens of operations already here, including the one that shares a name with our parent network" problem. The differentiation work is qualitative and brand-shaped, not lane-shaped.</p>
-
-        <div class="ministry-list">
-          <div class="item"><span class="nm">Acts 2 Fellowship (A2F)</span><span class="nt">Klesis rebrand 2023 · Gracepoint Ministries · the established AA-led incumbent</span></div>
-          <div class="item"><span class="nm">AACF — UC Berkeley</span><span class="nt">Asian American Christian Fellowship · long-tenured · independent</span></div>
-          <div class="item"><span class="nm">Cru at Berkeley</span><span class="nt">non-denominational · large national footprint</span></div>
-          <div class="item"><span class="nm">InterVarsity at Berkeley</span><span class="nt">multiple chapters including ethnic-specific</span></div>
-          <div class="item"><span class="nm">Newman Hall</span><span class="nt">Catholic campus center</span></div>
-          <div class="item"><span class="nm">Cornerstone Berkeley / Reality SF / City Church SF</span><span class="nt">Bay Area off-campus options for college students</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- block 5: runway / cost -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">05</span>Runway</div>
-      <div>
-        <h3>The <em>cost problem</em> is structural, not negotiable.</h3>
-        <p>Berkeley 1BR rent runs $2,400 – $3,200; rooms in shared houses run $1,200 – $1,800. Bay Area median rents put Berkeley near the very top of the cost-of-living spectrum among US college towns — meaningfully higher than Atlanta, twice the cost of Richmond. For a bivocational team of ten, the math is unforgiving: same fundraising, dramatically less runway. The job market is strong (Big Tech, biotech, finance, consulting), but the salary needed to cover Bay Area rent for a family is in a different bracket than what Tech or banking pay in the Sun Belt — bivocational shifts toward "real corporate job that subsidizes ministry" rather than "part-time work that creates margin."</p>
-        <p>The honest version: Berkeley only works for a team that has either dramatically higher fundraising than the dossier's standard ten-bivocational model, or members who have already cleared the cost-of-living bar via senior tech / finance roles before launch. It does not work as a low-friction extension of the same plan that fits Atlanta or Phoenix.</p>
-      </div>
-    </div>
-
-    <!-- block 5.5: cal cultural context -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">06</span>Cal Cultural Context</div>
-      <div>
-        <h3>The campus is unusually <em>theological</em> for a secular flagship.</h3>
-        <p>Two facts shape any plant at Berkeley. First, Cal's undergraduate culture is more theologically curious than its public secular reputation suggests. The Free Speech Movement legacy still sets the campus's intellectual posture — students take ideas seriously enough to argue with them, which means a theologically substantive Christian work has a natural seat at the conversation rather than a defensive one. The Veritas Forum has run multi-year series at Cal. Cru Berkeley, InterVarsity, AACF, and a long ecosystem of denominational fellowships co-exist with one of the country's most rigorous secular intellectual cultures, and the Christian student population — though a numerical minority — is unusually engaged. A plant that takes preaching, biblical literacy, and apologetics seriously fits Cal in a way it would not fit, say, ASU.</p>
-        <p>Second, the AAPI undergraduate population at Cal is not a monolith. Roughly 38% of Berkeley undergraduates identify as Asian or Pacific Islander, with substantial East Asian (Chinese, Korean, Japanese, Taiwanese), South Asian, and Southeast Asian (Vietnamese, Filipino) sub-communities — each with their own student organizations, cultural rhythms, and (in many cases) ethnic-specific ministry options. The team's "AA-led, multi-ethnic" posture lands differently here than in Atlanta or Charlotte: at Berkeley it has to be specific about which AA, in conversation with which other AA, and with what relationship to the existing pan-Asian and ethnic-specific options on campus. AACF (Asian American Christian Fellowship), in particular, is a long-tenured pan-AA presence the team would want to know well rather than overlap with.</p>
-      </div>
-    </div>
-
-    <!-- block 6: differentiation strategy -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">07</span>How a Re-Plant Reads as Distinct</div>
-      <div>
-        <h3>Distinctiveness is built through <em>posture, not opposition</em>.</h3>
-        <p>A new AA-led plant at Cal needs to be legibly its own work — not because the existing ministry is judged in advance, but because students arrive with their own associations, and the team's calling is more specific than "another AA campus ministry." Four moves help the plant read clearly on its own terms; the first three are structural, the fourth is a posture call.</p>
-
-        <div class="bars" style="margin-top: 1.8rem;">
-          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
-            <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
-            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Singular, public network identity.</strong> &nbsp; A clear denominational or network affiliation — Acts 29, the PCA, Sovereign Grace, an Anglican diocese, an independent Reformed network — that is publicly named, easy to find, and operationally singular (one ministry, one name, one home). This is healthy posture for any plant; at Cal, where the existing operation has used multiple names over its history, it also lets students place the team quickly without inference.
-            </div>
-          </div>
-          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
-            <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
-            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Public, written discipleship commitments.</strong> &nbsp; A short, plain-language statement of the plant's posture on the questions students most often ask before committing — how decisions about housing, dating, employment, and relocation are framed; what membership requires and doesn't; how leaders are accountable; what leaving looks like. Every healthy plant has answers to these; at Cal, putting the answers in writing on the website matters more than usual because students are doing comparison research.
-            </div>
-          </div>
-          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
-            <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
-            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">A name that stands on its own.</strong> &nbsp; A name that lands without explanation and doesn't pattern-match the existing AA campus-ministry naming convention (Greek single-words, "Acts" / "Klesis" / "Koinonia" prefixes). The aim is not contrast for its own sake but a name a student can hear once and remember without context — a basic communication discipline that pays compounding dividends in a saturated campus.
-            </div>
-          </div>
-          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
-            <div class="num" style="text-align: left; padding-top: 0.1rem;">iv.</div>
-            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Charitable posture toward the existing landscape.</strong> &nbsp; A plant that arrives critical-by-default of A2F or any other Cal ministry will read as the same kind of insular conversation it claims to leave. The healthier posture is to be clear about what the team is building, generous about what others are doing, ready to refer students to the ministry that fits them best, and pastorally available to anyone — current member, former member, or unaffiliated — without preconditions. This is the posture that earns trust in a contested campus without picking a fight.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- verdict -->
-    <div class="verdict">
-      <div>
-        <h4>— Where Berkeley wins —</h4>
-        <ul>
-          <li>Strongest raw demographic match — ~38% AAPI undergraduate share, densest US Asian-American metro</li>
-          <li>UC Berkeley's intellectual culture rewards a theologically serious posture</li>
-          <li>Bay Area corporate base (Big Tech, biotech, finance) underwrites high-ceiling bivocational jobs</li>
-          <li>A new AA-led plant adds a distinct option to a campus where students are actively comparing ministries</li>
-          <li>Sending paths are unusually live — Bay Area grads scatter globally for work and missions</li>
-        </ul>
-      </div>
-      <div>
-        <h4>— Where Berkeley costs you —</h4>
-        <ul>
-          <li>The information environment is loaded — public conversation about A2F includes both sharp criticism and committed defense, and a new plant lands inside it</li>
-          <li>Distinctiveness has to be built deliberately through name, network, and public posture — not assumed</li>
-          <li>Saturation is not "open lane" — every major campus-ministry rail is already at Cal</li>
-          <li>Cost of living is the highest of any candidate, which still requires deliberate engineering on the bivocational side (though not necessarily a deal-breaker)</li>
-          <li>Carolina pipeline is geographically inert (5+ hour flight)</li>
-          <li>Pastoral bandwidth for students arriving with prior associations — positive or negative — is real</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-</div>
-<!-- ============ /TAB: BERKELEY ============ -->
-
 <!-- ============ TAB: VERDICT ============ -->
 <div class="tab-panel" data-panel="verdict">
 
 <!-- DECISION (NEUTRAL) -->
 <section class="decision" id="decision">
   <div class="container">
-    <div class="eyebrow">§ XII. The Verdict</div>
-    <h2>Five paths.<br>One <em>question</em>.</h2>
+    <div class="eyebrow">§ X. The Verdict</div>
+    <h2>Four paths.<br>One <em>question</em>.</h2>
     <p class="lede">
-      The data is on the table. Each city has a coherent thesis, and the right answer depends less on which is "better" in the abstract than on which trade-offs the team is built to absorb. The five paths are not equivalent — Atlanta, Phoenix, Charlotte, and Richmond are green-field metros with different shapes, while Berkeley is a structurally different problem (a re-plant on a campus where the established AA-led incumbent sits at the center of an active public conversation). What follows is the framework — not the conclusion.
+      The data is on the table. Each city has a coherent thesis, and the right answer depends less on which is "better" in the abstract than on which trade-offs the team is built to absorb. What follows is the framework — not the conclusion.
     </p>
 
     <div class="frame-grid">
@@ -3474,29 +3148,17 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         </ul>
       </div>
 
-      <div class="frame-cell bky">
-        <div class="label">— Choose Berkeley if —</div>
-        <h4>A <em>re-plant in a contested campus</em> is the calling.</h4>
-        <ul>
-          <li>The team's calling has room for the brand-distinction work — distinctiveness through name, network, and public discipleship posture, built deliberately from day one</li>
-          <li>The strongest academic anchor and the strongest raw demographic match (Cal at ~38% AAPI undergrad, densest US AA metro) genuinely move the team</li>
-          <li>The team is willing to be the new option on a campus where students are actively comparing ministries</li>
-          <li>Charitable, generous posture toward the existing landscape — not contrast-by-default — is part of the team's character</li>
-          <li>The Carolina pipeline being geographically inert is acceptable</li>
-        </ul>
-      </div>
     </div>
 
     <div class="questions-list">
       <h3>— Questions to sit with before deciding —</h3>
       <ol>
-        <li>What is genuinely non-negotiable about the calling — academic anchor strength, multi-campus reach, less-saturated lane, Carolina-pipeline geometry, or something else?</li>
-        <li>How much does academic seriousness of the anchor campus weigh? Top-tier R1 favors GT (Atlanta), Cal (Berkeley), or to a lesser extent VCU (Richmond) and ASU (Phoenix); UNCC's commuter-leaning mid-tier R1 profile is the binding constraint on Charlotte under this filter.</li>
+        <li>What is genuinely non-negotiable about the calling — academic anchor strength, multi-campus reach, less-saturated lane, or Carolina-pipeline geometry?</li>
+        <li>How much does academic seriousness of the anchor campus weigh? Top-tier R1 favors GT (Atlanta); ASU and VCU are mid-tier with real strength; UNCC's commuter-leaning mid-tier profile is the binding constraint on Charlotte under this filter.</li>
         <li>Is the partnership with the existing A2N plant a feature of the Atlanta thesis, or could it become a structural tension?</li>
-        <li>How does the team weigh Carolina-pipeline geometry against absolute anchor strength? Atlanta and Charlotte preserve the pipeline; Phoenix, Richmond, and Berkeley don't.</li>
+        <li>How does the team weigh Carolina-pipeline geometry against the saturation cost? Atlanta and Charlotte preserve the pipeline; Phoenix and Richmond don't.</li>
         <li>How long is the team committed for? Five years favors Phoenix's or Charlotte's open lane; fifteen favors Atlanta's compounding.</li>
-        <li>Which trade-off is the team built to absorb — higher saturation, higher pioneer cost, brand-distinction work, or sister-plant adjacency?</li>
-        <li>For Berkeley specifically: does the team have the network distinctiveness and posture to plant inside an active public conversation — without taking sides, but also without naïveté about the information environment?</li>
+        <li>Which trade-off is the team built to absorb — higher saturation, higher pioneer cost, or sister-plant adjacency?</li>
         <li>Where does the team's spouses, children, and aging-parent infrastructure point?</li>
         <li>Which city does the team actually <em>want</em> to live in for a decade?</li>
       </ol>
@@ -3531,22 +3193,21 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 <footer class="footer">
   <div class="container footer-row">
     <span>Field Guide Vol. I</span>
-    <span>Five Cities — One Calling</span>
+    <span>Four Cities — One Calling</span>
     <span>A Strategic Field Guide</span>
   </div>
 </footer>
 
 <script>
 // ============ TABS ============
-const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'richmond', 'berkeley', 'verdict'];
+const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'richmond', 'verdict'];
 
-const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'richmond', 'berkeley', 'verdict']);
+const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'richmond', 'verdict']);
 const CITY_ACCENTS = {
   atlanta: 'var(--atl-gold)',
   phoenix: 'var(--phx-sand)',
   charlotte: 'var(--clt-gold)',
   richmond: 'var(--rva-gold)',
-  berkeley: 'var(--bky-gold)',
 };
 
 function activateTab(tabId, opts = {}) {
