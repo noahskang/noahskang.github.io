@@ -1334,6 +1334,114 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .dossier-rva .bar-fill { background: linear-gradient(90deg, var(--rva-gold), #C99560); }
 .dossier-rva .dossier-hero .photo-cap { color: rgba(238,229,208,0.7); }
 
+/* ============ ALTERNATIVES TAB ============ */
+.alternatives {
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
+}
+.alt-head {
+  margin-bottom: 4rem;
+  max-width: 720px;
+}
+.alt-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 1.6rem;
+}
+.alt-head h2 em {
+  font-style: italic;
+  color: var(--atl-brick);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.alt-head p { font-size: 1.05rem; line-height: 1.65; max-width: 640px; }
+.alt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+}
+@media (max-width: 900px) { .alt-grid { grid-template-columns: 1fr; } }
+.alt-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 1.8rem 1.8rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+.alt-card .alt-tag {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--atl-brick);
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+}
+.alt-card h3 {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+.alt-card h3 em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  color: var(--atl-deep);
+}
+.alt-card .alt-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  margin-bottom: 1.1rem;
+  line-height: 1.4;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.alt-card ul { list-style: none; margin-bottom: 1.1rem; }
+.alt-card ul li {
+  position: relative;
+  padding-left: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.alt-card ul li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--atl-brick);
+  font-weight: 700;
+}
+.alt-card .alt-block {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--rule);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+.alt-card .alt-block strong {
+  font-weight: 600;
+  color: var(--atl-brick);
+  font-family: var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
 /* ============ SIDE NAV (hovering, per-tab page contents) ============ */
 .sidenav {
   position: fixed;
@@ -1424,6 +1532,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <button class="tab-btn" data-tab="phoenix" data-city="phoenix" role="tab">Phoenix</button>
       <button class="tab-btn" data-tab="charlotte" data-city="charlotte" role="tab">Charlotte</button>
       <button class="tab-btn" data-tab="richmond" data-city="richmond" role="tab">Richmond</button>
+      <button class="tab-btn" data-tab="alternatives" role="tab">Alternatives</button>
       <button class="tab-btn" data-tab="verdict" role="tab">Verdict</button>
     </div>
   </div>
@@ -3083,13 +3192,177 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 </div>
 <!-- ============ /TAB: RICHMOND ============ -->
 
+<!-- ============ TAB: ALTERNATIVES ============ -->
+<div class="tab-panel" data-panel="alternatives">
+
+<section class="alternatives" id="alternatives">
+  <div class="container">
+    <div class="alt-head">
+      <div class="eyebrow">§ X. Alternatives Considered</div>
+      <h2>Ten cities <em>not chosen</em> — and why.</h2>
+      <p>The four-city candidate set is the result of substantial winnowing. These ten alternatives surfaced across the search and were evaluated in varying depth. Each is a real candidate the team could revisit if its decision criteria shift; each was set aside for a specific structural reason. Listed in rough order of how seriously they were considered.</p>
+    </div>
+
+    <div class="alt-grid">
+
+      <!-- 01 BERKELEY -->
+      <div class="alt-card">
+        <div class="alt-tag">— 01 · Bay Area —</div>
+        <h3>Berkeley · <em>UC Berkeley</em></h3>
+        <div class="alt-sub">The strongest demographic and academic match — the only candidate fully on-criterion.</div>
+        <ul>
+          <li>Top-3 public university in the US, ~33K undergrad, ~38% AAPI</li>
+          <li>Bay Area metro 7.7M — densest US Asian-American metro</li>
+          <li>A2N already at Cal (Acts 2 Fellowship, formerly Klesis, rebranded 2023)</li>
+          <li>The team would be a re-plant entering an active public conversation about the existing AA-led incumbent</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> Brand-distinction work with the existing operation is structural. Different decision shape than the four green-field candidates; the team chose to close the set without it. Worth revisiting if the brand-distinction work becomes part of the calling.</div>
+      </div>
+
+      <!-- 02 DFW -->
+      <div class="alt-card">
+        <div class="alt-tag">— 02 · Texas —</div>
+        <h3>Dallas-Fort Worth · <em>UT Dallas + SMU</em></h3>
+        <div class="alt-sub">Closest non-Berkeley match on AAPI density and metro size.</div>
+        <ul>
+          <li>UT Dallas — R1 since 2014, AAU 2018, ~25K undergrad, ~30% Asian — closest A2N-open AAPI undergrad share to Cal's</li>
+          <li>SMU top-50 private (~7K), TCU, UT Arlington round out the multi-campus</li>
+          <li>DFW metro 8M (4th-largest US), Plano/Frisco 25-30% Asian</li>
+          <li>Deepest non-coastal bivocational job market in America (finance, telecom, defense, tech, consulting)</li>
+          <li>A2N-open</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> Texas Bible Belt baseline is real; not "unreached" by Bay Area standards. UT Dallas is rising-mid-tier rather than flagship-elite. Carolina pipeline inert.</div>
+      </div>
+
+      <!-- 03 HOUSTON -->
+      <div class="alt-card">
+        <div class="alt-tag">— 03 · Texas —</div>
+        <h3>Houston · <em>Rice + UH</em></h3>
+        <div class="alt-sub">Second-largest US metro the team could pick — AAPI-dense, A2N-open.</div>
+        <ul>
+          <li>Rice top-15 private but tiny (~4K undergrad)</li>
+          <li>University of Houston R1 (~46K, ~30% Asian undergrad), top-100 public</li>
+          <li>Houston metro 7.1M (5th-largest US), Sugar Land 50%+ Asian, Bellaire and Pearland adjacent</li>
+          <li>Energy + medical center + aerospace corporate base</li>
+          <li>A2N-open</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> Rice is elite-tier but too small to anchor; UH is mid-tier rather than flagship; ministry shelf is heavy (Lakewood, Champion Forest, Houston's First); Bible Belt baseline strong.</div>
+      </div>
+
+      <!-- 04 GAINESVILLE -->
+      <div class="alt-card">
+        <div class="alt-tag">— 04 · Florida —</div>
+        <h3>Gainesville · <em>University of Florida</em></h3>
+        <div class="alt-sub">Flagship academic anchor — undermined by metro retention.</div>
+        <ul>
+          <li>UF top-15 public, R1, AAU member, ~35K undergrad — meets the academic-seriousness bar fully</li>
+          <li>A2N-open</li>
+          <li>Mid-Carolina pipeline geometry (~8h drive, 90-min flight to RDU)</li>
+          <li>Gainesville metro is small (~140K)</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> Phoenix-retention problem in extreme form. UF graduates scatter to Tampa, Orlando, Jacksonville, Atlanta, and Miami within twelve months of graduation. Gainesville itself is too small to retain a young-pro post-grad population for the flywheel to compound.</div>
+      </div>
+
+      <!-- 05 NY / BROOKLYN -->
+      <div class="alt-card">
+        <div class="alt-tag">— 05 · East Coast —</div>
+        <h3>New York · <em>Brooklyn / NYU / Columbia</em></h3>
+        <div class="alt-sub">The largest, most demographically dense option — and the most A2N-saturated.</div>
+        <ul>
+          <li>NYU + Columbia + St. John's + Stony Brook — multiple R1s and elite privates</li>
+          <li>Metro 19M; AAPI density real and concentrated (Flushing, Sunset Park, Edison NJ)</li>
+          <li>Bible Belt baseline among the lowest in the US</li>
+          <li>A2N: covered (Renew College Church across NYU/Columbia/SJU/Stony Brook)</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> A2N saturation across the metro's elite-public-and-private campuses; cost of living among highest in country; New York church-planting market is notoriously crowded.</div>
+      </div>
+
+      <!-- 06 PORTLAND -->
+      <div class="alt-card">
+        <div class="alt-tag">— 06 · Pacific Northwest —</div>
+        <h3>Portland · <em>PSU + Reed</em></h3>
+        <div class="alt-sub">Genuinely unreached — without a flagship anchor.</div>
+        <ul>
+          <li>Portland State R1 (~22K undergrad), mid-tier urban university</li>
+          <li>Reed College — small elite private (~1.5K), strong intellectual culture</li>
+          <li>Portland metro ~2.5M; lowest religious-affiliation rate of any major US metro (Pacific Northwest "None Zone")</li>
+          <li>AAPI ~7% metro</li>
+          <li>A2N-open</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> No flagship public anchor (UO is in Eugene, 2h south, not Portland). Reed is too small. Carolina pipeline inert. Tech and corporate base lighter than Seattle or Bay Area.</div>
+      </div>
+
+      <!-- 07 MIAMI -->
+      <div class="alt-card">
+        <div class="alt-tag">— 07 · Florida —</div>
+        <h3>Miami · <em>University of Miami + FIU</em></h3>
+        <div class="alt-sub">An emerging finance hub with a different demographic shape.</div>
+        <ul>
+          <li>UM top-50 private (~12K total), FIU R1 (~56K)</li>
+          <li>Miami metro 6M; post-pandemic finance migration (Citadel, Blackstone, Goldman)</li>
+          <li>AAPI low (~3%); dense Latino-Caribbean diversity</li>
+          <li>A2N-open</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> Cultural context is Latino-Caribbean dominant — different planting environment than the team's AA-led-multi-ethnic profile slots into naturally. UM is elite-but-small, like Rice. Carolina pipeline inert.</div>
+      </div>
+
+      <!-- 08 SLC -->
+      <div class="alt-card">
+        <div class="alt-tag">— 08 · Mountain West —</div>
+        <h3>Salt Lake City · <em>University of Utah</em></h3>
+        <div class="alt-sub">The most distinct mission field of any candidate considered.</div>
+        <ul>
+          <li>U Utah R1, top-50 public, ~24K undergrad</li>
+          <li>SLC metro 1.3M; LDS-dominant religious culture (~50% of state)</li>
+          <li>Silicon Slopes corridor (Adobe, Qualtrics, Goldman SLC) — real bivocational depth</li>
+          <li>A2N-open; AAPI growing — Pacific Islander community real</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> The team's existing playbook was built for non-LDS contexts (Carolina, Cal, Tech). LDS context requires a substantively different discipleship and evangelism shape than ports cleanly from those experiences.</div>
+      </div>
+
+      <!-- 09 BOULDER -->
+      <div class="alt-card">
+        <div class="alt-tag">— 09 · Mountain West —</div>
+        <h3>Boulder + Denver · <em>CU Boulder</em></h3>
+        <div class="alt-sub">Secular metro with a mid-tier flagship.</div>
+        <ul>
+          <li>CU Boulder R1, top-50 public, ~31K undergrad</li>
+          <li>Denver/Boulder corridor 3M (separate metros, ~25 min apart)</li>
+          <li>High religious-nones rate; tech industry growing fast</li>
+          <li>AAPI ~7%; A2N-open</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> CU is top-50 not flagship-elite. Boulder itself is small (~110K). The two-metro split (Boulder for campus, Denver for jobs) creates the same UNCC-South-End geography problem Charlotte has. Carolina pipeline inert.</div>
+      </div>
+
+      <!-- 10 ST LOUIS -->
+      <div class="alt-card">
+        <div class="alt-tag">— 10 · Midwest —</div>
+        <h3>St. Louis · <em>Wash U</em></h3>
+        <div class="alt-sub">Elite anchor in a shrinking metro.</div>
+        <ul>
+          <li>WashU top-15 private (~7.5K undergrad, ~22% Asian), genuinely elite</li>
+          <li>SLU mid-tier private; UMSL nearby</li>
+          <li>St. Louis metro ~2.8M, flat-to-declining over the last decade</li>
+          <li>Lowest cost of living among elite-anchor candidates</li>
+          <li>A2N-open</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> WashU is too small to anchor a multi-campus thesis (~7.5K undergrad). St. Louis metro shrinkage is a structural headwind no other candidate carries. Carolina pipeline inert.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</div>
+<!-- ============ /TAB: ALTERNATIVES ============ -->
+
 <!-- ============ TAB: VERDICT ============ -->
 <div class="tab-panel" data-panel="verdict">
 
 <!-- DECISION (NEUTRAL) -->
 <section class="decision" id="decision">
   <div class="container">
-    <div class="eyebrow">§ X. The Verdict</div>
+    <div class="eyebrow">§ XI. The Verdict</div>
     <h2>Four paths.<br>One <em>question</em>.</h2>
     <p class="lede">
       The data is on the table. Each city has a coherent thesis, and the right answer depends less on which is "better" in the abstract than on which trade-offs the team is built to absorb. What follows is the framework — not the conclusion.
@@ -3200,7 +3473,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
 <script>
 // ============ TABS ============
-const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'richmond', 'verdict'];
+const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'richmond', 'alternatives', 'verdict'];
 
 const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'richmond', 'verdict']);
 const CITY_ACCENTS = {
