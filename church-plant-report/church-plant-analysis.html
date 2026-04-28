@@ -395,6 +395,13 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   font-weight: 500;
   vertical-align: bottom;
   white-space: nowrap;
+  position: sticky;
+  top: 4.6rem;
+  background: var(--paper);
+  z-index: 5;
+}
+@media (max-width: 900px) {
+  .score-table thead th { top: 7rem; }
 }
 .score-table thead th:first-child { width: 200px; }
 .score-table thead th:nth-child(2) { color: var(--atl-deep); }
@@ -785,8 +792,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 .flow-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.4rem;
 }
 @media (max-width: 900px) { .flow-grid { grid-template-columns: 1fr; } }
 .flow-cell h4 {
@@ -799,6 +806,9 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 .flow-atl h4 { color: var(--atl-deep); }
 .flow-phx h4 { color: var(--phx-rust); }
+.flow-clt h4 { color: var(--clt-deep); }
+.flow-rva h4 { color: var(--rva-brick); }
+.flow-bky h4 { color: var(--bky-deep); }
 .flow-cell .city-name {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -809,36 +819,48 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .flow-cell .city-name em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100; }
 .flow-atl .city-name em { color: var(--atl-deep); }
 .flow-phx .city-name em { color: var(--phx-rust); }
+.flow-clt .city-name em { color: var(--clt-deep); }
+.flow-rva .city-name em { color: var(--rva-brick); }
+.flow-bky .city-name em { color: var(--bky-deep); }
 .flow-svg { width: 100%; height: auto; display: block; }
 
 .retention-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.4rem;
   margin-top: 4rem;
 }
 @media (max-width: 900px) { .retention-grid { grid-template-columns: 1fr; } }
 .retention-card {
-  padding: 2.5rem;
+  padding: 2.2rem;
   border: 1px solid var(--rule);
   background: var(--paper);
 }
 .retention-card.atl { border-top: 4px solid var(--atl-deep); }
 .retention-card.phx { border-top: 4px solid var(--phx-rust); }
+.retention-card.clt { border-top: 4px solid var(--clt-deep); }
+.retention-card.rva { border-top: 4px solid var(--rva-brick); }
+.retention-card.bky { border-top: 4px solid var(--bky-deep); }
 .retention-card h3 {
   font-family: var(--serif);
-  font-size: 1.6rem;
+  font-size: 1.45rem;
   font-weight: 300;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  line-height: 1.2;
 }
 .retention-card h3 em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100; }
 .retention-card.atl h3 em { color: var(--atl-deep); }
 .retention-card.phx h3 em { color: var(--phx-rust); }
+.retention-card.clt h3 em { color: var(--clt-deep); }
+.retention-card.rva h3 em { color: var(--rva-brick); }
+.retention-card.bky h3 em { color: var(--bky-deep); }
+.retention-card p { font-size: 0.92rem; line-height: 1.55; }
 .retention-card ul { list-style: none; margin-top: 1rem; }
 .retention-card ul li {
-  padding: 0.7rem 0;
-  font-size: 0.95rem;
+  padding: 0.6rem 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
   border-bottom: 1px dashed var(--rule);
   color: var(--ink-soft);
   position: relative;
@@ -853,6 +875,9 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 .retention-card.atl ul li::before { color: var(--atl-deep); }
 .retention-card.phx ul li::before { color: var(--phx-rust); }
+.retention-card.clt ul li::before { color: var(--clt-deep); }
+.retention-card.rva ul li::before { color: var(--rva-brick); }
+.retention-card.bky ul li::before { color: var(--bky-deep); }
 .retention-card ul li:last-child { border: none; }
 
 /* ============ FAMILY FACTOR ============ */
@@ -1298,65 +1323,65 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* charlotte dossier theming (mirrors atlanta/phoenix patterns) */
-.dossier-clt { background: var(--clt-paper); color: #2A2620; }
-.dossier-clt .dossier-no { color: var(--clt-brick); }
+/* charlotte dossier theming — dark teal-blue background with cream text + gold accents */
+.dossier-clt { background: var(--clt-deep); color: var(--clt-paper); }
 .dossier-clt .dossier-name em { color: var(--clt-gold); }
-.dossier-clt .dossier-tag { color: var(--clt-deep); }
-.dossier-clt .label .num { color: var(--clt-brick); }
-.dossier-clt h3 em { color: var(--clt-brick); }
-.dossier-clt .stat-cell .num { color: var(--clt-deep); }
-.dossier-clt .pullquote { background: var(--clt-deep); color: var(--clt-paper); border-color: var(--clt-gold); }
+.dossier-clt .dossier-block .label .num { color: var(--clt-gold); }
+.dossier-clt .dossier-block h3 em { color: var(--clt-gold); }
+.dossier-clt .dossier-block p { color: rgba(236,228,210,0.85); }
+.dossier-clt .stat-cell .num { color: var(--clt-gold); }
 .dossier-clt .pullquote p em { color: var(--clt-gold); }
-.dossier-clt .verdict h4 { color: var(--clt-brick); }
-.dossier-clt .ministry-list .item .nm { color: var(--clt-deep); }
+.dossier-clt .verdict h4 { color: var(--clt-gold); opacity: 1; }
+.dossier-clt .ministry-list .item .nm { color: var(--clt-paper); }
+.dossier-clt .ministry-list .item .nt { color: rgba(236,228,210,0.6); }
 .dossier-clt .bar-fill { background: linear-gradient(90deg, var(--clt-gold), #D6B583); }
-.photo-clt { border-color: var(--clt-deep); }
+.dossier-clt .dossier-hero .photo-cap { color: rgba(236,228,210,0.7); }
 
-/* richmond dossier theming */
-.dossier-rva { background: var(--rva-paper); color: #2A2118; }
-.dossier-rva .dossier-no { color: var(--rva-brick); }
+/* richmond dossier theming — dark tobacco background with cream text + copper-gold accents */
+.dossier-rva { background: var(--rva-deep); color: var(--rva-paper); }
 .dossier-rva .dossier-name em { color: var(--rva-gold); }
-.dossier-rva .dossier-tag { color: var(--rva-deep); }
-.dossier-rva .label .num { color: var(--rva-brick); }
-.dossier-rva h3 em { color: var(--rva-brick); }
-.dossier-rva .stat-cell .num { color: var(--rva-deep); }
-.dossier-rva .pullquote { background: var(--rva-deep); color: var(--rva-paper); border-color: var(--rva-gold); }
+.dossier-rva .dossier-block .label .num { color: var(--rva-gold); }
+.dossier-rva .dossier-block h3 em { color: var(--rva-gold); }
+.dossier-rva .dossier-block p { color: rgba(238,229,208,0.85); }
+.dossier-rva .stat-cell .num { color: var(--rva-gold); }
 .dossier-rva .pullquote p em { color: var(--rva-gold); }
-.dossier-rva .verdict h4 { color: var(--rva-brick); }
-.dossier-rva .ministry-list .item .nm { color: var(--rva-deep); }
+.dossier-rva .verdict h4 { color: var(--rva-gold); opacity: 1; }
+.dossier-rva .ministry-list .item .nm { color: var(--rva-paper); }
+.dossier-rva .ministry-list .item .nt { color: rgba(238,229,208,0.6); }
 .dossier-rva .bar-fill { background: linear-gradient(90deg, var(--rva-gold), #C99560); }
+.dossier-rva .dossier-hero .photo-cap { color: rgba(238,229,208,0.7); }
 
-/* berkeley dossier theming */
-.dossier-bky { background: var(--bky-paper); color: #1A1812; }
-.dossier-bky .dossier-no { color: var(--bky-brick); }
+/* berkeley dossier theming — Cal blue background with cream text + Cal-gold accents */
+.dossier-bky { background: var(--bky-deep); color: var(--bky-paper); }
 .dossier-bky .dossier-name em { color: var(--bky-gold); }
-.dossier-bky .dossier-tag { color: var(--bky-deep); }
-.dossier-bky .label .num { color: var(--bky-brick); }
-.dossier-bky h3 em { color: var(--bky-brick); }
-.dossier-bky .stat-cell .num { color: var(--bky-deep); }
-.dossier-bky .pullquote { background: var(--bky-deep); color: var(--bky-paper); border-color: var(--bky-gold); }
+.dossier-bky .dossier-block .label .num { color: var(--bky-gold); }
+.dossier-bky .dossier-block h3 em { color: var(--bky-gold); }
+.dossier-bky .dossier-block p { color: rgba(235,228,210,0.85); }
+.dossier-bky .stat-cell .num { color: var(--bky-gold); }
 .dossier-bky .pullquote p em { color: var(--bky-gold); }
-.dossier-bky .verdict h4 { color: var(--bky-brick); }
-.dossier-bky .ministry-list .item .nm { color: var(--bky-deep); }
+.dossier-bky .verdict h4 { color: var(--bky-gold); opacity: 1; }
+.dossier-bky .ministry-list .item .nm { color: var(--bky-paper); }
+.dossier-bky .ministry-list .item .nt { color: rgba(235,228,210,0.6); }
 .dossier-bky .bar-fill { background: linear-gradient(90deg, var(--bky-gold), #E0B564); }
+.dossier-bky .dossier-hero .photo-cap { color: rgba(235,228,210,0.7); }
 
-/* warning callout — used in Berkeley brand-collision block */
+/* warning callout — used in Berkeley brand-collision block (on dark Cal-blue bg) */
 .warn-callout {
   margin: 2.2rem 0;
   padding: 1.6rem 1.8rem;
-  background: rgba(107, 53, 32, 0.07);
-  border-left: 3px solid var(--bky-brick);
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid var(--bky-gold);
   font-family: var(--sans);
   font-size: 0.9rem;
   line-height: 1.6;
+  color: rgba(235,228,210,0.92);
 }
 .warn-callout .warn-label {
   font-family: var(--mono);
   font-size: 0.65rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--bky-brick);
+  color: var(--bky-gold);
   margin-bottom: 0.6rem;
   font-weight: 600;
 }
@@ -1699,6 +1724,81 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
             <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">TSMC + Intel are changing this fast</text>
           </svg>
         </div>
+
+        <div class="flow-cell flow-clt">
+          <h4>— Charlotte Pipeline —</h4>
+          <div class="city-name">UNCC grad <em>stays</em> — and <em>imports more</em>.</div>
+          <svg class="flow-svg" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="20" width="80" height="200" fill="#1B3A4A"/>
+            <text x="40" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">100% grads</text>
+            <text x="40" y="13" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">enter</text>
+
+            <path d="M 80 20 C 200 20, 280 25, 380 35 L 380 170 C 280 160, 200 180, 80 180 Z" fill="#1B3A4A" opacity="0.85"/>
+            <text x="230" y="100" font-family="JetBrains Mono" font-size="11" fill="#ECE4D2" font-weight="500">~60–65%</text>
+            <text x="230" y="116" font-family="JetBrains Mono" font-size="9" fill="#ECE4D2" opacity="0.85">stay in metro</text>
+
+            <path d="M 80 180 L 380 170 L 380 220 L 80 220 Z" fill="#1B3A4A" opacity="0.32"/>
+            <text x="230" y="202" font-family="JetBrains Mono" font-size="9" fill="#3A352D">~35–40% leave</text>
+
+            <rect x="380" y="35" width="80" height="135" fill="#B89968"/>
+            <text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">retained</text>
+            <text x="420" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#1B3A4A" font-weight="600">~62%</text>
+
+            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">+ NYC/SF migration adds inflow</text>
+          </svg>
+        </div>
+
+        <div class="flow-cell flow-rva">
+          <h4>— Richmond Pipeline —</h4>
+          <div class="city-name">VCU grad <em>scatters</em>.</div>
+          <svg class="flow-svg" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="20" width="80" height="200" fill="#6B2818"/>
+            <text x="40" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">100% grads</text>
+            <text x="40" y="13" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">enter</text>
+
+            <path d="M 80 20 C 200 20, 280 50, 380 75 L 380 165 C 280 150, 200 170, 80 155 Z" fill="#6B2818" opacity="0.85"/>
+            <text x="230" y="100" font-family="JetBrains Mono" font-size="11" fill="#EEE5D0" font-weight="500">~45–50%</text>
+            <text x="230" y="116" font-family="JetBrains Mono" font-size="9" fill="#EEE5D0" opacity="0.85">stay in metro</text>
+
+            <path d="M 80 155 L 380 165 L 380 220 L 80 220 Z" fill="#6B2818" opacity="0.32"/>
+            <text x="200" y="200" font-family="JetBrains Mono" font-size="9" fill="#3A352D">~50% leave for NoVA / NYC / LA</text>
+
+            <rect x="380" y="75" width="80" height="90" fill="#A8753E"/>
+            <text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">retained</text>
+            <text x="420" y="125" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#6B2818" font-weight="600">~48%</text>
+
+            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">VCU Health + Capital One steady the floor</text>
+          </svg>
+        </div>
+
+        <div class="flow-cell flow-bky">
+          <h4>— Berkeley Pipeline —</h4>
+          <div class="city-name">Cal grad <em>stays in the Bay</em> — but not in <em>Berkeley</em>.</div>
+          <svg class="flow-svg" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="20" width="80" height="200" fill="#002F5C"/>
+            <text x="40" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">100% grads</text>
+            <text x="40" y="13" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">enter</text>
+
+            <!-- top band: stay in greater Bay Area -->
+            <path d="M 80 20 C 200 20, 280 35, 380 50 L 380 130 C 280 115, 200 135, 80 110 Z" fill="#002F5C" opacity="0.85"/>
+            <text x="230" y="68" font-family="JetBrains Mono" font-size="10" fill="#EBE4D2" font-weight="500">~55% Bay Area</text>
+            <text x="230" y="84" font-family="JetBrains Mono" font-size="8" fill="#EBE4D2" opacity="0.8">but mostly South Bay</text>
+
+            <!-- middle band: stay in immediate East Bay (church-reachable) -->
+            <path d="M 80 110 L 380 130 L 380 175 L 80 165 Z" fill="#002F5C" opacity="0.5"/>
+            <text x="200" y="150" font-family="JetBrains Mono" font-size="9" fill="#EBE4D2" opacity="0.95">~30% East Bay (reachable)</text>
+
+            <!-- bottom band: leave Bay entirely -->
+            <path d="M 80 165 L 380 175 L 380 220 L 80 220 Z" fill="#002F5C" opacity="0.28"/>
+            <text x="200" y="202" font-family="JetBrains Mono" font-size="9" fill="#3A352D">~45% leave Bay (LA / NYC / Asia)</text>
+
+            <rect x="380" y="130" width="80" height="45" fill="#C9943A"/>
+            <text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">reachable</text>
+            <text x="420" y="158" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#002F5C" font-weight="600">~30%</text>
+
+            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">Cost pushes grads out of Berkeley itself</text>
+          </svg>
+        </div>
       </div>
     </div>
 
@@ -1722,6 +1822,39 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
           <li>Cheap rent makes staying viable for 22-year-olds with internships only</li>
           <li>But: post-grad ecosystem still less mature than Atlanta or DFW</li>
           <li>Implication: <strong>the local-bivocational path is thinner here</strong> — the plant-elsewhere and missions paths still run normally</li>
+        </ul>
+      </div>
+
+      <div class="retention-card clt">
+        <h3>Charlotte — <em>retention is the highest of the candidates</em>.</h3>
+        <p>Charlotte may be the strongest retention market in the comparison set. UNCC alumni cluster heavily inside the metro by default — UNCC is overwhelmingly an in-state, in-region school — and the banking sector (BoA, Truist, Wells Fargo, JPMorgan Chase Charlotte) recruits both directly from UNCC and from UNC, Duke, and other regional schools, pulling more young pros into the metro than UNCC itself sends out. Post-pandemic NYC and Bay-Area finance migration adds a second inflow channel.</p>
+        <ul>
+          <li>UNCC's in-state student body retains in-region by default</li>
+          <li>Banking gravity (BoA HQ + Truist HQ) anchors finance careers</li>
+          <li>The metro is a net importer of young pros, not a net exporter</li>
+          <li>Implication: <strong>the local-bivocational path is the deepest of any candidate</strong> — Charlotte's flywheel can compound on imported talent as well as retained grads</li>
+        </ul>
+      </div>
+
+      <div class="retention-card rva">
+        <h3>Richmond — <em>retention is mixed</em>.</h3>
+        <p>VCU's retention picture is the most bifurcated of the candidates. VCU Health and Capital One West Creek anchor a steady floor — clinical track grads stay near VCU Medical Center, finance and tech roles stay at Capital One. VCU Arts and Brandcenter graduates scatter to NYC, LA, and DC for design and advertising work. NoVA / DC pulls a meaningful share of finance, consulting, and tech-policy graduates an hour and forty-five minutes north for higher salaries. Net effect: a real but middling retention number, with significant differences by major.</p>
+        <ul>
+          <li>VCU Health + Capital One West Creek anchor the floor</li>
+          <li>Arts / Brandcenter grads scatter to creative-class metros</li>
+          <li>NoVA / DC pulls finance and consulting graduates north</li>
+          <li>Implication: <strong>the bivocational pipeline works for healthcare and Capital One profiles</strong> — less reliable for creative-class or finance-NoVA-bound profiles</li>
+        </ul>
+      </div>
+
+      <div class="retention-card bky">
+        <h3>Berkeley — <em>retention is in the Bay, not in Berkeley</em>.</h3>
+        <p>The Bay Area retains Cal graduates at a high rate by national standards (~55%), but Berkeley itself doesn't hold them. Cost of living in Berkeley pushes new graduates south — to Cupertino, Mountain View, San Jose, Sunnyvale — where Big Tech employers are concentrated and rent runs lower than Berkeley's. The fraction who remain in the East Bay (Berkeley, Oakland, Albany, Emeryville) within a 30-minute church-reachable radius is closer to ~30%. AAPI graduates additionally migrate at meaningful rates to LA, NYC, and back to Asia for work or family reasons.</p>
+        <ul>
+          <li>Big Tech keeps engineering grads in the Bay — but in the South Bay, not East Bay</li>
+          <li>Berkeley rent forces new grads out within the first two post-grad years</li>
+          <li>AAPI grads scatter to LA / NYC / Asia at higher rates than other UC populations</li>
+          <li>Implication: <strong>the local-bivocational path requires a 30-minute church-reach radius</strong> — South Bay grads are functionally outside the plant's catchment unless intentionally engineered for</li>
         </ul>
       </div>
     </div>
