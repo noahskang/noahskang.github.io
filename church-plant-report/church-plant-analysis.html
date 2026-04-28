@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Two Cities, One Calling — A Strategic Field Guide</title>
+<title>Five Cities, One Calling — A Strategic Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -32,6 +32,30 @@
   --phx-sand: #E2D5B6;
   --phx-dusk: #2D4654;
   --phx-paper: #F0E4CB;
+
+  /* charlotte — banking glass + queen-city gold */
+  --clt-deep: #1B3A4A;
+  --clt-mid: #2E5A6E;
+  --clt-gold: #B89968;
+  --clt-brick: #8B3A2C;
+  --clt-leaf: #6E8772;
+  --clt-paper: #ECE4D2;
+
+  /* richmond — james river + tobacco brick */
+  --rva-deep: #2A2118;
+  --rva-mid: #4A3B26;
+  --rva-gold: #A8753E;
+  --rva-brick: #6B2818;
+  --rva-river: #4F6671;
+  --rva-paper: #EEE5D0;
+
+  /* berkeley — cal blue + redwood + bay fog */
+  --bky-deep: #002F5C;
+  --bky-mid: #355E84;
+  --bky-gold: #C9943A;
+  --bky-brick: #6B3520;
+  --bky-fog: #B7B0A1;
+  --bky-paper: #EBE4D2;
 
   --serif: 'Fraunces', 'Times New Roman', serif;
   --sans: 'Inter Tight', system-ui, sans-serif;
@@ -343,58 +367,93 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   font-size: 1.05rem;
 }
 
+.score-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -2.5rem;
+  padding: 0 2.5rem;
+  scrollbar-width: thin;
+}
+@media (max-width: 720px) {
+  .score-table-wrap { margin: 0 -1.2rem; padding: 0 1.2rem; }
+}
 .score-table {
   width: 100%;
+  min-width: 980px;
   border-collapse: collapse;
   font-family: var(--sans);
 }
 .score-table thead th {
   font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   text-align: left;
-  padding: 1.4rem 1rem;
+  padding: 1.2rem 0.85rem;
   border-bottom: 1.5px solid var(--ink);
   color: var(--ink);
   font-weight: 500;
+  vertical-align: bottom;
+  white-space: nowrap;
 }
+.score-table thead th:first-child { width: 200px; }
 .score-table thead th:nth-child(2) { color: var(--atl-deep); }
 .score-table thead th:nth-child(3) { color: var(--phx-rust); }
-.score-table thead th:nth-child(4) { width: 90px; text-align: right; }
+.score-table thead th:nth-child(4) { color: var(--clt-deep); }
+.score-table thead th:nth-child(5) { color: var(--rva-brick); }
+.score-table thead th:nth-child(6) { color: var(--bky-deep); }
+.score-table thead th:last-child { width: 110px; text-align: right; }
 
 .score-table tbody td {
-  padding: 1.4rem 1rem;
+  padding: 1.1rem 0.85rem;
   border-bottom: 1px solid var(--rule);
-  vertical-align: middle;
-  font-size: 0.95rem;
+  vertical-align: top;
+  font-size: 0.85rem;
+  line-height: 1.45;
 }
 .score-table tbody tr:hover { background: rgba(196,154,74,0.06); }
 .score-table tbody tr td:first-child {
   font-family: var(--serif);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--ink);
   font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  white-space: nowrap;
 }
-.score-table tbody td:nth-child(2),
-.score-table tbody td:nth-child(3) { color: var(--ink-soft); }
+.score-table tbody td:nth-child(n+2):nth-child(-n+6) { color: var(--ink-soft); }
 .score-table tbody td:last-child {
   text-align: right;
   font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 500;
+  white-space: nowrap;
 }
-.tag-atl { background: var(--atl-deep); color: var(--paper); padding: 0.3rem 0.7rem; border-radius: 2px; }
-.tag-phx { background: var(--phx-rust); color: var(--paper); padding: 0.3rem 0.7rem; border-radius: 2px; }
-.tag-tie { background: var(--ink-faint); color: var(--paper); padding: 0.3rem 0.7rem; border-radius: 2px; }
+.tag-atl { background: var(--atl-deep); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
+.tag-phx { background: var(--phx-rust); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
+.tag-clt { background: var(--clt-deep); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
+.tag-rva { background: var(--rva-brick); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
+.tag-bky { background: var(--bky-deep); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
+.tag-tie { background: var(--ink-faint); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
+.tag-note { background: transparent; color: var(--ink-faint); padding: 0.28rem 0; font-style: italic; text-transform: none; letter-spacing: 0; }
+
+.score-hint {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 1rem;
+  text-align: right;
+  display: none;
+}
+@media (max-width: 1100px) { .score-hint { display: block; } }
 
 @media (max-width: 720px) {
-  .score-table thead th, .score-table tbody td { padding: 0.9rem 0.5rem; }
-  .score-table tbody tr td:first-child { font-size: 0.95rem; }
-  .score-table tbody td { font-size: 0.85rem; }
+  .score-table thead th, .score-table tbody td { padding: 0.8rem 0.55rem; }
+  .score-table tbody tr td:first-child { font-size: 0.92rem; }
+  .score-table tbody td { font-size: 0.8rem; }
 }
 
 /* ============ DOSSIER ============ */
@@ -1064,6 +1123,9 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 .frame-cell.atl .label { color: var(--atl-gold); }
 .frame-cell.phx .label { color: var(--phx-sand); }
+.frame-cell.clt .label { color: var(--clt-gold); }
+.frame-cell.rva .label { color: var(--rva-gold); }
+.frame-cell.bky .label { color: var(--bky-gold); }
 .frame-cell h4 {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -1075,6 +1137,9 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .frame-cell h4 em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 100; }
 .frame-cell.atl h4 em { color: var(--atl-gold); }
 .frame-cell.phx h4 em { color: var(--phx-sand); }
+.frame-cell.clt h4 em { color: var(--clt-gold); }
+.frame-cell.rva h4 em { color: var(--rva-gold); }
+.frame-cell.bky h4 em { color: var(--bky-gold); }
 .frame-cell ul { list-style: none; }
 .frame-cell ul li {
   padding: 0.6rem 0;
@@ -1156,45 +1221,192 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .fade-up.in { opacity: 1; transform: translateY(0); }
+
+/* ============ TABS ============ */
+.tabnav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(242,235,221,0.93);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--rule);
+}
+.tabnav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+.tabnav .brand {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 1.1rem 0;
+}
+.tabnav .brand span { color: var(--atl-brick); }
+.tab-list {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-list::-webkit-scrollbar { display: none; }
+.tab-btn {
+  padding: 1.15rem 1.05rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--atl-deep); }
+.tab-btn.active {
+  color: var(--atl-brick);
+  border-bottom-color: var(--atl-brick);
+}
+.tab-btn[data-city="phoenix"].active { color: var(--phx-rust); border-bottom-color: var(--phx-rust); }
+.tab-btn[data-city="charlotte"].active { color: var(--clt-deep); border-bottom-color: var(--clt-gold); }
+.tab-btn[data-city="richmond"].active { color: var(--rva-brick); border-bottom-color: var(--rva-gold); }
+.tab-btn[data-city="berkeley"].active { color: var(--bky-deep); border-bottom-color: var(--bky-gold); }
+@media (max-width: 900px) {
+  .tabnav-inner { padding: 0 1rem; gap: 0.6rem; }
+  .tabnav .brand { font-size: 0.65rem; padding: 0.85rem 0; }
+  .tab-btn { padding: 0.9rem 0.7rem; font-size: 0.62rem; letter-spacing: 0.08em; }
+}
+
+.tab-panels { padding-top: 4.6rem; }
+@media (max-width: 900px) { .tab-panels { padding-top: 7rem; } }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: tabFadeIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* charlotte dossier theming (mirrors atlanta/phoenix patterns) */
+.dossier-clt { background: var(--clt-paper); color: #2A2620; }
+.dossier-clt .dossier-no { color: var(--clt-brick); }
+.dossier-clt .dossier-name em { color: var(--clt-gold); }
+.dossier-clt .dossier-tag { color: var(--clt-deep); }
+.dossier-clt .label .num { color: var(--clt-brick); }
+.dossier-clt h3 em { color: var(--clt-brick); }
+.dossier-clt .stat-cell .num { color: var(--clt-deep); }
+.dossier-clt .pullquote { background: var(--clt-deep); color: var(--clt-paper); border-color: var(--clt-gold); }
+.dossier-clt .pullquote p em { color: var(--clt-gold); }
+.dossier-clt .verdict h4 { color: var(--clt-brick); }
+.dossier-clt .ministry-list .item .nm { color: var(--clt-deep); }
+.dossier-clt .bar-fill { background: linear-gradient(90deg, var(--clt-gold), #D6B583); }
+.photo-clt { border-color: var(--clt-deep); }
+
+/* richmond dossier theming */
+.dossier-rva { background: var(--rva-paper); color: #2A2118; }
+.dossier-rva .dossier-no { color: var(--rva-brick); }
+.dossier-rva .dossier-name em { color: var(--rva-gold); }
+.dossier-rva .dossier-tag { color: var(--rva-deep); }
+.dossier-rva .label .num { color: var(--rva-brick); }
+.dossier-rva h3 em { color: var(--rva-brick); }
+.dossier-rva .stat-cell .num { color: var(--rva-deep); }
+.dossier-rva .pullquote { background: var(--rva-deep); color: var(--rva-paper); border-color: var(--rva-gold); }
+.dossier-rva .pullquote p em { color: var(--rva-gold); }
+.dossier-rva .verdict h4 { color: var(--rva-brick); }
+.dossier-rva .ministry-list .item .nm { color: var(--rva-deep); }
+.dossier-rva .bar-fill { background: linear-gradient(90deg, var(--rva-gold), #C99560); }
+
+/* berkeley dossier theming */
+.dossier-bky { background: var(--bky-paper); color: #1A1812; }
+.dossier-bky .dossier-no { color: var(--bky-brick); }
+.dossier-bky .dossier-name em { color: var(--bky-gold); }
+.dossier-bky .dossier-tag { color: var(--bky-deep); }
+.dossier-bky .label .num { color: var(--bky-brick); }
+.dossier-bky h3 em { color: var(--bky-brick); }
+.dossier-bky .stat-cell .num { color: var(--bky-deep); }
+.dossier-bky .pullquote { background: var(--bky-deep); color: var(--bky-paper); border-color: var(--bky-gold); }
+.dossier-bky .pullquote p em { color: var(--bky-gold); }
+.dossier-bky .verdict h4 { color: var(--bky-brick); }
+.dossier-bky .ministry-list .item .nm { color: var(--bky-deep); }
+.dossier-bky .bar-fill { background: linear-gradient(90deg, var(--bky-gold), #E0B564); }
+
+/* warning callout — used in Berkeley brand-collision block */
+.warn-callout {
+  margin: 2.2rem 0;
+  padding: 1.6rem 1.8rem;
+  background: rgba(107, 53, 32, 0.07);
+  border-left: 3px solid var(--bky-brick);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.warn-callout .warn-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bky-brick);
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="brand">Field <span>Guide</span> — Vol. I</div>
-  <div class="nav-links">
-    <a href="#question">Question</a>
-    <a href="#scorecard">Scorecard</a>
-    <a href="#retention">Retention</a>
-    <a href="#atlanta">Atlanta</a>
-    <a href="#strategy">Strategy</a>
-    <a href="#phoenix">Phoenix</a>
-    <!-- <a href="distinctives.html" style="color: var(--atl-brick); font-weight: 600;">Distinctives →</a> -->
+<!-- TAB NAV -->
+<nav class="tabnav">
+  <div class="tabnav-inner">
+    <div class="brand">Field <span>Guide</span> — Vol. I</div>
+    <div class="tab-list" role="tablist">
+      <button class="tab-btn active" data-tab="open" role="tab">Open</button>
+      <button class="tab-btn" data-tab="compare" role="tab">Compare</button>
+      <button class="tab-btn" data-tab="atlanta" data-city="atlanta" role="tab">Atlanta</button>
+      <button class="tab-btn" data-tab="phoenix" data-city="phoenix" role="tab">Phoenix</button>
+      <button class="tab-btn" data-tab="charlotte" data-city="charlotte" role="tab">Charlotte</button>
+      <button class="tab-btn" data-tab="richmond" data-city="richmond" role="tab">Richmond</button>
+      <button class="tab-btn" data-tab="berkeley" data-city="berkeley" role="tab">Berkeley</button>
+      <button class="tab-btn" data-tab="verdict" role="tab">Verdict</button>
+    </div>
   </div>
 </nav>
+
+<main class="tab-panels">
+
+<!-- ============ TAB: OPEN ============ -->
+<div class="tab-panel active" data-panel="open">
 
 <!-- COVER -->
 <section class="cover container">
   <div class="cover-meta">
     <span>A Strategic Field Guide</span>
     <span>Vol. I &nbsp;·&nbsp; Issue 01</span>
-    <span>For Internal Use</span>
+    <span>Working Document</span>
   </div>
 
   <h1 class="cover-title">
-    Two Cities,<br>
+    Five Cities,<br>
     one <em>calling</em>.
   </h1>
 
   <p class="cover-sub">
-    A side-by-side reading of Atlanta and Phoenix as candidate launch cities for a multi-campus college and young-professional ministry — bridging campus and city, undergrad and post-grad, the gathered and the sent.
+    A side-by-side reading of Atlanta, Phoenix, Charlotte, Richmond, and a UC Berkeley re-plant as candidate launch contexts for a multi-campus college and young-professional ministry — bridging campus and city, undergrad and post-grad, the gathered and the sent.
   </p>
 
   <div class="cover-grid">
     <div>
       <span>Subject</span>
-      <span>Atlanta &nbsp;·&nbsp; Phoenix</span>
+      <span>ATL &nbsp;·&nbsp; PHX &nbsp;·&nbsp; CLT &nbsp;·&nbsp; RVA &nbsp;·&nbsp; Berkeley</span>
     </div>
     <div>
       <span>Reach</span>
@@ -1232,7 +1444,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 
         <p>The output is supposed to be a city, a neighborhood, and a strategy. But before we choose a city, we need to be honest about what's genuinely distinctive in this calling, and what the surrounding landscape will reward or punish.</p>
 
-        <p>This document is a working comparison of the two strongest candidates — Atlanta and Phoenix — and a proposal for a Midtown-anchored strategy that takes seriously what's already on the field, including a brother's plant.</p>
+        <p>This document started as a working comparison of the two strongest candidates — Atlanta and Phoenix — with a proposal for a Midtown-anchored strategy that took seriously what was already on the field, including a related AA-led plant already operating in the metro. It has since expanded to include three additional candidates: Charlotte (a Carolina-pipeline-live banking metro), Richmond (an under-saturated capital with one R1 anchor), and a UC Berkeley re-plant (a structurally different problem — a saturated campus where the existing AA-led incumbent sits at the center of an active and publicly contested conversation).</p>
 
         <div class="context-card">
           <div class="label">— Working Inputs —</div>
@@ -1241,7 +1453,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
           <div class="item"><strong>Reach</strong><span>College + young professionals, multi-campus</span></div>
           <div class="item"><strong>Format</strong><span>Sunday church + midweek young-adult gathering</span></div>
           <div class="item"><strong>Pipeline</strong><span>Several team members did college ministry at UNC — Carolina alumni network in play</span></div>
-          <div class="item"><strong>On the field</strong><span>Brother Isaiah Kang (son of Ed) — A2N plant, Emory + GT + UGA, lives in Duluth</span></div>
+          <div class="item"><strong>On the field</strong><span>An existing A2N plant by another AA-led team — Emory + GT + UGA, based in Duluth</span></div>
           <div class="item"><strong>Identity</strong><span>Independent plant</span></div>
         </div>
       </div>
@@ -1249,38 +1461,181 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   </div>
 </section>
 
+</div>
+<!-- ============ /TAB: OPEN ============ -->
+
+<!-- ============ TAB: COMPARE ============ -->
+<div class="tab-panel" data-panel="compare">
+
 <!-- SCORECARD -->
 <section class="scorecard" id="scorecard">
   <div class="container">
     <div class="eyebrow">§ II. At a Glance</div>
     <h2>The <em>scorecard</em>.</h2>
-    <p class="scorecard-intro">A surface read of the two cities across the dimensions that matter for a college + young-pro plant. Caveats and nuance live below; this is the first pass.</p>
+    <p class="scorecard-intro">A surface read of the five candidates across the dimensions that matter for a college + young-pro plant. Caveats and nuance live in the dossiers; this is the first pass. The "edge" column highlights the candidate that comes out best on each dimension — many lines are genuine trade-offs rather than clean wins.</p>
 
-    <table class="score-table">
-      <thead>
-        <tr>
-          <th>Dimension</th>
-          <th>Atlanta</th>
-          <th>Phoenix</th>
-          <th>Edge</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Anchor campus</td><td>Georgia Tech — 47K, ~45% Asian</td><td>ASU Tempe — 80K (largest US campus)</td><td><span class="tag-phx">Phoenix</span></td></tr>
-        <tr><td>Multi-campus reach</td><td>GT 47K core; SCAD adjacent; GSU/Emory/AUC optional</td><td>ASU (4 campuses) + GCU ≈ 128K</td><td><span class="tag-tie">Trade-off</span></td></tr>
-        <tr><td>Christian-formation campus pipeline</td><td>None at scale</td><td>GCU — 25K residential Christian students, 25 min away</td><td><span class="tag-phx">Phoenix</span></td></tr>
-        <tr><td>Asian American population</td><td>6.5% metro / strong concentration NE</td><td>4.0% metro / clustered Tempe + Chandler</td><td><span class="tag-atl">Atlanta</span></td></tr>
-        <tr><td>AA proximity to anchor</td><td>30+ min from Tech (Gwinnett corridor)</td><td>Adjacent to ASU (Tempe 8.8%, Chandler 11%)</td><td><span class="tag-phx">Phoenix</span></td></tr>
-        <tr><td>Cost (1BR, core)</td><td>$1,900 – 2,200 (Midtown)</td><td>$1,500 – 1,800 (Tempe)</td><td><span class="tag-phx">Phoenix</span></td></tr>
-        <tr><td>Ministry saturation (young adult)</td><td>Heavy: 5+ established large gatherings</td><td>Moderate: Salt Company + Hope Church on the college side</td><td><span class="tag-phx">Phoenix</span></td></tr>
-        <tr><td>Existing AA ministry depth</td><td>Mature (dozens of pan-Asian congregations)</td><td>Sparse (handful, mostly ethnic-specific)</td><td><span class="tag-atl">Atlanta</span></td></tr>
-        <tr><td>Bible Belt baseline</td><td>High — easier on-ramp, more church-fluent</td><td>Low — more nones, post-Mormon, secular</td><td><span class="tag-tie">Trade-off</span></td></tr>
-        <tr><td>Local-bivocational retention</td><td>Strong — Tech grads stay, Fortune 500 anchors</td><td>Mixed — improving with TSMC, Intel</td><td><span class="tag-atl">Atlanta</span></td></tr>
-        <tr><td>Bivocational job market</td><td>Tech, finance, healthcare, corporate (17 F500)</td><td>Tech, semis, banking, ops</td><td><span class="tag-atl">Atlanta</span></td></tr>
-        <tr><td>Metro growth rate</td><td>~1.0% / yr</td><td>~1.1 – 1.6% / yr (4th fastest US)</td><td><span class="tag-phx">Phoenix</span></td></tr>
-        <tr><td>Climate friction</td><td>Hot humid summers, mild winters</td><td>110°+ summers, students disperse</td><td><span class="tag-atl">Atlanta</span></td></tr>
-      </tbody>
-    </table>
+    <div class="score-table-wrap">
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Atlanta</th>
+            <th>Phoenix</th>
+            <th>Charlotte</th>
+            <th>Richmond</th>
+            <th>Berkeley</th>
+            <th>Edge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Anchor campus</td>
+            <td>Georgia Tech — 47K, ~45% Asian</td>
+            <td>ASU Tempe — 80K (largest US campus)</td>
+            <td>UNC Charlotte — 32K (record fall '25)</td>
+            <td>VCU — 29K, in-city walkable</td>
+            <td>UC Berkeley — ~45K, ~38% AAPI</td>
+            <td><span class="tag-phx">Phoenix</span></td>
+          </tr>
+          <tr>
+            <td>Multi-campus reach</td>
+            <td>GT core · SCAD adj · GSU/Emory/AUC opt</td>
+            <td>ASU (4 sites) + GCU ≈ 128K</td>
+            <td>UNCC + Davidson + Queens + JCSU + 12-school consortium</td>
+            <td>VCU + U-Richmond + VUU</td>
+            <td>Cal + Bay Area off-campus ecosystem</td>
+            <td><span class="tag-phx">Phoenix</span></td>
+          </tr>
+          <tr>
+            <td>Christian-formation campus pipeline</td>
+            <td>None at scale</td>
+            <td>GCU — 25K residential Christian students, 25 min</td>
+            <td>None at scale (Davidson, Belmont Abbey small)</td>
+            <td>None at scale</td>
+            <td>None at scale</td>
+            <td><span class="tag-phx">Phoenix</span></td>
+          </tr>
+          <tr>
+            <td>Asian American population</td>
+            <td>~6.5% metro · strong NE concentration</td>
+            <td>~4.0% metro · clustered Tempe + Chandler</td>
+            <td>~6.5% city · S. suburb boom (Ballantyne, Concord)</td>
+            <td>~5.2% Henrico · ~2.1% city · lightest of candidates</td>
+            <td>Densest US AA metro · Cal undergrad ~38% AAPI</td>
+            <td><span class="tag-bky">Berkeley</span></td>
+          </tr>
+          <tr>
+            <td>AA proximity to anchor</td>
+            <td>30+ min from Tech (Gwinnett corridor)</td>
+            <td>Adjacent to ASU (Tempe 8.8%, Chandler 11%)</td>
+            <td>15–25 min from UNCC (S. suburbs)</td>
+            <td>15 min Henrico from VCU</td>
+            <td>On-campus / city-scale density</td>
+            <td><span class="tag-bky">Berkeley</span></td>
+          </tr>
+          <tr>
+            <td>Cost (1BR, core)</td>
+            <td>$1,900 – 2,200 (Midtown)</td>
+            <td>$1,500 – 1,800 (Tempe)</td>
+            <td>$1,650 – 2,000 (South End)</td>
+            <td>$1,400 – 1,750 (Fan / Scott's Addition)</td>
+            <td>$2,400 – 3,200 (Berkeley)</td>
+            <td><span class="tag-rva">Richmond</span></td>
+          </tr>
+          <tr>
+            <td>Ministry saturation (young adult)</td>
+            <td>Heavy — 5+ established large gatherings</td>
+            <td>Moderate — Salt Co + Hope Church on college side</td>
+            <td>Moderate — Elevation gravity + 5 mid-size</td>
+            <td>Light — Hill City + Movement + Third + Redeemer Anglican</td>
+            <td>Heavy — every major rail at Cal + off-campus ecosystem</td>
+            <td><span class="tag-rva">Richmond</span></td>
+          </tr>
+          <tr>
+            <td>Existing AA ministry depth</td>
+            <td>Mature — dozens of pan-Asian congregations</td>
+            <td>Sparse — handful, ethnic-specific</td>
+            <td>Younger, growing</td>
+            <td>Light — mature ecosystem lives in NoVA, not RVA</td>
+            <td>Mature + active public conversation around incumbent</td>
+            <td><span class="tag-atl">Atlanta</span></td>
+          </tr>
+          <tr>
+            <td>Bible Belt baseline</td>
+            <td>High — church-fluent on-ramp</td>
+            <td>Low — nones, post-Mormon, secular</td>
+            <td>High — Carolina church culture</td>
+            <td>Mid-South — mixed Episcopal / Baptist heritage</td>
+            <td>Low — Bay Area secular baseline</td>
+            <td><span class="tag-tie">Trade-off</span></td>
+          </tr>
+          <tr>
+            <td>Local-bivocational retention</td>
+            <td>Strong — Tech grads stay, F500 anchors</td>
+            <td>Mixed — improving (TSMC, Intel)</td>
+            <td>Strong — banking + post-NYC migration</td>
+            <td>Mid — verticals-specific (insurance, energy, food)</td>
+            <td>High but expensive — Big Tech / biotech / finance</td>
+            <td><span class="tag-atl">Atlanta</span></td>
+          </tr>
+          <tr>
+            <td>Bivocational job market</td>
+            <td>Tech, finance, healthcare (17 F500)</td>
+            <td>Tech, semis, banking, ops</td>
+            <td>Banking, fintech, energy, mfg (7 F500 + 19 F1000)</td>
+            <td>Insurance, energy, food, used-car (8 F500 + Capital One West Creek)</td>
+            <td>Big Tech, biotech, finance, consulting</td>
+            <td><span class="tag-atl">Atlanta</span></td>
+          </tr>
+          <tr>
+            <td>Metro growth rate</td>
+            <td>~1.0% / yr</td>
+            <td>~1.1–1.6% / yr (4th fastest US)</td>
+            <td>~1.2–1.5% / yr (top-10 Sun Belt)</td>
+            <td>~0.5–0.8% / yr</td>
+            <td>~0.0–0.3% / yr (Bay Area flat / declining)</td>
+            <td><span class="tag-phx">Phoenix</span></td>
+          </tr>
+          <tr>
+            <td>Climate friction</td>
+            <td>Hot humid summers, mild winters</td>
+            <td>110°+ summers — students disperse</td>
+            <td>Hot humid summers, mild winters</td>
+            <td>Mild four seasons, humid summer</td>
+            <td>Mediterranean, mild year-round</td>
+            <td><span class="tag-bky">Berkeley</span></td>
+          </tr>
+          <tr>
+            <td>Carolina pipeline geometry</td>
+            <td>Live — 6.5h drive / 90-min nonstop</td>
+            <td>Inert — 5h flight + layover</td>
+            <td>Most live — 2.5h drive, daily nonstops</td>
+            <td>Usable — 3.5h drive, no longer native</td>
+            <td>Inert — 5h+ flight</td>
+            <td><span class="tag-clt">Charlotte</span></td>
+          </tr>
+          <tr>
+            <td>A2N footprint</td>
+            <td>Yes — Rooted at GT/Emory/UGA (sister plant in metro)</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None in RVA · UVA at 1h W is A2N (Axiom)</td>
+            <td>Yes — A2F at Cal (Klesis rebrand 2023)</td>
+            <td><span class="tag-note">Constraint, not edge</span></td>
+          </tr>
+          <tr>
+            <td>Differentiation difficulty</td>
+            <td>Real — crowded young-adult shelf</td>
+            <td>Moderate — two college incumbents</td>
+            <td>Lowest — open lane on team's profile</td>
+            <td>Low — top-3 in 5 years is realistic</td>
+            <td>Highest — built deliberately through name, network, posture</td>
+            <td><span class="tag-clt">Charlotte</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="score-hint">↔ Scroll table horizontally to see all candidates</div>
   </div>
 </section>
 
@@ -1372,6 +1727,12 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
     </div>
   </div>
 </section>
+
+</div>
+<!-- ============ /TAB: COMPARE ============ -->
+
+<!-- ============ TAB: ATLANTA ============ -->
+<div class="tab-panel" data-panel="atlanta">
 
 <!-- DOSSIER ATLANTA -->
 <section class="dossier dossier-atl" id="atlanta">
@@ -1503,18 +1864,39 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
       </div>
     </div>
 
-    <!-- block 4: cost & runway -->
+    <!-- block 4: campus-side ministry shelf -->
     <div class="dossier-block">
-      <div class="label"><span class="num">04</span>Runway</div>
+      <div class="label"><span class="num">04</span>The Campus Shelf</div>
+      <div>
+        <h3>The para-church layer is <em>thicker still</em>.</h3>
+        <p>The seven young-adult churches above are only the church side. The campus side — staffed para-church ministries living on Atlanta's college lawns — is denser: roughly thirty active chapters across Tech, Emory, GSU, the AUC, and SCAD Atlanta. Cru, InterVarsity, RUF, BCM, FCA, the UMC's Wesley Foundations, and the Catholic centers all run multi-campus operations with houses, staff, and decade-plus institutional memory. None of this is on the church-side scoreboard, but a Tuesday-night midweek gathering competes with all of it for student attention.</p>
+        <p>The shelf is not flat. Tech and Emory are the contested campuses; GSU and SCAD are lighter; the AUC runs on its own institutional gravity and is best treated as a partnership question, not an absorption one. The team's AA-led leadership shape and integrated college-to-young-pro pipeline are the real wedges here — neither is well-represented on the current shelf, especially at Tech.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">Georgia Tech</span><span class="nt">CCF · BCM · RUF · Cru · Tech Wesley · Catholic Ctr · Lutheran · Theta Xi · Chinese CF — 9+ chapters</span></div>
+          <div class="item"><span class="nm">Emory</span><span class="nt">15+ Christian student orgs (IV, RUF, Cru, BCM, FCA, Wesley, LaFe, CBC, ACF…) · Cannon Chapel as institutional anchor</span></div>
+          <div class="item"><span class="nm">GSU</span><span class="nt">FCA · Atlanta Christian Students · Journey CF · Lyke House (Catholic, shared)</span></div>
+          <div class="item"><span class="nm">AUC</span><span class="nt">Lyke House · Absalom Jones (Episcopal) · King Chapel · AUC Gospel Choir — culturally distinct shelf</span></div>
+          <div class="item"><span class="nm">SCAD Atlanta</span><span class="nt">InterVarsity · Believers' LoveWorld — the lightest shelf in Midtown · highest absorption upside per student</span></div>
+        </div>
+
+        <p style="margin-top: 1.8rem;"><strong>The closest format comp the dossier was missing.</strong> &nbsp; <em>The Living Room ATL</em> — North Point's Monday-night college gathering — already runs up to fourteen buses metro-wide to bring students in. A polished, large-format midweek college service is not a vacant lane in this city; it is a live operation with logistics in place. Add Passion's young-adult gravity (the 18–25 demographic anchor at the metro level), Journey Church's alternating GT/Emory campus services, and a 2025 Acts 2 plant (Rooted) explicitly targeting GT/Emory/UGA, and the saturation read sharpens: this is the most contested college-and-young-adult market the team could choose. Differentiation has to be real and concrete — not a posture.</p>
+        <p style="font-size: 0.85rem; opacity: 0.7; font-style: italic; margin-top: 1.2rem;">Caveat — directory presence is not the same as active scale. Several listed chapters (RUF/SCAD-Atlanta, GSU's BCM/Cru/RUF) appear in directories but are not corroborated by recent on-campus activity in public sources. A phone-call pass before citing any of these as a competitor is warranted.</p>
+      </div>
+    </div>
+
+    <!-- block 5: cost & runway -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">05</span>Runway</div>
       <div>
         <h3>Liveable for ten <em>bivocationals</em> — but not cheap.</h3>
         <p>Midtown 1BR rent runs $1,900 – $2,200; West Midtown and Old Fourth Ward shave 10–15% off. Home Park and points west get cheaper still. Bivocational employment is genuinely abundant — Tech, Microsoft, Google ATL, Mailchimp/Intuit, Salesforce, Coca-Cola, Delta, Home Depot, NCR, Cox, Inspire Brands, plus the Emory / CDC / Emory Healthcare cluster on the east side. White-collar work for a high-caliber team is not a worry here.</p>
       </div>
     </div>
 
-    <!-- block 5: Carolina pipeline -->
+    <!-- block 6: Carolina pipeline -->
     <div class="dossier-block">
-      <div class="label"><span class="num">05</span>The Carolina Pipeline</div>
+      <div class="label"><span class="num">06</span>The Carolina Pipeline</div>
       <div>
         <h3>An <em>unfair advantage</em> the team already has.</h3>
         <p>Several of the team did college ministry at UNC. That's not a footnote — it's a structural asset for an Atlanta plant in a way it simply isn't for a Phoenix one. Chapel Hill is a 6.5-hour drive or a 90-minute direct flight from Atlanta. There are daily nonstops. UNC has roughly 32K students, a deep evangelical campus-ministry tradition, and an alumni population in metro Atlanta that runs into the tens of thousands.</p>
@@ -1565,7 +1947,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
           <li>Crowded young-adult shelf — differentiation is real work</li>
           <li>AA density lives 30 min from Tech, not in Midtown</li>
           <li>Higher COL than Phoenix (~20–25%)</li>
-          <li>Brother's plant already operating in this exact ecosystem</li>
+          <li>Another A2N AA-led plant already operating in this exact ecosystem</li>
         </ul>
       </div>
     </div>
@@ -1578,34 +1960,34 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
     <div class="family-head">
       <div class="eyebrow" style="color: var(--atl-gold);">§ V. The Family Factor</div>
       <h2>Two ministries. <em>Parallel, not overlapping.</em><br>Occasional collaboration.</h2>
-      <p>Isaiah Kang's A2N plant — bridging Emory, Georgia Tech, and UGA from Duluth — works the same campuses we'd be working. The realistic shape of that relationship isn't shared students. Asking a 19-year-old to be a full participant in two parallel ministries is unrealistic; the time and emotional bandwidth aren't there. What's actually workable is two parallel works, reaching different students, with deliberate collaboration at a few touchpoints each year.</p>
+      <p>An existing A2N AA-led plant — bridging Emory, Georgia Tech, and UGA from Duluth — works the same campuses this plant would be working. The realistic shape of that relationship isn't shared students. Asking a 19-year-old to be a full participant in two parallel ministries is unrealistic; the time and emotional bandwidth aren't there. What's actually workable is two parallel works, reaching different students, with deliberate collaboration at a few touchpoints each year.</p>
     </div>
 
     <!-- partnership viz -->
     <div class="partnership-viz">
       <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 760px;">
-        <!-- isaiah's circle (positioned left, no overlap) -->
+        <!-- existing A2N plant (positioned left, no overlap) -->
         <g>
           <circle cx="180" cy="200" r="125" fill="none" stroke="#C49A4A" stroke-width="1.2" stroke-dasharray="3,4" opacity="0.7"/>
           <circle cx="180" cy="200" r="125" fill="#C49A4A" opacity="0.06"/>
-          <text x="180" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#C49A4A" letter-spacing="2">— ISAIAH / A2N —</text>
+          <text x="180" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#C49A4A" letter-spacing="2">— EXISTING A2N PLANT —</text>
           <text x="180" y="100" text-anchor="middle" font-family="Fraunces" font-size="20" fill="#EFE8D6" font-weight="300" font-style="italic">campus fellowship.</text>
           <text x="180" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.85">Emory · GT · UGA</text>
           <text x="180" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.85">BCM-style discipleship</text>
           <text x="180" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">based in Duluth</text>
-          <text x="180" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">reaching their students</text>
+          <text x="180" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">reaching its students</text>
         </g>
 
-        <!-- your circle (positioned right, no overlap) -->
+        <!-- proposed plant (positioned right, no overlap) -->
         <g>
           <circle cx="520" cy="200" r="125" fill="none" stroke="#9A4628" stroke-width="1.2" stroke-dasharray="3,4" opacity="0.7"/>
           <circle cx="520" cy="200" r="125" fill="#9A4628" opacity="0.08"/>
-          <text x="520" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#9A4628" letter-spacing="2">— YOUR PLANT —</text>
+          <text x="520" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#9A4628" letter-spacing="2">— THE PROPOSED PLANT —</text>
           <text x="520" y="100" text-anchor="middle" font-family="Fraunces" font-size="20" fill="#EFE8D6" font-weight="300" font-style="italic">local church.</text>
           <text x="520" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.85">Midtown anchor</text>
           <text x="520" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.85">college + young-pro arms</text>
           <text x="520" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">Sunday + midweek</text>
-          <text x="520" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">reaching our students</text>
+          <text x="520" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#EFE8D6" opacity="0.55">reaching its students</text>
         </g>
 
         <!-- collaboration bridge between -->
@@ -1631,8 +2013,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 
     <div class="partner-grid">
       <div class="partner-cell">
-        <div class="role">Isaiah / A2N — primary work</div>
-        <h4>Their <em>campus fellowship</em>.</h4>
+        <div class="role">Existing A2N plant — primary work</div>
+        <h4>The <em>campus fellowship</em>.</h4>
         <ul>
           <li>Campus-embedded, BCM-style relational discipleship</li>
           <li>Across Emory, GT, UGA — multi-school</li>
@@ -1641,11 +2023,11 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
         </ul>
       </div>
       <div class="partner-cell">
-        <div class="role">Your plant — primary work</div>
-        <h4>Our <em>local church</em>.</h4>
+        <div class="role">The proposed plant — primary work</div>
+        <h4>The <em>local church</em>.</h4>
         <ul>
-          <li>Midtown-anchored church with our own college ministry</li>
-          <li>Reaches students through our gatherings, our teams, our friendships</li>
+          <li>Midtown-anchored church with its own college ministry</li>
+          <li>Reaches students through its gatherings, teams, friendships</li>
           <li>Different student profile, different relational network</li>
           <li>Friendly with A2N — not competing for the same names</li>
         </ul>
@@ -1818,9 +2200,9 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
         <div class="meta">Cluster — 30308 / 30318 / 30312</div>
       </div>
       <div class="tactic">
-        <div class="tno">Tactic 05 — Coordinate with Isaiah</div>
+        <div class="tno">Tactic 05 — Coordinate with the existing A2N plant</div>
         <h4>Parallel works, <em>occasional collaboration</em>.</h4>
-        <p>Different students, different relational networks, different programs. We don't try to share members; the time math doesn't work. What we do share: 2–3 collaboration points a year — a joint summer gathering, a leader training, a missions trip. Friendly cooperation, not entangled membership.</p>
+        <p>Different students, different relational networks, different programs. The two works do not try to share members; the time math doesn't work. What they share: 2–3 collaboration points a year — a joint summer gathering, a leader training, a missions trip. Friendly cooperation, not entangled membership.</p>
         <div class="meta">Cadence — quarterly leadership alignment + 2-3 joint events / year</div>
       </div>
       <div class="tactic">
@@ -1844,6 +2226,12 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
     </div>
   </div>
 </section>
+
+</div>
+<!-- ============ /TAB: ATLANTA ============ -->
+
+<!-- ============ TAB: PHOENIX ============ -->
+<div class="tab-panel" data-panel="phoenix">
 
 <!-- DOSSIER PHOENIX -->
 <section class="dossier dossier-phx" id="phoenix">
@@ -2096,13 +2484,730 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   </div>
 </section>
 
+</div>
+<!-- ============ /TAB: PHOENIX ============ -->
+
+<!-- ============ TAB: CHARLOTTE ============ -->
+<div class="tab-panel" data-panel="charlotte">
+
+<!-- DOSSIER CHARLOTTE -->
+<section class="dossier dossier-clt" id="charlotte">
+  <div class="container">
+    <div class="dossier-header">
+      <div>
+        <div class="dossier-no">§ IX. Dossier — File 03</div>
+        <h1 class="dossier-name">Char<em>lo</em>tte.</h1>
+      </div>
+      <div class="dossier-tag">A banking capital with a Carolina pipeline still live and a college shelf the team can actually compete on.</div>
+    </div>
+
+    <!-- HERO PHOTO -->
+    <div class="dossier-hero">
+      <div class="photo photo-clt">
+        <img src="https://images.unsplash.com/photo-1635677600191-e0e2c2f59634?w=1800&q=80&auto=format&fit=crop" alt="Charlotte NC skyline at dusk">
+      </div>
+      <div class="photo-cap">
+        <span>Uptown Charlotte &nbsp;·&nbsp; from South End</span>
+        <span class="credit">Photo: Unsplash</span>
+      </div>
+    </div>
+
+    <!-- stat ribbon -->
+    <div class="stat-ribbon">
+      <div class="stat-cell">
+        <div class="num">32K</div>
+        <div class="lbl">UNC Charlotte —<br>record fall 2025 enrollment</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">~6.5%</div>
+        <div class="lbl">City AA share —<br>fastest growth in S. suburbs</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">7</div>
+        <div class="lbl">Fortune 500 HQs<br>in metro</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">2.4M</div>
+        <div class="lbl">Metro pop. —<br>fast-growing Sun Belt</div>
+      </div>
+    </div>
+
+    <!-- block 1: campus density -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">01</span>Campus Density</div>
+      <div>
+        <h3>One real anchor — and a <em>cluster of small support</em>.</h3>
+        <p>Charlotte's college math is honest: UNC Charlotte is the anchor and almost the only anchor at scale. Fall 2025 set a record 32,207 students (26,213 undergrad, 5,994 graduate) — a real R1-tier population, but a commuter-leaning campus on the city's northeast edge, ~12 miles from Uptown. The supporting cast — Davidson (~2K elite liberal arts, 25 min north), Queens University of Charlotte (~2.5K, in Myers Park), Johnson C. Smith (HBCU, ~1K, near Uptown), Belmont Abbey, Wingate, Pfeiffer, JWU Charlotte, plus Central Piedmont's seven campuses — together comprise the Greater Charlotte Consortium of twelve campuses but no single one moves the needle independently.</p>
+        <p>The honest read: <strong>UNC Charlotte is the only campus the plant has to plan around.</strong> Davidson and Queens are real but small; JCSU is culturally distinct and probably a partnership question rather than an absorption one. The campus geography is also less concentrated than Atlanta's Tech-and-SCAD walking radius — UNCC sits on its own edge of the metro, with limited critical mass of student-ministry incumbents on campus relative to its size.</p>
+
+        <div class="bars">
+          <div style="display: flex; gap: 1.6rem; align-items: center; margin-bottom: 1.1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; opacity: 0.78;">
+            <div style="display: flex; align-items: center; gap: 0.55rem;"><div style="width: 16px; height: 6px; background: linear-gradient(90deg, var(--clt-gold), #D6B583); border-radius: 1px;"></div>UNDERGRAD</div>
+            <div style="display: flex; align-items: center; gap: 0.55rem;"><div style="width: 16px; height: 6px; background: linear-gradient(90deg, #6E5A38, #8B7549); border-radius: 1px; opacity: 0.92;"></div>GRADUATE</div>
+          </div>
+          <div class="bar-row"><div class="name">UNC Charlotte</div><div class="bar-track"><div class="bar-fill" style="width: 100%; background: linear-gradient(to right, var(--clt-gold) 0%, #D6B583 81%, #6E5A38 81%, #8B7549 100%);"></div></div><div class="num">≈ 32K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">~19% grad</span></div></div>
+          <div class="bar-row"><div class="name">Central Piedmont CC (system)</div><div class="bar-track"><div class="bar-fill" style="width: 60%; background: linear-gradient(90deg, var(--clt-gold), #D6B583);"></div></div><div class="num">≈ 19K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">2-yr / commuter</span></div></div>
+          <div class="bar-row"><div class="name">Queens University</div><div class="bar-track"><div class="bar-fill" style="width: 8%; background: linear-gradient(to right, var(--clt-gold) 0%, #D6B583 70%, #6E5A38 70%, #8B7549 100%);"></div></div><div class="num">≈ 2.5K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">private · Myers Park</span></div></div>
+          <div class="bar-row"><div class="name">Davidson College</div><div class="bar-track"><div class="bar-fill" style="width: 6%; background: linear-gradient(90deg, var(--clt-gold), #D6B583);"></div></div><div class="num">≈ 2K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">elite · 25 min N</span></div></div>
+          <div class="bar-row"><div class="name">Johnson C. Smith (HBCU)</div><div class="bar-track"><div class="bar-fill" style="width: 4%; background: linear-gradient(90deg, var(--clt-gold), #D6B583);"></div></div><div class="num">≈ 1K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">near Uptown</span></div></div>
+        </div>
+        <p style="margin-top: 1.4rem; font-size: 0.85rem; opacity: 0.72; font-style: italic;">Note: UNC Charlotte's nominal 32K becomes a ~26K undergrad reachable population; commuter share is meaningful (campus is 12 miles from Uptown, no MARTA-equivalent rail link). The Greater Charlotte Consortium adds eleven other campuses — including Belmont Abbey, Pfeiffer, Wingate, JWU Charlotte, and Winthrop in Rock Hill SC — but distances and student profiles vary widely.</p>
+      </div>
+    </div>
+
+    <!-- block 2: AA reality -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">02</span>The Suburban AA Boom</div>
+      <div>
+        <h3>City share modest, suburb growth <em>real and fast</em>.</h3>
+        <p>Charlotte's Asian American share city-wide is ~6.5% — comparable to Atlanta's metro figure. The deeper story is what's happening in the south suburbs. Ballantyne, Marvin, Concord, and the Cary-equivalent ring of Mecklenburg / Union / Cabarrus counties have seen a sustained Indian-American population boom over the last decade, driven by the same school-quality migration pattern that built Johns Creek and Duluth in Atlanta a generation earlier. The pattern is real enough that local school districts have publicly tracked it as a demographic event.</p>
+        <p>The geometry: AA density lives 15–25 minutes south of Uptown (Ballantyne, Pineville, Marvin) and 25–30 minutes northeast (Concord). UNC Charlotte sits roughly between these poles but closer to neither — a familiar Atlanta-style "live in two worlds" pattern, less acute than the 30-minute Gwinnett gap but still real.</p>
+
+        <div class="bars">
+          <div class="bar-row"><div class="name">Ballantyne / S. Charlotte</div><div class="bar-track"><div class="bar-fill" style="width: 78%"></div></div><div class="num">~14%</div></div>
+          <div class="bar-row"><div class="name">Marvin / Weddington</div><div class="bar-track"><div class="bar-fill" style="width: 72%"></div></div><div class="num">~13%</div></div>
+          <div class="bar-row"><div class="name">Concord / Cabarrus</div><div class="bar-track"><div class="bar-fill" style="width: 50%"></div></div><div class="num">~9%</div></div>
+          <div class="bar-row"><div class="name">Charlotte (city)</div><div class="bar-track"><div class="bar-fill" style="width: 36%"></div></div><div class="num">~6.5%</div></div>
+        </div>
+        <p style="margin-top: 1.2rem; font-size: 0.85rem; opacity: 0.72; font-style: italic;">Suburb-level percentages are estimates from local reporting and ACS 5-year data; precise figures shift annually. The directional signal (Indian-American boom in the south suburbs) is well-documented in Charlotte education and demographic coverage.</p>
+      </div>
+    </div>
+
+    <!-- PHOTO PAIR — Uptown context -->
+    <div class="dossier-photo-pair">
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1605547651531-22ed3e203add?w=900&q=80&auto=format&fit=crop" alt="Bank of America Stadium and Uptown Charlotte skyline">
+        </div>
+        <div class="photo-cap">
+          <span>Uptown &nbsp;·&nbsp; the BoA tower over Trade & Tryon</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1623860168047-9f4dccd615e1?w=900&q=80&auto=format&fit=crop" alt="South End light rail corridor with new construction">
+        </div>
+        <div class="photo-cap">
+          <span>South End &nbsp;·&nbsp; the Blue Line corridor</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"A bank-anchored economy, a Carolina pipeline still live, and a college shelf the team can <em>actually compete on</em>."</p>
+    </div>
+
+    <!-- block 3: ministry shelf -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">03</span>The Ministry Shelf</div>
+      <div>
+        <h3>Elevation sets the gravity. Past that, the lane is <em>real</em>.</h3>
+        <p>Charlotte's young-adult shelf is shaped less by saturation and more by one outsized incumbent. Elevation Church (~17K weekly attendance across 20 locations as of 2024) is the metro's gravitational center for under-40 churchgoers, and its cultural footprint shapes how Charlotte Gen Z reads "church" in ways that have no real Atlanta or Phoenix analogue. Past Elevation, the shelf is genuinely lighter than Atlanta: Forest Hill, Mecklenburg Community Church, Calvary Church (with explicit 18–25 college-and-young-adult programming), Freedom House (its MVMNT young-adult community runs 18–29), and Covenant Presbyterian (Myers Park — established young-adult ministry) round out the field.</p>
+        <p>What's missing on the existing shelf — a polished, college-anchored midweek gathering with an integrated college-to-young-pro pipeline and an AA-led identity — is precisely the team's distinctive thesis. Charlotte does not have a Living Room ATL analogue. It does not have a Passion-scale young-adult magnet. The lane is not empty (Calvary and Freedom House each hold pieces of it), but it is meaningfully more open than Atlanta or Phoenix's ASU radius.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">Elevation Church</span><span class="nt">~17K weekly · 20 sites · sets metro gravity</span></div>
+          <div class="item"><span class="nm">Forest Hill Church</span><span class="nt">multi-site · Life Groups + modern worship</span></div>
+          <div class="item"><span class="nm">Mecklenburg Community Church</span><span class="nt">tens of thousands attenders · online + campus</span></div>
+          <div class="item"><span class="nm">Calvary Church</span><span class="nt">18–25 college and young-adult ministry, weekly</span></div>
+          <div class="item"><span class="nm">Freedom House — MVMNT</span><span class="nt">18–29 young-adult community · LifeGroups</span></div>
+          <div class="item"><span class="nm">Covenant Presbyterian</span><span class="nt">Myers Park · established young-adult arm</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 4: campus shelf -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">04</span>The Campus Shelf</div>
+      <div>
+        <h3>Para-church coverage at UNCC is <em>thinner than Tech</em>.</h3>
+        <p>Where Atlanta's Tech anchor sits under nine-plus para-church chapters, UNC Charlotte's documented Christian campus presence runs leaner: Cru, RUF (PCA), Baptist Campus Ministries, and a Catholic Campus Ministry center. That is real coverage but not the multi-decade institutional density Tech has accumulated. Davidson's religious life is more chapel-and-chaplaincy in tradition; Queens has institutional Presbyterian roots. JCSU operates within the AME Zion HBCU religious-life pattern, which is a culturally distinct shelf.</p>
+        <p>The strategic read: UNCC has more room for a new church-led college presence than Tech does. The constraint is less competitive saturation and more campus geography — an off-campus midweek gathering near UNCC has to reckon with a 12-mile drive from Uptown / South End where most young professionals will live. A South Park or NoDa anchor with a UNCC bus or shuttle is not unlike The Living Room ATL's metro logistics, and is probably the realistic shape of the play.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">UNC Charlotte</span><span class="nt">Cru · RUF · BCM · Catholic Campus Ministry — solid but not crowded</span></div>
+          <div class="item"><span class="nm">Davidson College</span><span class="nt">Chapel/chaplaincy tradition · small Christian student orgs</span></div>
+          <div class="item"><span class="nm">Queens University</span><span class="nt">Presbyterian roots · young-adult-friendly Myers Park location</span></div>
+          <div class="item"><span class="nm">Johnson C. Smith (HBCU)</span><span class="nt">AME Zion-affiliated religious life · partnership question</span></div>
+          <div class="item"><span class="nm">Belmont Abbey / Wingate / Pfeiffer</span><span class="nt">Small Christian colleges in the consortium ring</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 5: runway -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">05</span>Runway</div>
+      <div>
+        <h3>Banking corporate depth — <em>between Atlanta and Phoenix</em> on cost.</h3>
+        <p>Charlotte holds seven Fortune 500 headquarters in-region and 19 Fortune 1000 — Bank of America (#17, $192B revenue), Lowe's (#52), Honeywell (#119), Nucor (#140), Duke Energy (#144), Truist (#168), and Sonic Automotive — alongside a dense second-tier of regional banking, energy, and logistics. The bivocational job market is one of the best in the Southeast for finance, technology-in-banking, energy, and regulated industries; less broad than Atlanta's seventeen-F500 mix, but deep where it counts.</p>
+        <p>Cost: Uptown / South End / Plaza Midwood 1BR rent runs $1,650 – $2,000 — modestly cheaper than Midtown Atlanta and modestly more than Tempe. Bivocational math is workable; the Carolina-pipeline geometry plus banking corporate depth is the unique combination here.</p>
+      </div>
+    </div>
+
+    <!-- block 6: carolina pipeline -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">06</span>The Carolina Pipeline</div>
+      <div>
+        <h3>The most <em>literal</em> version of the Carolina advantage.</h3>
+        <p>Chapel Hill is 2.5 hours by car from Charlotte, with daily nonstop flights between CLT and RDU. The team's UNC ministry alumni network is geographically nearer than from Atlanta, and the cultural distance is shorter — Charlotte and the Triangle share a labor market, a college sports rivalry that doubles as a recruiting funnel, and a steady migration of UNC-and-Duke graduates into Charlotte's banking sector. UNC's metro Charlotte alumni population runs into the high tens of thousands.</p>
+        <p>One nuance worth naming up front: <strong>the Triangle is itself an A2N footprint</strong> (UNC, NC State, Meredith all operate as Acts 2 Fellowship). A team coming out of the UNC ministry orbit and planting in Charlotte will have an A2N sister plant 2.5 hours up I-85, and downstream recruiting from the Triangle has to be calibrated against that. This is a constraint, not a blocker — A2N's Triangle work and an independent AA-led plant in Charlotte are not direct competitors — but the team should walk into the relationship rather than around it.</p>
+      </div>
+    </div>
+
+    <!-- block 7: banking capital character -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">07</span>Banking Capital Character</div>
+      <div>
+        <h3>The post-pandemic <em>second financial city</em>.</h3>
+        <p>Charlotte spent the 2010s as a regional banking center; the 2020s have promoted it. Bank of America headquarters anchors the Uptown skyline (Trade & Tryon), but the deeper shift is the post-pandemic migration of finance and tech-in-finance roles out of New York and San Francisco. JPMorgan Chase's expanded Charlotte footprint, Truist's HQ relocation completion, Lowe's Tech Hub buildout in South End, Honeywell's HQ move from New Jersey, and the steady accretion of fintech (LendingTree, AvidXchange) and consulting (the Big Four all hold meaningful Charlotte offices) have pulled a specific demographic into the city: 24–32-year-old finance / tech / consulting professionals who took NYC-comp roles into a Charlotte cost basis. This is the demographic Atlanta's Midtown plant would also reach — but in Charlotte they arrive in greater concentration, with a clearer mental model of "the city I moved to for work," and without Atlanta's sprawl.</p>
+        <p>Where they live: <strong>South End</strong> (the Blue Line light-rail corridor, easily Charlotte's densest young-pro neighborhood — luxury midrise, breweries, food halls), <strong>Plaza Midwood / NoDa</strong> (the older, more design-forward, more arts-leaning side of the same demographic), <strong>Wesley Heights / Camden</strong> (newer, west-of-Uptown, faster-growing), and the southern edge of <strong>Dilworth</strong>. UNC Charlotte's main campus is 12 miles northeast of these, which is the dossier's structural complication — but the same students travel into Uptown / South End for internships, jobs, and social life routinely, so the venue logic is "where 22–30s live, with a UNCC bridge" rather than "near campus."</p>
+      </div>
+    </div>
+
+    <!-- block 8: south end strategy -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">08</span>The South End Strategy</div>
+      <div>
+        <h3>Anchor in <em>South End</em>. Build the UNCC bridge in year one.</h3>
+        <p>If Charlotte is the call, the shape of the play follows from the city's own geography. South End is to Charlotte's young-pro density what Midtown is to Atlanta's — the natural anchor neighborhood. The complication is that no single Charlotte neighborhood holds both the under-30 density and a major undergraduate population. South End has the young pros. UNCC has the students. A workable plant uses South End as the church anchor and builds a deliberate UNCC bridge as a year-one priority.</p>
+
+        <div class="bars" style="margin-top: 1.8rem;">
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Anchor in South End / Camden.</strong> &nbsp; Sunday gathering and midweek front door both inside the Blue Line corridor. Venue options: a converted warehouse along Camden Rd, a Plaza Midwood theater, a NoDa flexible space, or partnership with an Uptown / South End church (Forest Hill, a Calvary site, an emerging Anglican parish) for shared facilities. The goal is walking distance for South End / Camden / Wesley Heights residents and a 10-minute light-rail ride for Plaza Midwood / NoDa.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Build the UNCC bridge as a year-one priority.</strong> &nbsp; Hire a college pastor with explicit responsibility for UNCC. A weekly campus presence (Bible study or college community meeting) at or adjacent to UNCC, plus a Sunday shuttle-or-rideshare network into the South End service. UNCC student leaders mentored into year-two leadership of a college community that meets on campus and integrates with the South End church family. This is the structurally hardest piece — the 12-mile gap between South End and UNCC requires intentional logistics from day one, not a year-three afterthought.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Plant the AA arm in Ballantyne or Concord (year two-plus).</strong> &nbsp; The South End core is multi-ethnic by default (the migration shape Charlotte attracts is not predominantly AA). The AA family-and-stay piece lives 25 minutes south in Ballantyne / Marvin or 25 minutes northeast in Concord. A small-group / extension community in one of those corridors — not a year-one priority — sets up a year-three second-campus question without overstretching launch.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iv.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Pre-place the ten in finance, fintech, and corporate.</strong> &nbsp; BoA, Truist, Wells Fargo (still has a major regional footprint), JPMorgan Chase Charlotte, LendingTree, AvidXchange, the Big Four. Lowe's Tech Hub for engineering. Honeywell for hardware/operations. Duke Energy for the utility lane. The bivocational job market here is genuinely deep for finance / consulting / corporate-tech profiles; light for traditional Big Tech (Charlotte is not a Bay Area / NYC engineering market).
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">v.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Calibrate the Triangle / A2N relationship up front.</strong> &nbsp; A2N's Triangle plant is 2.5 hours away. Recruiting overlap is real (UNC ministry alumni who relocate to Charlotte for finance work). Run an explicit conversation in months 1–3 about how the two works coexist — joint summer events, leader exchanges, no shared-membership trap, the same friendly-not-entangled posture that the Atlanta dossier proposes for the existing A2N plant in that metro.
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.8rem;">The honest version of the Charlotte bet: <strong>cleanest open-lane fit on the team's profile</strong>, with a structural geography problem (one anchor campus 12 miles from where young-pros live) that has to be solved deliberately rather than ignored. The upside is a defensible AA-led, integrated college-and-young-pro plant in a metro the country is moving to, with the Carolina pipeline geographically live and the bivocational job market genuinely deep on the finance side.</p>
+      </div>
+    </div>
+
+    <!-- verdict -->
+    <div class="verdict">
+      <div>
+        <h4>— Where Charlotte wins —</h4>
+        <ul>
+          <li>Carolina pipeline is geographically literal — 2.5h drive to Chapel Hill, daily nonstops</li>
+          <li>The cleanest open lane on the team's profile — no incumbent runs the integrated college-and-young-pro AA-led play here</li>
+          <li>Banking corporate depth = strong bivocational job market, especially in finance / fintech</li>
+          <li>South suburb AA growth is real and accelerating — built-in demographic tailwind</li>
+          <li>No A2N footprint in Charlotte itself</li>
+          <li>Cost between Atlanta and Phoenix — modest savings vs. Midtown</li>
+        </ul>
+      </div>
+      <div>
+        <h4>— Where Charlotte costs you —</h4>
+        <ul>
+          <li>Only one true anchor campus (UNCC) vs. Atlanta's Tech-and-SCAD walking radius</li>
+          <li>UNCC sits 12 miles from where young professionals live — venue logistics are non-trivial</li>
+          <li>Elevation Church's gravitational pull shapes how Gen Z reads "church" in this metro</li>
+          <li>Triangle is A2N — sister-plant adjacency 2.5h away requires deliberate calibration</li>
+          <li>AA ministry partner ecosystem is younger and shallower than Atlanta's</li>
+          <li>South-suburb AA density is split between two corridors (S. Charlotte vs. Concord), not a single Gwinnett-style cluster</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+<!-- ============ /TAB: CHARLOTTE ============ -->
+
+<!-- ============ TAB: RICHMOND ============ -->
+<div class="tab-panel" data-panel="richmond">
+
+<!-- DOSSIER RICHMOND -->
+<section class="dossier dossier-rva" id="richmond">
+  <div class="container">
+    <div class="dossier-header">
+      <div>
+        <div class="dossier-no">§ X. Dossier — File 04</div>
+        <h1 class="dossier-name">Rich<em>mo</em>nd.</h1>
+      </div>
+      <div class="dossier-tag">A capital with one strong anchor, modest AA, an unusually diverse F500 cluster — and a UVA-shaped adjacency risk.</div>
+    </div>
+
+    <!-- HERO PHOTO -->
+    <div class="dossier-hero">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1600320254374-ce2d293c324e?w=1800&q=80&auto=format&fit=crop" alt="Richmond Virginia skyline along the James River">
+      </div>
+      <div class="photo-cap">
+        <span>Richmond &nbsp;·&nbsp; James River</span>
+        <span class="credit">Photo: Unsplash</span>
+      </div>
+    </div>
+
+    <!-- stat ribbon -->
+    <div class="stat-ribbon">
+      <div class="stat-cell">
+        <div class="num">29K</div>
+        <div class="lbl">VCU — fall 2025<br>Richmond's anchor</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">~5.2%</div>
+        <div class="lbl">Henrico County AA<br>(metro AA cluster)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">8</div>
+        <div class="lbl">F500 HQs in<br>Greater Richmond</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">3.5h</div>
+        <div class="lbl">Drive to Chapel Hill<br>UVA at 1h west (A2N)</div>
+      </div>
+    </div>
+
+    <!-- block 1: campus density -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">01</span>Campus Density</div>
+      <div>
+        <h3>VCU is the anchor. The rest is <em>genuinely small</em>.</h3>
+        <p>Richmond's college math is the simplest of the candidates surveyed. VCU enrolled ~29,280 students across 200+ academic programs in 2025 — a real R1 anchor in the heart of the city, with a Monroe Park campus walking distance to The Fan, Carytown, Scott's Addition, and Church Hill. University of Richmond — the city's elite private — sits on its own quiet campus a few miles west with ~3,700 students, and has experienced declining enrollment (down 7.5% since 2018). Virginia Union (HBCU) holds ~1,200 students just north of downtown. Past those three, the campus shelf is thin at the Richmond metro level.</p>
+        <p>The honest read: <strong>VCU is the play, with U-Richmond as a secondary partnership</strong> rather than absorption population. The arts-and-medical character of VCU — Brandcenter, VCU Arts (one of the country's top public art and design programs), VCU Medical Center — gives Richmond a creative-class undergrad culture that differs in kind from Tech-engineering or ASU-scale state-school dynamics. A plant has to take that seriously: Richmond's college-aged are not optimized for the same on-ramps that work in Midtown Atlanta.</p>
+
+        <div class="bars">
+          <div class="bar-row"><div class="name">VCU (Monroe Park + MCV)</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">≈ 29K</div></div>
+          <div class="bar-row"><div class="name">University of Richmond</div><div class="bar-track"><div class="bar-fill" style="width: 13%"></div></div><div class="num">≈ 3.7K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">private · declining</span></div></div>
+          <div class="bar-row"><div class="name">Virginia Union (HBCU)</div><div class="bar-track"><div class="bar-fill" style="width: 4%"></div></div><div class="num">≈ 1.2K</div></div>
+          <div class="bar-row"><div class="name">VCCS Reynolds CC</div><div class="bar-track"><div class="bar-fill" style="width: 35%"></div></div><div class="num">≈ 10K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">2-yr / commuter</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 2: AA reality -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">02</span>AA Reality</div>
+      <div>
+        <h3>Modest, county-clustered, and <em>thinner than the Sun Belt picks</em>.</h3>
+        <p>Richmond's AA presence is the lightest of the candidates surveyed. The city itself is ~2.1% Asian. Henrico County (the Short Pump / West End suburban ring) holds ~5.2% — about 15,000 people, the closest thing the metro has to a Gwinnett or Ballantyne-style cluster, but at lower absolute density. Chesterfield County (south of the river) is growing but starting from a smaller base. Virginia statewide is ~6.9% Asian, well above Richmond — the AA population concentrates in NoVA (Fairfax / Loudoun), not RVA.</p>
+        <p>For an AA-led plant, this is the dossier's biggest honest cost. There is real Indian-American suburban density in Short Pump and a steady technology-and-finance migration into Henrico, but neither rivals Atlanta's Gwinnett corridor or Phoenix's Chandler / Gilbert build-out. AA infrastructure (mature pan-Asian congregations, ethnic-specific churches with deep histories) exists in NoVA, an hour and forty-five minutes north — too far for a partnership ecosystem the way Atlanta's network operates in-metro.</p>
+
+        <div class="bars">
+          <div class="bar-row"><div class="name">Henrico County</div><div class="bar-track"><div class="bar-fill" style="width: 75%"></div></div><div class="num">~5.2%</div></div>
+          <div class="bar-row"><div class="name">Chesterfield County</div><div class="bar-track"><div class="bar-fill" style="width: 50%"></div></div><div class="num">~3.5%</div></div>
+          <div class="bar-row"><div class="name">Richmond (city)</div><div class="bar-track"><div class="bar-fill" style="width: 28%"></div></div><div class="num">~2.1%</div></div>
+          <div class="bar-row"><div class="name">Virginia (statewide)</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">~6.9%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHOTO PAIR — Richmond context -->
+    <div class="dossier-photo-pair">
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1664910919941-a18b85c89eb1?w=900&q=80&auto=format&fit=crop" alt="James River and Richmond skyline">
+        </div>
+        <div class="photo-cap">
+          <span>James River &nbsp;·&nbsp; downtown skyline</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1593814681464-eef5d40b7df9?w=900&q=80&auto=format&fit=crop" alt="The Fan / VCU Monroe Park area">
+        </div>
+        <div class="photo-cap">
+          <span>The Fan &nbsp;·&nbsp; near VCU's Monroe Park campus</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"One real anchor, modest AA, an unusually diverse F500 cluster — and an <em>A2N adjacency</em> at UVA an hour west."</p>
+    </div>
+
+    <!-- block 3: ministry shelf -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">03</span>The Ministry Shelf</div>
+      <div>
+        <h3>Less crowded than Atlanta, more <em>independent-plant-friendly</em> than most Sun Belt picks.</h3>
+        <p>Richmond's young-adult shelf is the lightest of the candidates surveyed. Hill City Church and Movement Church both run real young-adult ministries with college and post-grad arms. Third Church (PCA, Westhampton) holds an established young-adult and young-family base. Redeemer Anglican (downtown) operates a CCO-partnered VCU college fellowship as part of its larger work. There is no Elevation, no Passion, no North Point — Richmond is a market where a polished, college-anchored midweek and Sunday plant can plausibly become a top-three young-adult presence within five years rather than a top-tenth.</p>
+        <p>The trade is honest: <strong>less competitive saturation, but a smaller addressable market.</strong> Richmond's overall college-and-young-pro population is meaningfully smaller than Atlanta's or Charlotte's. A plant that becomes the number-three young-adult church in Atlanta serves more people than a plant that becomes the number-one young-adult church in Richmond.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">Hill City Church</span><span class="nt">student ministry · young-adult arm</span></div>
+          <div class="item"><span class="nm">Movement Church</span><span class="nt">young-adult focus · multi-site</span></div>
+          <div class="item"><span class="nm">Third Church (PCA)</span><span class="nt">Westhampton · established young-adult / young-family base</span></div>
+          <div class="item"><span class="nm">Redeemer Anglican</span><span class="nt">downtown · College Fellowship at VCU (CCO partnership)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 4: campus shelf -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">04</span>The Campus Shelf at VCU</div>
+      <div>
+        <h3>A working bench of <em>denominational rails</em> — and a multi-faith collaborative.</h3>
+        <p>VCU's documented Christian campus footprint is meaningful but not crowded. BCM at VCU runs a dedicated ministry house. Cru is active. Catholic Campus Ministry operates out of the Cathedral of the Sacred Heart. Wesley Foundation holds the UMC presence. Redeemer Anglican's College Fellowship at VCU — partnered with CCO (Coalition for Christian Outreach) — is a unique church-anchored campus arm, the closest documented analogue at VCU to what the team's plant would build. The Pace Center operates as a multi-denominational collaborative ministry, an institutional structure VCU's chaplaincy office actively supports.</p>
+        <p>The strategic read: VCU has room for a new church-led college presence, especially one with an integrated post-grad pipeline. The campus is dense, in-city, and walkable from Monroe Park — solving Charlotte's UNCC distance problem cleanly. The constraint is the AA-led differentiation argument: VCU's Asian-American student share is meaningfully lower than Tech's or ASU's, so the team's leadership shape lands as posture more than addressable-market match here.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">VCU — BCM</span><span class="nt">dedicated ministry house, weekly programming</span></div>
+          <div class="item"><span class="nm">VCU — Cru</span><span class="nt">discipleship · small groups · weekly gathering</span></div>
+          <div class="item"><span class="nm">VCU — Catholic Campus Ministry</span><span class="nt">Cathedral of the Sacred Heart</span></div>
+          <div class="item"><span class="nm">VCU — Wesley Foundation</span><span class="nt">United Methodist</span></div>
+          <div class="item"><span class="nm">VCU — Redeemer Anglican / CCO</span><span class="nt">church-anchored campus fellowship — closest analogue to plant model</span></div>
+          <div class="item"><span class="nm">Pace Center</span><span class="nt">multi-denominational collaborative · institutional partner</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 5: runway -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">05</span>Runway</div>
+      <div>
+        <h3>An <em>unusually diverse</em> F500 cluster for a metro this size.</h3>
+        <p>Greater Richmond holds eight Fortune 500 headquarters: Altria (#196), CarMax (#141), Markel (#262, Glen Allen), Dominion Energy, Performance Food Group, Owens & Minor, Genworth, and a recent eighth entrant — alongside Capital One's West Creek campus (one of three large Capital One employment centers in Richmond, though headquarters is in McLean). For a metro of two and a half million, that's a structurally diverse corporate base — tobacco, used-car retail, specialty insurance, energy, food distribution, medical supply. The bivocational job market is real but skews toward specific verticals rather than the broad mix Atlanta or Charlotte offer.</p>
+        <p>Cost: Fan / Scott's Addition / Church Hill 1BR rent runs $1,400 – $1,750. The cheapest of the candidates surveyed by a meaningful margin — closest to Phoenix on cost-of-living, with a more humane climate.</p>
+      </div>
+    </div>
+
+    <!-- block 6: carolina pipeline + UVA adjacency -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">06</span>Pipeline Geometry</div>
+      <div>
+        <h3>Carolina is <em>usable, not native</em>. UVA is an A2N adjacency.</h3>
+        <p>Chapel Hill is roughly 3.5 hours from Richmond by car — far enough that the casual drive-or-fly cadence the dossier flagged for Atlanta turns into a planned trip. The team's UNC ministry alumni network is still reachable, but no longer as a structural advantage. A more salient pipeline geometry from Richmond is northward toward NoVA / DC and southward toward Hampton Roads — Richmond sits in the middle of a Mid-Atlantic corridor of larger cities rather than at one end of a Southeast pipeline.</p>
+        <p>The unique constraint: <strong>UVA at Charlottesville is one hour west, and is an A2N footprint</strong> (Axiom College Church). Any team planting in Richmond would have an A2N sister plant within easy weekend reach, with overlapping recruiting pools (UVA grads who move to Richmond for finance / consulting / startup work) and overlapping cultural reach (Mid-Atlantic Christian college culture). This is a closer adjacency than Charlotte's relationship with the Triangle and warrants deliberate calibration up front.</p>
+      </div>
+    </div>
+
+    <!-- block 7: capital with creative class -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">07</span>Capital with a Creative Class</div>
+      <div>
+        <h3>VCU Arts and Scott's Addition give Richmond a <em>different on-ramp profile</em>.</h3>
+        <p>Two cultural facts shape any plant in Richmond. First, VCU is one of the most influential public art and design schools in the country — VCU Arts ranks consistently in the top three among US public university art programs, and the Brandcenter (VCU's graduate communications and advertising program) feeds the country's top agencies. The undergraduate culture skews more creative-class than engineering-and-finance, which is the opposite of the Tech-and-Cal anchors elsewhere in this guide. The students walking onto VCU's Monroe Park campus are designers, illustrators, sculptors, theater majors, brand strategists, and pre-meds heading to the VCU Health system — a different evangelistic and discipleship on-ramp profile than the Atlanta or Phoenix plant assumes.</p>
+        <p>Second, the city's neighborhood geography concentrates 22–32-year-olds tightly. The <strong>Fan District</strong> (the historic streetcar-suburb west of VCU, all rowhouses and trees) holds the largest single residential block of post-grad young pros. <strong>Scott's Addition</strong> (rebuilt from warehouses into a brewery / food-hall / coffee-shop district) is the densest "moved here for the city" neighborhood — and is the closest analogue Richmond has to Atlanta's West Midtown or Charlotte's South End. <strong>Carytown</strong> bridges the two with shops and restaurants. <strong>Church Hill</strong> (east of downtown) is the older, slower-growing, more historically-textured option. All of these sit within a 20-minute walk or short drive of VCU's main campus — solving the campus-to-young-pro distance problem cleanly. Richmond's bigger structural challenge is reaching past the Fan / Scott's Addition core into Henrico's AA cluster fifteen minutes northwest.</p>
+      </div>
+    </div>
+
+    <!-- block 8: fan / scott's addition strategy -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">08</span>The Fan / Scott's Addition Strategy</div>
+      <div>
+        <h3>Anchor between <em>Monroe Park and Scott's Addition</em>. Build the Henrico bridge.</h3>
+        <p>If Richmond is the call, the strategy is the most geometrically simple of the candidates. Plant in the Fan / Scott's Addition / Carytown radius — within walking distance of VCU's Monroe Park campus. Reach VCU students walking from the dorms. Reach 22–32-year-old creative-class and Capital-One-West-Creek-commute young pros who already live in the same six-block radius. Build a deliberate Henrico (Short Pump / West End) bridge for AA family and second-campus seeding.</p>
+
+        <div class="bars" style="margin-top: 1.8rem;">
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Anchor in the Fan or Scott's Addition.</strong> &nbsp; Sunday gathering and midweek front door both inside the West Broad / W. Cary corridor. Venue options are unusually plentiful — Scott's Addition's converted warehouses, Carytown's older theater spaces, the Hippodrome on N. 2nd, partnership with Third Church or Redeemer Anglican for Sunday space. The plant is walkable from VCU dorms in any of these locations.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Take the creative-class on-ramp seriously.</strong> &nbsp; VCU's student body is meaningfully different from Tech's or ASU's; preaching and programming need to assume a culturally fluent, design-literate audience. Vocational discipleship for art, design, brand, advertising, theater, and music carries unusual weight in Richmond. Consider an artists-in-residence or studio-night track as part of the plant's identity rather than a peripheral feature.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Build the Henrico bridge in year one.</strong> &nbsp; Short Pump / West End is fifteen minutes northwest and holds Richmond's AA cluster. A small-group node in Henrico, anchored by one or two team families willing to live there rather than in the Fan, sets up the AA family-and-stay piece that the urban core won't. By year three, this is a candidate for a second campus.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iv.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Pre-place the ten across F500 verticals.</strong> &nbsp; Capital One West Creek (technology, product, finance — large hiring footprint), Altria (HQ, regulated industry), CarMax (HQ, retail tech), Markel (insurance, in Glen Allen), Dominion Energy (utility), Performance Food Group, Owens & Minor (medical supply), VCU Health (clinical roles), and the broader VCU enterprise (faculty / staff / administrative). Less broad than Atlanta or Charlotte, but real depth in specific verticals.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">v.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Calibrate the UVA / Axiom relationship.</strong> &nbsp; UVA is one hour west and is A2N. Richmond's young-pro recruiting will pull UVA alumni into Capital One, McGuireWoods, Markel, and the Big Four's Richmond offices. Run an explicit conversation about the relationship in months 1–3. Joint events, leader exchanges, transparent recruiting posture — same friendly-not-entangled pattern.
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.8rem;">The honest version of the Richmond bet: <strong>lowest competitive saturation of the candidates</strong>, with a smaller absolute market that caps the ceiling. The structural geometry is the cleanest of any candidate (campus, young-pro neighborhood, and AA cluster all reachable from one Fan / Scott's Addition anchor). The cost is that "best in Richmond" reaches fewer people than "third in Atlanta," and the AA-leadership-shape argument lands as posture more than addressable-market match.</p>
+      </div>
+    </div>
+
+    <!-- verdict -->
+    <div class="verdict">
+      <div>
+        <h4>— Where Richmond wins —</h4>
+        <ul>
+          <li>Lightest competitive saturation of the candidates — top-three young-adult presence is a realistic 5-year goal</li>
+          <li>VCU is dense, in-city, walkable from Monroe Park — solves Charlotte's distance problem</li>
+          <li>Cheapest cost of living — strongest bivocational runway after Phoenix</li>
+          <li>Unusually diverse F500 mix for a metro this size (tobacco, used-car retail, insurance, energy, food)</li>
+          <li>No A2N footprint in Richmond itself</li>
+          <li>Mid-Atlantic location opens NoVA and Hampton Roads sending paths</li>
+        </ul>
+      </div>
+      <div>
+        <h4>— Where Richmond costs you —</h4>
+        <ul>
+          <li>Lightest AA density of the candidates — the leadership-shape argument lands as posture more than match</li>
+          <li>UVA at 1h west is A2N (Axiom) — closest sister-plant adjacency of any candidate</li>
+          <li>Carolina pipeline is usable but no longer native — 3.5h to Chapel Hill</li>
+          <li>VCU's arts-and-medical character is a different on-ramp profile than Tech / ASU</li>
+          <li>Smallest absolute college-and-young-pro market of the candidates</li>
+          <li>Mature AA ministry partner ecosystem lives in NoVA, not Richmond</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+<!-- ============ /TAB: RICHMOND ============ -->
+
+<!-- ============ TAB: BERKELEY ============ -->
+<div class="tab-panel" data-panel="berkeley">
+
+<!-- DOSSIER BERKELEY -->
+<section class="dossier dossier-bky" id="berkeley">
+  <div class="container">
+    <div class="dossier-header">
+      <div>
+        <div class="dossier-no">§ XI. Dossier — File 05</div>
+        <h1 class="dossier-name">Ber<em>ke</em>ley.</h1>
+      </div>
+      <div class="dossier-tag">A re-plant on a campus where the established AA-led incumbent sits at the center of an active public conversation — different problem than every other city in this guide.</div>
+    </div>
+
+    <!-- HERO PHOTO -->
+    <div class="dossier-hero">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1584825453032-f2c1baad3796?w=1800&q=80&auto=format&fit=crop" alt="UC Berkeley campus and Bay Area skyline">
+      </div>
+      <div class="photo-cap">
+        <span>UC Berkeley &nbsp;·&nbsp; Sather Tower over the campus</span>
+        <span class="credit">Photo: Unsplash</span>
+      </div>
+    </div>
+
+    <!-- stat ribbon -->
+    <div class="stat-ribbon">
+      <div class="stat-cell">
+        <div class="num">~45K</div>
+        <div class="lbl">UC Berkeley enrollment<br>~33K undergrad</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">~38%</div>
+        <div class="lbl">Asian + AAPI<br>undergraduate share</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">A2N</div>
+        <div class="lbl">already at Cal<br>(A2F · Klesis rebrand 2023)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">$$$$</div>
+        <div class="lbl">Highest COL of any<br>candidate by a wide margin</div>
+      </div>
+    </div>
+
+    <!-- block 1: the unique posture -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">01</span>Why This Dossier Is Different</div>
+      <div>
+        <h3>Berkeley is not a green-field metro. It's a <em>re-plant</em>.</h3>
+        <p>Every other dossier in this guide asks the same question: where does the team's distinctive posture have room to breathe in a market that doesn't yet have it? Berkeley flips the question. UC Berkeley already has Acts 2 Fellowship — formerly Klesis, rebranded in Fall 2023 — a long-established AA-led campus ministry connected to Gracepoint Ministries, with decades of fruit, generations of alumni in vocational ministry, and a current student body of real depth. A new AA-led, multi-ethnic, college-and-young-pro plant at Cal would be entering a campus where the team's network shape has a generation of incumbency, where the existing operation has both committed defenders and committed critics, and where any new entrant has to make their own posture legible inside an already-loaded conversation.</p>
+        <p>The honest framing: Berkeley is not a Sun Belt growth bet. It is a <strong>re-plant in a market with a contested information environment</strong> — which is a different kind of strategic problem than any of the other four candidates. The math of "open lane" doesn't apply. The math of "Carolina pipeline" doesn't apply. The math that does apply is whether the team can build a clearly distinct work on a campus where students arrive with prior associations — positive and negative — about ministries that look, from the outside, similar to what the team would build.</p>
+      </div>
+    </div>
+
+    <!-- block 2: the public conversation -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">02</span>The Public Conversation</div>
+      <div>
+        <h3>The information environment is <em>real, contested, and unavoidable</em>.</h3>
+        <p>A2F / Gracepoint sits at the center of an unusually visible public conversation among Bay Area Christian college students. There is mainstream-press coverage on both sides: Christianity Today's September 2022 long-form piece <em>"At Gracepoint Ministries, 'Whole-Life Discipleship' Took Its Toll"</em> presented a critical account drawing on former-member testimony. The Triton (UCSD's student paper) published a November 2021 investigation citing similar concerns from UC-system students. There are also public defenses from current members, alumni who report life-changing positive experiences, and pastors inside the network who argue the criticisms misrepresent the ministry's actual practice. Reddit, blog posts, and ministry-review sites carry years of discussion in both directions, and the evidentiary weight varies widely from anonymous reports to on-record interviews.</p>
+        <p>None of this is the team's responsibility to adjudicate, and the report does not take a position on the underlying claims. What is unambiguous is the information environment: a Cal undergrad doing thirty seconds of research before walking into a Bible study will encounter both critical and supportive accounts, will see that the network has operated under multiple names (Klesis, Koinonia, Kairos, WAV, A2F, ISMP), and will form a quick first impression that any new AA-led ministry has to work through — whether or not that impression is fair to A2F itself.</p>
+
+        <div class="warn-callout">
+          <div class="warn-label">— Information environment, not adjudication —</div>
+          The point of this block is not to validate or reject any specific claim about A2F / Gracepoint. Public critics and public defenders both exist; mainstream and student journalism have run pieces that take both views seriously; and the team is not in a position to settle the disagreement. The point is recognition: a new plant at Cal lands inside this conversation by default, and a planting team should read primary sources directly — both critical and supportive — before deciding the city is workable.
+        </div>
+      </div>
+    </div>
+
+    <!-- PHOTO PAIR — Cal context -->
+    <div class="dossier-photo-pair">
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1559813999-fbcb70afa3eb?w=900&q=80&auto=format&fit=crop" alt="Sather Tower at UC Berkeley">
+        </div>
+        <div class="photo-cap">
+          <span>Sather Tower &nbsp;·&nbsp; Cal's Campanile</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1519302959554-a75be0afc82a?w=900&q=80&auto=format&fit=crop" alt="Berkeley street scene with Bay Bridge in distance">
+        </div>
+        <div class="photo-cap">
+          <span>Berkeley &nbsp;·&nbsp; the Bay beyond Telegraph Ave</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"Different problem than every other city in this guide. Not <em>open lane</em> — <em>occupied lane in a contested conversation</em>."</p>
+    </div>
+
+    <!-- block 3: the campus prize -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">03</span>What Makes Cal Worth Considering Anyway</div>
+      <div>
+        <h3>The <em>raw demographic case</em> is the strongest of any candidate.</h3>
+        <p>The reason this dossier exists at all is that UC Berkeley's underlying numbers are exceptional. ~33K undergraduates. AAPI undergraduate share approaching 38% — by far the highest of any candidate surveyed and one of the highest at any major US public university. The Bay Area is the densest Asian-American metropolitan area in the United States by absolute population. The cultural climate around AA Christian formation is unusually generative: AACF (Asian American Christian Fellowship) operates at Berkeley alongside InterVarsity, Cru, and a dense ecosystem of campus ministries. The students themselves are theologically curious in disproportionate numbers.</p>
+        <p>The plant's distinctive posture — AA-led, multi-ethnic, integrated college-and-young-pro, vocationally serious in a tech-and-finance metro — fits the Cal undergraduate population in a way it does not fit any Sun Belt city's undergrad demographics. The fit, on its own terms, is the highest of any candidate. The cost is the brand collision and the second-highest cost-of-living problem in the country.</p>
+      </div>
+    </div>
+
+    <!-- block 4: the campus shelf -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">04</span>The Berkeley Campus Shelf</div>
+      <div>
+        <h3>Saturated and <em>tradition-rich</em> — every major rail is here.</h3>
+        <p>The campus shelf at Cal is among the most developed of any US public university. Beyond Acts 2 Fellowship, Berkeley hosts AACF (Asian American Christian Fellowship), Cru, InterVarsity, and a long-running ecosystem of denominational and ethnic-specific Christian fellowships. The University Christian Ministries (UiC) directory lists a substantial number of active student-led groups. Newman Hall serves the Catholic community; Gracepoint Ministries (the parent network of A2F) operates from its own campus-adjacent property. Bay-area churches with college arms — Reality SF, City Church SF, Crossroads in Hayward, Cornerstone Berkeley — round out the off-campus shelf.</p>
+        <p>The strategic read: a new plant at Cal would not face an "is anyone doing this" problem. It would face a "how do we read as different from the dozens of operations already here, including the one that shares a name with our parent network" problem. The differentiation work is qualitative and brand-shaped, not lane-shaped.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">Acts 2 Fellowship (A2F)</span><span class="nt">Klesis rebrand 2023 · Gracepoint Ministries · the established AA-led incumbent</span></div>
+          <div class="item"><span class="nm">AACF — UC Berkeley</span><span class="nt">Asian American Christian Fellowship · long-tenured · independent</span></div>
+          <div class="item"><span class="nm">Cru at Berkeley</span><span class="nt">non-denominational · large national footprint</span></div>
+          <div class="item"><span class="nm">InterVarsity at Berkeley</span><span class="nt">multiple chapters including ethnic-specific</span></div>
+          <div class="item"><span class="nm">Newman Hall</span><span class="nt">Catholic campus center</span></div>
+          <div class="item"><span class="nm">Cornerstone Berkeley / Reality SF / City Church SF</span><span class="nt">Bay Area off-campus options for college students</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 5: runway / cost -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">05</span>Runway</div>
+      <div>
+        <h3>The <em>cost problem</em> is structural, not negotiable.</h3>
+        <p>Berkeley 1BR rent runs $2,400 – $3,200; rooms in shared houses run $1,200 – $1,800. Bay Area median rents put Berkeley near the very top of the cost-of-living spectrum among US college towns — meaningfully higher than Atlanta, twice the cost of Richmond. For a bivocational team of ten, the math is unforgiving: same fundraising, dramatically less runway. The job market is strong (Big Tech, biotech, finance, consulting), but the salary needed to cover Bay Area rent for a family is in a different bracket than what Tech or banking pay in the Sun Belt — bivocational shifts toward "real corporate job that subsidizes ministry" rather than "part-time work that creates margin."</p>
+        <p>The honest version: Berkeley only works for a team that has either dramatically higher fundraising than the dossier's standard ten-bivocational model, or members who have already cleared the cost-of-living bar via senior tech / finance roles before launch. It does not work as a low-friction extension of the same plan that fits Atlanta or Phoenix.</p>
+      </div>
+    </div>
+
+    <!-- block 5.5: cal cultural context -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">06</span>Cal Cultural Context</div>
+      <div>
+        <h3>The campus is unusually <em>theological</em> for a secular flagship.</h3>
+        <p>Two facts shape any plant at Berkeley. First, Cal's undergraduate culture is more theologically curious than its public secular reputation suggests. The Free Speech Movement legacy still sets the campus's intellectual posture — students take ideas seriously enough to argue with them, which means a theologically substantive Christian work has a natural seat at the conversation rather than a defensive one. The Veritas Forum has run multi-year series at Cal. Cru Berkeley, InterVarsity, AACF, and a long ecosystem of denominational fellowships co-exist with one of the country's most rigorous secular intellectual cultures, and the Christian student population — though a numerical minority — is unusually engaged. A plant that takes preaching, biblical literacy, and apologetics seriously fits Cal in a way it would not fit, say, ASU.</p>
+        <p>Second, the AAPI undergraduate population at Cal is not a monolith. Roughly 38% of Berkeley undergraduates identify as Asian or Pacific Islander, with substantial East Asian (Chinese, Korean, Japanese, Taiwanese), South Asian, and Southeast Asian (Vietnamese, Filipino) sub-communities — each with their own student organizations, cultural rhythms, and (in many cases) ethnic-specific ministry options. The team's "AA-led, multi-ethnic" posture lands differently here than in Atlanta or Charlotte: at Berkeley it has to be specific about which AA, in conversation with which other AA, and with what relationship to the existing pan-Asian and ethnic-specific options on campus. AACF (Asian American Christian Fellowship), in particular, is a long-tenured pan-AA presence the team would want to know well rather than overlap with.</p>
+      </div>
+    </div>
+
+    <!-- block 6: differentiation strategy -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">07</span>How a Re-Plant Reads as Distinct</div>
+      <div>
+        <h3>Distinctiveness is built through <em>posture, not opposition</em>.</h3>
+        <p>A new AA-led plant at Cal needs to be legibly its own work — not because the existing ministry is judged in advance, but because students arrive with their own associations, and the team's calling is more specific than "another AA campus ministry." Four moves help the plant read clearly on its own terms; the first three are structural, the fourth is a posture call.</p>
+
+        <div class="bars" style="margin-top: 1.8rem;">
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Singular, public network identity.</strong> &nbsp; A clear denominational or network affiliation — Acts 29, the PCA, Sovereign Grace, an Anglican diocese, an independent Reformed network — that is publicly named, easy to find, and operationally singular (one ministry, one name, one home). This is healthy posture for any plant; at Cal, where the existing operation has used multiple names over its history, it also lets students place the team quickly without inference.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Public, written discipleship commitments.</strong> &nbsp; A short, plain-language statement of the plant's posture on the questions students most often ask before committing — how decisions about housing, dating, employment, and relocation are framed; what membership requires and doesn't; how leaders are accountable; what leaving looks like. Every healthy plant has answers to these; at Cal, putting the answers in writing on the website matters more than usual because students are doing comparison research.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">A name that stands on its own.</strong> &nbsp; A name that lands without explanation and doesn't pattern-match the existing AA campus-ministry naming convention (Greek single-words, "Acts" / "Klesis" / "Koinonia" prefixes). The aim is not contrast for its own sake but a name a student can hear once and remember without context — a basic communication discipline that pays compounding dividends in a saturated campus.
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iv.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Charitable posture toward the existing landscape.</strong> &nbsp; A plant that arrives critical-by-default of A2F or any other Cal ministry will read as the same kind of insular conversation it claims to leave. The healthier posture is to be clear about what the team is building, generous about what others are doing, ready to refer students to the ministry that fits them best, and pastorally available to anyone — current member, former member, or unaffiliated — without preconditions. This is the posture that earns trust in a contested campus without picking a fight.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- verdict -->
+    <div class="verdict">
+      <div>
+        <h4>— Where Berkeley wins —</h4>
+        <ul>
+          <li>Strongest raw demographic match — ~38% AAPI undergraduate share, densest US Asian-American metro</li>
+          <li>UC Berkeley's intellectual culture rewards a theologically serious posture</li>
+          <li>Bay Area corporate base (Big Tech, biotech, finance) underwrites high-ceiling bivocational jobs</li>
+          <li>A new AA-led plant adds a distinct option to a campus where students are actively comparing ministries</li>
+          <li>Sending paths are unusually live — Bay Area grads scatter globally for work and missions</li>
+        </ul>
+      </div>
+      <div>
+        <h4>— Where Berkeley costs you —</h4>
+        <ul>
+          <li>The information environment is loaded — public conversation about A2F includes both sharp criticism and committed defense, and a new plant lands inside it</li>
+          <li>Cost of living is the highest of any candidate by a wide margin — bivocational math fails without elevated fundraising or senior-corporate team</li>
+          <li>Saturation is not "open lane" — every major campus-ministry rail is already at Cal</li>
+          <li>Distinctiveness has to be built deliberately through name, network, and public posture — not assumed</li>
+          <li>Carolina pipeline is geographically inert (5+ hour flight)</li>
+          <li>Pastoral bandwidth for students arriving with prior associations — positive or negative — is real</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+<!-- ============ /TAB: BERKELEY ============ -->
+
+<!-- ============ TAB: VERDICT ============ -->
+<div class="tab-panel" data-panel="verdict">
+
 <!-- DECISION (NEUTRAL) -->
 <section class="decision" id="decision">
   <div class="container">
-    <div class="eyebrow">§ VIII. The Verdict</div>
-    <h2>Two paths.<br>One <em>question</em>.</h2>
+    <div class="eyebrow">§ XII. The Verdict</div>
+    <h2>Five paths.<br>One <em>question</em>.</h2>
     <p class="lede">
-      The data is on the table. Atlanta and Phoenix each have a coherent thesis, and the right answer depends less on which city is "better" in the abstract than on which trade-offs the team is built to absorb. What follows is the framework — not the conclusion.
+      The data is on the table. Each city has a coherent thesis, and the right answer depends less on which is "better" in the abstract than on which trade-offs the team is built to absorb. The five paths are not equivalent — Atlanta, Phoenix, Charlotte, and Richmond are green-field metros with different shapes, while Berkeley is a structurally different problem (a re-plant on a campus where the established AA-led incumbent sits at the center of an active public conversation). What follows is the framework — not the conclusion.
     </p>
 
     <div class="frame-grid">
@@ -2112,7 +3217,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
         <ul>
           <li>Georgia Tech as a deep, walking-distance anchor (with SCAD adjacency) is the play; broader multi-campus reach is upside, not premise</li>
           <li>An AA ministry ecosystem to belong to and partner with matters more than landing in a less-saturated lane</li>
-          <li>The brother's plant feels like a partnership opportunity, not a constraint</li>
+          <li>The existing A2N plant in the metro feels like a partnership opportunity, not a constraint</li>
           <li>The UNC ministry pipeline being live (drive / 90-min flight) is part of the recruiting math</li>
           <li>Long retention compounding (10-year disciples → bivocational team) is core to the vision</li>
           <li>Higher cost is offset by higher F500 / Big Tech bivocational job density</li>
@@ -2131,15 +3236,56 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
           <li>Sending (plant + missions) matters as much to the vision as local retention</li>
         </ul>
       </div>
+
+      <div class="frame-cell clt">
+        <div class="label">— Choose Charlotte if —</div>
+        <h4>A <em>banking-anchored</em>, Carolina-live play is the call.</h4>
+        <ul>
+          <li>The Carolina pipeline being literal — 2.5h drive to Chapel Hill — is the asymmetry you want most</li>
+          <li>One real anchor (UNCC) is enough; the team isn't optimizing for multi-campus density</li>
+          <li>Banking corporate depth (BoA, Truist, Honeywell, Lowe's) fits the bivocational profile</li>
+          <li>The cleanest open lane on the team's profile — no incumbent runs the integrated AA-led college-and-young-pro play here</li>
+          <li>South-suburb AA growth (Ballantyne / Concord) feels like Gwinnett ten years ago</li>
+          <li>Triangle A2N adjacency 2.5h up I-85 is workable, not a blocker</li>
+        </ul>
+      </div>
+
+      <div class="frame-cell rva">
+        <div class="label">— Choose Richmond if —</div>
+        <h4>A <em>top-three-in-five-years</em> ceiling is acceptable.</h4>
+        <ul>
+          <li>Lowest competitive saturation of the candidates — top-three young-adult presence is realistic in 5 years</li>
+          <li>VCU is dense, in-city, and walkable — solving Charlotte's distance problem cleanly</li>
+          <li>Cheapest cost of living after Phoenix — strongest bivocational runway</li>
+          <li>UVA at 1h west is A2N (Axiom) — closest sister-plant adjacency of any candidate</li>
+          <li>AA density is the lightest of the candidates — leadership shape lands as posture, not match</li>
+          <li>Smallest absolute college-and-young-pro market — top-of-Richmond is fewer people than third-of-Atlanta</li>
+        </ul>
+      </div>
+
+      <div class="frame-cell bky">
+        <div class="label">— Choose Berkeley if —</div>
+        <h4>A <em>re-plant in a contested campus</em> is the calling.</h4>
+        <ul>
+          <li>The strongest raw demographic match — ~38% AAPI undergrad, densest US AA metro</li>
+          <li>The team is willing to be the new option on a campus where students are actively comparing ministries</li>
+          <li>The team has either elevated fundraising or senior-tech / finance team members already absorbing Bay Area cost</li>
+          <li>Charitable, generous posture toward the existing landscape — not contrast-by-default — is part of the team's character</li>
+          <li>Distinctiveness through name, network, and public discipleship posture is built deliberately from day one</li>
+          <li>The Carolina pipeline being geographically inert is acceptable</li>
+        </ul>
+      </div>
     </div>
 
     <div class="questions-list">
       <h3>— Questions to sit with before deciding —</h3>
       <ol>
-        <li>What is genuinely non-negotiable about the calling — multi-campus reach, AA infrastructure, less-saturated lane, or low-cost runway?</li>
-        <li>Is the partnership with Isaiah's plant a feature of the Atlanta thesis, or could it become a structural tension?</li>
-        <li>How long is the team committed for? Five years favors Phoenix's gap; fifteen favors Atlanta's compounding.</li>
-        <li>Which trade-off is the team built to absorb — higher saturation, or higher pioneer cost?</li>
+        <li>What is genuinely non-negotiable about the calling — multi-campus reach, AA infrastructure, less-saturated lane, low-cost runway, or pastoral debt to wounded students?</li>
+        <li>Is the partnership with the existing A2N plant a feature of the Atlanta thesis, or could it become a structural tension?</li>
+        <li>How does the team weigh Carolina-pipeline geometry against absolute campus / AA density? Atlanta and Charlotte preserve the pipeline; Phoenix, Richmond, and Berkeley don't.</li>
+        <li>How long is the team committed for? Five years favors Phoenix's or Charlotte's open lane; fifteen favors Atlanta's compounding.</li>
+        <li>Which trade-off is the team built to absorb — higher saturation, higher pioneer cost, brand collision, or sister-plant adjacency?</li>
+        <li>For Berkeley specifically: does the team have the fundraising depth, network distinctiveness, and posture to plant inside an active public conversation — without taking sides, but also without naïveté about the information environment?</li>
         <li>Where does the team's spouses, children, and aging-parent infrastructure point?</li>
         <li>Which city does the team actually <em>want</em> to live in for a decade?</li>
       </ol>
@@ -2164,15 +3310,58 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   </div>
 </section>
 
+</div>
+<!-- ============ /TAB: VERDICT ============ -->
+
+</main>
+
 <footer class="footer">
   <div class="container footer-row">
     <span>Field Guide Vol. I</span>
-    <span>Two Cities — One Calling</span>
-    <span>Internal · Working Document</span>
+    <span>Five Cities — One Calling</span>
+    <span>A Strategic Field Guide</span>
   </div>
 </footer>
 
 <script>
+// ============ TABS ============
+const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'richmond', 'berkeley', 'verdict'];
+
+function activateTab(tabId, opts = {}) {
+  if (!VALID_TABS.includes(tabId)) tabId = 'open';
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.dataset.panel === tabId);
+  });
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tabId);
+  });
+  // mark fade-up children of the active panel as in immediately, so content is visible without scroll-trigger
+  const active = document.querySelector(`.tab-panel[data-panel="${tabId}"]`);
+  if (active) {
+    active.querySelectorAll('.fade-up').forEach(el => el.classList.add('in'));
+  }
+  if (opts.scroll !== false) window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function readHashTab() {
+  const h = (location.hash || '').replace('#', '').toLowerCase();
+  return VALID_TABS.includes(h) ? h : 'open';
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const t = btn.dataset.tab;
+    if (location.hash !== '#' + t) {
+      history.pushState(null, '', '#' + t);
+    }
+    activateTab(t);
+  });
+});
+
+// in-content anchors like <a href="#atlanta"> still work — listen for hashchange
+window.addEventListener('hashchange', () => activateTab(readHashTab()));
+
+// ============ FADE-UP (preserved for in-tab scroll on long dossiers) ============
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -2180,24 +3369,15 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
 document.querySelectorAll('section > .container > *, .dossier-block, .pillar, .tactic, .frame-cell, .partner-cell, .retention-card, .dossier-photo-pair > *').forEach(el => {
   el.classList.add('fade-up');
   io.observe(el);
 });
 
-const navLinks = document.querySelectorAll('.nav-links a');
-const sections = ['question', 'scorecard', 'atlanta', 'phoenix', 'retention', 'strategy'].map(id => document.getElementById(id));
-window.addEventListener('scroll', () => {
-  const y = window.scrollY + 200;
-  let active = null;
-  sections.forEach(s => { if (s && s.offsetTop <= y) active = s.id; });
-  navLinks.forEach(a => {
-    if (a.getAttribute('href') === '#' + active) a.style.color = 'var(--atl-brick)';
-    else a.style.color = '';
-  });
-});
+// initial activation — must run after fade-up classes are applied
+activateTab(readHashTab(), { scroll: false });
 </script>
 
 </body>
