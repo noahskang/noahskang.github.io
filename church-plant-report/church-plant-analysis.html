@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Four Cities, One Calling — A Strategic Field Guide</title>
+<title>Three Cities, One Calling — A Strategic Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -41,13 +41,6 @@
   --clt-leaf: #6E8772;
   --clt-paper: #ECE4D2;
 
-  /* richmond — james river + tobacco brick */
-  --rva-deep: #2A2118;
-  --rva-mid: #4A3B26;
-  --rva-gold: #A8753E;
-  --rva-brick: #6B2818;
-  --rva-river: #4F6671;
-  --rva-paper: #EEE5D0;
 
 
   --serif: 'Fraunces', 'Times New Roman', serif;
@@ -361,18 +354,21 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 
 .score-table-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 0 -2.5rem;
-  padding: 0 2.5rem;
-  scrollbar-width: thin;
+  /* default: no scroll context so position:sticky on thead engages relative to the page */
 }
-@media (max-width: 720px) {
-  .score-table-wrap { margin: 0 -1.2rem; padding: 0 1.2rem; }
+/* enable horizontal scroll only on narrow viewports where the table can't fit */
+@media (max-width: 900px) {
+  .score-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -1.2rem;
+    padding: 0 1.2rem;
+    scrollbar-width: thin;
+  }
 }
 .score-table {
   width: 100%;
-  min-width: 880px;
+  min-width: 760px;
   border-collapse: collapse;
   font-family: var(--sans);
 }
@@ -400,7 +396,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .score-table thead th:nth-child(2) { color: var(--atl-deep); }
 .score-table thead th:nth-child(3) { color: var(--phx-rust); }
 .score-table thead th:nth-child(4) { color: var(--clt-deep); }
-.score-table thead th:nth-child(5) { color: var(--rva-brick); }
 .score-table thead th:last-child { width: 110px; text-align: right; color: var(--ink); }
 
 .score-table tbody td {
@@ -419,7 +414,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   font-variation-settings: 'opsz' 144, 'SOFT' 50;
   white-space: nowrap;
 }
-.score-table tbody td:nth-child(n+2):nth-child(-n+5) { color: var(--ink-soft); }
+.score-table tbody td:nth-child(n+2):nth-child(-n+4) { color: var(--ink-soft); }
 .score-table tbody td:last-child {
   text-align: right;
   font-family: var(--mono);
@@ -432,21 +427,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .tag-atl { background: var(--atl-deep); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
 .tag-phx { background: var(--phx-rust); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
 .tag-clt { background: var(--clt-deep); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
-.tag-rva { background: var(--rva-brick); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
 .tag-tie { background: var(--ink-faint); color: var(--paper); padding: 0.28rem 0.55rem; border-radius: 2px; }
 .tag-note { background: transparent; color: var(--ink-faint); padding: 0.28rem 0; font-style: italic; text-transform: none; letter-spacing: 0; }
-
-.score-hint {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-top: 1rem;
-  text-align: right;
-  display: none;
-}
-@media (max-width: 1100px) { .score-hint { display: block; } }
 
 @media (max-width: 720px) {
   .score-table thead th, .score-table tbody td { padding: 0.8rem 0.55rem; }
@@ -798,7 +780,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .flow-atl h4 { color: var(--atl-deep); }
 .flow-phx h4 { color: var(--phx-rust); }
 .flow-clt h4 { color: var(--clt-deep); }
-.flow-rva h4 { color: var(--rva-brick); }
 .flow-cell .city-name {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -810,7 +791,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .flow-atl .city-name em { color: var(--atl-deep); }
 .flow-phx .city-name em { color: var(--phx-rust); }
 .flow-clt .city-name em { color: var(--clt-deep); }
-.flow-rva .city-name em { color: var(--rva-brick); }
 .flow-svg { width: 100%; height: auto; display: block; }
 
 .retention-grid {
@@ -828,7 +808,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .retention-card.atl { border-top: 4px solid var(--atl-deep); }
 .retention-card.phx { border-top: 4px solid var(--phx-rust); }
 .retention-card.clt { border-top: 4px solid var(--clt-deep); }
-.retention-card.rva { border-top: 4px solid var(--rva-brick); }
 .retention-card h3 {
   font-family: var(--serif);
   font-size: 1.45rem;
@@ -841,7 +820,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .retention-card.atl h3 em { color: var(--atl-deep); }
 .retention-card.phx h3 em { color: var(--phx-rust); }
 .retention-card.clt h3 em { color: var(--clt-deep); }
-.retention-card.rva h3 em { color: var(--rva-brick); }
 .retention-card p { font-size: 0.92rem; line-height: 1.55; }
 .retention-card ul { list-style: none; margin-top: 1rem; }
 .retention-card ul li {
@@ -863,7 +841,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .retention-card.atl ul li::before { color: var(--atl-deep); }
 .retention-card.phx ul li::before { color: var(--phx-rust); }
 .retention-card.clt ul li::before { color: var(--clt-deep); }
-.retention-card.rva ul li::before { color: var(--rva-brick); }
 .retention-card ul li:last-child { border: none; }
 
 /* ============ FAMILY FACTOR ============ */
@@ -1135,7 +1112,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .frame-cell.atl .label { color: var(--atl-gold); }
 .frame-cell.phx .label { color: var(--phx-sand); }
 .frame-cell.clt .label { color: var(--clt-gold); }
-.frame-cell.rva .label { color: var(--rva-gold); }
 .frame-cell h4 {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -1148,7 +1124,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .frame-cell.atl h4 em { color: var(--atl-gold); }
 .frame-cell.phx h4 em { color: var(--phx-sand); }
 .frame-cell.clt h4 em { color: var(--clt-gold); }
-.frame-cell.rva h4 em { color: var(--rva-gold); }
 .frame-cell ul { list-style: none; }
 .frame-cell ul li {
   padding: 0.6rem 0;
@@ -1290,7 +1265,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 .tab-btn[data-city="phoenix"].active { color: var(--phx-rust); border-bottom-color: var(--phx-rust); }
 .tab-btn[data-city="charlotte"].active { color: var(--clt-deep); border-bottom-color: var(--clt-gold); }
-.tab-btn[data-city="richmond"].active { color: var(--rva-brick); border-bottom-color: var(--rva-gold); }
 @media (max-width: 900px) {
   .tabnav-inner { padding: 0 1rem; gap: 0.6rem; }
   .tabnav .brand { font-size: 0.65rem; padding: 0.85rem 0; }
@@ -1319,20 +1293,6 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .dossier-clt .ministry-list .item .nt { color: rgba(236,228,210,0.6); }
 .dossier-clt .bar-fill { background: linear-gradient(90deg, var(--clt-gold), #D6B583); }
 .dossier-clt .dossier-hero .photo-cap { color: rgba(236,228,210,0.7); }
-
-/* richmond dossier theming — dark tobacco background with cream text + copper-gold accents */
-.dossier-rva { background: var(--rva-deep); color: var(--rva-paper); }
-.dossier-rva .dossier-name em { color: var(--rva-gold); }
-.dossier-rva .dossier-block .label .num { color: var(--rva-gold); }
-.dossier-rva .dossier-block h3 em { color: var(--rva-gold); }
-.dossier-rva .dossier-block p { color: rgba(238,229,208,0.85); }
-.dossier-rva .stat-cell .num { color: var(--rva-gold); }
-.dossier-rva .pullquote p em { color: var(--rva-gold); }
-.dossier-rva .verdict h4 { color: var(--rva-gold); opacity: 1; }
-.dossier-rva .ministry-list .item .nm { color: var(--rva-paper); }
-.dossier-rva .ministry-list .item .nt { color: rgba(238,229,208,0.6); }
-.dossier-rva .bar-fill { background: linear-gradient(90deg, var(--rva-gold), #C99560); }
-.dossier-rva .dossier-hero .photo-cap { color: rgba(238,229,208,0.7); }
 
 /* ============ ALTERNATIVES TAB ============ */
 .alternatives {
@@ -1531,7 +1491,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <button class="tab-btn" data-tab="atlanta" data-city="atlanta" role="tab">Atlanta</button>
       <button class="tab-btn" data-tab="phoenix" data-city="phoenix" role="tab">Phoenix</button>
       <button class="tab-btn" data-tab="charlotte" data-city="charlotte" role="tab">Charlotte</button>
-      <button class="tab-btn" data-tab="richmond" data-city="richmond" role="tab">Richmond</button>
       <button class="tab-btn" data-tab="alternatives" role="tab">Alternatives</button>
       <button class="tab-btn" data-tab="verdict" role="tab">Verdict</button>
     </div>
@@ -1552,18 +1511,18 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   </div>
 
   <h1 class="cover-title">
-    Four Cities,<br>
+    Three Cities,<br>
     one <em>calling</em>.
   </h1>
 
   <p class="cover-sub">
-    A side-by-side reading of Atlanta, Phoenix, Charlotte, and Richmond as candidate launch cities for a multi-campus college and young-professional ministry — bridging campus and city, undergrad and post-grad, the gathered and the sent.
+    A side-by-side reading of Atlanta, Phoenix, and Charlotte as candidate launch cities for a multi-campus college and young-professional ministry — bridging campus and city, undergrad and post-grad, the gathered and the sent.
   </p>
 
   <div class="cover-grid">
     <div>
       <span>Subject</span>
-      <span>Atlanta &nbsp;·&nbsp; Phoenix &nbsp;·&nbsp; Charlotte &nbsp;·&nbsp; Richmond</span>
+      <span>Atlanta &nbsp;·&nbsp; Phoenix &nbsp;·&nbsp; Charlotte</span>
     </div>
     <div>
       <span>Reach</span>
@@ -1601,7 +1560,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
         <p>The output is supposed to be a city, a neighborhood, and a strategy. But before we choose a city, we need to be honest about what's genuinely distinctive in this calling, and what the surrounding landscape will reward or punish.</p>
 
-        <p>This document started as a working comparison of the two strongest candidates — Atlanta and Phoenix — with a proposal for a Midtown-anchored strategy that took seriously what was already on the field, including a related AA-led plant already operating in the metro. It has since expanded to include two additional candidates: Charlotte (a Carolina-pipeline-live banking metro with banking corporate depth) and Richmond (an under-saturated state capital with one in-city R1 anchor and an unusually diverse F500 cluster).</p>
+        <p>This document started as a working comparison of the two strongest candidates — Atlanta and Phoenix — with a proposal for a Midtown-anchored strategy that took seriously what was already on the field, including a related AA-led plant already operating in the metro. It has since expanded to include Charlotte — a Carolina-pipeline-live banking metro with deep corporate density and an open lane on the team's specific posture. Several additional candidates were considered seriously and set aside; those are surfaced in the Alternatives tab with the structural reason each was excluded.</p>
 
         <div class="context-card">
           <div class="label">— Working Inputs —</div>
@@ -1640,7 +1599,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <th>Atlanta</th>
             <th>Phoenix</th>
             <th>Charlotte</th>
-            <th>Richmond</th>
             <th>Edge</th>
           </tr>
         </thead>
@@ -1650,7 +1608,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Georgia Tech — top-10 engineering, flagship R1</td>
             <td>ASU Tempe — improving R1, Barrett honors</td>
             <td>UNC Charlotte — mid-tier R1, commuter-leaning</td>
-            <td>VCU — mid-tier R1, in-city walkable</td>
             <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
@@ -1658,7 +1615,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>GT — ~47K total, ~21K reachable undergrad</td>
             <td>ASU Tempe — 80K (largest US campus)</td>
             <td>UNCC — 32K (record fall '25)</td>
-            <td>VCU — 29K</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1666,7 +1622,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>GT core · SCAD adj · GSU/Emory/AUC opt</td>
             <td>ASU (4 sites) + GCU ≈ 128K</td>
             <td>UNCC + Davidson + Queens + JCSU + 12-school consortium</td>
-            <td>VCU + U-Richmond + VUU</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1674,7 +1629,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>None at scale</td>
             <td>GCU — 25K residential Christian students, 25 min</td>
             <td>None at scale (Davidson, Belmont Abbey small)</td>
-            <td>None at scale</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1682,23 +1636,20 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>$1,900 – 2,200 (Midtown)</td>
             <td>$1,500 – 1,800 (Tempe)</td>
             <td>$1,650 – 2,000 (South End)</td>
-            <td>$1,400 – 1,750 (Fan / Scott's Addition)</td>
-            <td><span class="tag-rva">Richmond</span></td>
+            <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
             <td>Ministry saturation (young adult)</td>
             <td>Heavy — 7+ established large gatherings</td>
             <td>Moderate — Salt Co + Hope Church on college side</td>
             <td>Moderate — Elevation gravity + 5 mid-size</td>
-            <td>Light — Hill City + Movement + Third + Redeemer Anglican</td>
-            <td><span class="tag-rva">Richmond</span></td>
+            <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
             <td>Bible Belt baseline</td>
             <td>High — church-fluent on-ramp</td>
             <td>Low — nones, post-Mormon, secular</td>
             <td>High — Carolina church culture</td>
-            <td>Mid-South — mixed Episcopal / Baptist heritage</td>
             <td><span class="tag-tie">Trade-off</span></td>
           </tr>
           <tr>
@@ -1706,7 +1657,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>~58% — Tech grads stay, F500 anchors</td>
             <td>~42% — improving (TSMC, Intel)</td>
             <td>~62% — banking + post-NYC migration</td>
-            <td>~48% — verticals-specific (healthcare, Capital One)</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
           <tr>
@@ -1714,7 +1664,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Tech, finance, healthcare (17 F500)</td>
             <td>Tech, semis, banking, ops</td>
             <td>Banking, fintech, energy, mfg (7 F500 + 19 F1000)</td>
-            <td>Insurance, energy, food, used-car (8 F500 + Capital One West Creek)</td>
             <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
@@ -1722,7 +1671,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>~1.0% / yr</td>
             <td>~1.1–1.6% / yr (4th fastest US)</td>
             <td>~1.2–1.5% / yr (top-10 Sun Belt)</td>
-            <td>~0.5–0.8% / yr</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1730,15 +1678,13 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Hot humid summers, mild winters</td>
             <td>110°+ summers — students disperse</td>
             <td>Hot humid summers, mild winters</td>
-            <td>Mild four seasons, humid summer</td>
-            <td><span class="tag-rva">Richmond</span></td>
+            <td><span class="tag-tie">Tie</span></td>
           </tr>
           <tr>
             <td>Carolina pipeline geometry</td>
             <td>Live — 6.5h drive / 90-min nonstop</td>
             <td>Inert — 5h flight + layover</td>
             <td>Most live — 2.5h drive, daily nonstops</td>
-            <td>Usable — 3.5h drive, no longer native</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
           <tr>
@@ -1746,7 +1692,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Emory + UGA (1h) · UNC at 6.5h drive</td>
             <td>None — closest elite is Caltech (370mi / 6h)</td>
             <td>Davidson 25m · UNC + Duke at 2.5h</td>
-            <td>UVA at 1h west · W&M at 50m east</td>
             <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
@@ -1754,7 +1699,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Yes — Rooted at GT/Emory/UGA (sister plant in metro)</td>
             <td>None</td>
             <td>None</td>
-            <td>None in RVA · UVA at 1h W is A2N (Axiom)</td>
             <td><span class="tag-note">Constraint, not edge</span></td>
           </tr>
           <tr>
@@ -1762,13 +1706,11 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Real — crowded young-adult shelf</td>
             <td>Moderate — two college incumbents</td>
             <td>Lowest — open lane on team's profile</td>
-            <td>Low — top-3 in 5 years is realistic</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="score-hint">↔ Scroll table horizontally to see all candidates</div>
   </div>
 </section>
 
@@ -1856,29 +1798,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           </svg>
         </div>
 
-        <div class="flow-cell flow-rva">
-          <h4>— Richmond Pipeline —</h4>
-          <div class="city-name">VCU grad <em>scatters</em>.</div>
-          <svg class="flow-svg" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="20" width="80" height="200" fill="#6B2818"/>
-            <text x="40" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">100% grads</text>
-            <text x="40" y="13" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">enter</text>
-
-            <path d="M 80 20 C 200 20, 280 50, 380 75 L 380 165 C 280 150, 200 170, 80 155 Z" fill="#6B2818" opacity="0.85"/>
-            <text x="230" y="100" font-family="JetBrains Mono" font-size="11" fill="#EEE5D0" font-weight="500">~45–50%</text>
-            <text x="230" y="116" font-family="JetBrains Mono" font-size="9" fill="#EEE5D0" opacity="0.85">stay in metro</text>
-
-            <path d="M 80 155 L 380 165 L 380 220 L 80 220 Z" fill="#6B2818" opacity="0.32"/>
-            <text x="200" y="200" font-family="JetBrains Mono" font-size="9" fill="#3A352D">~50% leave for NoVA / NYC / LA</text>
-
-            <rect x="380" y="75" width="80" height="90" fill="#A8753E"/>
-            <text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">retained</text>
-            <text x="420" y="125" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#6B2818" font-weight="600">~48%</text>
-
-            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">VCU Health + Capital One steady the floor</text>
-          </svg>
-        </div>
-
       </div>
     </div>
 
@@ -1913,17 +1832,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <li>Banking gravity (BoA HQ + Truist HQ) anchors finance careers</li>
           <li>The metro is a net importer of young pros, not a net exporter</li>
           <li>Implication: <strong>the local-bivocational path is the deepest of any candidate</strong> — Charlotte's flywheel can compound on imported talent as well as retained grads</li>
-        </ul>
-      </div>
-
-      <div class="retention-card rva">
-        <h3>Richmond — <em>retention is mixed</em>.</h3>
-        <p>VCU's retention picture is the most bifurcated of the candidates. VCU Health and Capital One West Creek anchor a steady floor — clinical track grads stay near VCU Medical Center, finance and tech roles stay at Capital One. VCU Arts and Brandcenter graduates scatter to NYC, LA, and DC for design and advertising work. NoVA / DC pulls a meaningful share of finance, consulting, and tech-policy graduates an hour and forty-five minutes north for higher salaries. Net effect: a real but middling retention number, with significant differences by major.</p>
-        <ul>
-          <li>VCU Health + Capital One West Creek anchor the floor</li>
-          <li>Arts / Brandcenter grads scatter to creative-class metros</li>
-          <li>NoVA / DC pulls finance and consulting graduates north</li>
-          <li>Implication: <strong>the bivocational pipeline works for healthcare and Capital One profiles</strong> — less reliable for creative-class or finance-NoVA-bound profiles</li>
         </ul>
       </div>
 
@@ -2946,268 +2854,37 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 </div>
 <!-- ============ /TAB: CHARLOTTE ============ -->
 
-<!-- ============ TAB: RICHMOND ============ -->
-<div class="tab-panel" data-panel="richmond">
-
-<!-- DOSSIER RICHMOND -->
-<section class="dossier dossier-rva" id="richmond">
-  <div class="container">
-    <div class="dossier-header">
-      <div>
-        <div class="dossier-no">§ IX. Dossier — File 04</div>
-        <h1 class="dossier-name">Rich<em>mo</em>nd.</h1>
-      </div>
-      <div class="dossier-tag">A capital with one strong anchor, modest AA, an unusually diverse F500 cluster — and a UVA-shaped adjacency risk.</div>
-    </div>
-
-    <!-- HERO PHOTO -->
-    <div class="dossier-hero">
-      <div class="photo">
-        <img src="https://images.unsplash.com/photo-1600320254374-ce2d293c324e?w=1800&q=80&auto=format&fit=crop" alt="Richmond Virginia skyline along the James River">
-      </div>
-      <div class="photo-cap">
-        <span>Richmond &nbsp;·&nbsp; James River</span>
-        <span class="credit">Photo: Unsplash</span>
-      </div>
-    </div>
-
-    <!-- stat ribbon -->
-    <div class="stat-ribbon">
-      <div class="stat-cell">
-        <div class="num">29K</div>
-        <div class="lbl">VCU — fall 2025<br>Richmond's anchor</div>
-      </div>
-      <div class="stat-cell">
-        <div class="num">~5.2%</div>
-        <div class="lbl">Henrico County AA<br>(metro AA cluster)</div>
-      </div>
-      <div class="stat-cell">
-        <div class="num">8</div>
-        <div class="lbl">F500 HQs in<br>Greater Richmond</div>
-      </div>
-      <div class="stat-cell">
-        <div class="num">3.5h</div>
-        <div class="lbl">Drive to Chapel Hill<br>UVA at 1h west (A2N)</div>
-      </div>
-    </div>
-
-    <!-- block 1: campus density -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">01</span>Campus Density</div>
-      <div>
-        <h3>VCU is the anchor. The rest is <em>genuinely small</em>.</h3>
-        <p>Richmond's college math is the simplest of the candidates surveyed. VCU enrolled ~29,280 students across 200+ academic programs in 2025 — a real R1 anchor in the heart of the city, with a Monroe Park campus walking distance to The Fan, Carytown, Scott's Addition, and Church Hill. University of Richmond — the city's elite private — sits on its own quiet campus a few miles west with ~3,700 students, and has experienced declining enrollment (down 7.5% since 2018). Virginia Union (HBCU) holds ~1,200 students just north of downtown. Past those three, the campus shelf is thin at the Richmond metro level.</p>
-        <p>The honest read: <strong>VCU is the play, with U-Richmond as a secondary partnership</strong> rather than absorption population. The arts-and-medical character of VCU — Brandcenter, VCU Arts (one of the country's top public art and design programs), VCU Medical Center — gives Richmond a creative-class undergrad culture that differs in kind from Tech-engineering or ASU-scale state-school dynamics. A plant has to take that seriously: Richmond's college-aged are not optimized for the same on-ramps that work in Midtown Atlanta.</p>
-
-        <div class="bars">
-          <div class="bar-row"><div class="name">VCU (Monroe Park + MCV)</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">≈ 29K</div></div>
-          <div class="bar-row"><div class="name">University of Richmond</div><div class="bar-track"><div class="bar-fill" style="width: 13%"></div></div><div class="num">≈ 3.7K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">private · declining</span></div></div>
-          <div class="bar-row"><div class="name">Virginia Union (HBCU)</div><div class="bar-track"><div class="bar-fill" style="width: 4%"></div></div><div class="num">≈ 1.2K</div></div>
-          <div class="bar-row"><div class="name">VCCS Reynolds CC</div><div class="bar-track"><div class="bar-fill" style="width: 35%"></div></div><div class="num">≈ 10K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">2-yr / commuter</span></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- block 2: AA reality -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">02</span>AA Reality</div>
-      <div>
-        <h3>Modest, county-clustered, and <em>thinner than the Sun Belt picks</em>.</h3>
-        <p>Richmond's AA presence is the lightest of the candidates surveyed. The city itself is ~2.1% Asian. Henrico County (the Short Pump / West End suburban ring) holds ~5.2% — about 15,000 people, the closest thing the metro has to a Gwinnett or Ballantyne-style cluster, but at lower absolute density. Chesterfield County (south of the river) is growing but starting from a smaller base. Virginia statewide is ~6.9% Asian, well above Richmond — the AA population concentrates in NoVA (Fairfax / Loudoun), not RVA.</p>
-        <p>For an AA-led plant, this is the dossier's biggest honest cost. There is real Indian-American suburban density in Short Pump and a steady technology-and-finance migration into Henrico, but neither rivals Atlanta's Gwinnett corridor or Phoenix's Chandler / Gilbert build-out. AA infrastructure (mature pan-Asian congregations, ethnic-specific churches with deep histories) exists in NoVA, an hour and forty-five minutes north — too far for a partnership ecosystem the way Atlanta's network operates in-metro.</p>
-
-        <div class="bars">
-          <div class="bar-row"><div class="name">Henrico County</div><div class="bar-track"><div class="bar-fill" style="width: 75%"></div></div><div class="num">~5.2%</div></div>
-          <div class="bar-row"><div class="name">Chesterfield County</div><div class="bar-track"><div class="bar-fill" style="width: 50%"></div></div><div class="num">~3.5%</div></div>
-          <div class="bar-row"><div class="name">Richmond (city)</div><div class="bar-track"><div class="bar-fill" style="width: 28%"></div></div><div class="num">~2.1%</div></div>
-          <div class="bar-row"><div class="name">Virginia (statewide)</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">~6.9%</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PHOTO PAIR — Richmond context -->
-    <div class="dossier-photo-pair">
-      <div>
-        <div class="photo photo-frame">
-          <img src="https://images.unsplash.com/photo-1664910919941-a18b85c89eb1?w=900&q=80&auto=format&fit=crop" alt="James River and Richmond skyline">
-        </div>
-        <div class="photo-cap">
-          <span>James River &nbsp;·&nbsp; downtown skyline</span>
-          <span class="credit">Photo: Unsplash</span>
-        </div>
-      </div>
-      <div>
-        <div class="photo photo-frame">
-          <img src="https://images.unsplash.com/photo-1593814681464-eef5d40b7df9?w=900&q=80&auto=format&fit=crop" alt="The Fan / VCU Monroe Park area">
-        </div>
-        <div class="photo-cap">
-          <span>The Fan &nbsp;·&nbsp; near VCU's Monroe Park campus</span>
-          <span class="credit">Photo: Unsplash</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="pullquote">
-      <p>"One real anchor, modest AA, an unusually diverse F500 cluster — and an <em>A2N adjacency</em> at UVA an hour west."</p>
-    </div>
-
-    <!-- block 3: ministry shelf -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">03</span>The Ministry Shelf</div>
-      <div>
-        <h3>Less crowded than Atlanta, more <em>independent-plant-friendly</em> than most Sun Belt picks.</h3>
-        <p>Richmond's young-adult shelf is the lightest of the candidates surveyed. Hill City Church and Movement Church both run real young-adult ministries with college and post-grad arms. Third Church (PCA, Westhampton) holds an established young-adult and young-family base. Redeemer Anglican (downtown) operates a CCO-partnered VCU college fellowship as part of its larger work. There is no Elevation, no Passion, no North Point — Richmond is a market where a polished, college-anchored midweek and Sunday plant can plausibly become a top-three young-adult presence within five years rather than a top-tenth.</p>
-        <p>The trade is honest: <strong>less competitive saturation, but a smaller addressable market.</strong> Richmond's overall college-and-young-pro population is meaningfully smaller than Atlanta's or Charlotte's. A plant that becomes the number-three young-adult church in Atlanta serves more people than a plant that becomes the number-one young-adult church in Richmond.</p>
-
-        <div class="ministry-list">
-          <div class="item"><span class="nm">Hill City Church</span><span class="nt">student ministry · young-adult arm</span></div>
-          <div class="item"><span class="nm">Movement Church</span><span class="nt">young-adult focus · multi-site</span></div>
-          <div class="item"><span class="nm">Third Church (PCA)</span><span class="nt">Westhampton · established young-adult / young-family base</span></div>
-          <div class="item"><span class="nm">Redeemer Anglican</span><span class="nt">downtown · College Fellowship at VCU (CCO partnership)</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- block 4: campus shelf -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">04</span>The Campus Shelf at VCU</div>
-      <div>
-        <h3>A working bench of <em>denominational rails</em> — and a multi-faith collaborative.</h3>
-        <p>VCU's documented Christian campus footprint is meaningful but not crowded. BCM at VCU runs a dedicated ministry house. Cru is active. Catholic Campus Ministry operates out of the Cathedral of the Sacred Heart. Wesley Foundation holds the UMC presence. Redeemer Anglican's College Fellowship at VCU — partnered with CCO (Coalition for Christian Outreach) — is a unique church-anchored campus arm, the closest documented analogue at VCU to what the team's plant would build. The Pace Center operates as a multi-denominational collaborative ministry, an institutional structure VCU's chaplaincy office actively supports.</p>
-        <p>The strategic read: VCU has room for a new church-led college presence, especially one with an integrated post-grad pipeline. The campus is dense, in-city, and walkable from Monroe Park — solving Charlotte's UNCC distance problem cleanly. The constraint is the AA-led differentiation argument: VCU's Asian-American student share is meaningfully lower than Tech's or ASU's, so the team's leadership shape lands as posture more than addressable-market match here.</p>
-
-        <div class="ministry-list">
-          <div class="item"><span class="nm">VCU — BCM</span><span class="nt">dedicated ministry house, weekly programming</span></div>
-          <div class="item"><span class="nm">VCU — Cru</span><span class="nt">discipleship · small groups · weekly gathering</span></div>
-          <div class="item"><span class="nm">VCU — Catholic Campus Ministry</span><span class="nt">Cathedral of the Sacred Heart</span></div>
-          <div class="item"><span class="nm">VCU — Wesley Foundation</span><span class="nt">United Methodist</span></div>
-          <div class="item"><span class="nm">VCU — Redeemer Anglican / CCO</span><span class="nt">church-anchored campus fellowship — closest analogue to plant model</span></div>
-          <div class="item"><span class="nm">Pace Center</span><span class="nt">multi-denominational collaborative · institutional partner</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- block 5: runway -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">05</span>Runway</div>
-      <div>
-        <h3>An <em>unusually diverse</em> F500 cluster for a metro this size.</h3>
-        <p>Greater Richmond holds eight Fortune 500 headquarters: Altria (#196), CarMax (#141), Markel (#262, Glen Allen), Dominion Energy, Performance Food Group, Owens & Minor, Genworth, and a recent eighth entrant — alongside Capital One's West Creek campus (one of three large Capital One employment centers in Richmond, though headquarters is in McLean). For a metro of two and a half million, that's a structurally diverse corporate base — tobacco, used-car retail, specialty insurance, energy, food distribution, medical supply. The bivocational job market is real but skews toward specific verticals rather than the broad mix Atlanta or Charlotte offer.</p>
-        <p>Cost: Fan / Scott's Addition / Church Hill 1BR rent runs $1,400 – $1,750. The cheapest of the candidates surveyed by a meaningful margin — closest to Phoenix on cost-of-living, with a more humane climate.</p>
-      </div>
-    </div>
-
-    <!-- block 6: carolina pipeline + UVA adjacency -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">06</span>Pipeline Geometry</div>
-      <div>
-        <h3>Carolina is <em>usable, not native</em>. UVA is an A2N adjacency.</h3>
-        <p>Chapel Hill is roughly 3.5 hours from Richmond by car — far enough that the casual drive-or-fly cadence the dossier flagged for Atlanta turns into a planned trip. The team's UNC ministry alumni network is still reachable, but no longer as a structural advantage. A more salient pipeline geometry from Richmond is northward toward NoVA / DC and southward toward Hampton Roads — Richmond sits in the middle of a Mid-Atlantic corridor of larger cities rather than at one end of a Southeast pipeline.</p>
-        <p>The unique constraint: <strong>UVA at Charlottesville is one hour west, and is an A2N footprint</strong> (Axiom College Church). Any team planting in Richmond would have an A2N sister plant within easy weekend reach, with overlapping recruiting pools (UVA grads who move to Richmond for finance / consulting / startup work) and overlapping cultural reach (Mid-Atlantic Christian college culture). This is a closer adjacency than Charlotte's relationship with the Triangle and warrants deliberate calibration up front.</p>
-      </div>
-    </div>
-
-    <!-- block 7: capital with creative class -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">07</span>Capital with a Creative Class</div>
-      <div>
-        <h3>VCU Arts and Scott's Addition give Richmond a <em>different on-ramp profile</em>.</h3>
-        <p>Two cultural facts shape any plant in Richmond. First, VCU is one of the most influential public art and design schools in the country — VCU Arts ranks consistently in the top three among US public university art programs, and the Brandcenter (VCU's graduate communications and advertising program) feeds the country's top agencies. The undergraduate culture skews more creative-class than engineering-and-finance, which is the opposite of the Tech-and-Cal anchors elsewhere in this guide. The students walking onto VCU's Monroe Park campus are designers, illustrators, sculptors, theater majors, brand strategists, and pre-meds heading to the VCU Health system — a different evangelistic and discipleship on-ramp profile than the Atlanta or Phoenix plant assumes.</p>
-        <p>Second, the city's neighborhood geography concentrates 22–32-year-olds tightly. The <strong>Fan District</strong> (the historic streetcar-suburb west of VCU, all rowhouses and trees) holds the largest single residential block of post-grad young pros. <strong>Scott's Addition</strong> (rebuilt from warehouses into a brewery / food-hall / coffee-shop district) is the densest "moved here for the city" neighborhood — and is the closest analogue Richmond has to Atlanta's West Midtown or Charlotte's South End. <strong>Carytown</strong> bridges the two with shops and restaurants. <strong>Church Hill</strong> (east of downtown) is the older, slower-growing, more historically-textured option. All of these sit within a 20-minute walk or short drive of VCU's main campus — solving the campus-to-young-pro distance problem cleanly. Richmond's bigger structural challenge is reaching past the Fan / Scott's Addition core into Henrico's AA cluster fifteen minutes northwest.</p>
-      </div>
-    </div>
-
-    <!-- block 8: fan / scott's addition strategy -->
-    <div class="dossier-block">
-      <div class="label"><span class="num">08</span>The Fan / Scott's Addition Strategy</div>
-      <div>
-        <h3>Anchor between <em>Monroe Park and Scott's Addition</em>. Build the Henrico bridge.</h3>
-        <p>If Richmond is the call, the strategy is the most geometrically simple of the candidates. Plant in the Fan / Scott's Addition / Carytown radius — within walking distance of VCU's Monroe Park campus. Reach VCU students walking from the dorms. Reach 22–32-year-old creative-class and Capital-One-West-Creek-commute young pros who already live in the same six-block radius. Build a deliberate Henrico (Short Pump / West End) bridge for AA family and second-campus seeding.</p>
-
-        <div class="bars" style="margin-top: 1.8rem;">
-          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
-            <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
-            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Anchor in the Fan or Scott's Addition.</strong> &nbsp; Sunday gathering and midweek front door both inside the West Broad / W. Cary corridor. Venue options are unusually plentiful — Scott's Addition's converted warehouses, Carytown's older theater spaces, the Hippodrome on N. 2nd, partnership with Third Church or Redeemer Anglican for Sunday space. The plant is walkable from VCU dorms in any of these locations.
-            </div>
-          </div>
-          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
-            <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
-            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Take the creative-class on-ramp seriously.</strong> &nbsp; VCU's student body is meaningfully different from Tech's or ASU's; preaching and programming need to assume a culturally fluent, design-literate audience. Vocational discipleship for art, design, brand, advertising, theater, and music carries unusual weight in Richmond. Consider an artists-in-residence or studio-night track as part of the plant's identity rather than a peripheral feature.
-            </div>
-          </div>
-          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
-            <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
-            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Build the Henrico bridge in year one.</strong> &nbsp; Short Pump / West End is fifteen minutes northwest and holds Richmond's AA cluster. A small-group node in Henrico, anchored by one or two team families willing to live there rather than in the Fan, sets up the AA family-and-stay piece that the urban core won't. By year three, this is a candidate for a second campus.
-            </div>
-          </div>
-          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
-            <div class="num" style="text-align: left; padding-top: 0.1rem;">iv.</div>
-            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Pre-place the ten across F500 verticals.</strong> &nbsp; Capital One West Creek (technology, product, finance — large hiring footprint), Altria (HQ, regulated industry), CarMax (HQ, retail tech), Markel (insurance, in Glen Allen), Dominion Energy (utility), Performance Food Group, Owens & Minor (medical supply), VCU Health (clinical roles), and the broader VCU enterprise (faculty / staff / administrative). Less broad than Atlanta or Charlotte, but real depth in specific verticals.
-            </div>
-          </div>
-          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
-            <div class="num" style="text-align: left; padding-top: 0.1rem;">v.</div>
-            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Calibrate the UVA / Axiom relationship.</strong> &nbsp; UVA is one hour west and is A2N. Richmond's young-pro recruiting will pull UVA alumni into Capital One, McGuireWoods, Markel, and the Big Four's Richmond offices. Run an explicit conversation about the relationship in months 1–3. Joint events, leader exchanges, transparent recruiting posture — same friendly-not-entangled pattern.
-            </div>
-          </div>
-        </div>
-
-        <p style="margin-top: 1.8rem;">The honest version of the Richmond bet: <strong>lowest competitive saturation of the candidates</strong>, with a smaller absolute market that caps the ceiling. The structural geometry is the cleanest of any candidate (campus, young-pro neighborhood, and AA cluster all reachable from one Fan / Scott's Addition anchor). The cost is that "best in Richmond" reaches fewer people than "third in Atlanta," and the AA-leadership-shape argument lands as posture more than addressable-market match.</p>
-      </div>
-    </div>
-
-    <!-- verdict -->
-    <div class="verdict">
-      <div>
-        <h4>— Where Richmond wins —</h4>
-        <ul>
-          <li>Lightest competitive saturation of the candidates — top-three young-adult presence is a realistic 5-year goal</li>
-          <li>VCU is dense, in-city, walkable from Monroe Park — solves Charlotte's distance problem</li>
-          <li>Cheapest cost of living — strongest bivocational runway after Phoenix</li>
-          <li>Unusually diverse F500 mix for a metro this size (tobacco, used-car retail, insurance, energy, food)</li>
-          <li>No A2N footprint in Richmond itself</li>
-          <li>Mid-Atlantic location opens NoVA and Hampton Roads sending paths</li>
-        </ul>
-      </div>
-      <div>
-        <h4>— Where Richmond costs you —</h4>
-        <ul>
-          <li>Lightest AA density of the candidates — the leadership-shape argument lands as posture more than match</li>
-          <li>UVA at 1h west is A2N (Axiom) — closest sister-plant adjacency of any candidate</li>
-          <li>Carolina pipeline is usable but no longer native — 3.5h to Chapel Hill</li>
-          <li>VCU's arts-and-medical character is a different on-ramp profile than Tech / ASU</li>
-          <li>Smallest absolute college-and-young-pro market of the candidates</li>
-          <li>Mature AA ministry partner ecosystem lives in NoVA, not Richmond</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-</div>
-<!-- ============ /TAB: RICHMOND ============ -->
-
 <!-- ============ TAB: ALTERNATIVES ============ -->
 <div class="tab-panel" data-panel="alternatives">
 
 <section class="alternatives" id="alternatives">
   <div class="container">
     <div class="alt-head">
-      <div class="eyebrow">§ X. Alternatives Considered</div>
-      <h2>Ten cities <em>not chosen</em> — and why.</h2>
-      <p>The four-city candidate set is the result of substantial winnowing. These ten alternatives surfaced across the search and were evaluated in varying depth. Each is a real candidate the team could revisit if its decision criteria shift; each was set aside for a specific structural reason. Listed in rough order of how seriously they were considered.</p>
+      <div class="eyebrow">§ IX. Alternatives Considered</div>
+      <h2>Eleven cities <em>not chosen</em> — and why.</h2>
+      <p>The three-city candidate set is the result of substantial winnowing. These eleven alternatives surfaced across the search and were evaluated in varying depth. Each is a real candidate the team could revisit if its decision criteria shift; each was set aside for a specific structural reason. Listed in rough order of how seriously they were considered — Richmond first because it was in the candidate set until just being moved here.</p>
     </div>
 
     <div class="alt-grid">
 
-      <!-- 01 BERKELEY -->
+      <!-- 01 RICHMOND -->
       <div class="alt-card">
-        <div class="alt-tag">— 01 · Bay Area —</div>
+        <div class="alt-tag">— 01 · Mid-Atlantic —</div>
+        <h3>Richmond · <em>VCU</em></h3>
+        <div class="alt-sub">Cleanest geometry of any candidate — undermined by ceiling and adjacency.</div>
+        <ul>
+          <li>VCU R1, ~29K undergrad, in-city walkable from Monroe Park</li>
+          <li>Richmond metro 1.3M; eight F500 HQs (Altria, CarMax, Markel, Dominion, etc.) plus Capital One West Creek</li>
+          <li>Lightest competitive saturation of all candidates considered — top-three young-adult presence is realistic in five years</li>
+          <li>Cheapest cost of living after Phoenix; usable Carolina pipeline (3.5h drive)</li>
+          <li>A2N-open in Richmond proper; UVA / Axiom 1h west</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> Smallest absolute college-and-young-pro market of the candidates — top-of-Richmond reaches fewer people than third-of-Atlanta. UVA / Axiom adjacency 1h west is the closest sister-plant geometry of any candidate. The team closed the working set to Atlanta, Phoenix, and Charlotte; Richmond is the most serious alternative if any of those three falls out.</div>
+      </div>
+
+      <!-- 02 BERKELEY -->
+      <div class="alt-card">
+        <div class="alt-tag">— 02 · Bay Area —</div>
         <h3>Berkeley · <em>UC Berkeley</em></h3>
         <div class="alt-sub">The strongest demographic and academic match — the only candidate fully on-criterion.</div>
         <ul>
@@ -3221,7 +2898,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 02 DFW -->
       <div class="alt-card">
-        <div class="alt-tag">— 02 · Texas —</div>
+        <div class="alt-tag">— 03 · Texas —</div>
         <h3>Dallas-Fort Worth · <em>UT Dallas + SMU</em></h3>
         <div class="alt-sub">Closest non-Berkeley match on AAPI density and metro size.</div>
         <ul>
@@ -3236,7 +2913,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 03 HOUSTON -->
       <div class="alt-card">
-        <div class="alt-tag">— 03 · Texas —</div>
+        <div class="alt-tag">— 04 · Texas —</div>
         <h3>Houston · <em>Rice + UH</em></h3>
         <div class="alt-sub">Second-largest US metro the team could pick — AAPI-dense, A2N-open.</div>
         <ul>
@@ -3251,7 +2928,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 04 GAINESVILLE -->
       <div class="alt-card">
-        <div class="alt-tag">— 04 · Florida —</div>
+        <div class="alt-tag">— 05 · Florida —</div>
         <h3>Gainesville · <em>University of Florida</em></h3>
         <div class="alt-sub">Flagship academic anchor — undermined by metro retention.</div>
         <ul>
@@ -3265,7 +2942,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 05 NY / BROOKLYN -->
       <div class="alt-card">
-        <div class="alt-tag">— 05 · East Coast —</div>
+        <div class="alt-tag">— 06 · East Coast —</div>
         <h3>New York · <em>Brooklyn / NYU / Columbia</em></h3>
         <div class="alt-sub">The largest, most demographically dense option — and the most A2N-saturated.</div>
         <ul>
@@ -3279,7 +2956,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 06 PORTLAND -->
       <div class="alt-card">
-        <div class="alt-tag">— 06 · Pacific Northwest —</div>
+        <div class="alt-tag">— 07 · Pacific Northwest —</div>
         <h3>Portland · <em>PSU + Reed</em></h3>
         <div class="alt-sub">Genuinely unreached — without a flagship anchor.</div>
         <ul>
@@ -3294,7 +2971,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 07 MIAMI -->
       <div class="alt-card">
-        <div class="alt-tag">— 07 · Florida —</div>
+        <div class="alt-tag">— 08 · Florida —</div>
         <h3>Miami · <em>University of Miami + FIU</em></h3>
         <div class="alt-sub">An emerging finance hub with a different demographic shape.</div>
         <ul>
@@ -3308,7 +2985,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 08 SLC -->
       <div class="alt-card">
-        <div class="alt-tag">— 08 · Mountain West —</div>
+        <div class="alt-tag">— 09 · Mountain West —</div>
         <h3>Salt Lake City · <em>University of Utah</em></h3>
         <div class="alt-sub">The most distinct mission field of any candidate considered.</div>
         <ul>
@@ -3322,7 +2999,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 09 BOULDER -->
       <div class="alt-card">
-        <div class="alt-tag">— 09 · Mountain West —</div>
+        <div class="alt-tag">— 10 · Mountain West —</div>
         <h3>Boulder + Denver · <em>CU Boulder</em></h3>
         <div class="alt-sub">Secular metro with a mid-tier flagship.</div>
         <ul>
@@ -3336,7 +3013,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 10 ST LOUIS -->
       <div class="alt-card">
-        <div class="alt-tag">— 10 · Midwest —</div>
+        <div class="alt-tag">— 11 · Midwest —</div>
         <h3>St. Louis · <em>Wash U</em></h3>
         <div class="alt-sub">Elite anchor in a shrinking metro.</div>
         <ul>
@@ -3362,8 +3039,8 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 <!-- DECISION (NEUTRAL) -->
 <section class="decision" id="decision">
   <div class="container">
-    <div class="eyebrow">§ XI. The Verdict</div>
-    <h2>Four paths.<br>One <em>question</em>.</h2>
+    <div class="eyebrow">§ X. The Verdict</div>
+    <h2>Three paths.<br>One <em>question</em>.</h2>
     <p class="lede">
       The data is on the table. Each city has a coherent thesis, and the right answer depends less on which is "better" in the abstract than on which trade-offs the team is built to absorb. What follows is the framework — not the conclusion.
     </p>
@@ -3408,19 +3085,6 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         </ul>
       </div>
 
-      <div class="frame-cell rva">
-        <div class="label">— Choose Richmond if —</div>
-        <h4>A <em>top-three-in-five-years</em> ceiling is acceptable.</h4>
-        <ul>
-          <li>Lowest competitive saturation of the candidates — top-three young-adult presence is realistic in 5 years</li>
-          <li>VCU is dense, in-city, and walkable — solving Charlotte's distance problem cleanly</li>
-          <li>Cheapest cost of living after Phoenix — strongest bivocational runway</li>
-          <li>UVA at 1h west is A2N (Axiom) — closest sister-plant adjacency of any candidate</li>
-          <li>AA density is the lightest of the candidates — leadership shape lands as posture, not match</li>
-          <li>Smallest absolute college-and-young-pro market — top-of-Richmond is fewer people than third-of-Atlanta</li>
-        </ul>
-      </div>
-
     </div>
 
     <div class="questions-list">
@@ -3429,7 +3093,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <li>What is genuinely non-negotiable about the calling — academic anchor strength, multi-campus reach, less-saturated lane, or Carolina-pipeline geometry?</li>
         <li>How much does academic seriousness of the anchor campus weigh? Top-tier R1 favors GT (Atlanta); ASU and VCU are mid-tier with real strength; UNCC's commuter-leaning mid-tier profile is the binding constraint on Charlotte under this filter.</li>
         <li>Is the partnership with the existing A2N plant a feature of the Atlanta thesis, or could it become a structural tension?</li>
-        <li>How does the team weigh Carolina-pipeline geometry against the saturation cost? Atlanta and Charlotte preserve the pipeline; Phoenix and Richmond don't.</li>
+        <li>How does the team weigh Carolina-pipeline geometry against the saturation cost? Atlanta and Charlotte preserve the pipeline; Phoenix doesn't.</li>
         <li>How long is the team committed for? Five years favors Phoenix's or Charlotte's open lane; fifteen favors Atlanta's compounding.</li>
         <li>Which trade-off is the team built to absorb — higher saturation, higher pioneer cost, or sister-plant adjacency?</li>
         <li>Where does the team's spouses, children, and aging-parent infrastructure point?</li>
@@ -3466,21 +3130,20 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 <footer class="footer">
   <div class="container footer-row">
     <span>Field Guide Vol. I</span>
-    <span>Four Cities — One Calling</span>
+    <span>Three Cities — One Calling</span>
     <span>A Strategic Field Guide</span>
   </div>
 </footer>
 
 <script>
 // ============ TABS ============
-const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'richmond', 'alternatives', 'verdict'];
+const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'alternatives', 'verdict'];
 
-const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'richmond', 'verdict']);
+const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'verdict']);
 const CITY_ACCENTS = {
   atlanta: 'var(--atl-gold)',
   phoenix: 'var(--phx-sand)',
   charlotte: 'var(--clt-gold)',
-  richmond: 'var(--rva-gold)',
 };
 
 function activateTab(tabId, opts = {}) {
