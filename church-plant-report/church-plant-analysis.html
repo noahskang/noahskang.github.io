@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Three Cities, One Calling — A Strategic Field Guide</title>
+<title>Four Cities, One Calling — A Discernment Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -40,6 +40,13 @@
   --clt-brick: #8B3A2C;
   --clt-leaf: #6E8772;
   --clt-paper: #ECE4D2;
+
+  --nyc-deep: #1F2A3A;
+  --nyc-mid: #354759;
+  --nyc-brick: #B5563E;
+  --nyc-rust: #8E3F2A;
+  --nyc-stone: #C8B89C;
+  --nyc-paper: #E8DFCB;
 
 
 
@@ -176,6 +183,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 .photo-atl::after { background: var(--atl-deep); opacity: 0.50; }
 .photo-phx::after { background: var(--phx-sienna); opacity: 0.50; }
+.photo-nyc::after { background: var(--nyc-deep); opacity: 0.45; }
 .photo-frame {
   position: relative;
   border: 1px solid rgba(255,255,255,0.12);
@@ -1112,6 +1120,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .frame-cell.atl .label { color: var(--atl-gold); }
 .frame-cell.phx .label { color: var(--phx-sand); }
 .frame-cell.clt .label { color: var(--clt-gold); }
+.frame-cell.nyc .label { color: var(--nyc-brick); }
 .frame-cell h4 {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -1124,6 +1133,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .frame-cell.atl h4 em { color: var(--atl-gold); }
 .frame-cell.phx h4 em { color: var(--phx-sand); }
 .frame-cell.clt h4 em { color: var(--clt-gold); }
+.frame-cell.nyc h4 em { color: var(--nyc-brick); }
 .frame-cell ul { list-style: none; }
 .frame-cell ul li {
   padding: 0.6rem 0;
@@ -1265,6 +1275,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 }
 .tab-btn[data-city="phoenix"].active { color: var(--phx-rust); border-bottom-color: var(--phx-rust); }
 .tab-btn[data-city="charlotte"].active { color: var(--clt-deep); border-bottom-color: var(--clt-gold); }
+.tab-btn[data-city="newyork"].active { color: var(--nyc-deep); border-bottom-color: var(--nyc-brick); }
 @media (max-width: 900px) {
   .tabnav-inner { padding: 0 1rem; gap: 0.6rem; }
   .tabnav .brand { font-size: 0.65rem; padding: 0.85rem 0; }
@@ -1293,6 +1304,23 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .dossier-clt .ministry-list .item .nt { color: rgba(236,228,210,0.6); }
 .dossier-clt .bar-fill { background: linear-gradient(90deg, var(--clt-gold), #D6B583); }
 .dossier-clt .dossier-hero .photo-cap { color: rgba(236,228,210,0.7); }
+
+/* new york dossier theming — slate-blue ground with cream text + brick accents */
+.dossier-nyc { background: var(--nyc-deep); color: var(--nyc-paper); }
+.dossier-nyc .dossier-name em { color: var(--nyc-brick); }
+.dossier-nyc .dossier-block .label .num { color: var(--nyc-brick); }
+.dossier-nyc .dossier-block h3 em { color: var(--nyc-brick); }
+.dossier-nyc .dossier-block p { color: rgba(232,223,203,0.85); }
+.dossier-nyc .stat-cell .num { color: var(--nyc-brick); }
+.dossier-nyc .pullquote p em { color: var(--nyc-brick); }
+.dossier-nyc .verdict h4 { color: var(--nyc-brick); opacity: 1; }
+.dossier-nyc .ministry-list .item .nm { color: var(--nyc-paper); }
+.dossier-nyc .ministry-list .item .nt { color: rgba(232,223,203,0.6); }
+.dossier-nyc .bar-fill { background: linear-gradient(90deg, var(--nyc-brick), #D6735A); }
+.dossier-nyc .dossier-hero .photo-cap { color: rgba(232,223,203,0.7); }
+.dossier-nyc .scoping summary .lead em { color: var(--nyc-brick); font-style: italic; }
+.dossier-nyc .scoping-list li::before { color: var(--nyc-brick); }
+.dossier-nyc .campus-stat .num { color: var(--nyc-brick); }
 
 /* ============ WEEKEND SCOPING (collapsible) ============ */
 .scoping {
@@ -1745,6 +1773,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <button class="tab-btn" data-tab="atlanta" data-city="atlanta" role="tab">Atlanta</button>
       <button class="tab-btn" data-tab="phoenix" data-city="phoenix" role="tab">Phoenix</button>
       <button class="tab-btn" data-tab="charlotte" data-city="charlotte" role="tab">Charlotte</button>
+      <button class="tab-btn" data-tab="newyork" data-city="newyork" role="tab">New York</button>
       <button class="tab-btn" data-tab="alternatives" role="tab">Alternatives</button>
       <button class="tab-btn" data-tab="verdict" role="tab">Verdict</button>
     </div>
@@ -1759,24 +1788,24 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 <!-- COVER -->
 <section class="cover container">
   <div class="cover-meta">
-    <span>A Strategic Field Guide</span>
+    <span>A Discernment Field Guide</span>
     <span>Vol. I &nbsp;·&nbsp; Issue 01</span>
     <span>Working Document</span>
   </div>
 
   <h1 class="cover-title">
-    Three Cities,<br>
+    Four Cities,<br>
     one <em>calling</em>.
   </h1>
 
   <p class="cover-sub">
-    A side-by-side reading of Atlanta, Phoenix, and Charlotte as candidate launch cities for a multi-campus college and young-professional ministry — bridging campus and city, undergrad and post-grad, the gathered and the sent.
+    A prayerful, side-by-side reading of Atlanta, Phoenix, Charlotte, and New York as candidate fields for a multi-campus plant among college students and young professionals — a church for the gathered and the sent, asking where the gospel is least heard, where God has gathered young adults, and where this team's calling fits.
   </p>
 
   <div class="cover-grid">
     <div>
       <span>Subject</span>
-      <span>Atlanta &nbsp;·&nbsp; Phoenix &nbsp;·&nbsp; Charlotte</span>
+      <span>Atlanta &nbsp;·&nbsp; Phoenix &nbsp;·&nbsp; Charlotte &nbsp;·&nbsp; New York</span>
     </div>
     <div>
       <span>Reach</span>
@@ -1784,7 +1813,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
     </div>
     <div>
       <span>Core Question</span>
-      <span>Where should we go?</span>
+      <span>Where is the Lord sending us?</span>
     </div>
   </div>
 
@@ -1810,11 +1839,11 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <h2>What's the <em>shape</em> of the call?</h2>
       </div>
       <div class="q-text">
-        <p>A bivocational team of ten, gathered from across the country. An Asian-American leadership shape. The pull of a major university campus and a vision for a midweek young-adult gathering at scale. These are the inputs.</p>
+        <p>A bivocational team of ten, gathered from across the country. An Asian-American leadership shape. The pull of a major university campus and a vision for a midweek young-adult gathering at scale. These are the gifts the Lord has placed in our hands.</p>
 
-        <p>The output is supposed to be a city, a neighborhood, and a strategy. But before we choose a city, we need to be honest about what's genuinely distinctive in this calling, and what the surrounding landscape will reward or punish.</p>
+        <p>The question is not <em>where will this team succeed</em>, but <em>where is the Lord sending us</em> — which city's spiritual need most fits the shape of this calling, and where can we give our lives so that disciples are made, formed, and sent for the long haul.</p>
 
-        <p>This document started as a working comparison of the two strongest candidates — Atlanta and Phoenix — with a proposal for a Midtown-anchored strategy that took seriously what was already on the field, including a related AA-led plant already operating in the metro. It has since expanded to include Charlotte — a Carolina-pipeline-live banking metro with deep corporate density and an open lane on the team's specific posture. Several additional candidates were considered seriously and set aside; those are surfaced in the Alternatives tab with the structural reason each was excluded.</p>
+        <p>This document began as a working comparison of two strong candidates — Atlanta and Phoenix — with a proposal for a Midtown-anchored start that took seriously what God was already doing in the metro, including a sister AA-led plant already on the field. It has since expanded to include Charlotte (a Carolina-pipeline-live banking city with a particular openness to the team's posture) and New York / Downtown Brooklyn (a multi-campus, post-Christian field where the gospel is faintly heard among young adults despite the city's religious surface). Several additional candidates were prayed over and set aside; those are surfaced in the Alternatives tab with the structural reason each was set aside.</p>
 
         <div class="context-card">
           <div class="label">— Working Inputs —</div>
@@ -1843,7 +1872,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   <div class="container">
     <div class="eyebrow">§ II. At a Glance</div>
     <h2>The <em>scorecard</em>.</h2>
-    <p class="scorecard-intro">A surface read of the five candidates across the dimensions that matter for a college + young-pro plant. Caveats and nuance live in the dossiers; this is the first pass. The "edge" column highlights the candidate that comes out best on each dimension — many lines are genuine trade-offs rather than clean wins.</p>
+    <p class="scorecard-intro">A first read of the four candidate fields across the dimensions that shape a college + young-pro plant. This is descriptive, not decisive — caveats and prayerful weighing live in the dossiers. The "fit" column flags the city where each dimension cuts most clearly; many lines are genuine trade-offs that need to be brought before the Lord rather than clean wins.</p>
 
     <div class="score-table-wrap">
       <table class="score-table">
@@ -1853,7 +1882,8 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <th>Atlanta</th>
             <th>Phoenix</th>
             <th>Charlotte</th>
-            <th>Edge</th>
+            <th>New York</th>
+            <th>Fit</th>
           </tr>
         </thead>
         <tbody>
@@ -1862,6 +1892,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Georgia Tech — top-10 engineering, flagship R1</td>
             <td>ASU Tempe — improving R1, Barrett honors</td>
             <td>UNC Charlotte — mid-tier R1, commuter-leaning</td>
+            <td>NYU Tandon — engineering-elite + 3 smaller campuses</td>
             <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
@@ -1869,6 +1900,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>GT — ~47K total, ~21K reachable undergrad</td>
             <td>ASU Tempe — 80K (largest US campus)</td>
             <td>UNCC — 32K (record fall '25)</td>
+            <td>Tandon ~10K + LIU ~7K + Pratt ~5K + St. Francis ~2K</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1876,13 +1908,15 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>GT core · SCAD adj · GSU/Emory/AUC opt</td>
             <td>ASU (4 sites) + GCU ≈ 128K</td>
             <td>UNCC + Davidson + Queens + JCSU + 12-school consortium</td>
-            <td><span class="tag-phx">Phoenix</span></td>
+            <td>4 campuses in a 1-mile walking radius (Downtown Brooklyn)</td>
+            <td><span class="tag-tie">NYC + Phoenix</span></td>
           </tr>
           <tr>
             <td>Christian-formation campus pipeline</td>
             <td>None at scale</td>
             <td>GCU — 25K residential Christian students, 25 min</td>
             <td>None at scale (Davidson, Belmont Abbey small)</td>
+            <td>None at scale (St. Francis Catholic-heritage only)</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1890,34 +1924,39 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>$1,900 – 2,200 (Midtown)</td>
             <td>$1,500 – 1,800 (Tempe)</td>
             <td>$1,650 – 2,000 (South End)</td>
+            <td>$3,200 – 4,200 (Downtown Brooklyn)</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
-            <td>Ministry saturation (young adult)</td>
-            <td>Heavy — 7+ established large gatherings</td>
+            <td>Existing young-adult ministry coverage</td>
+            <td>Heavy — many faithful gatherings already at work</td>
             <td>Moderate — Salt Co + Hope Church on college side</td>
-            <td>Moderate — Elevation gravity + 5 mid-size</td>
-            <td><span class="tag-phx">Phoenix</span></td>
-          </tr>
-          <tr>
-            <td>Bible Belt baseline</td>
-            <td>High — church-fluent on-ramp</td>
-            <td>Low — nones, post-Mormon, secular</td>
-            <td>High — Carolina church culture</td>
+            <td>Moderate — Elevation cultural pull + 5 mid-size</td>
+            <td>Moderate — Hope, Apostles, Resurrection, Trinity Grace, Brooklyn Tab</td>
             <td><span class="tag-tie">Trade-off</span></td>
           </tr>
           <tr>
-            <td>Local-bivocational retention</td>
-            <td>~58% — Tech grads stay, F500 anchors</td>
+            <td>Missional need — where the gospel is least heard</td>
+            <td>Moderate — Bible-Belt baseline, dechurching under-30s</td>
+            <td>High — post-Christian Sun Belt, no Bible-Belt warm pool</td>
+            <td>Moderate — Bible-Belt native + dechurched imports</td>
+            <td>Highest — ~3% evangelical, post-Christian SBNR Brooklyn</td>
+            <td><span class="tag-tie">NYC + Phoenix</span></td>
+          </tr>
+          <tr>
+            <td>How many graduates stay (sending base)</td>
+            <td>~58% — Tech grads stay, deep employer bench</td>
             <td>~42% — improving (TSMC, Intel)</td>
             <td>~62% — banking + post-NYC migration</td>
+            <td>Variable — 3-yr arc transient + LIU rooted base</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
           <tr>
-            <td>Bivocational job market</td>
+            <td>Bivocational work the team can find</td>
             <td>Tech, finance, healthcare (17 F500)</td>
             <td>Tech, semis, banking, ops</td>
             <td>Banking, fintech, energy, mfg (7 F500 + 19 F1000)</td>
+            <td>Manhattan finance support, DUMBO tech, education, healthcare</td>
             <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
@@ -1925,6 +1964,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>~1.0% / yr</td>
             <td>~1.1–1.6% / yr (4th fastest US)</td>
             <td>~1.2–1.5% / yr (top-10 Sun Belt)</td>
+            <td>Flat — but young-adult inflow remains strong</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1932,13 +1972,15 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Hot humid summers, mild winters</td>
             <td>110°+ summers — students disperse</td>
             <td>Hot humid summers, mild winters</td>
+            <td>Cold winters, hot humid summers</td>
             <td><span class="tag-tie">Tie</span></td>
           </tr>
           <tr>
-            <td>Carolina pipeline geometry</td>
+            <td>Carolina UNC network geometry</td>
             <td>Live — 6.5h drive / 90-min nonstop</td>
             <td>Inert — 5h flight + layover</td>
             <td>Most live — 2.5h drive, daily nonstops</td>
+            <td>Inert — 1.5h flight, not a drive</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
           <tr>
@@ -1946,20 +1988,23 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Emory + UGA (1h) · UNC at 6.5h drive</td>
             <td>None — closest elite is Caltech (370mi / 6h)</td>
             <td>Davidson 25m · UNC + Duke at 2.5h</td>
-            <td><span class="tag-atl">Atlanta</span></td>
+            <td>NYU + Columbia + Princeton + Yale within 2h</td>
+            <td><span class="tag-tie">NYC</span></td>
           </tr>
           <tr>
             <td>A2N footprint</td>
             <td>Yes — Rooted at GT/Emory/UGA (sister plant in metro)</td>
             <td>None</td>
             <td>None</td>
-            <td><span class="tag-note">Constraint, not edge</span></td>
+            <td>None</td>
+            <td><span class="tag-note">Relationship, not edge</span></td>
           </tr>
           <tr>
-            <td>Differentiation difficulty</td>
-            <td>Real — crowded young-adult shelf</td>
-            <td>Moderate — two college incumbents</td>
-            <td>Lowest — open lane on team's profile</td>
+            <td>Distinctive shape vs. existing churches</td>
+            <td>Hard — many faithful young-adult ministries already at work</td>
+            <td>Moderate — two college ministries laboring on Mill Ave</td>
+            <td>Most room — few churches with this team's posture</td>
+            <td>Moderate room — AA-led integrated college-and-young-pro shape genuinely missing</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
         </tbody>
@@ -1973,11 +2018,11 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   <div class="container">
     <div class="retention-head">
       <div>
-        <div class="eyebrow">§ III. The Retention Question</div>
+        <div class="eyebrow">§ III. The Sending Question</div>
         <h2>Do they <em>stay</em>?</h2>
       </div>
       <div>
-        <p>Three sending paths come out of every graduating class — local bivocational, plant elsewhere, missions. The first path requires that graduates stay in your metro. The other two don't. Retention math doesn't determine whether the flywheel works; it determines what proportion of it stays nearby to become the church's own sending base.</p>
+        <p>Three sending paths come out of every graduating class — local bivocational, plant elsewhere, missions. The first path requires that graduates stay in the metro; the other two do not. So whether students stay does not decide whether the discipleship arc bears fruit; it decides what share of that fruit roots locally and becomes the church's own sending base, and what share is sent further out.</p>
       </div>
     </div>
 
@@ -2002,7 +2047,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">retained</text>
             <text x="420" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#1A3328" font-weight="600">~58%</text>
 
-            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">17 F500 HQs anchor demand</text>
+            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">17 F500 HQs hold grads in metro</text>
           </svg>
         </div>
 
@@ -2048,7 +2093,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3A352D">retained</text>
             <text x="420" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#1B3A4A" font-weight="600">~62%</text>
 
-            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">+ NYC/SF migration adds inflow</text>
+            <text x="380" y="13" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7">+ NYC/SF migration brings more in</text>
           </svg>
         </div>
 
@@ -2063,7 +2108,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <li>Tech + Emory grads recruited heavily by local F500 / Big Tech ATL offices</li>
           <li>Cost still permits new grads to live in Midtown / O4W / West Midtown</li>
           <li>Deep young-professional culture: people stay 3 – 7 years post-grad</li>
-          <li>Implication: <strong>students discipled at 19 can become bivocational team at 23</strong> — in the same metro, on the local sending base</li>
+          <li>What this means for the church: <strong>students discipled at 19 can become bivocational co-laborers at 23</strong> — in the same metro, gathered into the local sending base</li>
         </ul>
       </div>
 
@@ -2071,21 +2116,32 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <h3>Phoenix — <em>retention is in transition</em>.</h3>
         <p>Historically, ASU grads trended toward LA, Seattle, Austin, and the Bay Area for higher-paying tech work. That picture is changing rapidly: TSMC's Phoenix investment program (announced in stages from $40B in 2022 to roughly $165B by 2025), Intel's Ocotillo expansion, the broader East Valley semiconductor corridor, Amazon's massive operations footprint, and a swelling finance/insurance presence are creating reasons to stay that didn't exist five years ago.</p>
         <ul>
-          <li>AAPI tech grads increasingly retained by Chandler corridor employers</li>
+          <li>AAPI tech grads increasingly held by Chandler corridor employers</li>
           <li>Cheap rent makes staying viable for 22-year-olds with internships only</li>
           <li>But: post-grad ecosystem still less mature than Atlanta or DFW</li>
-          <li>Implication: <strong>the local-bivocational path is thinner here</strong> — the plant-elsewhere and missions paths still run normally</li>
+          <li>What this means for the church: <strong>the local-bivocational path is thinner here</strong> — the plant-elsewhere and missions paths still run normally, and Phoenix may be a sending city more than a settling one</li>
         </ul>
       </div>
 
       <div class="retention-card clt">
-        <h3>Charlotte — <em>retention is the highest of the candidates</em>.</h3>
-        <p>Charlotte may be the strongest retention market in the comparison set. UNCC alumni cluster heavily inside the metro by default — UNCC is overwhelmingly an in-state, in-region school — and the banking sector (BoA, Truist, Wells Fargo, JPMorgan Chase Charlotte) recruits both directly from UNCC and from UNC, Duke, and other regional schools, pulling more young pros into the metro than UNCC itself sends out. Post-pandemic NYC and Bay-Area finance migration adds a second inflow channel.</p>
+        <h3>Charlotte — <em>students stay, and more come</em>.</h3>
+        <p>Charlotte may be where the most graduates stay of any city in this set. UNCC alumni cluster heavily inside the metro by default — UNCC is overwhelmingly an in-state, in-region school — and the banking sector (BoA, Truist, Wells Fargo, JPMorgan Chase Charlotte) recruits both directly from UNCC and from UNC, Duke, and other regional schools, drawing more young adults into the metro than UNCC itself sends out. Post-pandemic NYC and Bay-Area finance migration brings another stream of young adults into the city.</p>
         <ul>
-          <li>UNCC's in-state student body retains in-region by default</li>
-          <li>Banking gravity (BoA HQ + Truist HQ) anchors finance careers</li>
-          <li>The metro is a net importer of young pros, not a net exporter</li>
-          <li>Implication: <strong>the local-bivocational path is the deepest of any candidate</strong> — Charlotte's flywheel can compound on imported talent as well as retained grads</li>
+          <li>UNCC's in-state student body stays in-region by default</li>
+          <li>Banking concentration (BoA HQ + Truist HQ) draws finance careers</li>
+          <li>The metro takes in more young pros than it sends out</li>
+          <li>What this means for the church: <strong>the local-bivocational path is the deepest of any candidate</strong> — Charlotte's discipleship arc can extend over both the students who stay and the young adults who arrive</li>
+        </ul>
+      </div>
+
+      <div class="retention-card nyc" style="border-color: rgba(181,86,62,0.4); background: rgba(31,42,58,0.04);">
+        <h3>New York — <em>the three-year arc, and the rooted few</em>.</h3>
+        <p>Brooklyn's young-adult retention is the most complicated of the four. A meaningful share of the under-30 imports — finance analysts, design first-jobs, tech transplants — give the city two or three good years and then leave for Austin, Charlotte, or the suburbs. That is the city's gravity, not the church's failure. Countervailing the transience: LIU's commuter base is rooted, many AA young adults moving into Fort Greene and Bed-Stuy are coming home rather than leaving home, and Pratt graduates often stay in Brooklyn's creative ecosystem for a decade or more.</p>
+        <ul>
+          <li>Three-year young-pro arc is real for the imported finance / tech population</li>
+          <li>LIU + Pratt + native AA community provide a meaningful rooted base</li>
+          <li>Sending paths (plant elsewhere, missions, family-formation in another metro) carry equal weight to local rootedness</li>
+          <li>What this means for the church: <strong>a body that stays for ten years is the structural counter to Brooklyn's churn</strong> — patient week-after-week presence is the only thing that builds something people might actually stay in</li>
         </ul>
       </div>
 
@@ -2107,7 +2163,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <div class="dossier-no">§ IV. Dossier — File 01</div>
         <h1 class="dossier-name">A<em>tl</em>anta.</h1>
       </div>
-      <div class="dossier-tag">A mature southern capital with a deep Tech anchor — and a crowded ministry shelf.</div>
+      <div class="dossier-tag">A southern capital where the gospel has long roots, but a generation of young adults is making the city its own — and asking new questions.</div>
     </div>
 
     <!-- HERO PHOTO -->
@@ -2141,14 +2197,26 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       </div>
     </div>
 
+    <!-- MISSIONAL NEED — leads the dossier -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">00</span>The Field of Need</div>
+      <div>
+        <h3>A Bible-Belt city <em>quietly dechurching</em> a generation.</h3>
+        <p>Atlanta wears its religious identity on the surface — 65–70% of metro residents identify as Christian (Pew), churches sit on most major intersections in the city and suburbs, and "going to church" still carries default-cultural weight in a way it does not in Phoenix or New York. The honest read of the under-30 picture is harder. Among Atlanta young adults, particularly the Tech / Midtown / Old Fourth Ward / West Midtown population the plant would be sent to, the dominant story is quiet drift — Southern evangelical kids who left the suburban church of their parents and have not found one to replace it; AA young adults whose grandparents' Black-church memory does not translate into Sunday-morning belonging; international and AAPI students whose parents' faith was inherited rather than confessed. The vocabulary of the gospel is familiar here. It is precisely that familiarity that has dulled it.</p>
+        <p>The dominant spiritual register among Tech and Emory undergraduates is achievement-as-meaning — engineering culture, pre-med, the Big Tech / consulting / banking funnel. Young professionals settling in Midtown layer career striving with secular wellness, therapy language, and a low-grade suspicion of organized religion that often started in a youth-group disappointment they have not narrated. The Black-church tradition is still vibrant in pockets but has its own dechurching crisis among the under-30 cohort, especially as that generation moves into majority-multi-ethnic neighborhoods like O4W and West Midtown. Cultural Christianity remains the warm baseline; lived faith is thinner than the baseline suggests.</p>
+        <p>Faithful churches are at work — the verdict and Block 04 name them. What is missing is not <em>a</em> young-adult church but the particular shape this team is built to be: an AA-led, integrated college-and-young-pro body that takes the Tech-to-Midtown discipleship arc as one continuous formation rather than two demographics, and that holds Black-church cultural memory with multi-ethnic table-fellowship without making either a gate. That pairing is genuinely thin in Atlanta's existing ministry landscape.</p>
+        <p>Why this team, here. The Bible-Belt context means the gospel will be heard in familiar vocabulary, even where it must be reclaimed from cultural Christianity. The team's AA-led leadership shape and integrated college-to-young-pro architecture are not what existing Atlanta churches are doing; they are the obedience this field is asking for. Sister-A2N work in the metro is a feature — a brother work, not a competitor — and shapes how this plant should walk in.</p>
+      </div>
+    </div>
+
     <!-- block 1: campus density -->
     <div class="dossier-block">
       <div class="label"><span class="num">01</span>Campus Density</div>
       <div>
         <h3>Tech is the <em>anchor</em>. The rest is upside.</h3>
-        <p>Atlanta's multi-campus thesis is real, but more negotiable than the headline number suggests. Georgia Tech is the obvious centerpiece — 47,000 students, walking distance to Midtown — and is the only campus the plant has to plan around. Beyond Tech, the rest is upside, not premise.</p>
-        <p>SCAD Atlanta sits inside Midtown itself: a small but culturally adjacent student body the plant can absorb without extra logistics. Georgia State's downtown campus is one MARTA stop away, but its student profile skews older and commuter-heavy — a different demographic than the undergrad-formation play. Emory is a 15–25 minute drive east depending on traffic; reaching its roughly 7,000 undergraduates from a Midtown gathering is a stretch on most weeknights, and Emory already has well-developed religious-life infrastructure of its own. AUC is closer geographically but represents a culturally distinct institutional gravity.</p>
-        <p>The honest frame: <strong>plan for Tech-and-SCAD on a Tuesday night.</strong> GSU, Emory, and AUC become live questions only if the team has the bandwidth and a clear point of contact. Designing for the focused version is sharper than promising a five-campus reach the team cannot deliver.</p>
+        <p>Atlanta's multi-campus reach is real, but more limited than the headline number suggests. Georgia Tech is the obvious centerpiece — 47,000 students, walking distance to Midtown — and is the one campus the plant must plan around. Beyond Tech, the rest is grace, not premise.</p>
+        <p>SCAD Atlanta sits inside Midtown itself: a small but culturally adjacent student body the plant can love without extra logistics. Georgia State's downtown campus is one MARTA stop away, but its student profile skews older and commuter-heavy — a different demographic than an undergrad-formation work. Emory is a 15–25 minute drive east depending on traffic; reaching its roughly 7,000 undergraduates from a Midtown gathering is a stretch on most weeknights, and Emory already has well-developed religious-life ministries the plant should honor rather than duplicate. AUC is closer geographically but represents a distinct institutional and cultural world that an outside team should not assume it can serve.</p>
+        <p>The honest frame: <strong>plan for Tech-and-SCAD on a Tuesday night.</strong> GSU, Emory, and AUC become live questions only if the Lord opens doors and the team has the bandwidth to walk through them. Designing for the focused version is more honest than promising a five-campus reach the team cannot deliver.</p>
 
         <div class="bars">
           <div style="display: flex; gap: 1.6rem; align-items: center; margin-bottom: 1.1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; opacity: 0.75;">
@@ -2300,7 +2368,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <div>
         <h3>Mature, dense, and <em>twenty miles away</em>.</h3>
         <p>Atlanta has roughly twice the Asian American density of Phoenix metro and one of the fastest-growing AAPI communities in the South. Between 2013 and 2019 metro Atlanta added more than 75,000 AAPI residents — the 10th-largest absolute increase among US metros.</p>
-        <p>The catch: that density lives in Gwinnett (Duluth 22%, Suwanee 24%) and North Fulton (Johns Creek 29%). It is not in Midtown. The team will live, eat, and recruit in two different worlds — campus / Midtown by day, Buford Highway / Duluth on weekends. This is workable, and arguably advantageous, but it has to be designed for.</p>
+        <p>The catch: that density lives in Gwinnett (Duluth 22%, Suwanee 24%) and North Fulton (Johns Creek 29%). It is not in Midtown. The team will live, worship, and break bread in two different worlds — campus / Midtown by day, Buford Highway / Duluth on weekends. This is workable, and arguably a gift, but it has to be designed for.</p>
 
         <div class="bars">
           <div class="bar-row"><div class="name">Johns Creek</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">29.4%</div></div>
@@ -2314,15 +2382,15 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
     </div>
 
     <div class="pullquote">
-      <p>"A deep Tech anchor, real AA infrastructure twenty miles north, and a <em>crowded ministry shelf</em> in Midtown."</p>
+      <p>"A deep Tech anchor, real AA community twenty miles north, and a young-adult Midtown where many faithful churches already labor — the question is what this team is uniquely sent to add."</p>
     </div>
 
     <!-- block 3: ministry saturation -->
     <div class="dossier-block">
-      <div class="label"><span class="num">04</span>The Ministry Shelf</div>
+      <div class="label"><span class="num">04</span>Who's already laboring here</div>
       <div>
-        <h3>The lane is <em>crowded</em>.</h3>
-        <p>Five churches in Atlanta are already running serious young-adult plays — most with infrastructure, staff, and venues hard to match in year one. Differentiation is non-trivial. The team's AA-led identity, multi-campus scope, and integrated college-to-young-pro model are the realest levers on hand.</p>
+        <h3>Many faithful churches already at <em>work</em>.</h3>
+        <p>Five churches in Atlanta are already doing serious young-adult ministry — most with infrastructure, staff, and venues a young plant cannot match in year one. This is the Lord's work in this city, and the right posture is gratitude, not competition. The plant's AA-led leadership, multi-campus scope, and integrated college-to-young-pro discipleship are the genuine differences this team brings — not as a market position, but as a particular shape of obedience that is not yet well-represented in the city.</p>
 
         <div class="ministry-list">
           <div class="item"><span class="nm">Passion City Church</span><span class="nt">Lindbergh / Cumberland · 700–1,500 / svc</span></div>
@@ -2338,11 +2406,11 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
     <!-- block 4: campus-side ministry shelf -->
     <div class="dossier-block">
-      <div class="label"><span class="num">05</span>The Campus Shelf</div>
+      <div class="label"><span class="num">05</span>Campus ministries already at work</div>
       <div>
         <h3>The para-church layer is <em>thicker still</em>.</h3>
-        <p>The seven young-adult churches above are only the church side. The campus side — staffed para-church ministries living on Atlanta's college lawns — is denser: roughly thirty active chapters across Tech, Emory, GSU, the AUC, and SCAD Atlanta. Cru, InterVarsity, RUF, BCM, FCA, the UMC's Wesley Foundations, and the Catholic centers all run multi-campus operations with houses, staff, and decade-plus institutional memory. None of this is on the church-side scoreboard, but a Tuesday-night midweek gathering competes with all of it for student attention.</p>
-        <p>The shelf is not flat. Tech and Emory are the contested campuses; GSU and SCAD are lighter; the AUC runs on its own institutional gravity and is best treated as a partnership question, not an absorption one. The team's AA-led leadership shape and integrated college-to-young-pro pipeline are the real wedges here — neither is well-represented on the current shelf, especially at Tech.</p>
+        <p>The seven young-adult churches above are only the church side. The campus side — staffed para-church ministries who already live on Atlanta's college lawns — is denser: roughly thirty active chapters across Tech, Emory, GSU, the AUC, and SCAD Atlanta. Cru, InterVarsity, RUF, BCM, FCA, the UMC's Wesley Foundations, and the Catholic centers all run multi-campus works with houses, staff, and decade-plus institutional memory. A Tuesday-night midweek gathering does not enter empty space; it enters a field where many co-laborers are already sowing and harvesting.</p>
+        <p>The picture is not flat. Tech and Emory are heavily ministered to; GSU and SCAD are lighter; the AUC moves in its own theological and cultural world and is best honored as a sister-tradition partnership rather than a campus to absorb. The team's AA-led leadership shape and integrated college-to-young-pro discipleship are the real distinct contributions — neither is well-represented in current ministry coverage, especially at Tech.</p>
 
         <div class="ministry-list">
           <div class="item"><span class="nm">Georgia Tech</span><span class="nt">CCF · BCM · RUF · Cru · Tech Wesley · Catholic Ctr · Lutheran · Theta Xi · Chinese CF — 9+ chapters</span></div>
@@ -2352,33 +2420,33 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <div class="item"><span class="nm">SCAD Atlanta</span><span class="nt">InterVarsity · Believers' LoveWorld — the lightest shelf in Midtown · highest absorption upside per student</span></div>
         </div>
 
-        <p style="margin-top: 1.8rem;"><strong>The closest format comp the dossier was missing.</strong> &nbsp; <em>The Living Room ATL</em> — North Point's Monday-night college gathering — already runs up to fourteen buses metro-wide to bring students in. A polished, large-format midweek college service is not a vacant lane in this city; it is a live operation with logistics in place. Add Passion's young-adult gravity (the 18–25 demographic anchor at the metro level), Journey Church's alternating GT/Emory campus services, and a 2025 Acts 2 plant (Rooted) explicitly targeting GT/Emory/UGA, and the saturation read sharpens: this is the most contested college-and-young-adult market the team could choose. Differentiation has to be real and concrete — not a posture.</p>
+        <p style="margin-top: 1.8rem;"><strong>The closest format comp the dossier was missing.</strong> &nbsp; <em>The Living Room ATL</em> — North Point's Monday-night college gathering — already runs up to fourteen buses metro-wide to bring students in. A polished, large-format midweek college service is not vacant ground in this city; it is a live work with logistics in place. Add Passion's young-adult draw (the 18–25 anchor at the metro level), Journey Church's alternating GT/Emory campus services, and a 2025 Acts 2 plant (Rooted) explicitly serving GT/Emory/UGA, and the picture sharpens: of the four cities, Atlanta is where the most young-adult ministry is already happening. The plant's distinct contribution must be real and concrete — a particular shape of obedience the city is not yet receiving — not a posture.</p>
         <p style="font-size: 0.85rem; opacity: 0.7; font-style: italic; margin-top: 1.2rem;">Caveat — directory presence is not the same as active scale. Several listed chapters (RUF/SCAD-Atlanta, GSU's BCM/Cru/RUF) appear in directories but are not corroborated by recent on-campus activity in public sources. A phone-call pass before citing any of these as a competitor is warranted.</p>
       </div>
     </div>
 
     <!-- block 5: cost & runway -->
     <div class="dossier-block">
-      <div class="label"><span class="num">06</span>Runway</div>
+      <div class="label"><span class="num">06</span>A sustainable rhythm</div>
       <div>
-        <h3>Liveable for ten <em>bivocationals</em> — but not cheap.</h3>
-        <p>Midtown 1BR rent runs $1,900 – $2,200; West Midtown and Old Fourth Ward shave 10–15% off. Home Park and points west get cheaper still. Bivocational employment is genuinely abundant — Tech, Microsoft, Google ATL, Mailchimp/Intuit, Salesforce, Coca-Cola, Delta, Home Depot, NCR, Cox, Inspire Brands, plus the Emory / CDC / Emory Healthcare cluster on the east side. White-collar work for a high-caliber team is not a worry here.</p>
+        <h3>A liveable city for ten <em>bivocational families</em> — though not cheap.</h3>
+        <p>Midtown 1BR rent runs $1,900 – $2,200; West Midtown and Old Fourth Ward shave 10–15% off. Home Park and points west get cheaper still. Bivocational work is genuinely abundant — Tech, Microsoft, Google ATL, Mailchimp/Intuit, Salesforce, Coca-Cola, Delta, Home Depot, NCR, Cox, Inspire Brands, plus the Emory / CDC / Emory Healthcare cluster on the east side. The team can find work that lets them give their lives here for the long haul.</p>
       </div>
     </div>
 
     <!-- block 6: Carolina pipeline -->
     <div class="dossier-block">
-      <div class="label"><span class="num">07</span>The Carolina Pipeline</div>
+      <div class="label"><span class="num">07</span>The Carolina pipeline</div>
       <div>
-        <h3>An <em>unfair advantage</em> the team already has.</h3>
-        <p>Several of the team did college ministry at UNC. That's not a footnote — it's a structural asset for an Atlanta plant in a way it simply isn't for a Phoenix one. Chapel Hill is a 6.5-hour drive or a 90-minute direct flight from Atlanta. There are daily nonstops. UNC has roughly 32K students, a deep evangelical campus-ministry tradition, and an alumni population in metro Atlanta that runs into the tens of thousands.</p>
+        <h3>A <em>provided</em> network the team already has.</h3>
+        <p>Several of the team did college ministry at UNC. That's not a footnote — it's a gift the Lord has already placed in this team's hands, one that travels well to Atlanta in a way it doesn't to Phoenix. Chapel Hill is a 6.5-hour drive or a 90-minute direct flight from Atlanta. There are daily nonstops. UNC has roughly 32K students, a deep evangelical campus-ministry tradition, and an alumni population in metro Atlanta that runs into the tens of thousands.</p>
         <p>Three downstream implications:</p>
 
         <div class="bars" style="margin-top: 1.8rem;">
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
             <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
             <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Team backfill.</strong> &nbsp; UNC ministry alumni — the tier just behind your launch ten — are far more likely to consider relocating to Atlanta than to Phoenix. Years 2–5 recruiting has a real pool to draw from.
+              <strong style="color: inherit; font-weight: 600;">Co-laborers in years two through five.</strong> &nbsp; UNC ministry alumni — the tier just behind the launch ten — are far more likely to consider moving to Atlanta than to Phoenix. The team that joins the work in years two through five has a real pool to be drawn from in prayer and friendship.
             </div>
           </div>
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
@@ -2390,7 +2458,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
             <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
             <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Future sister plants.</strong> &nbsp; The same alumni network that feeds the Atlanta plant could seed future Southeast plants — Charlotte, Nashville, Raleigh-Durham — without building a recruiting funnel from scratch.
+              <strong style="color: inherit; font-weight: 600;">Future sister plants.</strong> &nbsp; The same network that the Lord uses to feed the Atlanta plant could one day seed future Southeast plants — Charlotte, Nashville, Raleigh-Durham — without starting recruiting from nothing.
             </div>
           </div>
         </div>
@@ -2409,7 +2477,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <span class="count">10 stops</span>
       </summary>
       <div class="scoping-body">
-        <p>If a weekend in Atlanta is the next step, this is the path that surfaces what's actually true about the Tech-and-Midtown thesis — students, young pros, incumbents, and the AAPI corridor. Aim for Friday night → Sunday afternoon. Plan around a Sunday service and a Tuesday-night-feel proxy if you can stay an extra day.</p>
+        <p>If a weekend in Atlanta is the next step, this is the path that surfaces what's actually true about the Tech-and-Midtown vision — students, young pros, the churches already at work, and the AAPI corridor. Aim for Friday night → Sunday afternoon. Plan around a Sunday service and a Tuesday-night-feel proxy if you can stay an extra day.</p>
         <ol class="scoping-list">
           <li><strong>Walk Tech end-to-end</strong>North Ave → Tech Square → 5th St Greek → Home Park<span class="why">campus density and the Midtown border in 45 min</span></li>
           <li><strong>Sunday at Passion City — 515 Lindbergh</strong>see the AAPI-young-pro magnet at scale<span class="why">7,000+ a Sunday; comp for what "draw" looks like</span></li>
@@ -2428,24 +2496,24 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
     <!-- verdict -->
     <div class="verdict">
       <div>
-        <h4>— Where Atlanta wins —</h4>
+        <h4>— Where Atlanta makes the team's calling fit —</h4>
         <ul>
-          <li>Tech is a deep, walking-distance anchor (47K) with SCAD as natural adjacency</li>
-          <li>2× the AA density and absolute population vs. Phoenix</li>
-          <li>Mature post-grad job market keeps disciples in-city</li>
-          <li>Bible Belt baseline shortens evangelistic on-ramp</li>
-          <li>Existing AA ministry network = potential partners and feeders</li>
-          <li>UNC alumni / ministry pipeline is geographically live</li>
+          <li>Tech is a deep, walking-distance anchor (47K) with SCAD as a natural neighbor</li>
+          <li>2× the AA density and absolute population vs. Phoenix — a community to live among, not just minister to</li>
+          <li>Mature post-grad job market keeps disciples in-city through their twenties</li>
+          <li>Bible Belt baseline gives the gospel a familiar vocabulary, even where it must be reclaimed from nominal use</li>
+          <li>Existing AA ministry network in the city — potential brothers and sisters to labor alongside</li>
+          <li>The Carolina UNC network the Lord has given this team is geographically live</li>
         </ul>
       </div>
       <div>
-        <h4>— Where Atlanta costs you —</h4>
+        <h4>— Where Atlanta will cost the team —</h4>
         <ul>
-          <li>Multi-campus reach is real but negotiable — only Tech (and arguably SCAD) is non-discretionary</li>
-          <li>Crowded young-adult shelf — differentiation is real work</li>
-          <li>AA density lives 30 min from Tech, not in Midtown</li>
-          <li>Higher COL than Phoenix (~20–25%)</li>
-          <li>Another A2N AA-led plant already operating in this exact ecosystem</li>
+          <li>Multi-campus reach is real but limited — only Tech (and arguably SCAD) is non-negotiable</li>
+          <li>Many faithful young-adult ministries already in the city — finding the team's distinct contribution takes patience and humility</li>
+          <li>AA density lives 30 min from Tech, not in Midtown — the team will be working two geographies at once</li>
+          <li>Higher cost of living than Phoenix (~20–25%)</li>
+          <li>A sister A2N AA-led plant is already at work in this same field — a relationship to steward, not just a "factor"</li>
         </ul>
       </div>
     </div>
@@ -2569,8 +2637,8 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
     <!-- pipeline -->
     <div class="pipeline-section">
-      <h3>The <em>six-year</em> flywheel.</h3>
-      <p>The model is faster than it sounds. A student arrives as a freshman, becomes a leader by sophomore or junior year, graduates ready to serve, and within a year or two of graduation is functioning as a kingdom worker — locally, in another US city, or overseas. Six years from welcome to deployment.</p>
+      <h3>The <em>six-year</em> discipleship arc.</h3>
+      <p>The arc is faster than it sounds. A student arrives as a freshman and is welcomed in. By sophomore or junior year the Lord forms them into a leader. They graduate ready to serve. Within a year or two of graduation they are functioning as a kingdom worker — locally, in another US city, or overseas. Six years from welcome to sending.</p>
 
       <div class="pipeline-viz">
         <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
@@ -2665,7 +2733,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             </marker>
           </defs>
 
-          <text x="550" y="38" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#9A4628" letter-spacing="2">— FIG. 07: THE SIX-YEAR DISCIPLESHIP FLYWHEEL —</text>
+          <text x="550" y="38" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#9A4628" letter-spacing="2">— FIG. 07: THE SIX-YEAR DISCIPLESHIP ARC —</text>
           <text x="550" y="53" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#3A352D" opacity="0.7" letter-spacing="1">freshman → student leader → sent → kingdom worker (three paths)</text>
         </svg>
       </div>
@@ -2704,22 +2772,22 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <div class="meta">Cadence — quarterly leadership alignment + 2-3 joint events / year</div>
       </div>
       <div class="tactic">
-        <div class="tno">Tactic 06 — Partner Church</div>
-        <h4>Land an <em>Atlanta sponsor</em>.</h4>
-        <p>Large gatherings of this kind work in part because they piggyback on a partner church's venue, 501(c)(3), and operations. Identify one large Atlanta church (Passion, Buckhead, Christ Covenant, Grace Midtown) willing to host or back the plant. This decision shapes everything else.</p>
+        <div class="tno">Tactic 06 — Sister church</div>
+        <h4>Find an <em>Atlanta sister</em>.</h4>
+        <p>A young plant of this kind cannot stand alone. Find one large Atlanta church (Passion, Buckhead, Christ Covenant, Grace Midtown) willing to host or stand alongside the plant — sharing venue, operational covering, and prayerful counsel. This relationship shapes everything else.</p>
         <div class="meta">First conversations — months 1–3</div>
       </div>
       <div class="tactic">
-        <div class="tno">Tactic 07 — Bivocational Slates</div>
-        <h4>Pre-place the <em>ten</em>.</h4>
-        <p>Before launch, line up jobs for all ten team members within Midtown commute radius. Tech roles at MSFT/Google/Mailchimp, healthcare at Emory, design and corporate at the Coca-Cola / Delta / Home Depot tier. Pre-placing is the survival difference.</p>
+        <div class="tno">Tactic 07 — Bivocational placements</div>
+        <h4>Settle the <em>ten</em> before launch.</h4>
+        <p>Before launch, line up work for all ten team members within Midtown commute radius. Tech roles at MSFT/Google/Mailchimp, healthcare at Emory, design and corporate at the Coca-Cola / Delta / Home Depot tier. Settling the team well so they can give their lives here is what makes the long haul possible.</p>
         <div class="meta">Lead time — 6–12 months pre-launch</div>
       </div>
       <div class="tactic">
-        <div class="tno">Tactic 08 — Measure What Matters</div>
-        <h4>Count <em>retained five-year disciples</em>.</h4>
-        <p>Not Tuesday-night attendance. Not Sunday baptisms alone. Track the retention curve from first-time visitor → small group → leader → bivocational worker. The flywheel is a ten-year compound machine; build instrumentation that measures the compounding.</p>
-        <div class="meta">KPI — # of 25-year-olds in vocational + ministry rhythm</div>
+        <div class="tno">Tactic 08 — Watch what matters</div>
+        <h4>Look for <em>five-year disciples</em>.</h4>
+        <p>Not Tuesday-night attendance. Not Sunday baptisms alone. Watch the slow movement from first-time visitor → small group → leader → bivocational co-laborer. Discipleship compounds over a decade; what we look for ought to match what the Lord is actually doing.</p>
+        <div class="meta">Marker we pray toward — 25-year-olds living in a vocational + ministry rhythm</div>
       </div>
     </div>
   </div>
@@ -2739,7 +2807,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <div class="dossier-no">§ VII. Dossier — File 02</div>
         <h1 class="dossier-name">Pho<em>e</em>nix.</h1>
       </div>
-      <div class="dossier-tag">A growth metro with a less-crowded ministry shelf — and one big campus carrying the load.</div>
+      <div class="dossier-tag">A post-Christian Sun Belt city, vast and young — where the gospel is faintly heard and the harvest could be greater than the laborers.</div>
     </div>
 
     <!-- HERO PHOTO -->
@@ -2773,13 +2841,25 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       </div>
     </div>
 
+    <!-- MISSIONAL NEED — leads the dossier -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">00</span>The Field of Need</div>
+      <div>
+        <h3>A genuinely <em>post-Christian</em> Sun Belt — without the Bible-Belt warm pool.</h3>
+        <p>Phoenix is not a city the gospel has gently faded out of. It is, for many under-30 residents, a city the gospel has never been seriously presented in. Arizona is among the most religiously unaffiliated states in the country — Pew has placed the share of "nones" in Arizona near 36%, well above the national average — and metro Phoenix's young-adult population skews even further unchurched. ASU's 80,000 students arrive from every state, often with no church background to carry forward; the Sun Belt migration into the Valley brings remote-work and tech transplants whose religious identity, where it exists at all, is therapeutic and self-curated rather than congregational. Among Phoenix Gen Z, the dominant register is not lapsed faith but its absence.</p>
+        <p>The spiritual climate is layered. Latino cultural Catholicism remains a real presence but is itself dechurching among under-30s. Post-Mormon disillusionment is a Phoenix-specific reality the surrounding states share — a meaningful share of ASU's regional draw includes second- and third-generation LDS young adults stepping away from the church of their parents. Crow's "New American University" framing has cemented a secular-rationalist baseline at ASU that treats religious belief as a private, declining tradition. Among AAPI tech families settling in Chandler and Gilbert, the inherited Buddhist / Hindu / nominal-Christian background of the parents is not surviving translation into the second generation. None of these populations are being meaningfully evangelized by the existing church footprint.</p>
+        <p>Faithful campus-side ministries (Salt Company at ASU, Hope Phoenix on Mill Avenue) labor on. Family-Sunday churches (CCV, Redemption, Dream City) reach the 35-and-older side. What is missing — read missionally, not competitively — is sustained, integrated discipleship that holds the ASU mission field and the Chandler AAPI tech-second-generation together; a serious AA-led plant in a metro that has very few; and a body shaped to disciple post-Mormon refugees, secular ASU students, and Catholic-cultural-background young adults inside the same Sunday gathering. The need is wider than the existing churches' coverage.</p>
+        <p>Why this team, here. The secular Sun Belt is the future face of much of America, and a faithful plant here is preparation for the country's own slow drift. The team's lower-cost runway lets ten bivocational families give long-term presence in a field where conversions will be fewer and slower than Atlanta but, by God's grace, deeper. An AA-led plant is among the few in this region; the team's integrated college-and-young-pro architecture is the obedience this field has been quietly waiting on.</p>
+      </div>
+    </div>
+
     <!-- block 1: campus reality -->
     <div class="dossier-block">
       <div class="label"><span class="num">01</span>Two Anchor Schools</div>
       <div>
         <h3>The largest single university in the country — <em>plus a sleeper</em>.</h3>
         <p>The first chapter of the Phoenix campus story is ASU. Tempe alone is 80,000 students, the largest single-campus enrollment in the United States. The second chapter, easy to miss from the outside, is Grand Canyon University — a 25,000-student residential Christian university 25 minutes northwest of Tempe, with the largest on-campus housing community of any private university in the country. Combined with ASU's downtown campus and the smaller West and Polytechnic sites, the count of accessible students approaches 130,000.</p>
-        <p>The two anchors play very different roles in the strategy. ASU is a vast secular mission field. GCU is a pre-formed Christian student body — and that distinction has structural implications we treat in Block 06.</p>
+        <p>The two anchors call for very different postures. ASU is a vast secular mission field — tens of thousands of young adults whose imaginations have not been formed by the gospel. GCU is a pre-formed Christian student body, where the question is not first conversion but mature local-church belonging. The two cannot be served the same way.</p>
 
         <div class="bars">
           <div style="display: flex; gap: 1.6rem; align-items: center; margin-bottom: 1.1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; opacity: 0.8;">
@@ -2928,17 +3008,17 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
     </div>
 
     <div class="pullquote">
-      <p>"The higher-conviction, higher-asymmetry play. <em>Build something distinct</em> in a city the country is still moving to."</p>
+      <p>"The higher-conviction call. <em>Plant something distinct</em> in a city where the gospel is faintly heard and the country is still arriving."</p>
     </div>
 
     <!-- block 3: ministry shelf -->
     <div class="dossier-block">
-      <div class="label"><span class="num">04</span>The Ministry Shelf</div>
+      <div class="label"><span class="num">04</span>Who's already laboring on the campus side</div>
       <div>
-        <h3>The <em>college slice</em> already has two strong incumbents.</h3>
-        <p>Phoenix has serious churches across the family-and-Sunday side — Christ's Church of the Valley (CCV), Redemption Church, Dream City. On the college slice — which is where this plant would live — there are already two strong operations on Mill Avenue. Salt Company at ASU runs the most established midweek college gathering in the metro: a Salt Network plant out of Cornerstone Church (Ames), Thursday-night programming on or near campus, the closest Phoenix analogue to what Atlanta's young-adult incumbents do. Hope Phoenix — a Hope Church Movement plant led by Brian Smith — meets Sundays at the Marquee Theatre on Mill Avenue, walking distance to ASU, with an explicitly college-focused "Campus Changer" framing. Between them they cover the polished college midweek and the college-focused Sunday in Tempe.</p>
-        <p>The honest framing: the lane is less crowded than Atlanta, but it is not "open." The team's plant would be the third college-aware operation in the radius around ASU, not the first. The differentiation has to be real and concrete: an AA-led leadership shape, an integrated college-to-young-pro pipeline (most incumbents here are either pure-college like Salt and Hope, or pure-family-and-young-pro like CCV / Redemption — not both), and a multi-ethnic posture in a metro that does not yet have an established AA-led church plant of this kind. That is a distinct posture, but it is differentiation by depth and shape, not by absence.</p>
-        <p>The flip side: Phoenix is also less religious by baseline. There is no Bible-Belt warm pool to start with. Initial traction will look slower; downstream conviction is often deeper.</p>
+        <h3>Two faithful college-side ministries are <em>already at work</em>.</h3>
+        <p>Phoenix has serious churches across the family-and-Sunday side — Christ's Church of the Valley (CCV), Redemption Church, Dream City. On the college side — which is where this plant would live — two co-laboring works are already in place on Mill Avenue. Salt Company at ASU runs the most established midweek college gathering in the metro: a Salt Network plant out of Cornerstone Church (Ames), Thursday-night programming on or near campus, the closest Phoenix analogue to what Atlanta's young-adult ministries do. Hope Phoenix — a Hope Church Movement plant led by Brian Smith — meets Sundays at the Marquee Theatre on Mill Avenue, walking distance to ASU, with an explicitly college-focused "Campus Changer" framing. Between them they cover the polished college midweek and the college-focused Sunday in Tempe.</p>
+        <p>The honest framing: there are fewer co-laborers than in Atlanta, but the field is not empty. The team's plant would be the third college-aware work in the radius around ASU, not the first. The plant's distinct contribution must be concrete: an AA-led leadership shape, an integrated college-to-young-pro discipleship arc (most works here are either pure-college like Salt and Hope, or pure-family-and-young-pro like CCV / Redemption — not both), and a multi-ethnic posture in a metro that does not yet have an established AA-led plant of this kind. That is a distinct shape of obedience, not a competitive position.</p>
+        <p>What that means for evangelism: Phoenix is less religious by baseline. There is no Bible-Belt warm pool to start with. The early years will feel slower because the gospel is being heard for the first time, not retrieved from memory; the conviction that follows in those who do believe is often deeper.</p>
 
         <div class="ministry-list">
           <div class="item"><span class="nm">Salt Company (at ASU)</span><span class="nt">Thursday-night college gathering · Salt Network plant (Cornerstone, Ames)</span></div>
@@ -2952,10 +3032,10 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
     <!-- block 4: cost -->
     <div class="dossier-block">
-      <div class="label"><span class="num">05</span>Runway</div>
+      <div class="label"><span class="num">05</span>A sustainable rhythm</div>
       <div>
-        <h3>The bivocational <em>math</em> works.</h3>
-        <p>Tempe 1BR rent runs $1,500–$1,800; Chandler and Gilbert offer real family housing well under Atlanta numbers. Bivocational employment is real and growing — TSMC's Phoenix fabs, Intel Ocotillo, Honeywell, American Express, USAA, plus Amazon's massive operations footprint. For a ten-family team, the cost-of-living delta translates to roughly 18–24 extra months of runway versus Atlanta at the same fundraising level.</p>
+        <h3>Phoenix lets a bivocational team <em>stay</em>.</h3>
+        <p>Tempe 1BR rent runs $1,500–$1,800; Chandler and Gilbert offer real family housing well under Atlanta numbers. Bivocational work is real and growing — TSMC's Phoenix fabs, Intel Ocotillo, Honeywell, American Express, USAA, plus Amazon's massive operations footprint. For a ten-family team, the cost-of-living difference translates to roughly 18–24 extra months of sustainable presence versus Atlanta at the same fundraising level — meaning more time for the team to give their lives here for the long haul.</p>
       </div>
     </div>
 
@@ -2971,24 +3051,24 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
             <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
             <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Pre-formed leaders, not seekers.</strong> &nbsp; A church plant in Phoenix can recruit GCU students as student leaders — running small groups, leading worship, doing campus outreach at ASU — in their second or third year, with theology classes already done.
+              <strong style="color: inherit; font-weight: 600;">Mature leaders, not first-time seekers.</strong> &nbsp; A church plant in Phoenix can welcome GCU students as student leaders — running small groups, leading worship, doing campus outreach at ASU — in their second or third year, with theology classes already done.
             </div>
           </div>
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
             <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
             <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Bivocational backfill.</strong> &nbsp; GCU graduates considering ministry, missions, or the marketplace are already pointed toward kingdom work. They are exactly the demographic a bivocational team needs to recruit from in years 2–5.
+              <strong style="color: inherit; font-weight: 600;">Co-laborers in years two through five.</strong> &nbsp; GCU graduates considering ministry, missions, or the marketplace are already pointed toward kingdom work. They are exactly the brothers and sisters a bivocational team needs to be drawn into the work in years 2–5.
             </div>
           </div>
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
             <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
             <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Sending base.</strong> &nbsp; Many GCU students arrive intending to plant or go overseas. A church that can be their home base for 4–6 years and then send them is well-positioned to feed the second and third paths of the flywheel — plant elsewhere, missions — even where local-bivocational retention is weaker.
+              <strong style="color: inherit; font-weight: 600;">Sending base.</strong> &nbsp; Many GCU students arrive intending to plant or go overseas. A church that can be their home for 4–6 years and then send them well is positioned to feed the second and third paths of the discipleship arc — plant elsewhere, missions — even where fewer graduates stay locally.
             </div>
           </div>
         </div>
 
-        <p style="margin-top: 1.8rem;"><strong>What's actually on the GCU campus.</strong> &nbsp; The pipeline thesis lands harder once you see GCU's own ministry footprint up close. Three weekly chapel services average roughly 5,000 attendees combined. Life Groups — weekly student-led Bible studies — run in every residential living area on campus, staffed by five professional Spiritual Life staff and ~220 trained student leaders. The Center for Worship Arts feeds Canyon Worship and trains worship leaders by the cohort. A Christian-worldview core curriculum runs across all programs. External para-church organizations (Cru, RUF, InterVarsity) are functionally minimal on campus — the institution itself fills that lane.</p>
+        <p style="margin-top: 1.8rem;"><strong>What's actually on the GCU campus.</strong> &nbsp; The pipeline thesis lands harder once you see GCU's own ministry footprint up close. Three weekly chapel services average roughly 5,000 attendees combined. Life Groups — weekly student-led Bible studies — run in every residential living area on campus, staffed by five professional Spiritual Life staff and ~220 trained student leaders. The Center for Worship Arts feeds Canyon Worship and trains worship leaders by the cohort. A Christian-worldview core curriculum runs across all programs. External para-church organizations (Cru, RUF, InterVarsity) are functionally minimal on campus — the institution itself does that work.</p>
 
         <p>The implication cuts both ways. Positively: GCU is genuinely producing trained student ministry leaders at scale, and a plant that lands a partnership with even a modest share of that flow has a real talent pipeline. Honestly, though, two frictions deserve to be named up front. <strong>Bandwidth</strong> — most upperclassmen who would be leadership candidates are already embedded in Life Group leadership, worship team, or outreach roles on their own campus, so off-campus recruitment is competing with existing investment, not filling empty time. <strong>Distance</strong> — 25 minutes to Tempe is fine for a Sunday or a major event, harder for casual mid-week presence. The pipeline is real; it is not friction-free, and the Block 08 strategy assumes a formal partnership channel rather than ad-hoc recruiting precisely because of these two.</p>
 
@@ -3027,10 +3107,10 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
     <!-- block 7: phoenix strategy -->
     <div class="dossier-block">
-      <div class="label"><span class="num">08</span>The Tempe Strategy</div>
+      <div class="label"><span class="num">08</span>The Tempe shape of the work</div>
       <div>
-        <h3>Anchor in <em>Tempe</em>. Recruit at GCU. Build for the Valley.</h3>
-        <p>If Phoenix is the call, the shape of the play follows from the asymmetric pieces already on the table: a college slice with two incumbents but no AA-led, integrated college-and-young-pro plant (Salt Company holds the midweek; Hope Phoenix holds the college Sunday at the Marquee), a dual-anchor (ASU as mission field, GCU as leadership pipeline), the Chandler / Gilbert AA cluster, and a cost structure that lets a bivocational team breathe. Five tactical pillars:</p>
+        <h3>Anchor in <em>Tempe</em>. Walk with GCU. Live for the Valley.</h3>
+        <p>If Phoenix is the call, the shape of the work follows from what the Lord has already placed on the table: a college side where two faithful ministries already labor (Salt Company in midweek, Hope Phoenix on Sundays at the Marquee), but no AA-led, integrated college-and-young-pro plant; a dual-anchor (ASU as mission field, GCU as leadership pipeline) the Lord has set 25 minutes apart; the Chandler / Gilbert AA cluster; and a cost of living that lets a bivocational team give their lives here for the long haul. Five pillars of obedience:</p>
 
         <div class="bars" style="margin-top: 1.8rem;">
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
@@ -3054,7 +3134,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
             <div class="num" style="text-align: left; padding-top: 0.1rem;">iv.</div>
             <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Pre-place the ten in semis, ops, and finance.</strong> &nbsp; TSMC and Intel Ocotillo are the obvious anchors; Honeywell, American Express, USAA, Amazon ops, and Charles Schwab round out the white-collar bivocational room. Engineers land at TSMC / Intel; PMs and ops at AmEx and Amazon; finance at Schwab. Pre-placement is the runway.
+              <strong style="color: inherit; font-weight: 600;">Settle the ten in semis, ops, and finance before launch.</strong> &nbsp; TSMC and Intel Ocotillo are the obvious anchors; Honeywell, American Express, USAA, Amazon ops, and Charles Schwab round out the white-collar bivocational room. Engineers land at TSMC / Intel; PMs and ops at AmEx and Amazon; finance at Schwab. Settling the team well is what makes a long faithful presence possible.
             </div>
           </div>
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
@@ -3065,7 +3145,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           </div>
         </div>
 
-        <p style="margin-top: 1.8rem;">The honest version of the Phoenix bet: <strong>narrower in year one</strong> than Atlanta, with a structural ceiling that is higher because the AA-led, integrated college-and-young-pro posture is not what the existing incumbents (Salt Company and Hope Phoenix on the college side, CCV / Redemption / Dream City on the family-and-Sunday side) are running. The cost is a slower start and a thinner partner ecosystem. The upside is a defensible, decade-long position in a metro the country is still moving toward.</p>
+        <p style="margin-top: 1.8rem;">The honest version of the Phoenix call: <strong>narrower in year one</strong> than Atlanta, with deeper long-term room because the AA-led, integrated college-and-young-pro shape is not what the existing co-laborers (Salt Company and Hope Phoenix on the college side, CCV / Redemption / Dream City on the family-and-Sunday side) are running. The cost is a slower start and fewer kindred churches to lean on. The fruit, by God's grace, is a faithful, decade-long presence in a city where the gospel is still being heard for the first time and the country keeps arriving.</p>
       </div>
     </div>
 
@@ -3081,14 +3161,14 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <div class="scoping-body">
         <p>If a weekend in Phoenix is the next step, this is the path that surfaces what's actually true about the ASU + GCU dual-anchor thesis. Aim Thursday night → Sunday morning so you can hit Salt Company's midweek and a Sunday service in the same trip. Avoid June–August unless you want to feel the dispersal pattern.</p>
         <ol class="scoping-list">
-          <li><strong>Salt Company at ASU — Thursday night</strong>main college midweek incumbent<span class="why">closest format comp; the lane the plant would compete in</span></li>
+          <li><strong>Salt Company at ASU — Thursday night</strong>the main college-side ministry already at work<span class="why">closest format comp; the field the plant would labor alongside</span></li>
           <li><strong>Walk Mill Avenue on a school night</strong>Mill + University + Apache — the social heart<span class="why">where the 80K student body actually socializes</span></li>
           <li><strong>Walk ASU Tempe campus</strong>Hassayampa, Memorial Union, Sun Devil Stadium edge<span class="why">scale you don't get from photos</span></li>
-          <li><strong>Hope Phoenix Sunday at Marquee Theatre</strong>Mill Ave, college-focused Sunday<span class="why">the second incumbent on the college slice</span></li>
+          <li><strong>Hope Phoenix Sunday at Marquee Theatre</strong>Mill Ave, college-focused Sunday<span class="why">the second co-laboring church on the college side</span></li>
           <li><strong>Visit Grand Canyon University</strong>Christian-formation pipeline, 25 min NW of Tempe<span class="why">see why the dual-anchor thesis is real</span></li>
           <li><strong>Drive Apache Boulevard</strong>student-housing strip east of campus<span class="why">where the off-campus 75% lives</span></li>
           <li><strong>Drive Chandler / Gilbert AAPI corridor</strong>20 min SE — Tempe to Chandler Fashion Center<span class="why">TSMC fab + Indian-American suburb context</span></li>
-          <li><strong>Sunday at CCV or Redemption Church</strong>family-Sunday-side megachurch incumbents<span class="why">scope the post-college / family-anchor lane</span></li>
+          <li><strong>Sunday at CCV or Redemption Church</strong>family-Sunday-side megachurches already at work<span class="why">scope the post-college / family-anchor part of the field</span></li>
           <li><strong>Tempe Center for the Arts + Tempe Marketplace</strong>walk both — venue scoping<span class="why">Sunday venue alternatives to Marquee</span></li>
           <li><strong>Coffee at Cartel Coffee Lab or Songbird (Tempe)</strong>third-place texture<span class="why">where ASU + Mill Ave overlap</span></li>
         </ol>
@@ -3097,24 +3177,25 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
     <div class="verdict">
       <div>
-        <h4>— Where Phoenix wins —</h4>
+        <h4>— Where Phoenix makes the team's calling fit —</h4>
         <ul>
-          <li>Less-crowded than Atlanta, but not empty — Salt Company holds the college midweek and Hope Phoenix holds the college Sunday near ASU</li>
-          <li>~25% lower cost of living = longer bivocational runway</li>
-          <li>ASU as mission field + GCU as leadership pipeline — a structural dual-anchor</li>
+          <li>Fewer young-adult ministries than Atlanta but real co-laborers — Salt Company holds the college midweek and Hope Phoenix holds the college Sunday near ASU</li>
+          <li>~25% lower cost of living = a longer sustainable presence for the team</li>
+          <li>ASU as mission field + GCU as leadership pipeline — a Lord-given two-campus geometry</li>
           <li>AA population concentrated adjacent to ASU</li>
-          <li>4th-fastest-growing US metro — demographic tailwind</li>
+          <li>4th-fastest-growing US metro — a stream of young adults still arriving</li>
+          <li>The gospel is genuinely faintly heard here — the missional need is greater than the city's surface suggests</li>
         </ul>
       </div>
       <div>
-        <h4>— Where Phoenix costs you —</h4>
+        <h4>— Where Phoenix will cost the team —</h4>
         <ul>
-          <li>Multi-campus thesis still narrower than Atlanta's true cluster</li>
+          <li>Multi-campus reach still narrower than Atlanta's cluster</li>
           <li>Half the AA density vs. Atlanta</li>
-          <li>Less mature AA ministry partner ecosystem</li>
-          <li>Weaker local-bivocational retention (improving but newer)</li>
-          <li>Summer student dispersal — programming gap</li>
-          <li>The team's UNC ministry pipeline is geographically inert from here</li>
+          <li>Fewer kindred AA churches to walk alongside</li>
+          <li>Fewer graduates stay (improving but newer)</li>
+          <li>Summer student dispersal — a calendar to design with, not against</li>
+          <li>The Carolina UNC network is geographically inert from here</li>
         </ul>
       </div>
     </div>
@@ -3135,7 +3216,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <div class="dossier-no">§ VIII. Dossier — File 03</div>
         <h1 class="dossier-name">Char<em>lo</em>tte.</h1>
       </div>
-      <div class="dossier-tag">A banking capital with a Carolina pipeline still live and a college shelf the team can actually compete on.</div>
+      <div class="dossier-tag">A banking capital where young adults arrive faster than the church can keep up — and where the team's calling has real room to take root.</div>
     </div>
 
     <!-- HERO PHOTO -->
@@ -3169,13 +3250,25 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       </div>
     </div>
 
+    <!-- MISSIONAL NEED — leads the dossier -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">00</span>The Field of Need</div>
+      <div>
+        <h3>A Bible-Belt city receiving an <em>imported, dechurched</em> generation.</h3>
+        <p>Charlotte's religious surface is high. Pew places metro-area Christian identification above 70%, churches anchor most older neighborhoods, and Carolina church culture still gives "going to church" a default-cultural weight that Phoenix and New York have lost. The honest read of the under-30 picture is that Charlotte is becoming two cities at once. The native Carolina population still carries the Bible-Belt baseline; the imported population — finance and consulting transplants from New York and Chicago, tech relocations from the Bay, UNC and Duke graduates moving in for banking — arrives largely dechurched, with a spiritual register much closer to Brooklyn than to native Charlotte. The South End / Plaza Midwood / NoDa young-adult population the plant would gather is the second of those two cities.</p>
+        <p>The dominant spiritual climate in that imported population is achievement-as-meaning shaped by banking and consulting culture, layered with secular wellness, therapy language, and a particular suspicion of attractional / celebrity church culture that has been amplified — fairly or unfairly — by Elevation's outsized cultural footprint. Among native young adults, lapsed-evangelical ambivalence is real: kids of the Carolina church who left during college and have not come back, who carry residual gospel vocabulary alongside genuine wounds. The south-suburb AA cultural-Christianity that the team's Block 03 names is real and growing, but increasingly nominal in the second generation, which arrives at UNCC and Davidson with the same patterns as their Asian-American peers in Atlanta.</p>
+        <p>Faithful churches are at work — Block 04 names them. What is missing is a slow, plural-elder, locally-taught, AA-led plant at the relational scale young pros are actually drawn to today; a church-rooted college presence at UNCC (the campus is meaningfully under-served by church-based ministry given its commuter geography); and a body that holds Charlotte's south-suburb AA growth and its Uptown/South End multi-ethnic young-adult migration in the same Sunday gathering rather than treating them as separate ministries.</p>
+        <p>Why this team, here. The plurality-of-elders, locally-taught architecture is structurally distinct from the celebrity / executive-couple pattern that shapes much of Charlotte's young-adult church landscape — the very shape young arrivals are looking for and not finding. The Carolina UNC network is geographically live, the team's bivocational sustainability is workable, and the AA-led integrated college-and-young-pro shape fits both the imported young-adult population and the south-suburb AA growth. The most room of any candidate city for the particular obedience this team is sent to embody.</p>
+      </div>
+    </div>
+
     <!-- block 1: campus density -->
     <div class="dossier-block">
       <div class="label"><span class="num">01</span>Campus Density</div>
       <div>
         <h3>One real anchor — and a <em>cluster of small support</em>.</h3>
-        <p>Charlotte's college math is honest: UNC Charlotte is the anchor and almost the only anchor at scale. Fall 2025 set a record 32,207 students (26,213 undergrad, 5,994 graduate) — a real R1-tier population, but a commuter-leaning campus on the city's northeast edge, ~12 miles from Uptown. The supporting cast — Davidson (~2K elite liberal arts, 25 min north), Queens University of Charlotte (~2.5K, in Myers Park), Johnson C. Smith (HBCU, ~1K, near Uptown), Belmont Abbey, Wingate, Pfeiffer, JWU Charlotte, plus Central Piedmont's seven campuses — together comprise the Greater Charlotte Consortium of twelve campuses but no single one moves the needle independently.</p>
-        <p>The honest read: <strong>UNC Charlotte is the only campus the plant has to plan around.</strong> Davidson and Queens are real but small; JCSU is culturally distinct and probably a partnership question rather than an absorption one. The campus geography is also less concentrated than Atlanta's Tech-and-SCAD walking radius — UNCC sits on its own edge of the metro, with limited critical mass of student-ministry incumbents on campus relative to its size.</p>
+        <p>Charlotte's college math is honest: UNC Charlotte is the anchor and almost the only anchor at scale. Fall 2025 set a record 32,207 students (26,213 undergrad, 5,994 graduate) — a real R1-tier population, but a commuter-leaning campus on the city's northeast edge, ~12 miles from Uptown. The supporting cast — Davidson (~2K elite liberal arts, 25 min north), Queens University of Charlotte (~2.5K, in Myers Park), Johnson C. Smith (HBCU, ~1K, near Uptown), Belmont Abbey, Wingate, Pfeiffer, JWU Charlotte, plus Central Piedmont's seven campuses — together comprise the Greater Charlotte Consortium of twelve campuses but none of them carries weight on its own.</p>
+        <p>The honest read: <strong>UNC Charlotte is the only campus the plant has to plan around.</strong> Davidson and Queens are real but small; JCSU is culturally distinct and probably a partnership to honor rather than a campus to absorb. The campus geography is also less concentrated than Atlanta's Tech-and-SCAD walking radius — UNCC sits on its own edge of the metro, with relatively few student-ministry chapters on campus given its size.</p>
 
         <div class="bars">
           <div style="display: flex; gap: 1.6rem; align-items: center; margin-bottom: 1.1rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; opacity: 0.78;">
@@ -3331,16 +3424,16 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
     </div>
 
     <div class="pullquote">
-      <p>"A bank-anchored economy, a Carolina pipeline still live, and a college shelf the team can <em>actually compete on</em>."</p>
+      <p>"A bank-anchored city, a Carolina network still live, and real room for a college work shaped like <em>this team's calling</em>."</p>
     </div>
 
     <!-- block 3: ministry shelf -->
     <div class="dossier-block">
-      <div class="label"><span class="num">04</span>The Ministry Shelf</div>
+      <div class="label"><span class="num">04</span>Who's already laboring here</div>
       <div>
-        <h3>Elevation sets the gravity. Past that, the lane is <em>real</em>.</h3>
-        <p>Charlotte's young-adult shelf is shaped less by saturation and more by one outsized incumbent. Elevation Church (~17K weekly attendance across 20 locations as of 2024) is the metro's gravitational center for under-40 churchgoers, and its cultural footprint shapes how Charlotte Gen Z reads "church" in ways that have no real Atlanta or Phoenix analogue. Past Elevation, the shelf is genuinely lighter than Atlanta: Forest Hill, Mecklenburg Community Church, Calvary Church (with explicit 18–25 college-and-young-adult programming), Freedom House (its MVMNT young-adult community runs 18–29), and Covenant Presbyterian (Myers Park — established young-adult ministry) round out the field.</p>
-        <p>What's missing on the existing shelf — a polished, college-anchored midweek gathering with an integrated college-to-young-pro pipeline and an AA-led identity — is precisely the team's distinctive thesis. Charlotte does not have a Living Room ATL analogue. It does not have a Passion-scale young-adult magnet. The lane is not empty (Calvary and Freedom House each hold pieces of it), but it is meaningfully more open than Atlanta or Phoenix's ASU radius.</p>
+        <h3>Elevation sets the cultural mood. Past that, there is <em>real room</em>.</h3>
+        <p>Charlotte's young-adult ministry landscape is shaped less by density and more by one outsized presence. Elevation Church (~17K weekly attendance across 20 locations as of 2024) is the metro's center of cultural reference for under-40 churchgoers, and its footprint shapes how Charlotte Gen Z reads "church" in ways that have no real Atlanta or Phoenix analogue — for some toward attraction, for many toward suspicion of attractional church altogether. Past Elevation, the field is genuinely lighter than Atlanta: Forest Hill, Mecklenburg Community Church, Calvary Church (with explicit 18–25 college-and-young-adult ministry), Freedom House (its MVMNT young-adult community runs 18–29), and Covenant Presbyterian (Myers Park — established young-adult ministry) round out the existing co-laborers.</p>
+        <p>What is genuinely missing — a college-anchored midweek gathering with an integrated college-to-young-pro discipleship arc and an AA-led identity — is precisely the shape of obedience this team brings. Charlotte does not have a Living Room ATL analogue. It does not have a Passion-scale young-adult community. There are real co-laborers (Calvary and Freedom House each hold pieces of this work), but there is meaningfully more room here than in Atlanta or Phoenix's ASU radius for the particular work this team is sent to do.</p>
 
         <div class="ministry-list">
           <div class="item"><span class="nm">Elevation Church</span><span class="nt">~17K weekly · 20 sites · sets metro gravity</span></div>
@@ -3355,14 +3448,14 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
     <!-- block 4: campus shelf -->
     <div class="dossier-block">
-      <div class="label"><span class="num">05</span>The Campus Shelf</div>
+      <div class="label"><span class="num">05</span>Campus ministries already at work</div>
       <div>
-        <h3>Para-church coverage at UNCC is <em>thinner than Tech</em>.</h3>
-        <p>Where Atlanta's Tech anchor sits under nine-plus para-church chapters, UNC Charlotte's documented Christian campus presence runs leaner: Cru, RUF (PCA), Baptist Campus Ministries, and a Catholic Campus Ministry center. That is real coverage but not the multi-decade institutional density Tech has accumulated. Davidson's religious life is more chapel-and-chaplaincy in tradition; Queens has institutional Presbyterian roots. JCSU operates within the AME Zion HBCU religious-life pattern, which is a culturally distinct shelf.</p>
-        <p>The strategic read: UNCC has more room for a new church-led college presence than Tech does. The constraint is less competitive saturation and more campus geography — an off-campus midweek gathering near UNCC has to reckon with a 12-mile drive from Uptown / South End where most young professionals will live. A South Park or NoDa anchor with a UNCC bus or shuttle is not unlike The Living Room ATL's metro logistics, and is probably the realistic shape of the play.</p>
+        <h3>Para-church coverage at UNCC is <em>lighter than Tech</em>.</h3>
+        <p>Where Atlanta's Tech anchor sits under nine-plus para-church chapters, UNC Charlotte's documented Christian campus presence is leaner: Cru, RUF (PCA), Baptist Campus Ministries, and a Catholic Campus Ministry center. That is real, faithful labor — but not the multi-decade institutional thickness Tech has accumulated. Davidson's religious life is more chapel-and-chaplaincy in tradition; Queens has institutional Presbyterian roots. JCSU operates within the AME Zion HBCU religious-life tradition, a culturally distinct world the team should honor as a sister tradition rather than absorb.</p>
+        <p>What this means for the church: UNCC has more room for a new church-rooted college work than Tech does. The harder reality is not too many co-laborers, but campus geography — an off-campus midweek gathering near UNCC has to reckon with a 12-mile drive from Uptown / South End where most young adults will live. A South Park or NoDa anchor with a UNCC shuttle network is not unlike The Living Room ATL's metro logistics, and is probably the realistic shape of the work.</p>
 
         <div class="ministry-list">
-          <div class="item"><span class="nm">UNC Charlotte</span><span class="nt">Cru · RUF · BCM · Catholic Campus Ministry — solid but not crowded</span></div>
+          <div class="item"><span class="nm">UNC Charlotte</span><span class="nt">Cru · RUF · BCM · Catholic Campus Ministry — faithful but light</span></div>
           <div class="item"><span class="nm">Davidson College</span><span class="nt">Chapel/chaplaincy tradition · small Christian student orgs</span></div>
           <div class="item"><span class="nm">Queens University</span><span class="nt">Presbyterian roots · young-adult-friendly Myers Park location</span></div>
           <div class="item"><span class="nm">Johnson C. Smith (HBCU)</span><span class="nt">AME Zion-affiliated religious life · partnership question</span></div>
@@ -3373,11 +3466,11 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
     <!-- block 5: runway -->
     <div class="dossier-block">
-      <div class="label"><span class="num">06</span>Runway</div>
+      <div class="label"><span class="num">06</span>A sustainable rhythm</div>
       <div>
-        <h3>Banking corporate depth — <em>between Atlanta and Phoenix</em> on cost.</h3>
-        <p>Charlotte holds seven Fortune 500 headquarters in-region and 19 Fortune 1000 — Bank of America (#17, $192B revenue), Lowe's (#52), Honeywell (#119), Nucor (#140), Duke Energy (#144), Truist (#168), and Sonic Automotive — alongside a dense second-tier of regional banking, energy, and logistics. The bivocational job market is one of the best in the Southeast for finance, technology-in-banking, energy, and regulated industries; less broad than Atlanta's seventeen-F500 mix, but deep where it counts.</p>
-        <p>Cost: Uptown / South End / Plaza Midwood 1BR rent runs $1,650 – $2,000 — modestly cheaper than Midtown Atlanta and modestly more than Tempe. Bivocational math is workable; the Carolina-pipeline geometry plus banking corporate depth is the unique combination here.</p>
+        <h3>Banking depth — <em>between Atlanta and Phoenix</em> on cost.</h3>
+        <p>Charlotte holds seven Fortune 500 headquarters in-region and 19 Fortune 1000 — Bank of America (#17, $192B revenue), Lowe's (#52), Honeywell (#119), Nucor (#140), Duke Energy (#144), Truist (#168), and Sonic Automotive — alongside a dense second-tier of regional banking, energy, and logistics. Bivocational work is one of the strongest in the Southeast for finance, technology-in-banking, energy, and regulated industries; less broad than Atlanta's seventeen-F500 mix, but deep where it counts.</p>
+        <p>Cost: Uptown / South End / Plaza Midwood 1BR rent runs $1,650 – $2,000 — modestly cheaper than Midtown Atlanta and modestly more than Tempe. The team can give their lives here for the long haul; the Carolina network plus banking depth is the particular gift here.</p>
       </div>
     </div>
 
@@ -3386,8 +3479,8 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <div class="label"><span class="num">07</span>The Carolina Pipeline</div>
       <div>
         <h3>The most <em>literal</em> version of the Carolina advantage.</h3>
-        <p>Chapel Hill is 2.5 hours by car from Charlotte, with daily nonstop flights between CLT and RDU. The team's UNC ministry alumni network is geographically nearer than from Atlanta, and the cultural distance is shorter — Charlotte and the Triangle share a labor market, a college sports rivalry that doubles as a recruiting funnel, and a steady migration of UNC-and-Duke graduates into Charlotte's banking sector. UNC's metro Charlotte alumni population runs into the high tens of thousands.</p>
-        <p>One nuance worth naming up front: <strong>the Triangle is itself an A2N footprint</strong> (UNC, NC State, Meredith all operate as Acts 2 Fellowship). A team coming out of the UNC ministry orbit and planting in Charlotte will have an A2N sister plant 2.5 hours up I-85, and downstream recruiting from the Triangle has to be calibrated against that. This is a constraint, not a blocker — A2N's Triangle work and an independent AA-led plant in Charlotte are not direct competitors — but the team should walk into the relationship rather than around it.</p>
+        <p>Chapel Hill is 2.5 hours by car from Charlotte, with daily nonstop flights between CLT and RDU. The team's UNC ministry network is geographically nearer than from Atlanta, and the cultural distance is shorter — Charlotte and the Triangle share a labor market, a college sports rivalry that doubles as a relational network, and a steady stream of UNC-and-Duke graduates into Charlotte's banking sector. UNC's metro Charlotte alumni population runs into the high tens of thousands.</p>
+        <p>One thing to name plainly: <strong>the Triangle is itself an A2N footprint</strong> (UNC, NC State, Meredith all operate as Acts 2 Fellowship). A team coming out of the UNC ministry orbit and planting in Charlotte will have an A2N sister plant 2.5 hours up I-85, and how brothers and sisters in the Triangle are walked alongside has to be honored from the start. This is not a blocker — A2N's Triangle work and an independent AA-led plant in Charlotte are not the same work — but the team should walk into the relationship rather than around it.</p>
       </div>
     </div>
 
@@ -3416,10 +3509,10 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
     <!-- block 8: south end strategy -->
     <div class="dossier-block">
-      <div class="label"><span class="num">09</span>The South End Strategy</div>
+      <div class="label"><span class="num">09</span>The South End shape of the work</div>
       <div>
         <h3>Anchor in <em>South End</em>. Build the UNCC bridge in year one.</h3>
-        <p>If Charlotte is the call, the shape of the play follows from the city's own geography. South End is to Charlotte's young-pro density what Midtown is to Atlanta's — the natural anchor neighborhood. The complication is that no single Charlotte neighborhood holds both the under-30 density and a major undergraduate population. South End has the young pros. UNCC has the students. A workable plant uses South End as the church anchor and builds a deliberate UNCC bridge as a year-one priority.</p>
+        <p>If Charlotte is the call, the shape of the work follows from the city's own geography. South End is to Charlotte's young-adult density what Midtown is to Atlanta's — the natural anchor neighborhood the Lord has gathered young adults around. The complication is that no single Charlotte neighborhood holds both the under-30 density and a major undergraduate population. South End has the young adults. UNCC has the students. A workable plant uses South End as the church's home and builds a deliberate UNCC bridge as a year-one priority.</p>
 
         <div class="bars" style="margin-top: 1.8rem;">
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
@@ -3443,7 +3536,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
             <div class="num" style="text-align: left; padding-top: 0.1rem;">iv.</div>
             <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
-              <strong style="color: inherit; font-weight: 600;">Pre-place the ten in finance, fintech, and corporate.</strong> &nbsp; BoA, Truist, Wells Fargo (still has a major regional footprint), JPMorgan Chase Charlotte, LendingTree, AvidXchange, the Big Four. Lowe's Tech Hub for engineering. Honeywell for hardware/operations. Duke Energy for the utility lane. The bivocational job market here is genuinely deep for finance / consulting / corporate-tech profiles; light for traditional Big Tech (Charlotte is not a Bay Area / NYC engineering market).
+              <strong style="color: inherit; font-weight: 600;">Settle the ten in finance, fintech, and corporate before launch.</strong> &nbsp; BoA, Truist, Wells Fargo (still has a major regional footprint), JPMorgan Chase Charlotte, LendingTree, AvidXchange, the Big Four. Lowe's Tech Hub for engineering. Honeywell for hardware/operations. Duke Energy for utility-sector roles. Bivocational work here is genuinely deep for finance / consulting / corporate-tech profiles; lighter for traditional Big Tech (Charlotte is not a Bay Area / NYC engineering market). Settling the team well so they can give their lives here long-term is what makes the work durable.
             </div>
           </div>
           <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
@@ -3454,7 +3547,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           </div>
         </div>
 
-        <p style="margin-top: 1.8rem;">The honest version of the Charlotte bet: <strong>cleanest open-lane fit on the team's profile</strong>, with a structural geography problem (one anchor campus 12 miles from where young-pros live) that has to be solved deliberately rather than ignored. The upside is a defensible AA-led, integrated college-and-young-pro plant in a metro the country is moving to, with the Carolina pipeline geographically live and the bivocational job market genuinely deep on the finance side.</p>
+        <p style="margin-top: 1.8rem;">The honest version of the Charlotte call: <strong>the most room for the particular shape of work this team is sent to do</strong>, with a real geography problem (one anchor campus 12 miles from where young adults live) that has to be addressed deliberately rather than ignored. The fruit, by God's grace, is a faithful AA-led, integrated college-and-young-pro plant in a city young adults are still arriving to, with the Carolina network geographically live and bivocational work genuinely deep on the finance side.</p>
       </div>
     </div>
 
@@ -3475,7 +3568,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <li><strong>Light rail UNCC → South End</strong>ride the full 25–30 min route<span class="why">feel the gap the plant has to bridge</span></li>
           <li><strong>Walk UNCC campus</strong>Greek Village, MLK Hall, North Halls<span class="why">the residential R1 transition in real time</span></li>
           <li><strong>Plaza Midwood + NoDa walking tour</strong>second-tier young-pro neighborhood<span class="why">design-forward / arts-leaning slice of the demo</span></li>
-          <li><strong>Sunday at Forest Hill or Calvary</strong>mid-size young-adult / college-aware plays<span class="why">scope the lane below Elevation gravity</span></li>
+          <li><strong>Sunday at Forest Hill or Calvary</strong>mid-size young-adult / college-aware churches<span class="why">scope the field of co-laborers below Elevation's footprint</span></li>
           <li><strong>Optimist Hall food hall + South End breweries</strong>third-place texture<span class="why">where 24–32-year-olds actually spend their weekends</span></li>
           <li><strong>Drive Ballantyne → Concord</strong>south-suburb AA corridor, 30–45 min<span class="why">Indian-American suburban density up close</span></li>
           <li><strong>Coffee at Not Just Coffee (South End) or Common Market</strong>weekday morning if possible<span class="why">where work-from-anywhere young pros gather</span></li>
@@ -3487,24 +3580,24 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
     <!-- verdict -->
     <div class="verdict">
       <div>
-        <h4>— Where Charlotte wins —</h4>
+        <h4>— Where Charlotte makes the team's calling fit —</h4>
         <ul>
-          <li>Carolina pipeline is geographically literal — 2.5h drive to Chapel Hill, daily nonstops</li>
-          <li>The cleanest open lane on the team's profile — no incumbent runs the integrated college-and-young-pro AA-led play here</li>
-          <li>Banking corporate depth = strong bivocational job market, especially in finance / fintech</li>
-          <li>South suburb AA growth is real and accelerating — built-in demographic tailwind</li>
-          <li>No A2N footprint in Charlotte itself</li>
+          <li>The Carolina UNC network is geographically live — 2.5h drive to Chapel Hill, daily nonstops</li>
+          <li>The most room of any city for the particular shape of work this team is sent to do — no existing church holds the integrated college-and-young-pro AA-led work here</li>
+          <li>Banking depth = strong bivocational work, especially in finance / fintech</li>
+          <li>South-suburb AA growth is real and accelerating — a community to live among, not just minister to</li>
+          <li>No A2N plant in Charlotte itself — the team would not be planting on top of a sister work</li>
           <li>Cost between Atlanta and Phoenix — modest savings vs. Midtown</li>
         </ul>
       </div>
       <div>
-        <h4>— Where Charlotte costs you —</h4>
+        <h4>— Where Charlotte will cost the team —</h4>
         <ul>
           <li>Only one true anchor campus (UNCC) vs. Atlanta's Tech-and-SCAD walking radius</li>
-          <li>UNCC sits 12 miles from where young professionals live — venue logistics are non-trivial</li>
-          <li>Elevation Church's gravitational pull shapes how Gen Z reads "church" in this metro</li>
-          <li>Triangle is A2N — sister-plant adjacency 2.5h away requires deliberate calibration</li>
-          <li>AA ministry partner ecosystem is younger and shallower than Atlanta's</li>
+          <li>UNCC sits 12 miles from where young adults live — venue logistics are not trivial</li>
+          <li>Elevation Church's cultural pull shapes how Gen Z reads "church" in this metro — for some toward attraction, for many toward suspicion</li>
+          <li>Triangle is A2N — a sister plant 2.5h away that has to be honored, not worked around</li>
+          <li>Fewer kindred AA churches to walk alongside than in Atlanta</li>
           <li>South-suburb AA density is split between two corridors (S. Charlotte vs. Concord), not a single Gwinnett-style cluster</li>
         </ul>
       </div>
@@ -3515,15 +3608,332 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 </div>
 <!-- ============ /TAB: CHARLOTTE ============ -->
 
+<!-- ============ TAB: NEW YORK ============ -->
+<div class="tab-panel" data-panel="newyork">
+
+<!-- DOSSIER NEW YORK -->
+<section class="dossier dossier-nyc" id="newyork">
+  <div class="container">
+    <div class="dossier-header">
+      <div>
+        <div class="dossier-no">§ IX. Dossier — File 04</div>
+        <h1 class="dossier-name">New <em>York</em>.</h1>
+      </div>
+      <div class="dossier-tag">A field of need where young adults are gathered, the gospel is least heard, and a body that stays would mean something.</div>
+    </div>
+
+    <!-- HERO PHOTO -->
+    <div class="dossier-hero">
+      <div class="photo photo-nyc">
+        <img src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=1800&q=80&auto=format&fit=crop" alt="Brooklyn Bridge and Downtown Brooklyn skyline at dusk">
+      </div>
+      <div class="photo-cap">
+        <span>Downtown Brooklyn &nbsp;·&nbsp; from the Brooklyn Bridge</span>
+        <span class="credit">Photo: Unsplash</span>
+      </div>
+    </div>
+
+    <!-- stat ribbon -->
+    <div class="stat-ribbon">
+      <div class="stat-cell">
+        <div class="num">8.3M</div>
+        <div class="lbl">NYC pop. —<br>most secular major US city</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">~3%</div>
+        <div class="lbl">Brooklyn evangelical share<br>per Glenmary / ASARB est.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">~24K</div>
+        <div class="lbl">Combined enrollment —<br>Tandon · LIU · Pratt · St. Francis</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">38%</div>
+        <div class="lbl">Brooklyn share aged 20–39 —<br>young adults gathered here</div>
+      </div>
+    </div>
+
+    <!-- MISSIONAL NEED — leads the dossier -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">00</span>The Field of Need</div>
+      <div>
+        <h3>Among the <em>least-reached</em> young adults in North America.</h3>
+        <p>Brooklyn is one of the most densely populated, most spiritually scattered concentrations of young adults on the continent. Evangelical density across the borough sits in the low single digits — most counts hover around 3 to 4 percent — while the population it would have to reach is the largest urban under-40 cohort in the country. The math is a missional one before it is a strategic one: the gospel is least heard in the rooms most full of people who need to hear it.</p>
+        <p>The cultural mood is not the simple secularism of a generation ago. New Yorkers are not unspiritual. Pew's own work has long shown the city scoring high on religious <em>identity</em> — Catholic heritage, Jewish heritage, immigrant Pentecostalism, Orthodoxy of several traditions — alongside one of the lowest weekly-practice rates of any major metro. The dominant under-30 register in Brooklyn is the SBNR pattern: spiritual but not religious, formed by therapy language, secular wellness, climate grief, identity politics, and a low-grade post-Christian disillusionment with whatever institutional faith their parents held. Lapsed Catholic. Lapsed Jewish. Lapsed evangelical refugee from the suburbs. Many were close enough to church once that "religion" carries a charge — which is its own missional reality.</p>
+        <p>What is missing in the current ministry coverage is not a lack of <em>churches</em> — there are good ones, named honestly below. What is thin is steady, integrated, AA-led discipleship that gathers the four Downtown-Brooklyn campuses into one body, holds them next to young professionals giving their lives in the same neighborhoods, and stays long enough for those rhythms to become formation. Most college work in the city is para-church and runs alongside churches rather than inside them. Most young-adult churches in Brooklyn are doing real work but were not planted with a college arm in their architecture from day one. The shape of the need is the shape of this team's calling.</p>
+        <p>This is a team of ten — bivocational, AA-led — built to give their lives in one place over a long arc. Brooklyn does not need another launch. It needs a body that stays. The work the team is built for — long-term rootedness, a plurality of elders, local teaching, college and young-pro held together — is the work this field has been quietly waiting on.</p>
+      </div>
+    </div>
+
+    <!-- block 01: campus landscape -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">01</span>Campus Landscape</div>
+      <div>
+        <h3>Four campuses, one walking radius — a <em>multi-campus mission field</em>.</h3>
+        <p>Downtown Brooklyn is unusual among American urban cores in that four real undergraduate institutions sit inside a one-mile-and-change footprint, each with a distinct cultural character and each contributing differently to the body the plant would gather. The walkability is not theoretical. Tandon to LIU is twelve minutes on foot. LIU to St. Francis is eight. St. Francis to Pratt is a fifteen-minute walk through Fort Greene and Clinton Hill, or four stops on the G. The four-campus shape lets one church hold a real college presence without having to choose a single anchor.</p>
+
+        <div class="bars">
+          <div class="bar-row"><div class="name">NYU Tandon (Engineering)</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">~10K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">MetroTech</span></div></div>
+          <div class="bar-row"><div class="name">LIU Brooklyn</div><div class="bar-track"><div class="bar-fill" style="width: 70%"></div></div><div class="num">~7K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">Atlantic Ave / Flatbush</span></div></div>
+          <div class="bar-row"><div class="name">Pratt Institute</div><div class="bar-track"><div class="bar-fill" style="width: 50%"></div></div><div class="num">~5K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">Clinton Hill · art / design</span></div></div>
+          <div class="bar-row"><div class="name">St. Francis College</div><div class="bar-track"><div class="bar-fill" style="width: 22%"></div></div><div class="num">~2K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">DUMBO · Catholic-heritage</span></div></div>
+        </div>
+
+        <p style="margin-top: 1.4rem;"><strong>What each campus brings to a body:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li><strong>NYU Tandon</strong> — engineering and applied-science undergrads who flow naturally into Manhattan tech and finance internships; the closest analogue in the borough to a "young pro funnel" already in undergrad form. Many international students; high pre-professional intensity; the largest of the four.</li>
+          <li><strong>LIU Brooklyn</strong> — commuter, ethnically diverse, locally rooted in the borough rather than imported from elsewhere. Strong nursing and health-sciences programs; many students working through school. The campus most likely to disciple students who actually <em>stay</em> in Brooklyn after graduation.</li>
+          <li><strong>St. Francis College</strong> — small, Catholic-heritage, recently relocated to a leased space in DUMBO from its long-time Brooklyn Heights location. Commuter-leaning, working-class ethos, the smallest of the four but holding a lapsed-Catholic young-adult population whose spiritual register matters to the missional read.</li>
+          <li><strong>Pratt Institute</strong> — art, architecture, and design; culturally outsized for its enrollment, with influence into Brooklyn creative life that the larger campuses do not match. The campus where the cultural climate of post-Christian SBNR Brooklyn is most legible.</li>
+        </ul>
+        <p style="font-size: 0.85rem; opacity: 0.72; font-style: italic;">Note: enrollment figures are approximate; institution-reported totals shift annually. NYU Tandon's number includes graduate students (Tandon's undergrad is closer to 4–5K); the combined undergrad-plus-graduate footprint across the four institutions is the reachable population the plant would actually meet.</p>
+      </div>
+    </div>
+
+    <!-- block 02: neighborhood geography -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">02</span>Neighborhood Geography</div>
+      <div>
+        <h3>One walking radius, <em>five neighborhoods</em>, every subway line.</h3>
+        <p>The geography is the gift here. Downtown Brooklyn proper, Brooklyn Heights, DUMBO, Fort Greene, and Clinton Hill form a continuous pedestrian arc roughly two miles end to end. Within that arc sits one of the densest subway nodes in the city — the Jay St–MetroTech / Hoyt-Schermerhorn / Atlantic Ave–Barclays cluster aggregates the A, C, F, R, 2, 3, 4, 5, B, Q, D, N, and G — meaning a Sunday gathering anchored anywhere in the arc is one transfer or fewer from most of Brooklyn and most of lower Manhattan.</p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li><strong>Downtown Brooklyn</strong> — Tandon (MetroTech), corporate offices, a working civic core; not where people linger, but where they arrive every weekday.</li>
+          <li><strong>Brooklyn Heights</strong> — old brownstones, the promenade, families and long-time residents; quiet, mature, churched (relatively) compared to the rest of the arc.</li>
+          <li><strong>DUMBO</strong> — tech offices, design studios, St. Francis's new home; cobblestones and a young-pro waterfront register, with an outsized concentration of media and creative workers.</li>
+          <li><strong>Fort Greene</strong> — historically Black middle-class Brooklyn, BAM (Brooklyn Academy of Music), Fort Greene Park, brownstone density, deep cultural memory; a neighborhood whose history matters to an AA-led plant.</li>
+          <li><strong>Clinton Hill</strong> — Pratt's neighborhood, brownstones interleaved with newer development, an arts-and-grad-student feel that bleeds into Bed-Stuy on its eastern edge.</li>
+        </ul>
+        <p><strong>Where young adults gather:</strong> Devoción and Café Grumpy in Downtown Brooklyn; Brooklyn Roasting Company in DUMBO; Greenlight Bookstore and Habana Outpost (when open) in Fort Greene; Sincerely, Tommy and the cluster around Pratt in Clinton Hill; the BRIC house and BAM campus for Friday-and-weekend rhythms; Fort Greene Park and Brooklyn Bridge Park for warm-weather third-place life. None of these are unusual choices. They are where God has gathered the young adults the plant is being sent to.</p>
+      </div>
+    </div>
+
+    <!-- PHOTO PAIR — Brooklyn texture -->
+    <div class="dossier-photo-pair">
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?w=900&q=80&auto=format&fit=crop" alt="DUMBO Brooklyn with Manhattan Bridge">
+        </div>
+        <div class="photo-cap">
+          <span>DUMBO &nbsp;·&nbsp; under the Manhattan Bridge</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=900&q=80&auto=format&fit=crop" alt="Fort Greene Brooklyn brownstones">
+        </div>
+        <div class="photo-cap">
+          <span>Fort Greene &nbsp;·&nbsp; brownstone block</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"Brooklyn does not need another launch. It needs a <em>body that stays</em>."</p>
+    </div>
+
+    <!-- block 03: existing ministry presence -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">03</span>Existing Ministry Presence</div>
+      <div>
+        <h3>Real churches doing real work — and a <em>gap that is still real</em>.</h3>
+        <p>An honest read of the field: Brooklyn has a serious, named set of churches reaching young adults, and any plant has to walk in respecting them. The more important question is not whether the field is "open" but where, inside an already-laboring field, the body this team is built to be is still missing.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">Hope Church Brooklyn</span><span class="nt">Park Slope · multi-ethnic young-adult congregation</span></div>
+          <div class="item"><span class="nm">Resurrection Brooklyn (Williamsburg / Bed-Stuy)</span><span class="nt">small reformed-leaning, neighborhood parish model</span></div>
+          <div class="item"><span class="nm">Brooklyn Tabernacle</span><span class="nt">Downtown Brooklyn · large, Pentecostal, multi-ethnic, prayer-anchored</span></div>
+          <div class="item"><span class="nm">Trinity Grace Church (multi-parish)</span><span class="nt">parish in Park Slope; young-pro presence borough-wide</span></div>
+          <div class="item"><span class="nm">Apostles Brooklyn (ACNA)</span><span class="nt">Anglican · liturgical · young-adult and family rhythm</span></div>
+          <div class="item"><span class="nm">Renaissance Church</span><span class="nt">Manhattan-anchored · Brooklyn members · Acts 29-style</span></div>
+          <div class="item"><span class="nm">Cru / InterVarsity / Chi Alpha</span><span class="nt">para-church coverage at NYU (Tandon-adjacent), Pratt, LIU — variable</span></div>
+          <div class="item"><span class="nm">Catholic campus ministries</span><span class="nt">St. Francis (in-house) · Tandon (Newman / NYU Catholic) · Pratt</span></div>
+        </div>
+
+        <p style="margin-top: 1.4rem;"><strong>Where the field is still thin — read missionally, not competitively:</strong></p>
+        <ul style="padding-left: 1.2rem; opacity: 0.88;">
+          <li>An <strong>AA-led</strong> congregation rooted in Brooklyn's historic Black neighborhoods (Fort Greene, Clinton Hill, Bed-Stuy) <em>and</em> built to disciple the under-30 multi-ethnic young-adult population that has moved into them — that pairing is not currently held by any single body the team is aware of.</li>
+          <li>An <strong>integrated college-and-young-pro church</strong> where the campus ministry is one arm of a body, not a parachurch organization meeting alongside a church. Most existing Brooklyn churches that reach young pros do not run a serious college arm; most college ministries on the four campuses are not embedded in a local church.</li>
+          <li>A church that holds <strong>local teaching, plurality of elders, and long-term rootedness</strong> as its architecture — distinct from the executive-couple-led, network-streamed pattern that shapes much of the city's young-adult church landscape.</li>
+        </ul>
+        <p style="margin-top: 1.2rem; font-size: 0.85rem; opacity: 0.72; font-style: italic;">A weekend scoping trip should visit at least three of the churches named above. The discernment question is not "where is the lane?" — it is "what is the body the Lord is asking us to be that the existing churches are not already being?"</p>
+      </div>
+    </div>
+
+    <!-- block 04: rootedness and sending -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">04</span>Rootedness &amp; Sending</div>
+      <div>
+        <h3>Brooklyn's young-adult transience is real. <em>So is the call to stay.</em></h3>
+        <p>Anyone who has worked in young-adult ministry in New York knows the ache of the three-year arc. A 24-year-old arrives for a finance analyst program or a design first-job; gives two or three good years to a community; gets a senior role in Austin or has a kid and moves to New Jersey or burns out on the city and leaves. The retention math is not the church's failure. It is the city's gravity.</p>
+        <p>The team's calling does not flinch from this. The discipleship arc the team is built for assumes some people will be sent and some people will stay, and that both are good. The fruit being prayed toward is not a count of attenders held in the room. It is people formed long enough to be sent well — into vocational rhythm where they are, into a plant elsewhere, into missions, into families and neighborhoods and workplaces in this city. A church that disciples someone for three Brooklyn years and sends them faithfully into a Phoenix marriage or a Charlotte plant is doing the work it was built to do.</p>
+        <p>And — countervailing the transience read — there is a meaningful population in Brooklyn that <em>does</em> stay. LIU's commuter base is rooted here. Many AA young adults moving into Fort Greene and Bed-Stuy are coming home, not leaving home. Pratt graduates often stay in the borough's creative ecosystem for a decade or more. The work of patient, named, week-after-week presence is not wasted on a transient field — it is the only thing that builds the kind of body people might actually stay in. A team that gives its life here for ten years, not three, is the structural counter to Brooklyn's churn.</p>
+      </div>
+    </div>
+
+    <!-- block 05: bivocational runway -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">05</span>Bivocational Runway</div>
+      <div>
+        <h3>The cost is severe. Naming it is the <em>first faithful step</em>.</h3>
+        <p>There is no soft version of this section. New York is the most expensive bivocational field in the candidate set — meaningfully more expensive than Atlanta, Phoenix, or Charlotte. A 1BR within the Downtown Brooklyn arc runs $3,200–$4,200; pushing east into Bed-Stuy or south into Crown Heights brings that closer to $2,400–$3,000 for the same square footage. Two-incomes-and-roommates is the norm, not the exception, well into the team's late twenties. Childcare in Brooklyn ranges $24K–$36K per child per year. A bivocational team of ten committing to give their lives here long-term has to walk into this with eyes open and a specific runway, not vague optimism.</p>
+        <p><strong>What sustainability actually looks like:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li><strong>Tech / engineering</strong> — Brooklyn-based tech offices (Etsy in DUMBO, Squarespace, Vimeo); contracting and remote roles for Manhattan-headquartered firms; Tandon faculty / staff adjacencies.</li>
+          <li><strong>Finance support roles</strong> — operations, compliance, technology-in-banking at the Manhattan F500 base; Goldman, JPMorgan, Citi, Morgan Stanley all hold meaningful Brooklyn-commutable workforces.</li>
+          <li><strong>Education</strong> — NYC DOE (the largest school district in the country), independent schools (Saint Ann's, Packer, Brooklyn Friends, Berkeley Carroll), Tandon / LIU adjunct teaching.</li>
+          <li><strong>Healthcare</strong> — NewYork-Presbyterian Brooklyn Methodist, NYU Langone, Maimonides; nursing roles especially deep through LIU's pipeline.</li>
+          <li><strong>Creative freelance</strong> — design, media, editorial; real but cyclical, requires savings discipline to fit a discipleship rhythm.</li>
+        </ul>
+        <p>A realistic plan pre-places jobs for all ten before launch and accepts that the household geometry of a Brooklyn bivocational team will look different from a Charlotte or Phoenix one — more roommates, more shared housing, more delayed family-formation milestones. The cost of admission is real. The team is being asked to give their lives here for the long haul, in a field that is among the least-reached in the country. The runway, planned with care, can carry that weight. Pretending the cost is lower than it is would be the failure.</p>
+      </div>
+    </div>
+
+    <!-- block 06: young-pro + youth-outreach bridge -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">06</span>The Two-Wing Bridge</div>
+      <div>
+        <h3>Undergrads mentoring high-schoolers; young pros anchoring the body. <em>One church, two arms reinforcing each other.</em></h3>
+        <p>The distinctive shape of this plant in Brooklyn is the way two natural ministries — a college arm across four campuses and a young-pro arm across Manhattan and Downtown Brooklyn employers — bridge into a third: youth outreach into Brooklyn high schools through undergraduate mentors. Each arm gives the others something they would not otherwise have.</p>
+        <p><strong>The young-professional wing.</strong> Members in finance (Manhattan F500), tech (DUMBO + Manhattan), media (Brooklyn Navy Yard, DUMBO, Manhattan), design (Pratt-adjacent ecosystem, DUMBO), and healthcare (NewYork-Presbyterian Brooklyn Methodist, NYU Langone) form the adult center of the body. They host neighbors, share faith in their workplaces, walk through marriage and singleness and grief in front of college students who have never seen Christian adulthood lived in their city. This is the formation a college student cannot get from a college ministry alone — and is the structural distinctive carried over from the team's Distinctive I.</p>
+        <p><strong>The college wing.</strong> A college pastor with explicit responsibility for all four campuses. A weekly college community on rotating campus locations or a single Downtown-Brooklyn meeting site within walking distance of three of the four. Embedded presence at Tandon (the largest), LIU (the most rooted), Pratt (the most culturally influential), with St. Francis as the natural Catholic-heritage adjacency. Retreats. Mentoring tracks. Real connection into the body's Sunday gathering, where college students see what comes next.</p>
+        <p><strong>The youth-outreach bridge.</strong> Brooklyn high schools are dense, diverse, and underserved by relational mentorship — a missional reality across Bed-Stuy, Fort Greene, Crown Heights, and Brownsville. The team's undergrads — many themselves only a few years out of high school, formed in the church's college community — become the natural mentors for Brooklyn 14-to-18-year-olds, through one or two named partnerships (a single after-school program, a single church-school partnership) rather than a sprawl. The young-pro wing supports financially and with adult presence at events. The college wing supplies relational consistency. The youth-outreach work feeds future college students into the campus ministry. The discipleship arc, in this city, runs from 14 to 24 to 34, in one body, in one neighborhood, over a decade.</p>
+        <p>This shape is not a clever positioning. It is the shape of a church that takes the team's three distinctives seriously — whole-city not college-only, plural eldership, local rooted teaching — and lets them work themselves out in a Brooklyn-specific geography.</p>
+      </div>
+    </div>
+
+    <!-- block 07: posture and pillars -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">07</span>Posture &amp; Pillars</div>
+      <div>
+        <h3>Five practices the body would be <em>built around</em>.</h3>
+        <p>If New York is the call, the shape follows from the field's specific need: a body that stays, a college arm rooted across four campuses, a young-pro arm sustained against severe cost, a youth-outreach bridge into Brooklyn high schools, and an AA-led elder body that holds it all together. Five practical pillars:</p>
+
+        <div class="bars" style="margin-top: 1.8rem;">
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Anchor the Sunday gathering in the Downtown Brooklyn walking arc.</strong> &nbsp; A venue within ten minutes' walk of Tandon, LIU, and St. Francis, and one G-train stop from Pratt — most plausibly in Downtown Brooklyn proper, Fort Greene, or DUMBO. Possible homes: a partnered church facility (Hope, Apostles, a Brooklyn Tabernacle adjunct space), a BAM-adjacent rented hall, a leased school or community-center room. The geography teaches the church what it is the day it gathers.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — Executive Pastor &nbsp;|&nbsp; Cadence — venue secured by month 4 &nbsp;|&nbsp; Marker — first Sunday in walking radius of three of the four campuses</div>
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Name a college pastor with all four campuses in his charge from day one.</strong> &nbsp; Not a future hire. The college arm is Distinctive I made flesh; it cannot be a year-three afterthought. A weekly college community gathering. Embedded relational presence on Tandon and LIU first (the largest and most rooted), with Pratt and St. Francis as the natural adjacencies. Fall and spring retreats, mentoring tracks into the young-pro arm.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — College Pastor &nbsp;|&nbsp; Cadence — weekly college community + monthly campus presence each &nbsp;|&nbsp; Marker — named undergrad leaders on each of the four campuses by year two</div>
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Build one named youth-outreach partnership in year one — not a portfolio.</strong> &nbsp; A single Brooklyn high school, a single after-school program, a single church-school partnership. Undergrads from the four campuses serve as mentors. Young-pro members anchor financial and adult support. The work is small on purpose; it is meant to last a decade and feed future college students into the church.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — College Pastor + lay leader &nbsp;|&nbsp; Cadence — weekly mentor-pairing rhythm during school year &nbsp;|&nbsp; Marker — same partnership still alive in year three</div>
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iv.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Settle the ten in Brooklyn-commutable bivocational work before launch.</strong> &nbsp; Tech (Etsy / Squarespace / Vimeo / contracting); finance support and ops at the Manhattan F500 banks; NYC DOE and independent-school education; nursing and clinical work through the Brooklyn hospital system; freelance creative for the design-and-media members. Two-income households and roommate geometry assumed in the planning, not patched on afterward.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — Executive Pastor &nbsp;|&nbsp; Cadence — 9–12 months pre-launch &nbsp;|&nbsp; Marker — all ten with named roles before the first Sunday</div>
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">v.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Walk into relationship with the existing Brooklyn churches early.</strong> &nbsp; Hope Brooklyn, Apostles, Resurrection, Trinity Grace, Brooklyn Tabernacle, the campus ministries at the four schools — the team should be known by name in those rooms within the first six months. Not as a competitor. As a body the Lord is sending into a field large enough that another body of this kind, built differently, is welcome. The friendliness here is missional, not strategic.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — Lead Pastor + elders &nbsp;|&nbsp; Cadence — first conversations months 1–6 &nbsp;|&nbsp; Marker — named relationships with at least four neighboring churches by year one</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 08: first-year shape -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">08</span>First-Year Shape</div>
+      <div>
+        <h3>How <em>ten people</em> deploy across four campuses, two wings, and one neighborhood.</h3>
+        <p>The team is ten — bivocational, AA-led, three to five elders among them. The deployment is not one person per campus; it is a body whose members share named responsibilities while the church gathers as one.</p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li><strong>Lead Pastor</strong> — preaching, eldership chair, citywide relational work.</li>
+          <li><strong>Executive Pastor</strong> — operations, finance, venue, the ten's job-placement coordination.</li>
+          <li><strong>College Pastor</strong> — all four campuses; Tandon and LIU primary, Pratt and St. Francis adjacencies.</li>
+          <li><strong>Two more elders</strong> — teaching and pastoral care; spread between the young-pro arm and the youth-outreach work.</li>
+          <li><strong>Five lay-team members</strong> — pre-placed in tech, finance support, education, healthcare, and creative work; each carrying a named lay responsibility (worship, hospitality, small-group leadership, youth-outreach mentor coordination, communications).</li>
+        </ul>
+        <p><strong>Where they live:</strong> the team clusters in Fort Greene, Clinton Hill, Downtown Brooklyn, and the eastern edge of Boerum Hill — within walking or one-stop-G distance of the gathering venue. Avoiding the long-commute trap that breaks bivocational teams in this city is non-optional.</p>
+        <p><strong>What gathers in year one:</strong> a Sunday gathering in the Downtown Brooklyn arc; a weekly college community on or near Tandon / LIU; small groups embedded in Fort Greene, Clinton Hill, and DUMBO; one named high-school partnership; the team's own weekly elder-and-staff rhythm of prayer, planning, and teaching prep — local, on a calendar the team sets.</p>
+      </div>
+    </div>
+
+    <!-- weekend scoping (collapsible) -->
+    <details class="scoping">
+      <summary>
+        <span class="label-side">
+          <span class="arr">›</span>
+          <span class="lead">Weekend scoping trip · <em>top 10 to walk</em></span>
+        </span>
+        <span class="count">10 stops</span>
+      </summary>
+      <div class="scoping-body">
+        <p>If a weekend in New York is the next step, the path that surfaces what the field actually feels like is a walking one. Aim Friday afternoon → Sunday afternoon. The four campuses, three neighborhoods, and two-to-three churches are the backbone. Most of this is reachable on foot or the G train.</p>
+        <ol class="scoping-list">
+          <li><strong>Walk NYU Tandon (MetroTech)</strong>weekday late-morning; Jay St–MetroTech<span class="why">the largest campus, the engineering pipeline, the daily Downtown Brooklyn rhythm</span></li>
+          <li><strong>Walk LIU Brooklyn</strong>Atlantic Ave / Flatbush; commuter morning<span class="why">the campus most likely to disciple students who actually stay</span></li>
+          <li><strong>Walk St. Francis College (DUMBO)</strong>new campus location, off Front St<span class="why">Catholic-heritage commuter texture; St. Francis's lapsed-Catholic missional read</span></li>
+          <li><strong>Walk Pratt Institute (Clinton Hill)</strong>main quad; Hall St<span class="why">the cultural climate of post-Christian SBNR Brooklyn at its most legible</span></li>
+          <li><strong>Sunday at Hope Church Brooklyn (Park Slope)</strong>or borough-equivalent gathering<span class="why">scope the multi-ethnic young-adult church already in the field</span></li>
+          <li><strong>Sunday evening at Apostles Brooklyn (ACNA)</strong>liturgical alternative<span class="why">the Anglican / liturgical young-adult register in the borough</span></li>
+          <li><strong>Walk Fort Greene</strong>BAM, Greenlight Bookstore, Fort Greene Park, brownstones north of DeKalb<span class="why">historically Black Brooklyn that an AA-led plant should learn before naming</span></li>
+          <li><strong>DUMBO walk</strong>Brooklyn Roasting, Front St, Time Out Market, the waterfront<span class="why">where the young-pro and creative arms of the city converge</span></li>
+          <li><strong>Coffee at Devoción (Williamsburg) or Café Grumpy (Downtown)</strong>weekday morning<span class="why">where the under-30 freelance / WFH cohort actually spends its weeks</span></li>
+          <li><strong>Visit Brooklyn Tabernacle for a Tuesday prayer meeting</strong>Smith St, Downtown Brooklyn<span class="why">the prayer-anchored, multi-ethnic, large-church register of the borough</span></li>
+        </ol>
+      </div>
+    </details>
+
+    <!-- verdict -->
+    <div class="verdict">
+      <div>
+        <h4>— Where Brooklyn calls —</h4>
+        <ul>
+          <li>One of the most under-reached young-adult fields in North America — evangelical density in low single digits</li>
+          <li>Four real campuses inside one walking radius — a multi-campus mission field most cities do not offer</li>
+          <li>Cultural influence that travels — what gets formed in Brooklyn shapes how the wider church is read by a generation</li>
+          <li>Brooklyn's historically Black neighborhoods (Fort Greene, Clinton Hill, Bed-Stuy) give an AA-led plant deep cultural memory to root in</li>
+          <li>Subway density makes a single Downtown-Brooklyn anchor reachable from most of the borough and lower Manhattan</li>
+          <li>The two-wing shape — undergrads bridging to high-schoolers, young pros anchoring the body — fits the city's geography and the team's distinctives</li>
+        </ul>
+      </div>
+      <div>
+        <h4>— Where Brooklyn will cost the team —</h4>
+        <ul>
+          <li>Cost of living is severe — meaningfully more expensive than Atlanta, Phoenix, or Charlotte; the team has to give their lives here long-term with eyes open to that cost</li>
+          <li>Three-year transience pattern is real for a portion of the young-pro population; rootedness requires patience the city rarely rewards quickly</li>
+          <li>Existing church density — Hope, Apostles, Resurrection, Trinity Grace, Brooklyn Tabernacle, Renaissance — means thoughtful neighbor-relations from day one, not a perceived "open lane"</li>
+          <li>No Carolina UNC network adjacency — the team's UNC alumni are a flight away, not a drive</li>
+          <li>The four-campus shape spreads the college pastor thin in year one — Tandon and LIU primary, Pratt and St. Francis adjacencies, with deliberate sequencing required</li>
+          <li>Sunday-rhythm logistics in NYC are not what they are in Charlotte — venue cost, scheduling around city events, transit-rather-than-parking, all add operational friction</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+<!-- ============ /TAB: NEW YORK ============ -->
+
 <!-- ============ TAB: ALTERNATIVES ============ -->
 <div class="tab-panel" data-panel="alternatives">
 
 <section class="alternatives" id="alternatives">
   <div class="container">
     <div class="alt-head">
-      <div class="eyebrow">§ IX. Alternatives Considered</div>
-      <h2>Twelve cities <em>not chosen</em> — and why.</h2>
-      <p>Twelve alternatives surfaced across the search. Each was set aside for a specific structural reason — Richmond is first because it was in the candidate set until just being moved here.</p>
+      <div class="eyebrow">§ X. Alternatives Considered</div>
+      <h2>Eleven cities <em>not chosen</em> — and why.</h2>
+      <p>Eleven alternatives surfaced across the search. Each was set aside for a specific structural reason — Richmond is first because it was in the candidate set until just being moved here.</p>
     </div>
 
     <div class="alt-grid">
@@ -3536,11 +3946,11 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <ul>
           <li>VCU R1, ~29K undergrad, in-city walkable from Monroe Park</li>
           <li>Richmond metro 1.3M; eight F500 HQs (Altria, CarMax, Markel, Dominion, etc.) plus Capital One West Creek</li>
-          <li>Lightest competitive saturation of all candidates considered — top-three young-adult presence is realistic in five years</li>
+          <li>Fewest existing young-adult ministries of any candidate considered — meaningful relational space for a new body in five years</li>
           <li>Cheapest cost of living after Phoenix; usable Carolina pipeline (3.5h drive)</li>
           <li>A2N-open in Richmond proper; UVA / Axiom 1h west</li>
         </ul>
-        <div class="alt-block"><strong>Why set aside</strong> Smallest absolute college-and-young-pro market of the candidates — top-of-Richmond reaches fewer people than third-of-Atlanta. UVA / Axiom adjacency 1h west is the closest sister-plant geometry of any candidate. The team closed the working set to Atlanta, Phoenix, and Charlotte; Richmond is the most serious alternative if any of those three falls out.</div>
+        <div class="alt-block"><strong>Why set aside</strong> Smallest absolute college-and-young-pro field of the candidates — even reaching the whole of young-adult Richmond touches fewer people than reaching one neighborhood of Atlanta. UVA / Axiom adjacency 1h west is the closest sister-plant geography of any candidate. The team closed the working set to Atlanta, Phoenix, Charlotte, and New York; Richmond is the most serious alternative if one of those four falls out.</div>
       </div>
 
       <!-- 02 BERKELEY -->
@@ -3584,7 +3994,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <li>Energy + medical center + aerospace corporate base</li>
           <li>A2N-open</li>
         </ul>
-        <div class="alt-block"><strong>Why set aside</strong> Rice is elite-tier but too small to anchor; UH is mid-tier rather than flagship; ministry shelf is heavy (Lakewood, Champion Forest, Houston's First); Bible Belt baseline strong.</div>
+        <div class="alt-block"><strong>Why set aside</strong> Rice is elite-tier but too small to anchor; UH is mid-tier rather than flagship; many large churches are already at work in the city (Lakewood, Champion Forest, Houston's First); Bible Belt baseline strong.</div>
       </div>
 
       <!-- 04 GAINESVILLE -->
@@ -3598,7 +4008,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <li>Mid-Carolina pipeline geometry (~8h drive, 90-min flight to RDU)</li>
           <li>Gainesville metro is small (~140K)</li>
         </ul>
-        <div class="alt-block"><strong>Why set aside</strong> Phoenix-retention problem in extreme form. UF graduates scatter to Tampa, Orlando, Jacksonville, Atlanta, and Miami within twelve months of graduation. Gainesville itself is too small to retain a young-pro post-grad population for the flywheel to compound.</div>
+        <div class="alt-block"><strong>Why set aside</strong> The Phoenix question of how many graduates stay, in extreme form. UF graduates scatter to Tampa, Orlando, Jacksonville, Atlanta, and Miami within twelve months of graduation. Gainesville itself is too small to hold a young-pro post-grad population long enough for a discipleship arc to take root.</div>
       </div>
 
       <!-- 06 VIRGINIA TECH -->
@@ -3612,26 +4022,12 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <li>Drivable Carolina pipeline (3.5h to Chapel Hill, 3h to Charlotte)</li>
           <li>Blacksburg ~45K, MSA ~165K · Roanoke 40 mi NE</li>
         </ul>
-        <div class="alt-block"><strong>Why set aside</strong> Same college-town problem as Gainesville. VT engineering grads exit to NoVA/DC, RTP, Charlotte, Atlanta within months. Bivocational job market in SW Virginia is thin; the metro can't retain a young-pro post-grad population for the flywheel to compound.</div>
+        <div class="alt-block"><strong>Why set aside</strong> Same college-town problem as Gainesville. VT engineering grads exit to NoVA/DC, RTP, Charlotte, Atlanta within months. Bivocational work in SW Virginia is thin; the metro can't hold a young-pro post-grad population long enough for a discipleship arc to take root.</div>
       </div>
 
-      <!-- 07 NY / BROOKLYN -->
+      <!-- 07 PORTLAND -->
       <div class="alt-card">
-        <div class="alt-tag">— 07 · East Coast —</div>
-        <h3>New York · <em>Brooklyn / NYU / Columbia</em></h3>
-        <div class="alt-sub">The largest, most demographically dense option — and the most A2N-saturated.</div>
-        <ul>
-          <li>NYU + Columbia + St. John's + Stony Brook — multiple R1s and elite privates</li>
-          <li>Metro 19M; AAPI density real and concentrated (Flushing, Sunset Park, Edison NJ)</li>
-          <li>Bible Belt baseline among the lowest in the US</li>
-          <li>A2N: covered (Renew College Church across NYU/Columbia/SJU/Stony Brook)</li>
-        </ul>
-        <div class="alt-block"><strong>Why set aside</strong> A2N saturation across the metro's elite-public-and-private campuses; cost of living among highest in country; New York church-planting market is notoriously crowded.</div>
-      </div>
-
-      <!-- 06 PORTLAND -->
-      <div class="alt-card">
-        <div class="alt-tag">— 08 · Pacific Northwest —</div>
+        <div class="alt-tag">— 07 · Pacific Northwest —</div>
         <h3>Portland · <em>PSU + Reed</em></h3>
         <div class="alt-sub">Genuinely unreached — without a flagship anchor.</div>
         <ul>
@@ -3646,7 +4042,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 07 MIAMI -->
       <div class="alt-card">
-        <div class="alt-tag">— 09 · Florida —</div>
+        <div class="alt-tag">— 08 · Florida —</div>
         <h3>Miami · <em>University of Miami + FIU</em></h3>
         <div class="alt-sub">An emerging finance hub with a different demographic shape.</div>
         <ul>
@@ -3660,7 +4056,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 08 SLC -->
       <div class="alt-card">
-        <div class="alt-tag">— 10 · Mountain West —</div>
+        <div class="alt-tag">— 09 · Mountain West —</div>
         <h3>Salt Lake City · <em>University of Utah</em></h3>
         <div class="alt-sub">The most distinct mission field of any candidate considered.</div>
         <ul>
@@ -3674,7 +4070,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 09 BOULDER -->
       <div class="alt-card">
-        <div class="alt-tag">— 11 · Mountain West —</div>
+        <div class="alt-tag">— 10 · Mountain West —</div>
         <h3>Boulder + Denver · <em>CU Boulder</em></h3>
         <div class="alt-sub">Secular metro with a mid-tier flagship.</div>
         <ul>
@@ -3688,7 +4084,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 10 ST LOUIS -->
       <div class="alt-card">
-        <div class="alt-tag">— 12 · Midwest —</div>
+        <div class="alt-tag">— 11 · Midwest —</div>
         <h3>St. Louis · <em>Wash U</em></h3>
         <div class="alt-sub">Elite anchor in a shrinking metro.</div>
         <ul>
@@ -3714,49 +4110,62 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 <!-- DECISION (NEUTRAL) -->
 <section class="decision" id="decision">
   <div class="container">
-    <div class="eyebrow">§ X. The Verdict</div>
-    <h2>Three paths.<br>One <em>question</em>.</h2>
+    <div class="eyebrow">§ XI. The Verdict</div>
+    <h2>Four paths.<br>One <em>question</em>.</h2>
     <p class="lede">
-      The data is on the table. Each city has a coherent thesis, and the right answer depends less on which is "better" in the abstract than on which trade-offs the team is built to absorb. What follows is the framework — not the conclusion.
+      The picture is in front of us. Each city presents a coherent shape of obedience, and the right answer turns less on which is "better" in the abstract than on where the missional need most fits this team's calling — and which trade-offs the team is built to bear for the long haul. What follows is the discernment framework, not the conclusion.
     </p>
 
     <div class="frame-grid">
       <div class="frame-cell atl">
         <div class="label">— Choose Atlanta if —</div>
-        <h4>A <em>Tech-anchored Midtown</em> is the call.</h4>
+        <h4>A <em>Tech-anchored Midtown</em> is where the Lord is sending us.</h4>
         <ul>
-          <li>Georgia Tech as a deep, walking-distance anchor (with SCAD adjacency) is the play; broader multi-campus reach is upside, not premise</li>
-          <li>An AA ministry ecosystem to belong to and partner with matters more than landing in a less-saturated lane</li>
-          <li>The existing A2N plant in the metro feels like a partnership opportunity, not a constraint</li>
-          <li>The UNC ministry pipeline being live (drive / 90-min flight) is part of the recruiting math</li>
-          <li>Long retention compounding (10-year disciples → bivocational team) is core to the vision</li>
-          <li>Higher cost is offset by higher F500 / Big Tech bivocational job density</li>
+          <li>Georgia Tech as a deep, walking-distance anchor (with SCAD as a natural neighbor) is the work; broader multi-campus reach is grace, not premise</li>
+          <li>Walking alongside an existing AA ministry community matters more than entering a field with fewer co-laborers</li>
+          <li>The sister A2N plant in the metro feels like a brother work, not a constraint</li>
+          <li>The Carolina UNC network being live (drive / 90-min flight) is part of how the Lord is providing for the team</li>
+          <li>Long-arc discipleship (10-year disciples → bivocational co-laborers) is core to the calling</li>
+          <li>Higher cost is offset by deep F500 / Big Tech bivocational work that makes long faithful presence sustainable</li>
         </ul>
       </div>
 
       <div class="frame-cell phx">
         <div class="label">— Choose Phoenix if —</div>
-        <h4>The <em>open lane</em> is the call.</h4>
+        <h4>A <em>post-Christian Sun Belt field</em> is where the Lord is sending us.</h4>
         <ul>
-          <li>Building something that doesn't yet exist matters more than slotting into a scene</li>
-          <li>The dual-anchor logic (ASU as field + GCU as pipeline) is the strategic asymmetry you want</li>
-          <li>~25% lower cost of living changes the bivocational math meaningfully</li>
-          <li>The team is willing to pioneer without an established AA partner network</li>
-          <li>Riding a fast-growing metro's demographic wave is part of the strategic bet</li>
-          <li>Sending (plant + missions) matters as much to the vision as local retention</li>
+          <li>The greater missional need — a city the gospel is faintly heard in — matters more than the warmth of a Bible-Belt baseline</li>
+          <li>The two-anchor geometry the Lord set in place (ASU as mission field + GCU as leadership pipeline) is the gift the team is leaning on</li>
+          <li>~25% lower cost of living gives the team a longer sustainable presence here</li>
+          <li>The team is willing to plant without a deep AA ministry community to walk with</li>
+          <li>Living among a stream of young adults still arriving in the Valley is part of the calling</li>
+          <li>Sending (plant + missions) matters as much to the vision as how many graduates stay</li>
         </ul>
       </div>
 
       <div class="frame-cell clt">
         <div class="label">— Choose Charlotte if —</div>
-        <h4>A <em>banking-anchored</em>, Carolina-live play is the call.</h4>
+        <h4>A <em>banking-anchored, Carolina-live</em> field is where the Lord is sending us.</h4>
         <ul>
-          <li>The Carolina pipeline being literal — 2.5h drive to Chapel Hill — is the asymmetry you want most</li>
-          <li>One real anchor (UNCC) is enough; the team isn't optimizing for multi-campus density</li>
-          <li>Banking corporate depth (BoA, Truist, Honeywell, Lowe's) fits the bivocational profile</li>
-          <li>The cleanest open lane on the team's profile — no incumbent runs the integrated AA-led college-and-young-pro play here</li>
-          <li>South-suburb AA growth (Ballantyne / Concord) feels like Gwinnett ten years ago</li>
-          <li>Triangle A2N adjacency 2.5h up I-85 is workable, not a blocker</li>
+          <li>The Carolina UNC network being literal — 2.5h drive to Chapel Hill — is the gift the team most wants to use</li>
+          <li>One real anchor (UNCC) is enough; the team isn't trying to be a multi-campus body</li>
+          <li>Banking depth (BoA, Truist, Honeywell, Lowe's) fits the bivocational rhythm</li>
+          <li>The most room of any city for the particular shape of work this team is sent to do — no existing church holds the integrated AA-led college-and-young-pro work here</li>
+          <li>South-suburb AA growth (Ballantyne / Concord) is a community to live among, not just minister to</li>
+          <li>Triangle A2N adjacency 2.5h up I-85 is a relationship to honor, not a blocker</li>
+        </ul>
+      </div>
+
+      <div class="frame-cell nyc">
+        <div class="label">— Choose New York if —</div>
+        <h4>A <em>least-reached</em>, multi-campus Brooklyn field is where the Lord is sending us.</h4>
+        <ul>
+          <li>The greatest missional need — a young-adult field with low-single-digit evangelical density — outweighs every other consideration</li>
+          <li>Four campuses in one walking radius (Tandon, LIU, Pratt, St. Francis) is a multi-campus mission field most cities cannot offer</li>
+          <li>The team is built to give their lives here for ten years, not three — a body that <em>stays</em> against Brooklyn's transience</li>
+          <li>The two-wing bridge (undergrads mentoring high-schoolers; young pros anchoring the body) fits the team's distinctives and Brooklyn's geography</li>
+          <li>Brooklyn's historically Black neighborhoods (Fort Greene, Clinton Hill, Bed-Stuy) are the cultural memory an AA-led plant should root in</li>
+          <li>The team is willing to plan a runway honest about the city's severe cost — and to walk in respect alongside the existing Brooklyn churches already at work</li>
         </ul>
       </div>
 
@@ -3765,14 +4174,14 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
     <div class="questions-list">
       <h3>— Questions to sit with before deciding —</h3>
       <ol>
-        <li>What is genuinely non-negotiable about the calling — academic anchor strength, multi-campus reach, less-saturated lane, or Carolina-pipeline geometry?</li>
-        <li>How much does academic seriousness of the anchor campus weigh? Top-tier R1 favors GT (Atlanta); ASU and VCU are mid-tier with real strength; UNCC's commuter-leaning mid-tier profile is the binding constraint on Charlotte under this filter.</li>
-        <li>Is the partnership with the existing A2N plant a feature of the Atlanta thesis, or could it become a structural tension?</li>
-        <li>How does the team weigh Carolina-pipeline geometry against the saturation cost? Atlanta and Charlotte preserve the pipeline; Phoenix doesn't.</li>
-        <li>How long is the team committed for? Five years favors Phoenix's or Charlotte's open lane; fifteen favors Atlanta's compounding.</li>
-        <li>Which trade-off is the team built to absorb — higher saturation, higher pioneer cost, or sister-plant adjacency?</li>
-        <li>Where does the team's spouses, children, and aging-parent infrastructure point?</li>
-        <li>Which city does the team actually <em>want</em> to live in for a decade?</li>
+        <li>Where is the missional need greatest — and where does that need most fit the shape of this team's calling? (Phoenix and New York carry the heaviest lostness; Atlanta and Charlotte sit inside warmer Bible-Belt baselines.)</li>
+        <li>How much does academic seriousness of the anchor campus weigh? Top-tier R1 favors GT (Atlanta); NYU Tandon (NYC) is engineering-elite within the four-campus shape; ASU and UNCC are mid-tier with real strength.</li>
+        <li>Is the brother A2N plant in Atlanta a gift to receive, or a relationship the team is not built to steward?</li>
+        <li>How does the team weigh Carolina UNC network geometry against the missional need elsewhere? Atlanta and Charlotte keep the network live; Phoenix and New York do not.</li>
+        <li>How long is the team committed for? Five years tilts toward Phoenix or Charlotte; ten or more makes Atlanta's long-arc discipleship and Brooklyn's "body that stays" both viable.</li>
+        <li>Which cost is the team built to bear — Atlanta's saturation, Phoenix's pioneering, Charlotte's geography, or New York's severe cost of living?</li>
+        <li>Where do the team's spouses, children, and aging-parent realities point?</li>
+        <li>Which city is the Lord giving the team a peace and a love for — to live in, raise families in, and bury people in for a decade?</li>
       </ol>
     </div>
 
@@ -3805,20 +4214,21 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 <footer class="footer">
   <div class="container footer-row">
     <span>Field Guide Vol. I</span>
-    <span>Three Cities — One Calling</span>
-    <span>A Strategic Field Guide</span>
+    <span>Four Cities — One Calling</span>
+    <span>A Discernment Field Guide</span>
   </div>
 </footer>
 
 <script>
 // ============ TABS ============
-const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'alternatives', 'verdict'];
+const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'newyork', 'alternatives', 'verdict'];
 
-const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'verdict']);
+const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'newyork', 'verdict']);
 const CITY_ACCENTS = {
   atlanta: 'var(--atl-gold)',
   phoenix: 'var(--phx-sand)',
   charlotte: 'var(--clt-gold)',
+  newyork: 'var(--nyc-brick)',
 };
 
 function activateTab(tabId, opts = {}) {
