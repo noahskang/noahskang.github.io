@@ -1294,6 +1294,118 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .dossier-clt .bar-fill { background: linear-gradient(90deg, var(--clt-gold), #D6B583); }
 .dossier-clt .dossier-hero .photo-cap { color: rgba(236,228,210,0.7); }
 
+/* ============ WEEKEND SCOPING (collapsible) ============ */
+.scoping {
+  margin: 4rem 0 2rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.03);
+}
+.scoping summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.scoping summary::-webkit-details-marker { display: none; }
+.scoping summary:hover { background: rgba(255,255,255,0.04); }
+.scoping summary .label-side {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.scoping summary .arr {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-style: italic;
+  transition: transform 0.25s ease;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  opacity: 0.75;
+}
+.scoping[open] summary .arr { transform: rotate(90deg); }
+.scoping summary .lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.dossier-atl .scoping summary .lead em { color: var(--atl-gold); font-style: italic; }
+.dossier-phx .scoping summary .lead em { color: var(--phx-sand); font-style: italic; }
+.dossier-clt .scoping summary .lead em { color: var(--clt-gold); font-style: italic; }
+.scoping summary .count {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  opacity: 0.55;
+}
+.scoping-body {
+  padding: 0.4rem 1.8rem 1.6rem;
+  border-top: 1px dashed rgba(255,255,255,0.14);
+}
+.scoping-body p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.78;
+}
+.scoping-list {
+  list-style: none;
+  counter-reset: scope;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 2rem;
+}
+@media (max-width: 720px) { .scoping-list { grid-template-columns: 1fr; } }
+.scoping-list li {
+  counter-increment: scope;
+  position: relative;
+  padding: 0.55rem 0 0.55rem 2.2rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+.scoping-list li:last-child,
+.scoping-list li:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+.scoping-list li::before {
+  content: counter(scope, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+}
+.dossier-atl .scoping-list li::before { color: var(--atl-gold); }
+.dossier-phx .scoping-list li::before { color: var(--phx-sand); }
+.dossier-clt .scoping-list li::before { color: var(--clt-gold); }
+.scoping-list li strong {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.15rem;
+}
+.scoping-list li .why {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  opacity: 0.55;
+  margin-top: 0.25rem;
+}
+
 /* ============ VIDEO GRID (inside Campus Life blocks) ============ */
 .video-grid-label {
   font-family: var(--mono);
@@ -2286,6 +2398,32 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       </div>
     </div>
 
+    <!-- weekend scoping (collapsible) -->
+    <details class="scoping">
+      <summary>
+        <span class="label-side">
+          <span class="arr">›</span>
+          <span class="lead">Weekend scoping trip · <em>top 10 to check out</em></span>
+        </span>
+        <span class="count">10 stops</span>
+      </summary>
+      <div class="scoping-body">
+        <p>If a weekend in Atlanta is the next step, this is the path that surfaces what's actually true about the Tech-and-Midtown thesis — students, young pros, incumbents, and the AAPI corridor. Aim for Friday night → Sunday afternoon. Plan around a Sunday service and a Tuesday-night-feel proxy if you can stay an extra day.</p>
+        <ol class="scoping-list">
+          <li><strong>Walk Tech end-to-end</strong>North Ave → Tech Square → 5th St Greek → Home Park<span class="why">campus density and the Midtown border in 45 min</span></li>
+          <li><strong>Sunday at Passion City — 515 Lindbergh</strong>see the AAPI-young-pro magnet at scale<span class="why">7,000+ a Sunday; comp for what "draw" looks like</span></li>
+          <li><strong>Walk Midtown</strong>North Ave MARTA → Piedmont Park along Peachtree<span class="why">where Tech grads stay through their twenties</span></li>
+          <li><strong>Armour Collective at Christ Covenant</strong>Tuesday night, 221 Armour Dr<span class="why">closest format comp to a midweek young-adult gathering</span></li>
+          <li><strong>West Midtown brewery + warehouse district</strong>Westside Provisions, Monday Night, Bellwood Quarry<span class="why">where post-grad young pros actually live</span></li>
+          <li><strong>Sunday at Grace Midtown</strong>English Ave near GT — 300–500 / svc<span class="why">current Tech-adjacent plant; same demographic catchment</span></li>
+          <li><strong>Old Fourth Ward + Krog Street Market</strong>BeltLine east-side, walkable along Edgewood<span class="why">second-tier young-pro density; alternative anchor</span></li>
+          <li><strong>Drive Buford Highway → Duluth</strong>30 min NE through the AAPI corridor<span class="why">Gwinnett vs. Midtown is the "two worlds" geography</span></li>
+          <li><strong>Coffee at Spiller Park (Tech Square) or Octane Westside</strong>weekday morning if possible<span class="why">where Tech students and young pros overlap</span></li>
+          <li><strong>Rooted Church (Sunday at GT or Emory)</strong>2025 A2N plant — the related work in the metro<span class="why">scope partnership posture face-to-face</span></li>
+        </ol>
+      </div>
+    </details>
+
     <!-- verdict -->
     <div class="verdict">
       <div>
@@ -2930,6 +3068,32 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       </div>
     </div>
 
+    <!-- weekend scoping (collapsible) -->
+    <details class="scoping">
+      <summary>
+        <span class="label-side">
+          <span class="arr">›</span>
+          <span class="lead">Weekend scoping trip · <em>top 10 to check out</em></span>
+        </span>
+        <span class="count">10 stops</span>
+      </summary>
+      <div class="scoping-body">
+        <p>If a weekend in Phoenix is the next step, this is the path that surfaces what's actually true about the ASU + GCU dual-anchor thesis. Aim Thursday night → Sunday morning so you can hit Salt Company's midweek and a Sunday service in the same trip. Avoid June–August unless you want to feel the dispersal pattern.</p>
+        <ol class="scoping-list">
+          <li><strong>Salt Company at ASU — Thursday night</strong>main college midweek incumbent<span class="why">closest format comp; the lane the plant would compete in</span></li>
+          <li><strong>Walk Mill Avenue on a school night</strong>Mill + University + Apache — the social heart<span class="why">where the 80K student body actually socializes</span></li>
+          <li><strong>Walk ASU Tempe campus</strong>Hassayampa, Memorial Union, Sun Devil Stadium edge<span class="why">scale you don't get from photos</span></li>
+          <li><strong>Hope Phoenix Sunday at Marquee Theatre</strong>Mill Ave, college-focused Sunday<span class="why">the second incumbent on the college slice</span></li>
+          <li><strong>Visit Grand Canyon University</strong>Christian-formation pipeline, 25 min NW of Tempe<span class="why">see why the dual-anchor thesis is real</span></li>
+          <li><strong>Drive Apache Boulevard</strong>student-housing strip east of campus<span class="why">where the off-campus 75% lives</span></li>
+          <li><strong>Drive Chandler / Gilbert AAPI corridor</strong>20 min SE — Tempe to Chandler Fashion Center<span class="why">TSMC fab + Indian-American suburb context</span></li>
+          <li><strong>Sunday at CCV or Redemption Church</strong>family-Sunday-side megachurch incumbents<span class="why">scope the post-college / family-anchor lane</span></li>
+          <li><strong>Tempe Center for the Arts + Tempe Marketplace</strong>walk both — venue scoping<span class="why">Sunday venue alternatives to Marquee</span></li>
+          <li><strong>Coffee at Cartel Coffee Lab or Songbird (Tempe)</strong>third-place texture<span class="why">where ASU + Mill Ave overlap</span></li>
+        </ol>
+      </div>
+    </details>
+
     <div class="verdict">
       <div>
         <h4>— Where Phoenix wins —</h4>
@@ -3292,6 +3456,32 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <p style="margin-top: 1.8rem;">The honest version of the Charlotte bet: <strong>cleanest open-lane fit on the team's profile</strong>, with a structural geography problem (one anchor campus 12 miles from where young-pros live) that has to be solved deliberately rather than ignored. The upside is a defensible AA-led, integrated college-and-young-pro plant in a metro the country is moving to, with the Carolina pipeline geographically live and the bivocational job market genuinely deep on the finance side.</p>
       </div>
     </div>
+
+    <!-- weekend scoping (collapsible) -->
+    <details class="scoping">
+      <summary>
+        <span class="label-side">
+          <span class="arr">›</span>
+          <span class="lead">Weekend scoping trip · <em>top 10 to check out</em></span>
+        </span>
+        <span class="count">10 stops</span>
+      </summary>
+      <div class="scoping-body">
+        <p>If a weekend in Charlotte is the next step, this is the path that surfaces what's actually true about the South-End-with-UNCC-bridge thesis. Aim Friday afternoon → Sunday afternoon. The Blue Line is non-negotiable to ride end-to-end at least once.</p>
+        <ol class="scoping-list">
+          <li><strong>Walk South End along the Blue Line</strong>Camden → Atherton Mill → Optimist Hall<span class="why">the densest young-pro neighborhood in the candidate set</span></li>
+          <li><strong>Sunday at Elevation</strong>Ballantyne or Uptown campus<span class="why">the metro's gravitational center; understand the cultural baseline</span></li>
+          <li><strong>Light rail UNCC → South End</strong>ride the full 25–30 min route<span class="why">feel the gap the plant has to bridge</span></li>
+          <li><strong>Walk UNCC campus</strong>Greek Village, MLK Hall, North Halls<span class="why">the residential R1 transition in real time</span></li>
+          <li><strong>Plaza Midwood + NoDa walking tour</strong>second-tier young-pro neighborhood<span class="why">design-forward / arts-leaning slice of the demo</span></li>
+          <li><strong>Sunday at Forest Hill or Calvary</strong>mid-size young-adult / college-aware plays<span class="why">scope the lane below Elevation gravity</span></li>
+          <li><strong>Optimist Hall food hall + South End breweries</strong>third-place texture<span class="why">where 24–32-year-olds actually spend their weekends</span></li>
+          <li><strong>Drive Ballantyne → Concord</strong>south-suburb AA corridor, 30–45 min<span class="why">Indian-American suburban density up close</span></li>
+          <li><strong>Coffee at Not Just Coffee (South End) or Common Market</strong>weekday morning if possible<span class="why">where work-from-anywhere young pros gather</span></li>
+          <li><strong>Davidson College day trip (25 min N)</strong>elite small private adjacency<span class="why">scope the secondary-anchor partnership question</span></li>
+        </ol>
+      </div>
+    </details>
 
     <!-- verdict -->
     <div class="verdict">
