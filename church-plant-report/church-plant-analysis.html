@@ -1294,6 +1294,84 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .dossier-clt .bar-fill { background: linear-gradient(90deg, var(--clt-gold), #D6B583); }
 .dossier-clt .dossier-hero .photo-cap { color: rgba(236,228,210,0.7); }
 
+/* ============ VIDEO GRID (inside Campus Life blocks) ============ */
+.video-grid-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed rgba(255,255,255,0.18);
+  margin-bottom: 0.7rem;
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin: 0.6rem 0 0.4rem;
+}
+@media (max-width: 720px) { .video-grid { grid-template-columns: 1fr; } }
+.video-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.14);
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
+}
+.video-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.32);
+  background: rgba(255,255,255,0.07);
+}
+.video-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: rgba(0,0,0,0.3);
+}
+.video-thumb img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.video-card:hover .video-thumb img { opacity: 1; }
+.video-thumb::after {
+  content: "▶";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px; height: 30px;
+  background: rgba(0,0,0,0.65);
+  border-radius: 50%;
+  font-size: 10px;
+  color: rgba(255,255,255,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.video-meta {
+  padding: 0.55rem 0.7rem 0.6rem;
+}
+.video-title {
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  line-height: 1.3;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+.video-source {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  opacity: 0.55;
+  text-transform: uppercase;
+}
+
 /* ============ CAMPUS LIFE block (inside dossiers) ============ */
 .campus-stats {
   display: grid;
@@ -2007,9 +2085,20 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <div class="campus-stat"><div class="num">400</div><div class="lbl">acres · walkable<br>end-to-end in 15 min</div></div>
           <div class="campus-stat"><div class="num">~25%</div><div class="lbl">Greek<br>participation</div></div>
         </div>
-        <p>Tech runs unusually high residential density for a major US R1 — roughly 57% of undergrads live in on-campus housing, well above the typical commuter-leaning state-school pattern. Freshmen and most sophomores are housed in the Tech-managed dorms (West Village, North Avenue Apartments, Towers); upperclassmen in apartments and Greek housing concentrated on 5th Street and Tech Square's edges. The "off-campus" undergrad most commonly lives in <strong>Home Park</strong> (the residential neighborhood immediately west of campus, full of rented houses and apartments), in Tech Square apartments, or in Midtown high-rises within walking distance.</p>
-        <p>The campus borders Midtown, with North Avenue and Midtown MARTA stations a 5–10 minute walk away — students reach Midtown / Buckhead / Decatur / nightlife by transit without needing cars. Greek life is real (~25% participation) with houses on campus along 5th Street.</p>
-        <p style="margin-top: 1.4rem;"><strong>The cultural shape:</strong> ~50% of degrees are in engineering — academic culture is rigorous, technical, collaborative on team-based coursework, and competitive. ~45% Asian undergrad — the highest AAPI density of any candidate. ACC athletics with strong football/basketball culture, but academic identity dominates social identity in a way it doesn't at ASU or UNCC. International student presence is substantial.</p>
+        <p><strong>Where students live:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li>On-campus dorms (~10K beds): West Village, North Avenue Apartments, Towers — freshmen + most sophomores</li>
+          <li>Greek + upper-division apartments along 5th Street and Tech Square edges</li>
+          <li>Off-campus undergrads cluster in <strong>Home Park</strong> (immediately west of campus), Tech Square, and walkable Midtown high-rises</li>
+          <li>North Avenue + Midtown MARTA stations a 5–10 min walk → Buckhead, Decatur, nightlife reachable without a car</li>
+        </ul>
+        <p><strong>Cultural shape:</strong></p>
+        <ul style="padding-left: 1.2rem; opacity: 0.88;">
+          <li>~50% of degrees are in engineering — academic identity dominates social identity in a way it doesn't at ASU or UNCC</li>
+          <li>~45% Asian undergrad — highest AAPI density of any candidate</li>
+          <li>ACC athletics with real football / basketball culture; ~25% Greek participation</li>
+          <li>Substantial international student presence, especially in graduate programs</li>
+        </ul>
 
         <div class="campus-map">
           <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
@@ -2063,6 +2152,31 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <text x="300" y="305" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#EFE8D6" opacity="0.5">FIG. — Georgia Tech + adjacent neighborhoods · schematic, not to scale</text>
           </svg>
           <div class="campus-map-cap">— Georgia Tech: residential anchor inside Midtown's young-pro radius —</div>
+        </div>
+
+        <div class="video-grid-label">— See it · Atlanta + Georgia Tech on video —</div>
+        <div class="video-grid">
+          <a class="video-card" href="https://www.youtube.com/watch?v=NOpt5SCDu_Q" target="_blank" rel="noopener">
+            <div class="video-thumb"><img src="https://img.youtube.com/vi/NOpt5SCDu_Q/mqdefault.jpg" alt="Georgia Tech 4K virtual walking campus tour" loading="lazy"></div>
+            <div class="video-meta">
+              <div class="video-title">Georgia Tech — 4K virtual walking campus tour</div>
+              <div class="video-source">YouTube · campus walkthrough</div>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=_1gYnCbWfTA" target="_blank" rel="noopener">
+            <div class="video-thumb"><img src="https://img.youtube.com/vi/_1gYnCbWfTA/mqdefault.jpg" alt="A Realistic Day In The Life At Georgia Tech" loading="lazy"></div>
+            <div class="video-meta">
+              <div class="video-title">A Realistic Day In The Life at Georgia Tech</div>
+              <div class="video-source">YouTube · student vlog</div>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=YHm7Ay_8_8Y" target="_blank" rel="noopener">
+            <div class="video-thumb"><img src="https://img.youtube.com/vi/YHm7Ay_8_8Y/mqdefault.jpg" alt="Full Walking Midtown Atlanta Tour" loading="lazy"></div>
+            <div class="video-meta">
+              <div class="video-title">Midtown Atlanta — full walking tour</div>
+              <div class="video-source">YouTube · neighborhood walk</div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -2575,9 +2689,21 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <div class="campus-stat"><div class="num">660</div><div class="lbl">acres · plus<br>distributed Tempe city</div></div>
           <div class="campus-stat"><div class="num">80K</div><div class="lbl">total students<br>(largest US campus)</div></div>
         </div>
-        <p>~25% of ASU undergrads live in on-campus housing — typical for a giant flagship public; the other ~75% live across Tempe in apartments and student-housing complexes within walking, biking, or short-driving distance. Freshmen and many sophomores are housed in purpose-built residential complexes (Hassayampa Academic Village, Manzanita Hall, Tooker House). The <strong>Mill Avenue corridor</strong>, just south of campus and within walking distance, is the social heart — bars, restaurants, music venues, and student-housing midrises stacked along Mill, University Drive, and Apache Boulevard. <strong>Tempe is 190K residents</strong>, a college-dominated city in its own right. The "ASU experience" is distributed across the city rather than concentrated on a small footprint.</p>
-        <p>Valley Metro light rail connects the Tempe campus to ASU Downtown Phoenix, the East Valley, and Sky Harbor; bike, scooter, and skateboard culture is heavy. Residential rent in Tempe runs $1,500–$1,800 for a 1BR — well under Atlanta or Charlotte.</p>
-        <p style="margin-top: 1.4rem;"><strong>The cultural shape:</strong> sheer scale shapes the experience — the largest single-campus enrollment in the United States produces a "city within a university within a city" rhythm. The pre-Crow social reputation has shifted under "New American University" framing, and Barrett Honors College adds a more academically serious slice. Big athletics (Big 12 Sun Devils), real Greek presence, and a meaningful international and out-of-state population. Hot summers (110°+) genuinely empty Tempe — students return home; programming has to design around it, not fight it.</p>
+        <p><strong>Where students live:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li>On-campus dorms (~14K beds): Hassayampa Academic Village, Manzanita Hall, Tooker House — freshmen + many sophomores</li>
+          <li>~75% of undergrads off-campus, distributed across Tempe (a 190K college-dominated city in its own right)</li>
+          <li><strong>Mill Avenue corridor</strong> (south of campus): bars, restaurants, music venues, student-housing midrises along Mill, University Dr, Apache Blvd — the social heart</li>
+          <li>Valley Metro light rail connects Tempe → ASU Downtown PHX → East Valley → Sky Harbor</li>
+          <li>Tempe 1BR rent: $1,500–$1,800 — well under Atlanta or Charlotte</li>
+        </ul>
+        <p><strong>Cultural shape:</strong></p>
+        <ul style="padding-left: 1.2rem; opacity: 0.88;">
+          <li>Sheer scale defines the experience — "city within a university within a city" rhythm</li>
+          <li>Pre-Crow social reputation has shifted under "New American University" framing; Barrett Honors adds an academically serious slice</li>
+          <li>Big 12 Sun Devils athletics + real Greek presence + heavy bike / scooter / skateboard culture</li>
+          <li>Hot summers (110°+) genuinely empty Tempe — programming has to design around it, not fight it</li>
+        </ul>
 
         <div class="campus-map">
           <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
@@ -2617,6 +2743,31 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <text x="300" y="305" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#F0E4CB" opacity="0.5">FIG. — ASU Tempe + Mill Ave + Apache · schematic, not to scale</text>
           </svg>
           <div class="campus-map-cap">— ASU Tempe: campus extends through Mill Ave and Apache Blvd into Tempe city —</div>
+        </div>
+
+        <div class="video-grid-label">— See it · Tempe + ASU on video —</div>
+        <div class="video-grid">
+          <a class="video-card" href="https://www.youtube.com/watch?v=x0HeJsIFXGU" target="_blank" rel="noopener">
+            <div class="video-thumb"><img src="https://img.youtube.com/vi/x0HeJsIFXGU/mqdefault.jpg" alt="Guided ASU Tempe campus tour" loading="lazy"></div>
+            <div class="video-meta">
+              <div class="video-title">Guided ASU Tempe campus tour</div>
+              <div class="video-source">YouTube · official walkthrough</div>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=lXlOLqSSHkU" target="_blank" rel="noopener">
+            <div class="video-thumb"><img src="https://img.youtube.com/vi/lXlOLqSSHkU/mqdefault.jpg" alt="Mill Avenue Tempe night drive 4K" loading="lazy"></div>
+            <div class="video-meta">
+              <div class="video-title">Mill Avenue Tempe — night drive (4K)</div>
+              <div class="video-source">YouTube · neighborhood</div>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=bdmFNZLnHLs" target="_blank" rel="noopener">
+            <div class="video-thumb"><img src="https://img.youtube.com/vi/bdmFNZLnHLs/mqdefault.jpg" alt="Arizona State University campus tour student vlog" loading="lazy"></div>
+            <div class="video-meta">
+              <div class="video-title">ASU campus tour — student perspective</div>
+              <div class="video-source">YouTube · student vlog</div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -2711,10 +2862,27 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <div class="label"><span class="num">07</span>The Reputation Shift</div>
       <div>
         <h3>Improving and isolated — <em>better than its reputation, not a flagship peer</em>.</h3>
-        <p>For two decades, ASU's national reputation was set by the Princeton Review's annual party-school list, which named ASU the country's #1 party school in 2002 — and the perception calcified. Reality has moved. Under President Michael Crow's "New American University" model (2002 forward), ASU has been ranked the #1 most innovative university in the United States by U.S. News for ten consecutive years, average incoming-freshman GPA has climbed past 3.5, and research expenditures now sit alongside the upper R1 tier. The Cronkite School of Journalism, the W. P. Carey School of Business, and the Ira A. Fulton Schools of Engineering all run nationally competitive programs.</p>
-        <p>Barrett, the Honors College, deserves a calibrated read. It is one of the country's largest and best-regarded public honors colleges (~7,100 students, average SAT ~1347, ~30% acceptance, top-rated by Public University Honors) and offers a self-contained residential community with its own dorms and curriculum. But the student-quality profile is closer to "strong public-honors" than "top-25 private" — average Barrett SAT runs 100–150 points below top-25 admit medians, and the cross-admit pool is more often UA Honors / UMD Honors / Penn State Schreyer than Vanderbilt or Duke. Real, valuable, and a meaningful talent layer at ASU; not a substitute for a flagship-tier anchor.</p>
-        <p>The harder structural fact for an academic-anchor-sensitive plant: <strong>ASU is academically isolated</strong>. The closest elite institution is Caltech, ~370 miles and a six-hour drive west. The closest in-state peer is the University of Arizona in Tucson (~110 miles), a solid mid-tier R1 but not elite. There is no nearby Emory-to-GT, Davidson-to-UNCC, Stanford-to-Berkeley, or UVA-to-VCU regional cluster. ASU stands alone in a way none of the other candidates do.</p>
-        <p>The campus today pulls two ways at once: residual social culture from a large state school, plus a fast-rising academic and research engine. For a college plant, that is genuinely interesting — there is a real apologetic and pastoral lane on a campus most ministries underestimate, especially within Barrett's intellectually serious slice. But for a team that has identified academic seriousness of the anchor as a meaningful criterion, ASU + Barrett reads as "improving public R1" rather than "flagship-tier anchor with elite peer ecosystem nearby."</p>
+        <p><strong>The improvement story is real:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li>"#1 most innovative university" (U.S. News) ten consecutive years under Crow's New American University model</li>
+          <li>Average incoming-freshman GPA past 3.5; research expenditures in the upper R1 tier</li>
+          <li>Cronkite (journalism), W. P. Carey (business), Fulton (engineering) all nationally competitive</li>
+        </ul>
+        <p><strong>Barrett Honors College — calibrated read:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li>~7,100 students · avg SAT ~1347 · ~30% acceptance · top-rated by Public University Honors</li>
+          <li>Self-contained residential community with own dorms and curriculum</li>
+          <li>But: student profile is closer to "strong public-honors" than "top-25 private" — avg SAT runs 100–150 below top-25 medians</li>
+          <li>Cross-admit pool is more UA Honors / UMD Honors / Penn State Schreyer than Vanderbilt or Duke</li>
+          <li>Real talent layer; not a flagship-tier substitute</li>
+        </ul>
+        <p><strong>The harder fact — academic isolation:</strong></p>
+        <ul style="padding-left: 1.2rem; opacity: 0.88;">
+          <li>Closest elite institution: Caltech (~370 mi / 6h drive)</li>
+          <li>Closest in-state peer: U Arizona, Tucson (~110 mi) — mid-tier R1, not elite</li>
+          <li>No regional cluster comparable to Emory-to-GT, Davidson-to-UNCC, or UVA-to-VCU</li>
+          <li>For an academic-anchor-sensitive plant, ASU + Barrett reads as "improving public R1," not "flagship anchor with elite peer ecosystem"</li>
+        </ul>
       </div>
     </div>
 
@@ -2870,9 +3038,21 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <div class="campus-stat"><div class="num">1,000</div><div class="lbl">acres · large but<br>12 mi from Uptown</div></div>
           <div class="campus-stat"><div class="num">~6%</div><div class="lbl">Greek<br>participation</div></div>
         </div>
-        <p>~30% of UNCC undergrads live in on-campus housing — meaningfully higher than a generation ago, but still commuter-leaning by national R1 standards. The other ~70% live in nearby off-campus apartments along W.T. Harris Boulevard, North Tryon Street, and the broader <strong>University City</strong> corridor that surrounds the campus on all sides. On-campus options include Greek Village, North Halls, South Village, MLK Hall, and the Lynch / Belk / Holshouser cluster. The campus is large (~1,000 acres) and well-served by parking — many students drive. ~85% of UNCC's student body is in-state, giving the campus a distinctly North Carolina regional identity.</p>
-        <p>The single most important post-2018 change in UNCC student life is the <strong>Blue Line light-rail extension</strong> to campus, opened in 2018, which connects UNCC to Uptown, South End, and the NoDa young-pro neighborhoods in 25–30 minutes. Students travel into Uptown / South End for internships, jobs, and social life by light rail in a way they couldn't a decade ago — but the gap is still real. Many UNCC undergrads spend most of their time in the University City bubble; the city's young-pro density (where the proposed plant would anchor) lives at the other end of the rail line.</p>
-        <p style="margin-top: 1.4rem;"><strong>The cultural shape:</strong> AAC athletics — football and basketball both growing, but smaller-scale than GT or ASU. Greek life is small (~5–7%) and not a dominant social anchor. UNCC was founded in 1965, so traditions are still forming and the campus identity is more academic-and-residential than Greek-anchored or athletics-anchored. Record fall 2025 enrollment (32K) reflects the school's transition from "commuter university" to genuine residential R1.</p>
+        <p><strong>Where students live:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li>On-campus housing (~6.5K beds): Greek Village, North Halls, South Village, MLK Hall, Lynch / Belk / Holshouser</li>
+          <li>~70% off-campus in <strong>University City</strong> apartments along W.T. Harris Blvd and N. Tryon St</li>
+          <li>~85% of student body is in-state — distinctly North Carolina regional identity</li>
+          <li><strong>Blue Line light-rail extension</strong> (opened 2018) connects UNCC → Uptown / South End / NoDa in 25–30 min</li>
+          <li>Many undergrads still spend most of their time in the University City bubble — the gap to Charlotte's young-pro neighborhoods is real</li>
+        </ul>
+        <p><strong>Cultural shape:</strong></p>
+        <ul style="padding-left: 1.2rem; opacity: 0.88;">
+          <li>AAC athletics — football and basketball both growing, smaller-scale than GT or ASU</li>
+          <li>Greek life small (~5–7%); not a dominant social anchor</li>
+          <li>Founded 1965 — traditions still forming; identity more academic-and-residential than Greek- or athletics-anchored</li>
+          <li>Record fall 2025 enrollment (32K) reflects the school's transition from "commuter university" to genuine residential R1</li>
+        </ul>
 
         <div class="campus-map">
           <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
@@ -2916,6 +3096,31 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <text x="300" y="305" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#ECE4D2" opacity="0.5">FIG. — UNCC + Charlotte urban core · schematic, not to scale</text>
           </svg>
           <div class="campus-map-cap">— UNCC sits 12 miles from where Charlotte's young pros live; Blue Line bridges the gap —</div>
+        </div>
+
+        <div class="video-grid-label">— See it · Charlotte + UNCC on video —</div>
+        <div class="video-grid">
+          <a class="video-card" href="https://www.youtube.com/watch?v=_oSvCYwciak" target="_blank" rel="noopener">
+            <div class="video-thumb"><img src="https://img.youtube.com/vi/_oSvCYwciak/mqdefault.jpg" alt="UNC Charlotte campus tour" loading="lazy"></div>
+            <div class="video-meta">
+              <div class="video-title">UNC Charlotte — campus tour</div>
+              <div class="video-source">YouTube · student vlog</div>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=QEnilBckE7o" target="_blank" rel="noopener">
+            <div class="video-thumb"><img src="https://img.youtube.com/vi/QEnilBckE7o/mqdefault.jpg" alt="LoSo Lower South End Charlotte walking tour" loading="lazy"></div>
+            <div class="video-meta">
+              <div class="video-title">Lower South End (LoSo) — walking tour</div>
+              <div class="video-source">YouTube · neighborhood</div>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=ZcrQ1WBjqAk" target="_blank" rel="noopener">
+            <div class="video-thumb"><img src="https://img.youtube.com/vi/ZcrQ1WBjqAk/mqdefault.jpg" alt="Charlotte NC 4K Saturday evening walking tour South End" loading="lazy"></div>
+            <div class="video-meta">
+              <div class="video-title">Charlotte — South End 4K evening walk</div>
+              <div class="video-source">YouTube · 4K walking tour</div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -3026,8 +3231,21 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <div class="label"><span class="num">08</span>Banking Capital Character</div>
       <div>
         <h3>The post-pandemic <em>second financial city</em>.</h3>
-        <p>Charlotte spent the 2010s as a regional banking center; the 2020s have promoted it. Bank of America headquarters anchors the Uptown skyline (Trade & Tryon), but the deeper shift is the post-pandemic migration of finance and tech-in-finance roles out of New York and San Francisco. JPMorgan Chase's expanded Charlotte footprint, Truist's HQ relocation completion, Lowe's Tech Hub buildout in South End, Honeywell's HQ move from New Jersey, and the steady accretion of fintech (LendingTree, AvidXchange) and consulting (the Big Four all hold meaningful Charlotte offices) have pulled a specific demographic into the city: 24–32-year-old finance / tech / consulting professionals who took NYC-comp roles into a Charlotte cost basis. This is the demographic Atlanta's Midtown plant would also reach — but in Charlotte they arrive in greater concentration, with a clearer mental model of "the city I moved to for work," and without Atlanta's sprawl.</p>
-        <p>Where they live: <strong>South End</strong> (the Blue Line light-rail corridor, easily Charlotte's densest young-pro neighborhood — luxury midrise, breweries, food halls), <strong>Plaza Midwood / NoDa</strong> (the older, more design-forward, more arts-leaning side of the same demographic), <strong>Wesley Heights / Camden</strong> (newer, west-of-Uptown, faster-growing), and the southern edge of <strong>Dilworth</strong>. UNC Charlotte's main campus is 12 miles northeast of these, which is the dossier's structural complication — but the same students travel into Uptown / South End for internships, jobs, and social life routinely, so the venue logic is "where 22–30s live, with a UNCC bridge" rather than "near campus."</p>
+        <p><strong>Who's moving in:</strong> 24–32-year-old finance / tech / consulting professionals taking NYC-comp roles at Charlotte cost basis.</p>
+        <p><strong>What's pulling them:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li>Bank of America HQ (Uptown) · Truist HQ relocation complete · JPMorgan Chase expansion</li>
+          <li>Lowe's Tech Hub buildout in South End · Honeywell HQ move from NJ</li>
+          <li>Fintech: LendingTree, AvidXchange · Big Four consulting all hold meaningful Charlotte offices</li>
+        </ul>
+        <p><strong>Where they live (the plant's primary catchment):</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li><strong>South End</strong> — Blue Line corridor, densest young-pro neighborhood; luxury midrise, breweries, food halls</li>
+          <li><strong>Plaza Midwood / NoDa</strong> — older, more design-forward, more arts-leaning</li>
+          <li><strong>Wesley Heights / Camden</strong> — newer, west-of-Uptown, faster-growing</li>
+          <li>Southern edge of <strong>Dilworth</strong></li>
+        </ul>
+        <p><strong>Versus Atlanta's Midtown:</strong> same demographic, but in Charlotte they arrive in greater concentration, with a clearer "moved here for work" mental model, and without Atlanta's sprawl. UNCC sits 12 mi NE of all of this — the structural complication the South End strategy has to bridge.</p>
       </div>
     </div>
 
@@ -3113,8 +3331,8 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   <div class="container">
     <div class="alt-head">
       <div class="eyebrow">§ IX. Alternatives Considered</div>
-      <h2>Eleven cities <em>not chosen</em> — and why.</h2>
-      <p>The three-city candidate set is the result of substantial winnowing. These eleven alternatives surfaced across the search and were evaluated in varying depth. Each is a real candidate the team could revisit if its decision criteria shift; each was set aside for a specific structural reason. Listed in rough order of how seriously they were considered — Richmond first because it was in the candidate set until just being moved here.</p>
+      <h2>Twelve cities <em>not chosen</em> — and why.</h2>
+      <p>Twelve alternatives surfaced across the search. Each was set aside for a specific structural reason — Richmond is first because it was in the candidate set until just being moved here.</p>
     </div>
 
     <div class="alt-grid">
@@ -3192,9 +3410,23 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         <div class="alt-block"><strong>Why set aside</strong> Phoenix-retention problem in extreme form. UF graduates scatter to Tampa, Orlando, Jacksonville, Atlanta, and Miami within twelve months of graduation. Gainesville itself is too small to retain a young-pro post-grad population for the flywheel to compound.</div>
       </div>
 
-      <!-- 05 NY / BROOKLYN -->
+      <!-- 06 VIRGINIA TECH -->
       <div class="alt-card">
-        <div class="alt-tag">— 06 · East Coast —</div>
+        <div class="alt-tag">— 06 · Mid-Atlantic —</div>
+        <h3>Blacksburg · <em>Virginia Tech</em></h3>
+        <div class="alt-sub">Strongest engineering anchor in the Gainesville-shape category.</div>
+        <ul>
+          <li>VT top-50 national, top-15 engineering, AAU member · ~30K undergrad</li>
+          <li>~9–11% AAPI undergrad · A2N-open</li>
+          <li>Drivable Carolina pipeline (3.5h to Chapel Hill, 3h to Charlotte)</li>
+          <li>Blacksburg ~45K, MSA ~165K · Roanoke 40 mi NE</li>
+        </ul>
+        <div class="alt-block"><strong>Why set aside</strong> Same college-town problem as Gainesville. VT engineering grads exit to NoVA/DC, RTP, Charlotte, Atlanta within months. Bivocational job market in SW Virginia is thin; the metro can't retain a young-pro post-grad population for the flywheel to compound.</div>
+      </div>
+
+      <!-- 07 NY / BROOKLYN -->
+      <div class="alt-card">
+        <div class="alt-tag">— 07 · East Coast —</div>
         <h3>New York · <em>Brooklyn / NYU / Columbia</em></h3>
         <div class="alt-sub">The largest, most demographically dense option — and the most A2N-saturated.</div>
         <ul>
@@ -3208,7 +3440,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 06 PORTLAND -->
       <div class="alt-card">
-        <div class="alt-tag">— 07 · Pacific Northwest —</div>
+        <div class="alt-tag">— 08 · Pacific Northwest —</div>
         <h3>Portland · <em>PSU + Reed</em></h3>
         <div class="alt-sub">Genuinely unreached — without a flagship anchor.</div>
         <ul>
@@ -3223,7 +3455,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 07 MIAMI -->
       <div class="alt-card">
-        <div class="alt-tag">— 08 · Florida —</div>
+        <div class="alt-tag">— 09 · Florida —</div>
         <h3>Miami · <em>University of Miami + FIU</em></h3>
         <div class="alt-sub">An emerging finance hub with a different demographic shape.</div>
         <ul>
@@ -3237,7 +3469,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 08 SLC -->
       <div class="alt-card">
-        <div class="alt-tag">— 09 · Mountain West —</div>
+        <div class="alt-tag">— 10 · Mountain West —</div>
         <h3>Salt Lake City · <em>University of Utah</em></h3>
         <div class="alt-sub">The most distinct mission field of any candidate considered.</div>
         <ul>
@@ -3251,7 +3483,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 09 BOULDER -->
       <div class="alt-card">
-        <div class="alt-tag">— 10 · Mountain West —</div>
+        <div class="alt-tag">— 11 · Mountain West —</div>
         <h3>Boulder + Denver · <em>CU Boulder</em></h3>
         <div class="alt-sub">Secular metro with a mid-tier flagship.</div>
         <ul>
@@ -3265,7 +3497,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <!-- 10 ST LOUIS -->
       <div class="alt-card">
-        <div class="alt-tag">— 11 · Midwest —</div>
+        <div class="alt-tag">— 12 · Midwest —</div>
         <h3>St. Louis · <em>Wash U</em></h3>
         <div class="alt-sub">Elite anchor in a shrinking metro.</div>
         <ul>
