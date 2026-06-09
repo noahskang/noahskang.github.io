@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Four Cities, One Calling — A Discernment Field Guide</title>
+<title>Five Cities, One Calling — A Discernment Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -48,7 +48,13 @@
   --nyc-stone: #C8B89C;
   --nyc-paper: #E8DFCB;
 
-
+  /* tampa — gulf coastal teal + USF gold + sunset terracotta */
+  --tpa-deep: #1A4F5B;
+  --tpa-mid: #2D6E7A;
+  --tpa-gold: #D4A55C;
+  --tpa-coral: #C76A45;
+  --tpa-sand: #E7D9B8;
+  --tpa-paper: #EDE5D0;
 
   --serif: 'Fraunces', 'Times New Roman', serif;
   --sans: 'Inter Tight', system-ui, sans-serif;
@@ -184,6 +190,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .photo-atl::after { background: var(--atl-deep); opacity: 0.50; }
 .photo-phx::after { background: var(--phx-sienna); opacity: 0.50; }
 .photo-nyc::after { background: var(--nyc-deep); opacity: 0.45; }
+.photo-tpa::after { background: var(--tpa-deep); opacity: 0.50; }
 .photo-frame {
   position: relative;
   border: 1px solid rgba(255,255,255,0.12);
@@ -404,6 +411,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .score-table thead th:nth-child(2) { color: var(--atl-deep); }
 .score-table thead th:nth-child(3) { color: var(--phx-rust); }
 .score-table thead th:nth-child(4) { color: var(--clt-deep); }
+.score-table thead th:nth-child(5) { color: var(--nyc-deep); }
+.score-table thead th:nth-child(6) { color: var(--tpa-deep); }
 .score-table thead th:last-child { width: 110px; text-align: right; color: var(--ink); }
 
 .score-table tbody td {
@@ -422,7 +431,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
   font-variation-settings: 'opsz' 144, 'SOFT' 50;
   white-space: nowrap;
 }
-.score-table tbody td:nth-child(n+2):nth-child(-n+4) { color: var(--ink-soft); }
+.score-table tbody td:nth-child(n+2):nth-child(-n+6) { color: var(--ink-soft); }
 .score-table tbody td:last-child {
   text-align: right;
   font-family: var(--mono);
@@ -788,6 +797,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .flow-atl h4 { color: var(--atl-deep); }
 .flow-phx h4 { color: var(--phx-rust); }
 .flow-clt h4 { color: var(--clt-deep); }
+.flow-nyc h4 { color: var(--nyc-deep); }
+.flow-tpa h4 { color: var(--tpa-deep); }
 .flow-cell .city-name {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -799,6 +810,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .flow-atl .city-name em { color: var(--atl-deep); }
 .flow-phx .city-name em { color: var(--phx-rust); }
 .flow-clt .city-name em { color: var(--clt-deep); }
+.flow-nyc .city-name em { color: var(--nyc-deep); }
+.flow-tpa .city-name em { color: var(--tpa-deep); }
 .flow-svg { width: 100%; height: auto; display: block; }
 
 .retention-grid {
@@ -816,6 +829,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .retention-card.atl { border-top: 4px solid var(--atl-deep); }
 .retention-card.phx { border-top: 4px solid var(--phx-rust); }
 .retention-card.clt { border-top: 4px solid var(--clt-deep); }
+.retention-card.nyc { border-top: 4px solid var(--nyc-deep); }
+.retention-card.tpa { border-top: 4px solid var(--tpa-deep); }
 .retention-card h3 {
   font-family: var(--serif);
   font-size: 1.45rem;
@@ -828,6 +843,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .retention-card.atl h3 em { color: var(--atl-deep); }
 .retention-card.phx h3 em { color: var(--phx-rust); }
 .retention-card.clt h3 em { color: var(--clt-deep); }
+.retention-card.nyc h3 em { color: var(--nyc-deep); }
+.retention-card.tpa h3 em { color: var(--tpa-deep); }
 .retention-card p { font-size: 0.92rem; line-height: 1.55; }
 .retention-card ul { list-style: none; margin-top: 1rem; }
 .retention-card ul li {
@@ -849,6 +866,8 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .retention-card.atl ul li::before { color: var(--atl-deep); }
 .retention-card.phx ul li::before { color: var(--phx-rust); }
 .retention-card.clt ul li::before { color: var(--clt-deep); }
+.retention-card.nyc ul li::before { color: var(--nyc-deep); }
+.retention-card.tpa ul li::before { color: var(--tpa-deep); }
 .retention-card ul li:last-child { border: none; }
 
 /* ============ FAMILY FACTOR ============ */
@@ -1121,6 +1140,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .frame-cell.phx .label { color: var(--phx-sand); }
 .frame-cell.clt .label { color: var(--clt-gold); }
 .frame-cell.nyc .label { color: var(--nyc-brick); }
+.frame-cell.tpa .label { color: var(--tpa-gold); }
 .frame-cell h4 {
   font-family: var(--serif);
   font-size: 1.5rem;
@@ -1134,6 +1154,7 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .frame-cell.phx h4 em { color: var(--phx-sand); }
 .frame-cell.clt h4 em { color: var(--clt-gold); }
 .frame-cell.nyc h4 em { color: var(--nyc-brick); }
+.frame-cell.tpa h4 em { color: var(--tpa-gold); }
 .frame-cell ul { list-style: none; }
 .frame-cell ul li {
   padding: 0.6rem 0;
@@ -1321,6 +1342,23 @@ p { font-size: 1.04rem; line-height: 1.7; color: var(--ink-soft); }
 .dossier-nyc .scoping summary .lead em { color: var(--nyc-brick); font-style: italic; }
 .dossier-nyc .scoping-list li::before { color: var(--nyc-brick); }
 .dossier-nyc .campus-stat .num { color: var(--nyc-brick); }
+
+.dossier-tpa { background: var(--tpa-deep); color: var(--tpa-paper); }
+.dossier-tpa .dossier-name em { color: var(--tpa-gold); }
+.dossier-tpa .dossier-block .label .num { color: var(--tpa-gold); }
+.dossier-tpa .dossier-block h3 em { color: var(--tpa-gold); }
+.dossier-tpa .dossier-block p { color: rgba(237,229,208,0.85); }
+.dossier-tpa .stat-cell .num { color: var(--tpa-gold); }
+.dossier-tpa .pullquote p em { color: var(--tpa-gold); }
+.dossier-tpa .verdict h4 { color: var(--tpa-gold); opacity: 1; }
+.dossier-tpa .ministry-list .item .nm { color: var(--tpa-paper); }
+.dossier-tpa .ministry-list .item .nt { color: rgba(237,229,208,0.6); }
+.dossier-tpa .bar-fill { background: linear-gradient(90deg, var(--tpa-gold), #E6C282); }
+.dossier-tpa .dossier-hero .photo-cap { color: rgba(237,229,208,0.7); }
+.dossier-tpa .bar-row .num { color: var(--tpa-gold); }
+.dossier-tpa .scoping summary .lead em { color: var(--tpa-gold); font-style: italic; }
+.dossier-tpa .scoping-list li::before { color: var(--tpa-gold); }
+.dossier-tpa .campus-stat .num { color: var(--tpa-gold); }
 
 /* ============ WEEKEND SCOPING (collapsible) ============ */
 .scoping {
@@ -1774,8 +1812,10 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <button class="tab-btn" data-tab="phoenix" data-city="phoenix" role="tab">Phoenix</button>
       <button class="tab-btn" data-tab="charlotte" data-city="charlotte" role="tab">Charlotte</button>
       <button class="tab-btn" data-tab="newyork" data-city="newyork" role="tab">New York</button>
+      <button class="tab-btn" data-tab="tampa" data-city="tampa" role="tab">Tampa</button>
       <button class="tab-btn" data-tab="alternatives" role="tab">Alternatives</button>
       <button class="tab-btn" data-tab="verdict" role="tab">Verdict</button>
+      <button class="tab-btn" onclick="location.href='team-voice.html'" style="color: var(--atl-brick);" role="tab">Team Voice ↗</button>
     </div>
   </div>
 </nav>
@@ -1794,18 +1834,18 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   </div>
 
   <h1 class="cover-title">
-    Four Cities,<br>
+    Five Cities,<br>
     one <em>calling</em>.
   </h1>
 
   <p class="cover-sub">
-    A prayerful, side-by-side reading of Atlanta, Phoenix, Charlotte, and New York as candidate fields for a multi-campus plant among college students and young professionals — a church for the gathered and the sent, asking where the gospel is least heard, where God has gathered young adults, and where this team's calling fits.
+    A prayerful, side-by-side reading of Atlanta, Phoenix, Charlotte, New York, and Tampa as candidate fields for a multi-campus plant among college students and young professionals — a church for the gathered and the sent, asking where the gospel is least heard, where God has gathered young adults, and where this team's calling fits.
   </p>
 
   <div class="cover-grid">
     <div>
       <span>Subject</span>
-      <span>Atlanta &nbsp;·&nbsp; Phoenix &nbsp;·&nbsp; Charlotte &nbsp;·&nbsp; New York</span>
+      <span>Atlanta &nbsp;·&nbsp; Phoenix &nbsp;·&nbsp; Charlotte &nbsp;·&nbsp; New York &nbsp;·&nbsp; Tampa</span>
     </div>
     <div>
       <span>Reach</span>
@@ -1843,7 +1883,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
         <p>The question is not <em>where will this team succeed</em>, but <em>where is the Lord sending us</em> — which city's spiritual need most fits the shape of this calling, and where can we give our lives so that disciples are made, formed, and sent for the long haul.</p>
 
-        <p>This document began as a working comparison of two strong candidates — Atlanta and Phoenix — with a proposal for a Midtown-anchored start that took seriously what God was already doing in the metro, including a sister AA-led plant already on the field. It has since expanded to include Charlotte (a Carolina-pipeline-live banking city with a particular openness to the team's posture) and New York / Downtown Brooklyn (a multi-campus, post-Christian field where the gospel is faintly heard among young adults despite the city's religious surface). Several additional candidates were prayed over and set aside; those are surfaced in the Alternatives tab with the structural reason each was set aside.</p>
+        <p>This document began as a working comparison of two strong candidates — Atlanta and Phoenix — with a proposal for a Midtown-anchored start that took seriously what God was already doing in the metro, including a sister AA-led plant already on the field. It has since expanded to include Charlotte (a Carolina-pipeline-live banking city with a particular openness to the team's posture), New York / Downtown Brooklyn (a multi-campus, post-Christian field where the gospel is faintly heard among young adults despite the city's religious surface), and Tampa / USF (a fast-growing Sun Belt metro where a recently-AAU R1 sits between an emerging Gulf-coast finance-and-tech base and a Florida young-adult population the gospel reaches unevenly). Several additional candidates were prayed over and set aside; those are surfaced in the Alternatives tab with the structural reason each was set aside.</p>
 
         <div class="context-card">
           <div class="label">— Working Inputs —</div>
@@ -1872,7 +1912,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
   <div class="container">
     <div class="eyebrow">§ II. At a Glance</div>
     <h2>The <em>scorecard</em>.</h2>
-    <p class="scorecard-intro">A first read of the four candidate fields across the dimensions that shape a college + young-pro plant. This is descriptive, not decisive — caveats and prayerful weighing live in the dossiers. The "fit" column flags the city where each dimension cuts most clearly; many lines are genuine trade-offs that need to be brought before the Lord rather than clean wins.</p>
+    <p class="scorecard-intro">A first read of the five candidate fields across the dimensions that shape a college + young-pro plant. This is descriptive, not decisive — caveats and prayerful weighing live in the dossiers. The "fit" column flags the city where each dimension cuts most clearly; many lines are genuine trade-offs that need to be brought before the Lord rather than clean wins.</p>
 
     <div class="score-table-wrap">
       <table class="score-table">
@@ -1883,6 +1923,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <th>Phoenix</th>
             <th>Charlotte</th>
             <th>New York</th>
+            <th>Tampa</th>
             <th>Fit</th>
           </tr>
         </thead>
@@ -1893,6 +1934,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>ASU Tempe — improving R1, Barrett honors</td>
             <td>UNC Charlotte — mid-tier R1, commuter-leaning</td>
             <td>NYU Tandon — engineering-elite + 3 smaller campuses</td>
+            <td>USF Tampa — R1, AAU member ('23), top-50 public among publics</td>
             <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
@@ -1901,6 +1943,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>ASU Tempe — 80K (largest US campus)</td>
             <td>UNCC — 32K (record fall '25)</td>
             <td>Tandon ~10K + LIU ~7K + Pratt ~5K + St. Francis ~2K</td>
+            <td>USF system ~50K (Tampa ~40K + St. Pete ~5K + Sarasota ~2K)</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1909,6 +1952,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>ASU (4 sites) + GCU ≈ 128K</td>
             <td>UNCC + Davidson + Queens + JCSU + 12-school consortium</td>
             <td>4 campuses in a 1-mile walking radius (Downtown Brooklyn)</td>
+            <td>USF Tampa + USF St. Pete + Univ. of Tampa adj. (~10K)</td>
             <td><span class="tag-tie">NYC + Phoenix</span></td>
           </tr>
           <tr>
@@ -1917,6 +1961,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>GCU — 25K residential Christian students, 25 min</td>
             <td>None at scale (Davidson, Belmont Abbey small)</td>
             <td>None at scale (St. Francis Catholic-heritage only)</td>
+            <td>None at scale (SEU 90 min east; Univ. of Tampa secular)</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1925,6 +1970,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>$1,500 – 1,800 (Tempe)</td>
             <td>$1,650 – 2,000 (South End)</td>
             <td>$3,200 – 4,200 (Downtown Brooklyn)</td>
+            <td>$1,700 – 2,100 (USF / Seminole Heights / DT Tampa)</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1933,6 +1979,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Moderate — Salt Co + Hope Church on college side</td>
             <td>Moderate — Elevation cultural pull + 5 mid-size</td>
             <td>Moderate — Hope, Apostles, Resurrection, Trinity Grace, Brooklyn Tab</td>
+            <td>Light–moderate — Idlewild, Grace Family, Generations Christian; thin AA-led</td>
             <td><span class="tag-tie">Trade-off</span></td>
           </tr>
           <tr>
@@ -1941,6 +1988,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>High — post-Christian Sun Belt, no Bible-Belt warm pool</td>
             <td>Moderate — Bible-Belt native + dechurched imports</td>
             <td>Highest — ~3% evangelical, post-Christian SBNR Brooklyn</td>
+            <td>Moderate–high — Florida-secular drift; thin under-30 evangelical density</td>
             <td><span class="tag-tie">NYC + Phoenix</span></td>
           </tr>
           <tr>
@@ -1949,6 +1997,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>~42% — improving (TSMC, Intel)</td>
             <td>~62% — banking + post-NYC migration</td>
             <td>Variable — 3-yr arc transient + LIU rooted base</td>
+            <td>~50% — improving (Raymond James, Jabil, JPM Tampa, USAA)</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
           <tr>
@@ -1957,6 +2006,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Tech, semis, banking, ops</td>
             <td>Banking, fintech, energy, mfg (7 F500 + 19 F1000)</td>
             <td>Manhattan finance support, DUMBO tech, education, healthcare</td>
+            <td>Finance ops, healthcare, education, defense (Raymond James, Jabil, MacDill)</td>
             <td><span class="tag-atl">Atlanta</span></td>
           </tr>
           <tr>
@@ -1965,6 +2015,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>~1.1–1.6% / yr (4th fastest US)</td>
             <td>~1.2–1.5% / yr (top-10 Sun Belt)</td>
             <td>Flat — but young-adult inflow remains strong</td>
+            <td>~1.4–1.7% / yr (top-5 Sun Belt by net inflow)</td>
             <td><span class="tag-phx">Phoenix</span></td>
           </tr>
           <tr>
@@ -1973,6 +2024,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>110°+ summers — students disperse</td>
             <td>Hot humid summers, mild winters</td>
             <td>Cold winters, hot humid summers</td>
+            <td>Hot humid summers, mild winters; hurricane season real</td>
             <td><span class="tag-tie">Tie</span></td>
           </tr>
           <tr>
@@ -1981,6 +2033,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Inert — 5h flight + layover</td>
             <td>Most live — 2.5h drive, daily nonstops</td>
             <td>Inert — 1.5h flight, not a drive</td>
+            <td>Semi-live — 9.5h drive / 90-min nonstop RDU</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
           <tr>
@@ -1989,11 +2042,13 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>None — closest elite is Caltech (370mi / 6h)</td>
             <td>Davidson 25m · UNC + Duke at 2.5h</td>
             <td>NYU + Columbia + Princeton + Yale within 2h</td>
+            <td>UF (2h NW) · UCF (90 min east) — strong publics, no top-tier</td>
             <td><span class="tag-tie">NYC</span></td>
           </tr>
           <tr>
             <td>A2N footprint</td>
             <td>Yes — Rooted at GT/Emory/UGA (sister plant in metro)</td>
+            <td>None</td>
             <td>None</td>
             <td>None</td>
             <td>None</td>
@@ -2005,6 +2060,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
             <td>Moderate — two college ministries laboring on Mill Ave</td>
             <td>Most room — few churches with this team's posture</td>
             <td>Moderate room — AA-led integrated college-and-young-pro shape genuinely missing</td>
+            <td>Real room — large attractional churches dominate; AA-led college+young-pro shape absent</td>
             <td><span class="tag-clt">Charlotte</span></td>
           </tr>
         </tbody>
@@ -2136,12 +2192,23 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 
       <div class="retention-card nyc" style="border-color: rgba(181,86,62,0.4); background: rgba(31,42,58,0.04);">
         <h3>New York — <em>the three-year arc, and the rooted few</em>.</h3>
-        <p>Brooklyn's young-adult retention is the most complicated of the four. A meaningful share of the under-30 imports — finance analysts, design first-jobs, tech transplants — give the city two or three good years and then leave for Austin, Charlotte, or the suburbs. That is the city's gravity, not the church's failure. Countervailing the transience: LIU's commuter base is rooted, many AA young adults moving into Fort Greene and Bed-Stuy are coming home rather than leaving home, and Pratt graduates often stay in Brooklyn's creative ecosystem for a decade or more.</p>
+        <p>Brooklyn's young-adult retention is the most complicated of the five. A meaningful share of the under-30 imports — finance analysts, design first-jobs, tech transplants — give the city two or three good years and then leave for Austin, Charlotte, or the suburbs. That is the city's gravity, not the church's failure. Countervailing the transience: LIU's commuter base is rooted, many AA young adults moving into Fort Greene and Bed-Stuy are coming home rather than leaving home, and Pratt graduates often stay in Brooklyn's creative ecosystem for a decade or more.</p>
         <ul>
           <li>Three-year young-pro arc is real for the imported finance / tech population</li>
           <li>LIU + Pratt + native AA community provide a meaningful rooted base</li>
           <li>Sending paths (plant elsewhere, missions, family-formation in another metro) carry equal weight to local rootedness</li>
           <li>What this means for the church: <strong>a body that stays for ten years is the structural counter to Brooklyn's churn</strong> — patient week-after-week presence is the only thing that builds something people might actually stay in</li>
+        </ul>
+      </div>
+
+      <div class="retention-card tpa" style="border-color: rgba(212,165,92,0.4); background: rgba(26,79,91,0.04);">
+        <h3>Tampa — <em>retention is improving</em>.</h3>
+        <p>USF is overwhelmingly Florida-resident — about 90% in-state — and the metro absorbs more graduates than it sends out. Historically Tampa's pull was tourism and back-office; that picture has shifted. Raymond James Financial in St. Pete (~9K employees), Jabil (Fortune-200 contract manufacturer headquartered locally), JPMorgan Chase Tampa back-office (~7K), USAA's Tampa hub, and a deepening defense / cyber footprint anchored by MacDill AFB and CENTCOM together hold a meaningfully larger share of USF and Univ. of Tampa graduates than they did ten years ago. Florida's no-state-income-tax structure is a real bivocational tailwind. The metro is among the top-five Sun Belt destinations by net under-30 migration, drawing in young pros from the Northeast and Midwest at a rate that compounds the local-stay number.</p>
+        <ul>
+          <li>USF cohort is in-state-dominant — a built-in stay rate higher than ASU or Tandon</li>
+          <li>Raymond James, Jabil, JPM Tampa, USAA, MacDill / CENTCOM hold finance, ops, defense, and cyber grads locally</li>
+          <li>Florida no-state-income-tax stretches the bivocational dollar against a moderate cost-of-living</li>
+          <li>What this means for the church: <strong>the local-bivocational path runs a half-step behind Charlotte and Atlanta but well ahead of Phoenix</strong> — students discipled at 19 can become bivocational co-laborers at 23 in a metro that is still actively gathering young adults</li>
         </ul>
       </div>
 
@@ -2420,7 +2487,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <div class="item"><span class="nm">SCAD Atlanta</span><span class="nt">InterVarsity · Believers' LoveWorld — the lightest shelf in Midtown · highest absorption upside per student</span></div>
         </div>
 
-        <p style="margin-top: 1.8rem;"><strong>The closest format comp the dossier was missing.</strong> &nbsp; <em>The Living Room ATL</em> — North Point's Monday-night college gathering — already runs up to fourteen buses metro-wide to bring students in. A polished, large-format midweek college service is not vacant ground in this city; it is a live work with logistics in place. Add Passion's young-adult draw (the 18–25 anchor at the metro level), Journey Church's alternating GT/Emory campus services, and a 2025 Acts 2 plant (Rooted) explicitly serving GT/Emory/UGA, and the picture sharpens: of the four cities, Atlanta is where the most young-adult ministry is already happening. The plant's distinct contribution must be real and concrete — a particular shape of obedience the city is not yet receiving — not a posture.</p>
+        <p style="margin-top: 1.8rem;"><strong>The closest format comp the dossier was missing.</strong> &nbsp; <em>The Living Room ATL</em> — North Point's Monday-night college gathering — already runs up to fourteen buses metro-wide to bring students in. A polished, large-format midweek college service is not vacant ground in this city; it is a live work with logistics in place. Add Passion's young-adult draw (the 18–25 anchor at the metro level), Journey Church's alternating GT/Emory campus services, and a 2025 Acts 2 plant (Rooted) explicitly serving GT/Emory/UGA, and the picture sharpens: of the five cities, Atlanta is where the most young-adult ministry is already happening. The plant's distinct contribution must be real and concrete — a particular shape of obedience the city is not yet receiving — not a posture.</p>
         <p style="font-size: 0.85rem; opacity: 0.7; font-style: italic; margin-top: 1.2rem;">Caveat — directory presence is not the same as active scale. Several listed chapters (RUF/SCAD-Atlanta, GSU's BCM/Cru/RUF) appear in directories but are not corroborated by recent on-campus activity in public sources. A phone-call pass before citing any of these as a competitor is warranted.</p>
       </div>
     </div>
@@ -3777,7 +3844,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <div class="label"><span class="num">05</span>Bivocational Runway</div>
       <div>
         <h3>The cost is severe. Naming it is the <em>first faithful step</em>.</h3>
-        <p>There is no soft version of this section. New York is the most expensive bivocational field in the candidate set — meaningfully more expensive than Atlanta, Phoenix, or Charlotte. A 1BR within the Downtown Brooklyn arc runs $3,200–$4,200; pushing east into Bed-Stuy or south into Crown Heights brings that closer to $2,400–$3,000 for the same square footage. Two-incomes-and-roommates is the norm, not the exception, well into the team's late twenties. Childcare in Brooklyn ranges $24K–$36K per child per year. A bivocational team of ten committing to give their lives here long-term has to walk into this with eyes open and a specific runway, not vague optimism.</p>
+        <p>There is no soft version of this section. New York is the most expensive bivocational field in the candidate set — meaningfully more expensive than Atlanta, Phoenix, Charlotte, or Tampa. A 1BR within the Downtown Brooklyn arc runs $3,200–$4,200; pushing east into Bed-Stuy or south into Crown Heights brings that closer to $2,400–$3,000 for the same square footage. Two-incomes-and-roommates is the norm, not the exception, well into the team's late twenties. Childcare in Brooklyn ranges $24K–$36K per child per year. A bivocational team of ten committing to give their lives here long-term has to walk into this with eyes open and a specific runway, not vague optimism.</p>
         <p><strong>What sustainability actually looks like:</strong></p>
         <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
           <li><strong>Tech / engineering</strong> — Brooklyn-based tech offices (Etsy in DUMBO, Squarespace, Vimeo); contracting and remote roles for Manhattan-headquartered firms; Tandon faculty / staff adjacencies.</li>
@@ -3910,7 +3977,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
       <div>
         <h4>— Where Brooklyn will cost the team —</h4>
         <ul>
-          <li>Cost of living is severe — meaningfully more expensive than Atlanta, Phoenix, or Charlotte; the team has to give their lives here long-term with eyes open to that cost</li>
+          <li>Cost of living is severe — meaningfully more expensive than Atlanta, Phoenix, Charlotte, or Tampa; the team has to give their lives here long-term with eyes open to that cost</li>
           <li>Three-year transience pattern is real for a portion of the young-pro population; rootedness requires patience the city rarely rewards quickly</li>
           <li>Existing church density — Hope, Apostles, Resurrection, Trinity Grace, Brooklyn Tabernacle, Renaissance — means thoughtful neighbor-relations from day one, not a perceived "open lane"</li>
           <li>No Carolina UNC network adjacency — the team's UNC alumni are a flight away, not a drive</li>
@@ -3925,13 +3992,330 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 </div>
 <!-- ============ /TAB: NEW YORK ============ -->
 
+<!-- ============ TAB: TAMPA ============ -->
+<div class="tab-panel" data-panel="tampa">
+
+<section class="dossier dossier-tpa" id="tampa">
+  <div class="container">
+    <div class="dossier-header">
+      <div>
+        <div class="dossier-no">§ X. Dossier — File 05</div>
+        <h1 class="dossier-name">Tampa <em>Bay</em>.</h1>
+      </div>
+      <div class="dossier-tag">A fast-growing Sun Belt metro with a recently-AAU R1 anchor, a thin under-30 evangelical density, and real room for the body this team is built to be.</div>
+    </div>
+
+    <!-- HERO PHOTO -->
+    <div class="dossier-hero">
+      <div class="photo photo-tpa">
+        <img src="https://images.unsplash.com/photo-1600678785092-d2b39e62cf7c?w=1800&q=80&auto=format&fit=crop" alt="Tampa skyline along the Hillsborough River">
+      </div>
+      <div class="photo-cap">
+        <span>Downtown Tampa &nbsp;·&nbsp; from the Riverwalk</span>
+        <span class="credit">Photo: Unsplash</span>
+      </div>
+    </div>
+
+    <!-- stat ribbon -->
+    <div class="stat-ribbon">
+      <div class="stat-cell">
+        <div class="num">3.2M</div>
+        <div class="lbl">Tampa MSA pop. —<br>top-20 US metro · top-5 Sun Belt by inflow</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">~50K</div>
+        <div class="lbl">USF system enrollment —<br>Tampa · St. Pete · Sarasota-Manatee</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">AAU</div>
+        <div class="lbl">USF — admitted 2023 —<br>R1 since 2014, top-50 public</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">0%</div>
+        <div class="lbl">Florida state income tax —<br>structural bivocational tailwind</div>
+      </div>
+    </div>
+
+    <!-- MISSIONAL NEED — leads the dossier -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">00</span>The Field of Need</div>
+      <div>
+        <h3>A <em>Florida-secular</em> field that the gospel reaches unevenly.</h3>
+        <p>Tampa is not what most outsiders assume Florida to be. The state's caricature — Bible-Belt-warm, retirement-coded, religiously conservative — is much truer of the rural panhandle and small-town interior than of the Tampa Bay metro. The metro's under-30 register is closer to a softened version of the Sun Belt secularism showing up in Phoenix and Charlotte than to the church-heritage warmth of Birmingham or Nashville. Catholicism is the heritage tradition for a meaningful share of the population, especially the Cuban and Puerto Rican communities anchored in Ybor City and East Tampa, but heritage-Catholic young adults in the metro are dechurching at rates that mirror the rest of the country. Evangelicalism here is dominated by a few large attractional churches — Idlewild, Grace Family, Generations — whose footprint is real but whose reach into the under-30 USF population is thin and whose teaching posture is structurally different from what this team is sent to be.</p>
+        <p>The numbers that matter: Tampa metro is among the top-five Sun Belt destinations by net under-30 migration, gaining young adults from the Northeast (NYC, Boston, Philadelphia retiree-and-remote-worker pull is real on the family side, but the under-30 import is its own story) and the Midwest at a clip that has reshaped the city's neighborhoods over the last six years. Seminole Heights, Riverside Heights, Tampa Heights, the Heights waterfront, downtown St. Pete — these are not the Tampa of 2015. The newcomers arrive without church habit, often without family in the metro, often working remote or in finance back-office roles or in the defense / cyber corridor MacDill AFB and USCENTCOM anchor. The under-30 cohort gathered here is large, growing, and reached only at the edges by what is currently in the field.</p>
+        <p>What is missing is steady, AA-led, integrated college-and-young-pro discipleship that takes both USF's in-state-rooted student body and downtown Tampa / St. Pete's transplanted young-pro stream seriously as one body. The large attractional churches do not do this. The few smaller reformed-leaning works in the metro do not have a meaningful college arm. The campus ministries at USF (Cru, InterVarsity, Chi Alpha, RUF) labor faithfully but run alongside churches rather than inside one body. The shape of the gap is the shape of the team.</p>
+      </div>
+    </div>
+
+    <!-- block 01: campus landscape -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">01</span>Campus Landscape</div>
+      <div>
+        <h3>One R1 anchor across <em>three campuses</em>, plus a private adjacency downtown.</h3>
+        <p>USF's 2020 consolidation merged the Tampa, St. Petersburg, and Sarasota-Manatee campuses into a single accredited university — which means the system is now legally one institution with three real geographies, not three competing schools. For a multi-campus church plant, that consolidation is structurally helpful: a college pastor with one institutional relationship can be present on the Tampa main campus (the bulk of the work), the downtown St. Pete campus (a smaller waterfront-and-finance-coded geography), and the smaller Sarasota-Manatee campus 75 miles south as a secondary touch. The University of Tampa — small private, downtown, ~10K enrollment, separate from USF — sits two blocks from the Riverwalk and gives the plant a second walking-distance campus inside downtown Tampa proper.</p>
+
+        <div class="bars">
+          <div class="bar-row"><div class="name">USF Tampa</div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div><div class="num">~40K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">N. Tampa main · R1 · AAU</span></div></div>
+          <div class="bar-row"><div class="name">Univ. of Tampa</div><div class="bar-track"><div class="bar-fill" style="width: 28%"></div></div><div class="num">~10K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">Downtown · private · selective regional</span></div></div>
+          <div class="bar-row"><div class="name">USF St. Petersburg</div><div class="bar-track"><div class="bar-fill" style="width: 14%"></div></div><div class="num">~5K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">Downtown St. Pete · waterfront</span></div></div>
+          <div class="bar-row"><div class="name">USF Sarasota-Manatee</div><div class="bar-track"><div class="bar-fill" style="width: 6%"></div></div><div class="num">~2K<br><span style="font-size: 0.65rem; opacity: 0.65; font-weight: 400; letter-spacing: 0.02em;">75 mi S · commuter / business</span></div></div>
+        </div>
+
+        <p style="margin-top: 1.4rem;"><strong>What each campus brings to a body:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li><strong>USF Tampa</strong> — the anchor. R1, AAU member as of 2023, top-50 public per US News, ~40K students with a meaningful Asian-American presence (~7–8% undergrad, with concentrations in engineering, business, and the Morsani College of Medicine pipeline). In-state-dominant, which means students stay in Florida after graduation at higher rates than ASU or Tandon students stay in their metros. Strong engineering, business, and health-sciences programs; the Muma College of Business and the College of Engineering both feed the Tampa Bay employer base directly.</li>
+          <li><strong>University of Tampa</strong> — small private, ~10K, downtown, more out-of-state and Northeast-feeder than USF. Selective-regional rather than elite-national; meaningful international student presence; pre-professional culture. The campus most physically present to downtown young-pro life and the natural second arm of a downtown-anchored gathering.</li>
+          <li><strong>USF St. Petersburg</strong> — small but rooted in downtown St. Pete's growing waterfront / finance / arts ecosystem. Sits a 25-minute drive across the bay from USF Tampa; a member living near it could legitimately disciple a small cluster of students inside Raymond James's recruiting orbit.</li>
+          <li><strong>USF Sarasota-Manatee</strong> — smallest, most commuter-coded, business-and-hospitality-leaning. A secondary touch rather than a primary field; mentioned because a USF system relationship gives the plant a legitimate door if and when it makes sense.</li>
+        </ul>
+        <p style="font-size: 0.85rem; opacity: 0.72; font-style: italic;">Note: enrollment figures are approximate and reflect total enrollment, not undergrad-only; USF's individual-campus undergrad numbers shift after the 2020 consolidation. The system is best read as one institution with three sites.</p>
+      </div>
+    </div>
+
+    <!-- block 02: neighborhood geography -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">02</span>Neighborhood Geography</div>
+      <div>
+        <h3>A two-pole metro — <em>USF / North Tampa</em> and <em>downtown / St. Pete</em>.</h3>
+        <p>Tampa's geography is its first complication. USF main campus sits ten miles northeast of downtown Tampa, in a stretch of North Tampa that is collegiate, commuter-and-medical-coded (the USF Health complex, James A. Haley VA, and Moffitt Cancer Center cluster around the campus), and not where downtown young pros actually live. Downtown Tampa, downtown St. Pete, and the gentrifying neighborhoods between them — Seminole Heights, Riverside Heights, Tampa Heights, Hyde Park — are where the imported under-30 cohort settles. A church anchored at the campus is twenty minutes by car from where the young pros live; a church anchored downtown is twenty minutes from the campus. There is no single neighborhood in Tampa where both populations natively gather, and the plant has to choose its center of gravity.</p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li><strong>USF area / North Tampa</strong> — campus-and-medical, with a thin retail spine along Fowler and Bruce B. Downs; the natural home of a college-arm gathering but not where most under-30 transplants live. New Tampa and Wesley Chapel sit further north — suburban, fast-growing, AA-and-South-Asian-presence rising sharply over the last decade.</li>
+          <li><strong>Seminole Heights / Tampa Heights / Riverside Heights</strong> — gentrifying historic neighborhoods between USF and downtown; bungalows, breweries, coffee shops, where the imported under-30 creative-and-tech population has actually moved. The plant's most likely residential cluster.</li>
+          <li><strong>Downtown Tampa / Channelside / Water Street</strong> — the Water Street development (Cascadian-style waterfront mixed-use, opened in stages from 2021–2024) has reshaped downtown's young-pro register. University of Tampa is two blocks west across the river. The Riverwalk runs the spine.</li>
+          <li><strong>Hyde Park / SoHo / Davis Islands</strong> — older-money, restaurant-coded, a meaningful share of the city's young-professional dining-and-bar life converges here on weekends.</li>
+          <li><strong>Downtown St. Petersburg</strong> — across the bay, distinct identity, the metro's arts-and-design pole; Raymond James headquarters nearby; deep waterfront-and-museum register; younger-feeling than downtown Tampa to many who live there.</li>
+          <li><strong>Ybor City</strong> — historically Cuban, working-class then bohemian then nightlife-coded; significant cultural memory in the metro's Latino-Catholic identity.</li>
+        </ul>
+        <p><strong>Where young adults gather:</strong> Buddy Brew and King State coffee in Seminole Heights and Tampa Heights; Foundation Coffee Company near Tampa Heights; Armature Works (the Heights waterfront food hall); Sparkman Wharf and the Riverwalk; the cluster of bars and breweries along Florida Ave and Nebraska in Seminole Heights; downtown St. Pete's central avenue grid (Bandit Coffee, Black Crow, Three Birds Tavern); the Tampa Theatre for cultural rhythm; for the USF crowd, Yuengling Center events, Busch Gardens-adjacent retail, and the small spine along Bruce B. Downs.</p>
+      </div>
+    </div>
+
+    <!-- PHOTO PAIR — Tampa texture -->
+    <div class="dossier-photo-pair">
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1597211833712-5e41faa202ea?w=900&q=80&auto=format&fit=crop" alt="Tampa Riverwalk and downtown waterfront">
+        </div>
+        <div class="photo-cap">
+          <span>Riverwalk &nbsp;·&nbsp; downtown waterfront</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+      <div>
+        <div class="photo photo-frame">
+          <img src="https://images.unsplash.com/photo-1545194445-dddb8f4487c6?w=900&q=80&auto=format&fit=crop" alt="St. Petersburg downtown and pier">
+        </div>
+        <div class="photo-cap">
+          <span>St. Petersburg &nbsp;·&nbsp; downtown pier</span>
+          <span class="credit">Photo: Unsplash</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"A metro <em>still gathering</em> young adults — and a body the city has not yet been given."</p>
+    </div>
+
+    <!-- block 03: existing ministry presence -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">03</span>Existing Ministry Presence</div>
+      <div>
+        <h3>Large attractional churches dominate. <em>The team's shape is genuinely missing.</em></h3>
+        <p>An honest read: the under-30 church landscape in Tampa is shaped much more by the few very large attractional churches than by a network of mid-size theologically-grounded young-adult bodies. Idlewild Baptist (Carrollwood), Grace Family Church (Carrollwood / multi-campus), and Generations Christian Church (Trinity, west of the metro) carry most of the metro's evangelical footprint. They do faithful work; they are not the body this team is built to be, and their teaching posture, eldership structure, and college arm sit at a meaningful distance from the team's distinctives.</p>
+
+        <div class="ministry-list">
+          <div class="item"><span class="nm">Idlewild Baptist Church</span><span class="nt">Carrollwood · large attractional · SBC</span></div>
+          <div class="item"><span class="nm">Grace Family Church</span><span class="nt">Carrollwood · multi-campus · attractional</span></div>
+          <div class="item"><span class="nm">Generations Christian Church</span><span class="nt">Trinity · west of metro · multi-site</span></div>
+          <div class="item"><span class="nm">Bay Hope Church</span><span class="nt">Carrollwood · large attractional · UMC roots</span></div>
+          <div class="item"><span class="nm">Hyde Park United Methodist</span><span class="nt">downtown · historic mainline · liturgical</span></div>
+          <div class="item"><span class="nm">Tampa Underground</span><span class="nt">decentralized house-church network · Andy Norton</span></div>
+          <div class="item"><span class="nm">Renew Tampa Bay</span><span class="nt">smaller Acts 29 / reformed presence in the metro</span></div>
+          <div class="item"><span class="nm">Cru / InterVarsity / Chi Alpha / RUF</span><span class="nt">para-church coverage at USF · variable density · faithful</span></div>
+          <div class="item"><span class="nm">Catholic campus ministry</span><span class="nt">USF (Catholic Student Ministry) · UT (Newman)</span></div>
+          <div class="item"><span class="nm">Korean / Chinese AA-coded churches</span><span class="nt">several in the metro · ethnic-language-primary, not English-AA-led</span></div>
+        </div>
+
+        <p style="margin-top: 1.4rem;"><strong>Where the field is still thin — read missionally, not competitively:</strong></p>
+        <ul style="padding-left: 1.2rem; opacity: 0.88;">
+          <li>An <strong>AA-led, English-primary, integrated college-and-young-pro</strong> body — the team's specific shape — is genuinely missing in the metro. The existing AA-coded churches are ethnic-language-primary and do not fill this lane; the large attractional churches are not built for it.</li>
+          <li>A church that holds <strong>college and young-pro arms together</strong> as architecture, not as program — a core team distinctive — is not currently embodied by any of the larger metro works.</li>
+          <li>A <strong>plurality of elders, local teaching, long-term rootedness</strong> body — distinct from the senior-pastor-and-stage shape that dominates the metro's evangelical footprint — has real room here.</li>
+        </ul>
+        <p style="margin-top: 1.2rem; font-size: 0.85rem; opacity: 0.72; font-style: italic;">A weekend scoping trip should attend a Sunday at one of the large attractional churches and an evening at one of the smaller works, walk USF and downtown, and meet at least two of the campus-ministry directors. The discernment question is the NYC question in a different key — what body is the Lord asking the team to be that the existing churches are not already being?</p>
+      </div>
+    </div>
+
+    <!-- block 04: rootedness and sending -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">04</span>Rootedness &amp; Sending</div>
+      <div>
+        <h3>USF students <em>stay in Florida</em>. The metro keeps drawing more in.</h3>
+        <p>USF is overwhelmingly an in-state school — about 90% of incoming undergrads come from Florida — and Florida graduates stay in Florida at high rates. That alone gives Tampa a structurally higher local-stay number than ASU's Phoenix or Tandon's New York. Many USF graduates do migrate within the state — Miami, Orlando, Jacksonville, Naples — but the meaningful share that stays in Tampa metro is held by an employer base that has been deepening rapidly.</p>
+        <p>Layered on top: Tampa is among the top-five Sun Belt metros by net under-30 migration. The young pros being imported from the Northeast and Midwest are not retirees. They are 24-to-32-year-olds working remote-or-Tampa-based finance ops at Raymond James and JPM, contract-manufacturing engineering at Jabil, defense and cyber roles in the MacDill / CENTCOM corridor, healthcare across Tampa General and BayCare, and a fast-growing creative-and-tech freelance population in Seminole Heights and downtown St. Pete. The metro is gathering young adults the church can disciple in real time — a different demographic story than NYC's three-year arc.</p>
+        <p>The discipleship arc the team is built for fits the metro: students who arrive in-state at 18, are discipled across four years at USF, take a Tampa-based bivocational role at 22, and stay in the metro through their late twenties because there is real work to take and real cost-of-living headroom under Florida's no-state-income-tax structure. The local-bivocational sending path here runs a half-step behind Atlanta and Charlotte — but well ahead of Phoenix and meaningfully ahead of New York's three-year young-pro arc. The plant-elsewhere and missions sending paths run normally as well.</p>
+      </div>
+    </div>
+
+    <!-- block 05: bivocational runway -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">05</span>Bivocational Runway</div>
+      <div>
+        <h3>Real depth — finance ops, healthcare, defense, education — and <em>no state income tax</em>.</h3>
+        <p>Tampa's bivocational runway is among the most quietly favorable of the candidate set. Cost of living is moderate (1BR in Seminole Heights, Riverside Heights, Tampa Heights, or downtown St. Pete runs $1,700–$2,100; further north toward USF or in Wesley Chapel pulls below $1,600), Florida levies no state income tax, and the employer base is deeper and more diversified than is sometimes appreciated from outside the metro.</p>
+        <p><strong>What sustainability looks like:</strong></p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li><strong>Finance &amp; ops</strong> — Raymond James Financial (St. Pete HQ, ~9K employees); JPMorgan Chase Tampa back-office (~7K); USAA Tampa hub; Citi back-office; Franklin Templeton (St. Pete); MetLife Tampa.</li>
+          <li><strong>Defense / cyber / intelligence</strong> — MacDill AFB and USCENTCOM / USSOCOM anchor a deep contractor base (Booz Allen, SAIC, ManTech, CACI, L3Harris). The cyber and intelligence-analyst lane here is among the deepest in the southeast.</li>
+          <li><strong>Healthcare</strong> — Tampa General Hospital, BayCare Health System, Moffitt Cancer Center, AdventHealth Tampa, Johns Hopkins All Children's (St. Pete); USF Health is a regional anchor.</li>
+          <li><strong>Manufacturing &amp; tech</strong> — Jabil (St. Pete HQ, F200 contract manufacturer, ~250K employees globally with a meaningful Tampa footprint); TECO Energy; ConnectWise; Reliaquest.</li>
+          <li><strong>Education</strong> — Hillsborough County Public Schools (one of the largest districts in the country); independent schools (Berkeley Preparatory, Tampa Prep, Academy of the Holy Names); USF and UT adjunct teaching.</li>
+        </ul>
+        <p>The combination of moderate cost of living and zero state income tax means a Tampa bivocational household nets meaningfully more than a Charlotte or Atlanta household at the same gross. That headroom is what would let a ten-person team commit to a decade in this metro without burning through savings or constantly being two months from leaving. The cost of admission is real but it is the lowest of any of the larger Sun Belt candidates, and Phoenix is the only candidate whose cost-of-living number is comparably low — without the income-tax structural advantage.</p>
+      </div>
+    </div>
+
+    <!-- block 06: posture -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">06</span>The Two-Pole Bridge</div>
+      <div>
+        <h3>One body holding <em>USF and downtown</em> together — not choosing one over the other.</h3>
+        <p>The geography of Tampa argues for a deliberate two-pole shape rather than a single neighborhood center. The team's distinctive — college and young pros held together as architecture, not program — has to be made flesh in this specific metro by accepting that the campus and the young-pro center are ten miles apart and refusing to abandon either pole.</p>
+        <p><strong>The college wing.</strong> A college pastor with USF Tampa as the primary field. A weekly college community gathering on or near campus — most plausibly Tuesday or Thursday evening, in a partner facility or rented space along Fletcher Ave or Fowler. Embedded relational presence at USF (the bulk of the work), with University of Tampa as a deliberate secondary touch given its downtown geography. USF St. Pete as a tertiary touch through a single member who lives across the bay. The work is not split four ways; it is concentrated at USF with adjacencies named.</p>
+        <p><strong>The young-professional wing.</strong> Members in finance ops (Raymond James, JPM, USAA), defense / cyber (MacDill contractor base), healthcare (Tampa General, Moffitt, BayCare), education (Hillsborough County, independent schools), and creative freelance (Seminole Heights / downtown St. Pete) form the adult center of the body. A Sunday gathering anchored in or near Seminole Heights — between USF and downtown geographically, between the campus and the young-pro neighborhoods relationally — is the most plausible center of gravity. The Seminole Heights / Tampa Heights / Riverside Heights triangle is where the team likely lives, where the adult center likely meets, and where a venue can be reached from both poles within a 15-to-25-minute drive.</p>
+        <p><strong>The bridge.</strong> Undergraduates from USF, formed in the church's college community, become the natural mentors for Tampa Bay high-schoolers — through one or two named partnerships, on the NYC pattern, rather than a sprawl. The young-pro members anchor financial and adult support. The arc runs from 14 to 24 to 34 in one body, in one metro that is still actively gathering all three. The team's distinctive shape — whole-city not college-only, plural eldership, local rooted teaching — is portable into Tampa with a specific geographic accommodation: choose Seminole Heights or near-equivalent as the body's center, accept the two-pole reality, and design pastoral rhythm around it from day one.</p>
+      </div>
+    </div>
+
+    <!-- block 07: posture and pillars -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">07</span>Posture &amp; Pillars</div>
+      <div>
+        <h3>Five practices the body would be <em>built around</em>.</h3>
+        <p>If Tampa is the call, the shape follows from the metro's specific geometry: a USF anchor ten miles from downtown, a young-pro center between the two, a moderate cost-of-living that rewards patient long-term presence, and a metro still actively gathering young adults the gospel reaches unevenly.</p>
+
+        <div class="bars" style="margin-top: 1.8rem;">
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">i.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Anchor the Sunday gathering in the Seminole Heights / Tampa Heights triangle.</strong> &nbsp; A venue between USF (10 mi NE) and downtown Tampa (3 mi S), reachable from Wesley Chapel, downtown, Hyde Park, and St. Pete within 25 minutes. Possible homes: a partner-church facility, a rented school auditorium, a community-center room along Florida Ave or Nebraska. The geography refuses the false choice between campus and downtown.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — Executive Pastor &nbsp;|&nbsp; Cadence — venue secured by month 4 &nbsp;|&nbsp; Marker — first Sunday in the Heights triangle</div>
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">ii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Name a college pastor with USF Tampa as the primary field from day one.</strong> &nbsp; A weekly college community on or near USF main campus. University of Tampa as a deliberate secondary touch, USF St. Pete as a tertiary touch through a single bay-side member. Fall and spring retreats. Mentoring tracks into the young-pro arm. Real connection into the body's Sunday gathering, where college students see what comes next.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — College Pastor &nbsp;|&nbsp; Cadence — weekly college community + biweekly USF presence &nbsp;|&nbsp; Marker — named undergrad leaders on USF main campus by year two</div>
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iii.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Build one named youth-outreach partnership in year one — not a portfolio.</strong> &nbsp; A single Hillsborough County high school, a single after-school program, a single church-school partnership. USF undergrads from the church's college community serve as mentors. Young-pro members anchor financial and adult support. The work is small on purpose; it is meant to last a decade.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — College Pastor + lay leader &nbsp;|&nbsp; Cadence — weekly mentor pairing during school year &nbsp;|&nbsp; Marker — same partnership still alive in year three</div>
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 1.4rem;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">iv.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Settle the ten in Tampa-commutable bivocational work before launch.</strong> &nbsp; Finance ops at Raymond James, JPM Tampa, USAA, Franklin Templeton; defense / cyber in the MacDill contractor base; healthcare across Tampa General, BayCare, Moffitt; manufacturing / engineering at Jabil; education through Hillsborough County and the metro's independent schools; freelance creative for the design-and-media members. The Florida no-state-income-tax structure stretches the household budget against a moderate cost-of-living.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — Executive Pastor &nbsp;|&nbsp; Cadence — 9–12 months pre-launch &nbsp;|&nbsp; Marker — all ten with named roles before the first Sunday</div>
+            </div>
+          </div>
+          <div class="bar-row" style="grid-template-columns: 28px 1fr; align-items: start; margin-bottom: 0;">
+            <div class="num" style="text-align: left; padding-top: 0.1rem;">v.</div>
+            <div style="font-family: var(--sans); font-size: 0.95rem; line-height: 1.55; opacity: 0.9; letter-spacing: 0;">
+              <strong style="color: inherit; font-weight: 600;">Walk into relationship with the existing Tampa Bay churches early.</strong> &nbsp; Idlewild, Grace Family, Generations, Bay Hope, Hyde Park UMC, Tampa Underground, Renew Tampa Bay, the campus ministries at USF — the team should be known by name in those rooms within the first six months. Not as a competitor. As a body the Lord is sending into a metro large enough that another body of this kind, built differently, is welcome.
+              <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem;">Lead — Lead Pastor + elders &nbsp;|&nbsp; Cadence — first conversations months 1–6 &nbsp;|&nbsp; Marker — named relationships with at least four neighboring churches by year one</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- block 08: first-year shape -->
+    <div class="dossier-block">
+      <div class="label"><span class="num">08</span>First-Year Shape</div>
+      <div>
+        <h3>How <em>ten people</em> deploy across two poles, one campus, and one neighborhood.</h3>
+        <p>The team is ten — bivocational, AA-led, three to five elders among them. The deployment accepts Tampa's two-pole geometry rather than fighting it.</p>
+        <ul style="margin-bottom: 1.2rem; padding-left: 1.2rem; opacity: 0.88;">
+          <li><strong>Lead Pastor</strong> — preaching, eldership chair, citywide relational work.</li>
+          <li><strong>Executive Pastor</strong> — operations, finance, venue, the ten's job-placement coordination.</li>
+          <li><strong>College Pastor</strong> — USF Tampa primary; UT and USF St. Pete as named secondary touches.</li>
+          <li><strong>Two more elders</strong> — teaching and pastoral care; spread between the young-pro arm and the youth-outreach work.</li>
+          <li><strong>Five lay-team members</strong> — pre-placed in finance ops, defense / cyber, healthcare, education, and creative work; each carrying a named lay responsibility (worship, hospitality, small-group leadership, youth-outreach mentor coordination, communications).</li>
+        </ul>
+        <p><strong>Where they live:</strong> the team clusters in the Seminole Heights / Tampa Heights / Riverside Heights triangle, with one or two members further north toward USF for relational proximity to campus and one or two across the bay in St. Pete. The Heights triangle is the body's residential center.</p>
+        <p><strong>What gathers in year one:</strong> a Sunday gathering in the Heights triangle; a weekly college community on or near USF; small groups embedded in Seminole Heights, downtown Tampa, and downtown St. Pete; one named high-school partnership through Hillsborough County; the team's own weekly elder-and-staff rhythm of prayer, planning, and teaching prep — local, on a calendar the team sets.</p>
+      </div>
+    </div>
+
+    <!-- weekend scoping (collapsible) -->
+    <details class="scoping">
+      <summary>
+        <span class="label-side">
+          <span class="arr">›</span>
+          <span class="lead">Weekend scoping trip · <em>top 10 to walk</em></span>
+        </span>
+        <span class="count">10 stops</span>
+      </summary>
+      <div class="scoping-body">
+        <p>If a weekend in Tampa is the next step, the path that surfaces what the metro actually feels like is a deliberately two-pole one. Aim Friday afternoon → Sunday afternoon. The campus, the Heights triangle, downtown, and St. Pete are the backbone. A car is required.</p>
+        <ol class="scoping-list">
+          <li><strong>Walk USF Tampa main campus</strong>weekday late-morning; Marshall Student Center to the Library<span class="why">the anchor; feel the in-state-rooted student body and the engineering / business / health-sciences register</span></li>
+          <li><strong>Coffee at Foundation Coffee or Buddy Brew (Tampa Heights)</strong>weekday morning<span class="why">where the imported under-30 creative-and-tech population actually spends its weeks</span></li>
+          <li><strong>Walk Seminole Heights along Florida Ave</strong>Friday evening<span class="why">the gentrifying spine — bungalows, breweries, restaurants — that signals the metro's young-adult cultural register</span></li>
+          <li><strong>Sunday morning at one of the large attractional churches</strong>Idlewild or Grace Family — Carrollwood<span class="why">scope the shape of the dominant evangelical footprint and what's structurally different about the team's calling</span></li>
+          <li><strong>Sunday evening at Renew Tampa Bay or a smaller reformed work</strong>or equivalent in the metro<span class="why">the smaller theologically-grounded register the team most resembles</span></li>
+          <li><strong>University of Tampa walk + Riverwalk</strong>downtown · Saturday afternoon<span class="why">the second campus and downtown's young-pro waterfront register at Water Street and Sparkman Wharf</span></li>
+          <li><strong>Drive across the bay to downtown St. Petersburg</strong>Central Avenue grid · Saturday afternoon<span class="why">the metro's arts-and-design pole, Raymond James orbit, and the second cluster of young-adult life</span></li>
+          <li><strong>Meet a USF campus-ministry director</strong>Cru, IV, Chi Alpha, or RUF<span class="why">first-line read on the four-campus ministry density and what's thin</span></li>
+          <li><strong>Drive past MacDill AFB / South Tampa</strong>not entering base — surrounding streets<span class="why">scale-feel for the defense / cyber / intelligence corridor that anchors a meaningful share of bivocational work</span></li>
+          <li><strong>Dinner in Hyde Park or SoHo</strong>Saturday evening<span class="why">the older-money young-pro dining-and-bar register; useful counterpoint to Seminole Heights and downtown St. Pete</span></li>
+        </ol>
+      </div>
+    </details>
+
+    <!-- verdict -->
+    <div class="verdict">
+      <div>
+        <h4>— Where Tampa calls —</h4>
+        <ul>
+          <li>A real R1 anchor (USF — AAU 2023, top-50 public) with ~40K students at one campus and a system geometry that lets a college pastor work across three sites under one institutional relationship</li>
+          <li>A metro still actively gathering young adults — top-five Sun Belt by net under-30 inflow — with employer depth that holds graduates in metro at higher rates than ASU or Tandon</li>
+          <li>Florida's no-state-income-tax structure paired with a moderate cost-of-living gives the bivocational team meaningful long-arc runway</li>
+          <li>The team's specific shape — AA-led, integrated college-and-young-pro, plural eldership, local teaching, long-term rootedness — is genuinely missing from the metro's current evangelical landscape</li>
+          <li>Real defense / cyber / intelligence (MacDill, CENTCOM), finance ops (Raymond James, JPM Tampa, USAA), healthcare (Tampa General, Moffitt, BayCare), and education employer base — five real bivocational lanes for a team of ten</li>
+          <li>Florida-secular drift in the under-30 cohort means the gospel is faintly heard in rooms full of young adults the church should be among</li>
+        </ul>
+      </div>
+      <div>
+        <h4>— Where Tampa will cost the team —</h4>
+        <ul>
+          <li>The two-pole geometry is real — USF and downtown / St. Pete are 10–25 minutes apart and the team has to design pastoral rhythm around that from day one, not patch it on later</li>
+          <li>USF is mid-to-upper R1, AAU-2023 — a real anchor but not the academic-tier of GT or NYU Tandon; the team has to weigh where academic seriousness of the anchor sits in the call</li>
+          <li>No A2N footprint and no Carolina-pipeline drive — RDU is 9.5 hours by car or a 90-minute nonstop, semi-live rather than live</li>
+          <li>The metro's evangelical center is dominated by large attractional churches; relational positioning has to be careful to avoid being misread as a niche reaction rather than a body sent for the long haul</li>
+          <li>Hurricane season is a real operational reality; venue and staff planning has to assume an annual disruption window from August through October</li>
+          <li>Asian-American density in the metro is moderate (~3.5%) — meaningful but lower than Atlanta, NYC, or DFW; the AA-led leadership shape has to be missionally clear about whom it serves and how</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+<!-- ============ /TAB: TAMPA ============ -->
+
 <!-- ============ TAB: ALTERNATIVES ============ -->
 <div class="tab-panel" data-panel="alternatives">
 
 <section class="alternatives" id="alternatives">
   <div class="container">
     <div class="alt-head">
-      <div class="eyebrow">§ X. Alternatives Considered</div>
+      <div class="eyebrow">§ XI. Alternatives Considered</div>
       <h2>Eleven cities <em>not chosen</em> — and why.</h2>
       <p>Eleven alternatives surfaced across the search. Each was set aside for a specific structural reason — Richmond is first because it was in the candidate set until just being moved here.</p>
     </div>
@@ -3950,7 +4334,7 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
           <li>Cheapest cost of living after Phoenix; usable Carolina pipeline (3.5h drive)</li>
           <li>A2N-open in Richmond proper; UVA / Axiom 1h west</li>
         </ul>
-        <div class="alt-block"><strong>Why set aside</strong> Smallest absolute college-and-young-pro field of the candidates — even reaching the whole of young-adult Richmond touches fewer people than reaching one neighborhood of Atlanta. UVA / Axiom adjacency 1h west is the closest sister-plant geography of any candidate. The team closed the working set to Atlanta, Phoenix, Charlotte, and New York; Richmond is the most serious alternative if one of those four falls out.</div>
+        <div class="alt-block"><strong>Why set aside</strong> Smallest absolute college-and-young-pro field of the candidates — even reaching the whole of young-adult Richmond touches fewer people than reaching one neighborhood of Atlanta. UVA / Axiom adjacency 1h west is the closest sister-plant geography of any candidate. The team closed the working set to Atlanta, Phoenix, Charlotte, New York, and Tampa; Richmond is the most serious alternative if one of those five falls out.</div>
       </div>
 
       <!-- 02 BERKELEY -->
@@ -4110,8 +4494,8 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 <!-- DECISION (NEUTRAL) -->
 <section class="decision" id="decision">
   <div class="container">
-    <div class="eyebrow">§ XI. The Verdict</div>
-    <h2>Four paths.<br>One <em>question</em>.</h2>
+    <div class="eyebrow">§ XII. The Verdict</div>
+    <h2>Five paths.<br>One <em>question</em>.</h2>
     <p class="lede">
       The picture is in front of us. Each city presents a coherent shape of obedience, and the right answer turns less on which is "better" in the abstract than on where the missional need most fits this team's calling — and which trade-offs the team is built to bear for the long haul. What follows is the discernment framework, not the conclusion.
     </p>
@@ -4169,17 +4553,30 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
         </ul>
       </div>
 
+      <div class="frame-cell tpa">
+        <div class="label">— Choose Tampa if —</div>
+        <h4>A <em>fast-growing Sun Belt</em> metro with a USF anchor and real bivocational headroom is where the Lord is sending us.</h4>
+        <ul>
+          <li>USF as a real R1 anchor (AAU-2023, top-50 public, ~40K students) is enough — top-tier elite is grace, not premise</li>
+          <li>Florida's no-state-income-tax structure paired with moderate cost of living gives the team meaningful long-arc bivocational runway</li>
+          <li>The two-pole geometry (USF + downtown / St. Pete) is a feature to design around, not a friction to resist</li>
+          <li>The metro's evangelical center is dominated by large attractional churches — and the team's specific shape (AA-led, integrated college-and-young-pro, plural eldership, local teaching) is genuinely missing</li>
+          <li>Real defense / cyber, finance ops, healthcare, and education employer base supports a ten-person bivocational team</li>
+          <li>Florida-secular drift in the under-30 cohort is real — the gospel is faintly heard in rooms full of young adults the church should be among</li>
+        </ul>
+      </div>
+
     </div>
 
     <div class="questions-list">
       <h3>— Questions to sit with before deciding —</h3>
       <ol>
-        <li>Where is the missional need greatest — and where does that need most fit the shape of this team's calling? (Phoenix and New York carry the heaviest lostness; Atlanta and Charlotte sit inside warmer Bible-Belt baselines.)</li>
-        <li>How much does academic seriousness of the anchor campus weigh? Top-tier R1 favors GT (Atlanta); NYU Tandon (NYC) is engineering-elite within the four-campus shape; ASU and UNCC are mid-tier with real strength.</li>
+        <li>Where is the missional need greatest — and where does that need most fit the shape of this team's calling? (Phoenix, New York, and Tampa carry the heaviest lostness; Atlanta and Charlotte sit inside warmer Bible-Belt baselines.)</li>
+        <li>How much does academic seriousness of the anchor campus weigh? Top-tier R1 favors GT (Atlanta); NYU Tandon (NYC) is engineering-elite within the four-campus shape; USF (Tampa) is recently-AAU and rising; ASU and UNCC are mid-tier with real strength.</li>
         <li>Is the brother A2N plant in Atlanta a gift to receive, or a relationship the team is not built to steward?</li>
-        <li>How does the team weigh Carolina UNC network geometry against the missional need elsewhere? Atlanta and Charlotte keep the network live; Phoenix and New York do not.</li>
-        <li>How long is the team committed for? Five years tilts toward Phoenix or Charlotte; ten or more makes Atlanta's long-arc discipleship and Brooklyn's "body that stays" both viable.</li>
-        <li>Which cost is the team built to bear — Atlanta's saturation, Phoenix's pioneering, Charlotte's geography, or New York's severe cost of living?</li>
+        <li>How does the team weigh Carolina UNC network geometry against the missional need elsewhere? Atlanta and Charlotte keep the network live; Tampa is semi-live (90-min flight, 9.5h drive); Phoenix and New York do not.</li>
+        <li>How long is the team committed for? Five years tilts toward Phoenix or Charlotte; ten or more makes Atlanta's long-arc discipleship, Brooklyn's "body that stays," and Tampa's no-state-income-tax bivocational headroom all viable.</li>
+        <li>Which cost is the team built to bear — Atlanta's saturation, Phoenix's pioneering, Charlotte's geography, New York's severe cost of living, or Tampa's two-pole campus-and-downtown geometry?</li>
         <li>Where do the team's spouses, children, and aging-parent realities point?</li>
         <li>Which city is the Lord giving the team a peace and a love for — to live in, raise families in, and bury people in for a decade?</li>
       </ol>
@@ -4214,21 +4611,22 @@ body.dark-bg .sidenav a.active { color: var(--sidenav-accent); }
 <footer class="footer">
   <div class="container footer-row">
     <span>Field Guide Vol. I</span>
-    <span>Four Cities — One Calling</span>
+    <span>Five Cities — One Calling</span>
     <span>A Discernment Field Guide</span>
   </div>
 </footer>
 
 <script>
 // ============ TABS ============
-const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'newyork', 'alternatives', 'verdict'];
+const VALID_TABS = ['open', 'compare', 'atlanta', 'phoenix', 'charlotte', 'newyork', 'tampa', 'alternatives', 'verdict'];
 
-const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'newyork', 'verdict']);
+const DARK_BG_TABS = new Set(['atlanta', 'phoenix', 'charlotte', 'newyork', 'tampa', 'verdict']);
 const CITY_ACCENTS = {
   atlanta: 'var(--atl-gold)',
   phoenix: 'var(--phx-sand)',
   charlotte: 'var(--clt-gold)',
   newyork: 'var(--nyc-brick)',
+  tampa: 'var(--tpa-gold)',
 };
 
 function activateTab(tabId, opts = {}) {

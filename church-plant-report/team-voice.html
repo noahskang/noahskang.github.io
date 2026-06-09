@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Team Weighs In — Survey Responses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F2EBDD;
+  --paper-deep: #E8DFCC;
+  --ink: #15130F;
+  --ink-soft: #3A352D;
+  --ink-faint: #837A6B;
+  --rule: #C9BFA8;
+
+  --atl-deep: #1A3328;
+  --atl-mid: #2C5440;
+  --atl-gold: #C49A4A;
+  --atl-brick: #9A4628;
+  --atl-leaf: #6B8A5E;
+  --atl-paper: #EFE8D6;
+
+  --phx-rust: #9E3F22;
+  --phx-sienna: #8C3517;
+  --phx-sage: #768870;
+  --phx-sand: #E2D5B6;
+  --phx-paper: #F0E4CB;
+
+  --nyc-deep: #1F2A3A;
+  --nyc-mid: #354759;
+  --nyc-brick: #B5563E;
+  --nyc-rust: #8E3F2A;
+  --nyc-stone: #C8B89C;
+  --nyc-paper: #E8DFCB;
+
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'Inter Tight', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.32;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(242,235,221,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nav .brand { font-weight: 600; }
+.nav .brand span { color: var(--atl-brick); }
+.nav-links { display: flex; gap: 1.8rem; }
+.nav-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a:hover { color: var(--atl-deep); }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.back { color: var(--atl-brick); font-weight: 600; }
+.nav-links a.back::before { content: "← "; }
+
+@media (max-width: 720px) {
+  .nav { padding: 0.9rem 1.2rem; }
+  .nav-links { display: none; }
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+@media (max-width: 720px) { .container { padding: 0 1.2rem; } }
+
+section { padding: 7rem 0; position: relative; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px; height: 1px;
+  background: currentColor;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+p { font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); }
+
+/* ============ COVER ============ */
+.cover {
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  position: relative;
+}
+.cover-meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 720px) {
+  .cover-meta { flex-direction: column; gap: 0.4rem; }
+}
+.cover-title {
+  font-size: clamp(2.8rem, 8vw, 7.5rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  line-height: 0.98;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.035em;
+}
+.cover-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--atl-brick);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.cover-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  max-width: 640px;
+  color: var(--ink);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  line-height: 1.55;
+  margin-bottom: 3rem;
+}
+.cover-foot {
+  margin-top: auto;
+  padding-top: 3rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ============ SCOREBOARD ============ */
+.scoreboard {
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.scoreboard-head {
+  margin-bottom: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 4rem;
+  align-items: end;
+}
+@media (max-width: 900px) { .scoreboard-head { grid-template-columns: 1fr; gap: 1.5rem; } }
+.scoreboard-head h2 {
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  line-height: 1;
+}
+.scoreboard-head h2 em {
+  font-style: italic;
+  color: var(--atl-brick);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.scoreboard-head p {
+  font-size: 1.05rem;
+  max-width: 440px;
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 720px) { .score-grid { grid-template-columns: 1fr; } }
+
+.score-card {
+  padding: 2.4rem 2rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+.score-card.atl { border-top: 4px solid var(--atl-deep); }
+.score-card.phx { border-top: 4px solid var(--phx-rust); }
+.score-card.nyc { border-top: 4px solid var(--nyc-deep); }
+
+.score-city {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+.score-card.atl .score-city { color: var(--atl-deep); }
+.score-card.phx .score-city { color: var(--phx-rust); }
+.score-card.nyc .score-city { color: var(--nyc-deep); }
+
+.score-num {
+  font-family: var(--serif);
+  font-size: clamp(3.2rem, 7vw, 5.5rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  margin-bottom: 0.4rem;
+}
+.score-card.atl .score-num { color: var(--atl-gold); }
+.score-card.phx .score-num { color: var(--phx-rust); }
+.score-card.nyc .score-num { color: var(--nyc-brick); }
+
+.score-denom {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 1.5rem;
+}
+
+.bar-track {
+  height: 6px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.bar-fill.animate { transform: scaleX(1); }
+.score-card.atl .bar-fill { background: linear-gradient(90deg, var(--atl-gold), #E0B96A); }
+.score-card.phx .bar-fill { background: linear-gradient(90deg, var(--phx-rust), #C85C38); }
+.score-card.nyc .bar-fill { background: linear-gradient(90deg, var(--nyc-brick), #D6735A); }
+
+.score-rank {
+  margin-top: 1.2rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ============ VOTES ============ */
+.votes-section {
+  background: var(--paper);
+}
+.votes-head {
+  margin-bottom: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 4rem;
+  align-items: end;
+}
+@media (max-width: 900px) { .votes-head { grid-template-columns: 1fr; gap: 1.5rem; } }
+.votes-head h2 {
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  line-height: 1;
+}
+.votes-head h2 em {
+  font-style: italic;
+  color: var(--atl-brick);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.votes-head p { font-size: 1.05rem; max-width: 440px; }
+
+.vote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+@media (max-width: 720px) { .vote-grid { grid-template-columns: 1fr; } }
+
+.vote-tile {
+  padding: 2.4rem 2rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  text-align: center;
+}
+.vote-tile-city {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.vote-tile.atl .vote-tile-city { color: var(--atl-deep); }
+.vote-tile.phx .vote-tile-city { color: var(--phx-rust); }
+.vote-tile.nyc .vote-tile-city { color: var(--nyc-deep); }
+
+.vote-num {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  margin-bottom: 0.3rem;
+}
+.vote-tile.atl .vote-num { color: var(--atl-gold); }
+.vote-tile.phx .vote-num { color: var(--phx-rust); }
+.vote-tile.nyc .vote-num { color: var(--nyc-brick); }
+
+.vote-sub {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 1.5rem;
+}
+
+.vote-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+.dot.filled-atl { background: var(--atl-gold); }
+.dot.filled-phx { background: var(--phx-rust); }
+.dot.filled-nyc { background: var(--nyc-brick); }
+
+.no-consensus {
+  margin: 0 auto;
+  max-width: 720px;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+.no-consensus p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.no-consensus p em { font-style: normal; color: var(--atl-brick); }
+
+/* ============ CITY DEEP DIVE ============ */
+.voice-dossier {
+  position: relative;
+  padding: 8rem 0 7rem;
+}
+.dossier-atl {
+  background: var(--atl-deep);
+  color: var(--atl-paper);
+}
+.dossier-phx {
+  background: var(--phx-rust);
+  color: var(--phx-paper);
+}
+.dossier-nyc {
+  background: var(--nyc-deep);
+  color: var(--nyc-paper);
+}
+
+.dossier-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+.dossier-no {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.dossier-name {
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+}
+.dossier-name em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.dossier-atl .dossier-name em { color: var(--atl-gold); }
+.dossier-phx .dossier-name em { color: var(--phx-sand); }
+.dossier-nyc .dossier-name em { color: var(--nyc-stone); }
+
+.dossier-tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  font-weight: 300;
+  text-align: right;
+  max-width: 260px;
+  opacity: 0.8;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  line-height: 1.3;
+}
+@media (max-width: 720px) {
+  .dossier-header { flex-direction: column; align-items: start; gap: 1.5rem; }
+  .dossier-tag { text-align: left; max-width: 100%; }
+}
+
+/* quote grid */
+.quote-section-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  opacity: 0.65;
+}
+.dossier-atl .quote-section-label { color: var(--atl-gold); opacity: 1; }
+.dossier-phx .quote-section-label { color: var(--phx-sand); opacity: 1; }
+.dossier-nyc .quote-section-label { color: var(--nyc-stone); opacity: 1; }
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+@media (max-width: 720px) { .quote-grid { grid-template-columns: 1fr; } }
+
+.voice-card {
+  padding: 1.8rem 1.8rem 1.8rem 1.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-left: 3px solid;
+}
+.dossier-atl .voice-card { border-left-color: var(--atl-gold); }
+.dossier-phx .voice-card { border-left-color: var(--phx-sand); }
+.dossier-nyc .voice-card { border-left-color: var(--nyc-stone); }
+
+.voice-card .quote-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  margin-bottom: 1rem;
+  color: inherit;
+}
+.voice-card .quote-attr {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* pull quote */
+.pullquote {
+  margin: 4rem 0;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  text-align: center;
+}
+.pullquote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: inherit;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.dossier-atl .pullquote p em { color: var(--atl-gold); font-style: normal; }
+.dossier-phx .pullquote p em { color: var(--phx-sand); font-style: normal; }
+.dossier-nyc .pullquote p em { color: var(--nyc-stone); font-style: normal; }
+
+/* verdict box */
+.verdict {
+  margin-top: 4rem;
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+@media (max-width: 720px) { .verdict { grid-template-columns: 1fr; } }
+.verdict h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.dossier-atl .verdict h4 { color: var(--atl-gold); }
+.dossier-phx .verdict h4 { color: var(--phx-sand); }
+.dossier-nyc .verdict h4 { color: var(--nyc-stone); }
+.verdict ul { list-style: none; }
+.verdict ul li {
+  padding: 0.7rem 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+.verdict ul li:last-child { border: none; }
+
+/* stat ribbon */
+.stat-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 5rem;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+.stat-cell {
+  padding: 1.8rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell .num {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  margin-bottom: 0.3rem;
+}
+.dossier-atl .stat-cell .num { color: var(--atl-gold); }
+.dossier-phx .stat-cell .num { color: var(--phx-sand); }
+.dossier-nyc .stat-cell .num { color: var(--nyc-stone); }
+.stat-cell .lbl {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  line-height: 1.4;
+}
+@media (max-width: 720px) {
+  .stat-ribbon { grid-template-columns: repeat(2, 1fr); }
+  .stat-cell { border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .stat-cell:nth-child(2) { border-right: none; }
+}
+
+.vision-note {
+  margin-top: 2.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  text-align: center;
+}
+
+/* ============ THEMES ============ */
+.themes {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8rem 0;
+}
+.themes .eyebrow { color: var(--atl-gold); }
+.themes h2 {
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  margin-bottom: 1.5rem;
+}
+.themes h2 em {
+  font-style: italic;
+  color: var(--atl-gold);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.themes .lede {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 300;
+  max-width: 700px;
+  line-height: 1.5;
+  color: rgba(242,235,221,0.8);
+  margin-bottom: 4rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 720px) { .theme-grid { grid-template-columns: 1fr; } }
+.theme-grid .theme-cell:last-child {
+  grid-column: span 2;
+}
+@media (max-width: 720px) {
+  .theme-grid .theme-cell:last-child { grid-column: span 1; }
+}
+
+.theme-cell {
+  padding: 2.2rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.02);
+}
+.theme-num {
+  font-family: var(--mono);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--atl-gold);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.8rem;
+  opacity: 0.6;
+}
+.theme-cell h4 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--paper);
+}
+.theme-cell h4 em {
+  font-style: italic;
+  color: var(--atl-gold);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+}
+.theme-cell p {
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: rgba(242,235,221,0.7);
+}
+
+/* ============ CLOSING / COMPANION ============ */
+.closing {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5rem 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.companion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 720px) { .companion-grid { grid-template-columns: 1fr; } }
+.companion-link {
+  display: block;
+  padding: 2.2rem 2rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.02);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s, border-color 0.2s;
+}
+.companion-link:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.3);
+}
+.companion-link .comp-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--atl-gold);
+  margin-bottom: 0.7rem;
+}
+.companion-link h4 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+  color: var(--paper);
+}
+.companion-link h4 em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  color: var(--nyc-stone);
+}
+.companion-link p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(242,235,221,0.6);
+}
+.companion-link .comp-arrow {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--atl-gold);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  padding: 3rem 0 2rem;
+  background: var(--ink);
+  color: rgba(242,235,221,0.5);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.footer-row span:first-child { color: var(--atl-gold); }
+
+/* ============ FADE-UP ============ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.fade-up.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">Field <span>Guide</span> — Vol. I</div>
+  <div class="nav-links">
+    <a href="church-plant-analysis.html" class="back">Field Guide</a>
+    <a href="distinctives.html">Distinctives</a>
+    <a href="#scoreboard">Ratings</a>
+    <a href="#votes">Votes</a>
+    <a href="#atlanta">Atlanta</a>
+    <a href="#phoenix">Phoenix</a>
+    <a href="#newyork">New York</a>
+    <a href="#themes">Themes</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ======== COVER ======== -->
+  <section class="cover">
+    <div class="container">
+      <div class="cover-meta fade-up">
+        <span>Team Survey — Vol. I</span>
+        <span>9 Respondents · 3 Cities</span>
+        <span>Internal · Working Document</span>
+      </div>
+      <h1 class="cover-title fade-up">
+        The Team<br>
+        Weighs <em>In.</em>
+      </h1>
+      <p class="cover-sub fade-up">
+        Nine voices. Three cities. An honest read of where the team's hearts, anxieties, and visions landed — Atlanta, Phoenix, and New York.
+      </p>
+      <div class="cover-foot fade-up">
+        <span>Subject · Atlanta, Phoenix, New York</span>
+        <span>Responses · 9 of 10</span>
+        <span>Top Choice · Split — No Majority</span>
+        <span>Survey Date · June 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== RATING SCOREBOARD ======== -->
+  <section class="scoreboard" id="scoreboard">
+    <div class="container">
+      <div class="scoreboard-head">
+        <div>
+          <div class="eyebrow fade-up">§ I. The Numbers</div>
+          <h2 class="fade-up">How the team<br><em>rated</em> each city.</h2>
+        </div>
+        <p class="fade-up">Each respondent scored all three cities on a 1–10 scale. These are the averages across 7 complete responses. Higher is not necessarily better — context matters, and the gaps are narrow.</p>
+      </div>
+      <div class="score-grid">
+        <div class="score-card atl fade-up">
+          <div class="score-city">Atlanta</div>
+          <div class="score-num" data-target="7.57" data-decimals="2">7.57</div>
+          <div class="score-denom">avg. rating / 10</div>
+          <div class="bar-track"><div class="bar-fill" style="width: 75.7%;"></div></div>
+          <div class="score-rank">#1 avg. score · 2 top-choice votes</div>
+        </div>
+        <div class="score-card phx fade-up">
+          <div class="score-city">Phoenix</div>
+          <div class="score-num" data-target="7.29" data-decimals="2">7.29</div>
+          <div class="score-denom">avg. rating / 10</div>
+          <div class="bar-track"><div class="bar-fill" style="width: 72.9%;"></div></div>
+          <div class="score-rank">#2 avg. score · 2 top-choice votes</div>
+        </div>
+        <div class="score-card nyc fade-up">
+          <div class="score-city">New York</div>
+          <div class="score-num" data-target="6.43" data-decimals="2">6.43</div>
+          <div class="score-denom">avg. rating / 10</div>
+          <div class="bar-track"><div class="bar-fill" style="width: 64.3%;"></div></div>
+          <div class="score-rank">#3 avg. score · 3 top-choice votes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== VOTE DISTRIBUTION ======== -->
+  <section class="votes-section" id="votes">
+    <div class="container">
+      <div class="votes-head">
+        <div>
+          <div class="eyebrow fade-up">§ II. First Choice Votes</div>
+          <h2 class="fade-up">Where did the<br>team <em>land?</em></h2>
+        </div>
+        <p class="fade-up">Seven team members named a top choice. The lowest-rated city took the most first-choice votes — pointing to conviction beyond raw scoring.</p>
+      </div>
+      <div class="vote-grid">
+        <div class="vote-tile nyc fade-up">
+          <div class="vote-tile-city">New York</div>
+          <div class="vote-num">3</div>
+          <div class="vote-sub">votes of 7</div>
+          <div class="vote-dots">
+            <div class="dot filled-nyc"></div>
+            <div class="dot filled-nyc"></div>
+            <div class="dot filled-nyc"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="vote-tile phx fade-up">
+          <div class="vote-tile-city">Phoenix</div>
+          <div class="vote-num">2</div>
+          <div class="vote-sub">votes of 7</div>
+          <div class="vote-dots">
+            <div class="dot filled-phx"></div>
+            <div class="dot filled-phx"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="vote-tile atl fade-up">
+          <div class="vote-tile-city">Atlanta</div>
+          <div class="vote-num">2</div>
+          <div class="vote-sub">votes of 7</div>
+          <div class="vote-dots">
+            <div class="dot filled-atl"></div>
+            <div class="dot filled-atl"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="no-consensus fade-up">
+        <p>"Three cities. Seven votes. No majority. The team is genuinely divided — and that itself is <em>data.</em>"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== ATLANTA DEEP DIVE ======== -->
+  <section class="voice-dossier dossier-atl" id="atlanta">
+    <div class="container">
+      <div class="dossier-header fade-up">
+        <div>
+          <div class="dossier-no">City 01 — Southeast</div>
+          <div class="dossier-name">At<em>lanta.</em></div>
+        </div>
+        <div class="dossier-tag">Supported. Sending. Familiar.</div>
+      </div>
+
+      <div class="quote-section-label fade-up">What excites the team</div>
+      <div class="quote-grid">
+        <div class="voice-card fade-up">
+          <div class="quote-text">"Being close to an existing team, for relational strength and support. Lots of campuses in a close area."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+        <div class="voice-card fade-up">
+          <div class="quote-text">"Ideal balance between college town and big city — great proximity to connect with other A2N churches on the east coast."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+        <div class="voice-card fade-up">
+          <div class="quote-text">"Long-term vision to absorb different ministries and life stages — a great place to grow future ministers."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+        <div class="voice-card fade-up">
+          <div class="quote-text">"Exciting city but lower living expenses. And despite being 'well-served,' there are still too many who don't know the gospel."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+      </div>
+
+      <div class="pullquote fade-up">
+        <p>"Atlanta culture becomes a sending hub — <em>tools to recharge</em> and train students to become missionaries. Self-sustained by students and staff."</p>
+      </div>
+
+      <div class="verdict fade-up">
+        <div>
+          <h4>Concerns voiced</h4>
+          <ul>
+            <li>Bible Belt — relatively well reached; plenty of existing ministries</li>
+            <li>Risk of clashing with or duplicating other A2N work nearby</li>
+            <li>Hard to establish a distinct ministry presence in a crowded landscape</li>
+            <li>More complicated relationally with existing teams in the area</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Honest questions</h4>
+          <ul>
+            <li>Is there space to grow into, or are we fighting for territory?</li>
+            <li>Does the "Bible Belt" framing underestimate the actual need?</li>
+            <li>Could proximity to support become a crutch against true independence?</li>
+            <li>Who is our ICP — existing Christians, or truly unreached students?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stat-ribbon fade-up">
+        <div class="stat-cell">
+          <div class="num" data-target="100" data-decimals="0">100</div>
+          <div class="lbl">students<br>by year 5</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num" data-target="50" data-decimals="0">50</div>
+          <div class="lbl">post-grad<br>disciples</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num" data-target="4" data-decimals="0">4</div>
+          <div class="lbl">target campuses<br>(GT, GSU, HBCUs)</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">1</div>
+          <div class="lbl">sending hub<br>vision</div>
+        </div>
+      </div>
+      <div class="vision-note fade-up">Team 5-year projections — composite across respondents</div>
+    </div>
+  </section>
+
+  <!-- ======== PHOENIX DEEP DIVE ======== -->
+  <section class="voice-dossier dossier-phx" id="phoenix">
+    <div class="container">
+      <div class="dossier-header fade-up">
+        <div>
+          <div class="dossier-no">City 02 — Southwest</div>
+          <div class="dossier-name">Phoe<em>nix.</em></div>
+        </div>
+        <div class="dossier-tag">Frontier. Untapped. Isolated.</div>
+      </div>
+
+      <div class="quote-section-label fade-up">What excites the team</div>
+      <div class="quote-grid">
+        <div class="voice-card fade-up">
+          <div class="quote-text">"ASU is HUGE with many unreached students — frontier location for college ministry. Could grow multiplicatively."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+        <div class="voice-card fade-up">
+          <div class="quote-text">"Sheer number of college students. Feels less reached than the other two. Chance to break completely new ground."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+        <div class="voice-card fade-up">
+          <div class="quote-text">"Something completely new — exciting but scary. Not been part of a new church plant before. Able to collaborate with Hope Church and Salt Company."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+        <div class="voice-card fade-up">
+          <div class="quote-text">"Big space to reach the college scene — more places to branch out (Flagstaff, Tucson). Place the college ministry can really expand."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+      </div>
+
+      <div class="pullquote fade-up">
+        <p>"Frontier location for college ministry — <em>could grow multiplicatively.</em> The most unreached population of the three."</p>
+      </div>
+
+      <div class="verdict fade-up">
+        <div>
+          <h4>Concerns voiced</h4>
+          <ul>
+            <li>5–6 hours from nearest A2N plant — team would be genuinely isolated</li>
+            <li>Majority of students want to leave Arizona after graduation</li>
+            <li>Self-sustaining model harder to achieve without network support</li>
+            <li>Summers are harsh — team energy, morale, and outreach all take a hit</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Honest questions</h4>
+          <ul>
+            <li>Can eight people launch what normally needs twenty?</li>
+            <li>What does discipleship look like when students don't stay post-grad?</li>
+            <li>How do we handle relational friction with no "escape valve" nearby?</li>
+            <li>Is isolation a cost we're truly willing to bear long-term?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stat-ribbon fade-up">
+        <div class="stat-cell">
+          <div class="num" data-target="150" data-decimals="0">150</div>
+          <div class="lbl">students<br>by year 5</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">100–200</div>
+          <div class="lbl">weekly attendance<br>team median est.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num" data-target="20" data-decimals="0">20</div>
+          <div class="lbl">baptisms<br>in 5 years</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">3</div>
+          <div class="lbl">network cities<br>PHX → TUC → FLG</div>
+        </div>
+      </div>
+      <div class="vision-note fade-up">Team 5-year projections — composite across respondents</div>
+    </div>
+  </section>
+
+  <!-- ======== NEW YORK DEEP DIVE ======== -->
+  <section class="voice-dossier dossier-nyc" id="newyork">
+    <div class="container">
+      <div class="dossier-header fade-up">
+        <div>
+          <div class="dossier-no">City 03 — Northeast</div>
+          <div class="dossier-name">New <em>York.</em></div>
+        </div>
+        <div class="dossier-tag">High ceiling. High cost. High stakes.</div>
+      </div>
+
+      <div class="quote-section-label fade-up">What excites the team</div>
+      <div class="quote-grid">
+        <div class="voice-card fade-up">
+          <div class="quote-text">"The hugeness of NYC gets to my heart. Much need excites me and moves me to do more. God wants something bigger."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+        <div class="voice-card fade-up">
+          <div class="quote-text">"So many unreached people — SO EASY to build relationships. Could build a unique church bridging youth, college, and local adults."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+        <div class="voice-card fade-up">
+          <div class="quote-text">"Harvest plentiful but laborers few. Every person can be loved and brought the gospel — ministry not just on campus but the whole city."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+        <div class="voice-card fade-up">
+          <div class="quote-text">"Done well, potential impact significant locally and globally due to diversity and influence. Transient nature means people craving something lasting."</div>
+          <div class="quote-attr">— Team member</div>
+        </div>
+      </div>
+
+      <div class="pullquote fade-up">
+        <p>"The hugeness of NYC gets to my heart — <em>God wants something bigger.</em> The Acts 2 church would really shine here."</p>
+      </div>
+
+      <div class="verdict fade-up">
+        <div>
+          <h4>Concerns voiced</h4>
+          <ul>
+            <li>Cost of living — NYC economics make long-term sacrifices particularly hard</li>
+            <li>People don't stay in NY long — more turnover, harder discipleship retention</li>
+            <li>College ministry is harder to crack in this context</li>
+            <li>Need to figure out how to exist alongside nearby A2N churches</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Honest questions</h4>
+          <ul>
+            <li>How do we build community that stays when the city pushes everyone outward?</li>
+            <li>Can families thrive here — practically, financially, long-term?</li>
+            <li>Does our discipleship model translate to the NYC pace and culture?</li>
+            <li>What does "success" look like if people cycle through and scatter?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stat-ribbon fade-up">
+        <div class="stat-cell">
+          <div class="num" data-target="200" data-decimals="0">200</div>
+          <div class="lbl">total congregation<br>by year 5</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">75–100</div>
+          <div class="lbl">college students<br>team median est.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num" data-target="50" data-decimals="0">50</div>
+          <div class="lbl">non-Christians/yr<br>through Alpha</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">3+</div>
+          <div class="lbl">outer borough<br>plants by yr 5</div>
+        </div>
+      </div>
+      <div class="vision-note fade-up">Team 5-year projections — composite across respondents</div>
+    </div>
+  </section>
+
+  <!-- ======== CROSS-CITY THEMES ======== -->
+  <section class="themes" id="themes">
+    <div class="container">
+      <div class="eyebrow fade-up">§ III. Cross-City Patterns</div>
+      <h2 class="fade-up">What the responses<br>reveal <em>together.</em></h2>
+      <p class="lede fade-up">Five patterns that cut across all three cities — not specific to any location, but surfacing repeatedly in how the team thinks about this decision.</p>
+
+      <div class="theme-grid">
+        <div class="theme-cell fade-up">
+          <div class="theme-num">01</div>
+          <h4>A2N proximity is <em>universally</em> valued</h4>
+          <p>No one imagined planting in isolation. Whether expressed as loneliness, loss of accountability, or support for families, every respondent weighted proximity to an existing A2N network as a real cost or real asset. Atlanta wins this category. Phoenix loses it. New York is complicated.</p>
+        </div>
+        <div class="theme-cell fade-up">
+          <div class="theme-num">02</div>
+          <h4>Team sustainability <em>shapes</em> everything</h4>
+          <p>Families, summers, and cost-of-living appear across all three cities' concerns. Phoenix raises heat and isolation; New York raises economics; Atlanta raises the question of whether the Bible Belt opportunity cost is worth it. The 5-year vision is only realizable if the team can actually stay.</p>
+        </div>
+        <div class="theme-cell fade-up">
+          <div class="theme-num">03</div>
+          <h4>College + young professional <em>dual-track</em></h4>
+          <p>Every vision for every city included both tracks. No one envisioned a college-only ministry — the long-arc discipleship imagination always included graduates staying and building a post-grad life in the same city. The cities differ in how naturally that track emerges.</p>
+        </div>
+        <div class="theme-cell fade-up">
+          <div class="theme-num">04</div>
+          <h4>Frontier vs. supported <em>tension</em></h4>
+          <p>Phoenix is the frontier choice. Atlanta is the supported choice. New York is a hybrid — high need, some A2N adjacency possible, extreme cost. Respondents did not converge on which cost was worth bearing. The team holds this tension without resolution.</p>
+        </div>
+        <div class="theme-cell fade-up">
+          <div class="theme-num">05</div>
+          <h4>A <em>sending</em> ethos runs through all three</h4>
+          <p>Every 5-year vision includes planting another church. This is the team's shared ecclesiological imagination — not a destination church but a sending one. City choice affects timeline and difficulty, not the destination. All three cities produce this same long-arc vision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CLOSING / COMPANION LINKS ======== -->
+  <section class="closing">
+    <div class="container">
+      <div class="eyebrow fade-up" style="color: var(--atl-gold);">Continue Reading</div>
+      <div class="companion-grid fade-up">
+        <a href="church-plant-analysis.html" class="companion-link">
+          <div class="comp-label">— Field Guide —</div>
+          <h4>Read: <em>The Full Analysis.</em></h4>
+          <p>Five cities scored across twelve criteria — data, demographics, A2N footprint, cost of living, and final recommendation.</p>
+          <span class="comp-arrow">Open Field Guide →</span>
+        </a>
+        <a href="distinctives.html" class="companion-link">
+          <div class="comp-label">— Distinctives —</div>
+          <h4>Read: <em>What We're Building.</em></h4>
+          <p>Three structural distinctives that define the kind of church we're committing to, regardless of city — city church, plural elders, local body.</p>
+          <span class="comp-arrow">Open Distinctives →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-row">
+      <span>Team Voice — Vol. I</span>
+      <span>Survey · Nine Respondents · Three Cities</span>
+      <span>Internal · Working Document</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        fadeObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => fadeObserver.observe(el));
+
+  // Count-up animation
+  function countUp(el, target, decimals, duration) {
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = (eased * target).toFixed(decimals);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countEls = document.querySelectorAll('[data-target]');
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = parseFloat(e.target.dataset.target);
+        const decimals = parseInt(e.target.dataset.decimals || '0');
+        countUp(e.target, target, decimals, 1400);
+        countObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  countEls.forEach(el => countObserver.observe(el));
+
+  // Bar fill animation
+  const bars = document.querySelectorAll('.bar-fill');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('animate');
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  bars.forEach(b => barObserver.observe(b));
+</script>
+
+</body>
+</html>
