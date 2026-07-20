@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.noahskang.pharmacyjobs-autopush</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/noahkang/Documents/noahskang.github.io/.automation/autopush.sh</string>
+    </array>
+
+    <!-- Fire whenever the weekly file changes on disk... -->
+    <key>WatchPaths</key>
+    <array>
+        <string>/Users/noahkang/Documents/noahskang.github.io/pharmacy-jobs.html</string>
+    </array>
+
+    <!-- ...and also check hourly as a safety net. -->
+    <key>StartInterval</key>
+    <integer>3600</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/noahkang/Library/Logs/pharmacyjobs-autopush.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/noahkang/Library/Logs/pharmacyjobs-autopush.log</string>
+</dict>
+</plist>

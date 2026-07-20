@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>The Rx Board — Weekly Pharmacy Job Listings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --paper:#EEF2EC;
+    --card:#FBFCFA;
+    --ink:#1B241E;
+    --muted:#5C6A5F;
+    --hair:#CBD6C6;
+    --evergreen:#1F4D3A;
+    --evergreen-deep:#143528;
+    --amber:#C0722A;
+    --amber-soft:#F0E2D0;
+    --exc:#2E7D53;
+    --exc-bg:#E3F0E7;
+    --dec:#A9741F;
+    --dec-bg:#F4E9D3;
+    --amb:#5B54B0;
+    --amb-bg:#E7E5F4;
+    --flag:#9A3B2E;
+    --flag-bg:#F5E0DB;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(20,40,30,.05), 0 8px 24px rgba(20,40,30,.06);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 22px 80px}
+
+  /* ---------- Masthead: prescription label ---------- */
+  .label{
+    position:relative;
+    background:
+      repeating-linear-gradient(180deg, transparent 0 27px, rgba(31,77,58,.06) 27px 28px),
+      var(--card);
+    border:1.5px solid var(--evergreen);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .label__bar{
+    display:flex;align-items:center;gap:14px;
+    background:var(--evergreen);color:#F3F7F1;
+    padding:14px 22px;
+  }
+  .rx{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:900;font-size:30px;line-height:1;
+    font-style:italic;letter-spacing:-.5px;
+    display:inline-flex;align-items:baseline;
+  }
+  .rx sup{font-size:.5em;font-style:normal;font-weight:600;top:-.9em}
+  .label__bar .who{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    opacity:.85;margin-left:auto;text-align:right;
+  }
+  .label__body{padding:22px 22px 20px}
+  .label__title{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:600;font-size:clamp(26px,4.4vw,40px);
+    line-height:1.02;letter-spacing:-.6px;margin:0 0 6px;
+  }
+  .label__title em{font-style:italic;color:var(--evergreen)}
+  .label__sub{color:var(--muted);max-width:60ch;margin:0 0 18px;font-size:15px}
+  .script{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:0;border-top:1px dashed var(--hair);
+  }
+  .script div{
+    padding:12px 16px 12px 0;border-right:1px dashed var(--hair);
+  }
+  .script div:last-child{border-right:0}
+  .script dt{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;
+  }
+  .script dd{margin:0;font-weight:600;font-size:15px}
+  .script dd b{color:var(--evergreen)}
+
+  /* ---------- Legend ---------- */
+  .legend{
+    display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;
+    margin:18px 2px 6px;font-size:12.5px;color:var(--muted);
+  }
+  .legend .k{display:inline-flex;align-items:center;gap:7px;font-family:"IBM Plex Mono",monospace}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .dot.exc{background:var(--exc)} .dot.dec{background:var(--dec)} .dot.amb{background:var(--amb)}
+
+  /* ---------- Toolbar ---------- */
+  .toolbar{
+    position:sticky;top:0;z-index:20;
+    margin:16px -22px 0;padding:12px 22px;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:saturate(1.2) blur(8px);
+    border-bottom:1px solid var(--hair);
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+  }
+  .tabs{display:inline-flex;background:var(--card);border:1px solid var(--hair);border-radius:999px;padding:3px}
+  .tab{
+    border:0;background:transparent;cursor:pointer;
+    font:600 13px "Inter",sans-serif;color:var(--muted);
+    padding:7px 16px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;
+  }
+  .tab[aria-selected="true"]{background:var(--evergreen);color:#F3F7F1}
+  .tab .count{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    background:rgba(0,0,0,.08);border-radius:999px;padding:1px 7px;
+  }
+  .tab[aria-selected="true"] .count{background:rgba(255,255,255,.2)}
+  .search{
+    flex:1;min-width:180px;display:flex;align-items:center;gap:8px;
+    background:var(--card);border:1px solid var(--hair);border-radius:999px;padding:8px 14px;
+  }
+  .search input{border:0;background:transparent;outline:0;width:100%;font:400 14px "Inter",sans-serif;color:var(--ink)}
+  .search svg{flex:none;color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 2px}
+  .chip{
+    border:1px solid var(--hair);background:var(--card);cursor:pointer;
+    font:500 12.5px "IBM Plex Mono",monospace;letter-spacing:.02em;color:var(--muted);
+    padding:6px 13px;border-radius:999px;transition:.15s;
+  }
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+  /* ---------- Cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;margin-top:18px}
+  .card{
+    background:var(--card);border:1px solid var(--hair);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:18px 18px 16px;display:flex;flex-direction:column;
+    position:relative;transition:transform .16s ease, box-shadow .16s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(20,40,30,.06),0 16px 34px rgba(20,40,30,.10)}
+  .card.applied-card{border-color:var(--exc)}
+  .card__eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--amber);margin-bottom:8px;display:flex;justify-content:space-between;
+  }
+  .card__emp{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:1px}
+  .card__role{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:20px;line-height:1.14;letter-spacing:-.3px;margin:0 0 12px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.02em;
+    padding:3px 9px;border-radius:6px;display:inline-flex;align-items:center;gap:5px;
+    border:1px solid transparent;white-space:nowrap;
+  }
+  .tag.loc{background:#EAF0EA;color:var(--evergreen);border-color:#D2E0D2}
+  .tag.type{background:#EEF1F4;color:#3B4A5A;border-color:#DBE2E8}
+  .tag.fit-exc{background:var(--exc-bg);color:#1E5E3B;border-color:#C4E0CE}
+  .tag.fit-dec{background:var(--dec-bg);color:#7A5511;border-color:#E6D3AC}
+  .tag.fit-amb{background:var(--amb-bg);color:#3F3990;border-color:#D2CEEC}
+  .tag.flag{background:var(--flag-bg);color:var(--flag);border-color:#E7C6BF}
+  .sig{
+    background:repeating-linear-gradient(180deg,transparent 0 21px,rgba(31,77,58,.05) 21px 22px);
+    border-left:2px solid var(--amber);
+    padding:8px 12px;margin:0 0 14px;border-radius:0 8px 8px 0;
+  }
+  .sig .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:2px}
+  .sig p{margin:0;font-size:13.5px;color:#33403A}
+  .card__foot{margin-top:auto;display:flex;align-items:center;gap:8px;padding-top:4px}
+  .apply{
+    flex:1;text-align:center;text-decoration:none;
+    background:var(--evergreen);color:#F3F7F1;font:600 13.5px "Inter",sans-serif;
+    padding:10px 14px;border-radius:9px;transition:.15s;
+  }
+  .apply:hover{background:var(--evergreen-deep)}
+  .iconbtn{
+    border:1px solid var(--hair);background:var(--card);cursor:pointer;color:var(--muted);
+    width:40px;height:40px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;transition:.15s;
+  }
+  .iconbtn:hover{border-color:var(--muted);color:var(--ink)}
+  .iconbtn.done{border-color:var(--exc);color:var(--exc);background:var(--exc-bg)}
+  .iconbtn.del:hover{border-color:var(--flag);color:var(--flag);background:var(--flag-bg)}
+  .applied-meta{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--exc);
+    display:flex;align-items:center;gap:6px;margin-bottom:10px;
+  }
+
+  .empty{
+    text-align:center;color:var(--muted);padding:60px 20px;border:1px dashed var(--hair);
+    border-radius:var(--radius);background:var(--card);margin-top:18px;
+  }
+  .empty h3{font-family:"Fraunces",serif;font-weight:600;color:var(--ink);margin:0 0 6px;font-size:22px}
+
+  /* ---------- Modal ---------- */
+  .modal-back{
+    position:fixed;inset:0;background:rgba(20,33,26,.42);backdrop-filter:blur(2px);
+    display:none;align-items:center;justify-content:center;z-index:60;padding:20px;
+  }
+  .modal-back.open{display:flex}
+  .modal{
+    background:var(--card);border-radius:16px;max-width:400px;width:100%;
+    padding:26px 24px 20px;box-shadow:0 24px 60px rgba(20,40,30,.28);border:1px solid var(--hair);
+  }
+  .modal h3{font-family:"Fraunces",serif;font-weight:600;font-size:22px;margin:0 0 8px}
+  .modal p{margin:0 0 20px;color:var(--muted);font-size:14px}
+  .modal p b{color:var(--ink)}
+  .modal__row{display:flex;gap:10px;justify-content:flex-end}
+  .btn{border:0;cursor:pointer;font:600 13.5px "Inter",sans-serif;padding:10px 18px;border-radius:9px}
+  .btn.ghost{background:transparent;border:1px solid var(--hair);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--muted)}
+  .btn.danger{background:var(--flag);color:#fff}
+  .btn.danger:hover{background:#832f24}
+
+  footer{margin-top:34px;padding-top:18px;border-top:1px dashed var(--hair);color:var(--muted);font-size:12.5px;line-height:1.6}
+  footer b{color:var(--ink)}
+  .restore{background:none;border:0;color:var(--evergreen);cursor:pointer;font:600 12.5px "Inter",sans-serif;text-decoration:underline;padding:0}
+
+  :focus-visible{outline:2.5px solid var(--amber);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  @media (max-width:560px){
+    .script div{border-right:0;border-bottom:1px dashed var(--hair)}
+    .toolbar{margin:16px -22px 0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Masthead -->
+  <section class="label" aria-label="Prescription label header">
+    <div class="label__bar">
+      <span class="rx">R<sup>x</sup></span>
+      <span class="who" id="patientLine">Prepared for<br>Dr. Kang, PharmD</span>
+    </div>
+    <div class="label__body">
+      <h1 class="label__title">The <em>Rx Board</em></h1>
+      <p class="label__sub">A weekly, curated dose of pharmacy and pharmacy-adjacent openings — PBM &amp; managed care, remote dispensing, Atlanta on-site, and the health-tech companies rewriting how drugs get priced and delivered.</p>
+      <dl class="script">
+        <div><dt>Date filled</dt><dd id="dateFilled">—</dd></div>
+        <div><dt>Refills</dt><dd>Weekly &middot; <b>auto</b></dd></div>
+        <div><dt>Roles this week</dt><dd><b id="totalCount">0</b> open</dd></div>
+        <div><dt>Coverage</dt><dd>Remote + Atlanta</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="legend" aria-hidden="false">
+    <span class="k"><span class="dot exc"></span>Excellent Fit — maps directly to her background</span>
+    <span class="k"><span class="dot dec"></span>Decent Fit — realistic with a light stretch</span>
+    <span class="k"><span class="dot amb"></span>Ambitious Fit — a reach worth a shot</span>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="tabs" role="tablist" aria-label="Job lists">
+      <button class="tab" id="tab-open" role="tab" aria-selected="true" onclick="setTab('open')">Open Roles <span class="count" id="openCount">0</span></button>
+      <button class="tab" id="tab-applied" role="tab" aria-selected="false" onclick="setTab('applied')">Applied <span class="count" id="appliedCount">0</span></button>
+    </div>
+    <label class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="searchBox" type="search" placeholder="Search employer, role, or keyword…" oninput="render()" aria-label="Search roles">
+    </label>
+  </div>
+
+  <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+
+  <div id="list"></div>
+
+  <footer>
+    <p><b>How this stays useful:</b> Your applied check-offs and removed roles are saved in this browser — they persist when the list refreshes each week, so you never lose your place. Marking a role <b>applied</b> moves it to the Applied tab; <b>removing</b> one hides it after a confirmation.</p>
+    <p id="restoreLine"></p>
+    <p style="margin-top:10px">Refreshed automatically every Monday morning. Fit rankings are a starting read based on a PharmD (UNC), ~1 yr retail + ~1 yr+ PBM, no residency — not a guarantee. Always confirm role details and current status on the employer's page.</p>
+  </footer>
+</div>
+
+<!-- Delete confirmation modal -->
+<div class="modal-back" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <h3 id="modalTitle">Remove this role?</h3>
+    <p>You're about to hide <b id="modalRole">this role</b> from the board. You can restore removed roles anytime from the link at the bottom.</p>
+    <div class="modal__row">
+      <button class="btn ghost" onclick="closeModal()">Keep it</button>
+      <button class="btn danger" id="confirmDel">Remove</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------------------------------------------------------------
+   EDIT THIS if you want a different name on the label:
+--------------------------------------------------------------- */
+const PATIENT = "Dr. Kang, PharmD";
+
+/* Week the listings were compiled. */
+const WEEK_OF = "2026-07-20";
+
+/* ---------------------------------------------------------------
+   JOB DATA — refreshed weekly. Each id is stable so applied/removed
+   state carries across refreshes.
+--------------------------------------------------------------- */
+const JOBS = [
+  { id:"caprx-pa", cat:"pbm", emp:"Capital Rx (now Judi Health)", role:"Prior Authorization Pharmacist",
+    loc:"Remote", type:"Full-time", fit:"exc", flag:null,
+    sig:"This is her PBM year distilled into a job — PA and appeal reviews against clinical criteria, mostly remote (hybrid only if you're near NYC). Capital Rx now goes by Judi Health; no residency required, and the posting asks for the 1+ year of PA experience she already has.",
+    url:"https://www.judi.health/about/careers" },
+
+  { id:"caprx-appeals", cat:"pbm", emp:"Capital Rx (now Judi Health)", role:"Prior Authorization Pharmacist, Appeals",
+    loc:"Remote", type:"Contract-to-hire", fit:"exc", flag:"Temp / contract-to-hire",
+    sig:"The same appeals work she already knows. It's posted as a temporary (roughly 3-month) role, so think of it as a low-risk foot in the door at a fast-growing PBM that often converts strong temps to permanent.",
+    url:"https://www.judi.health/about/careers" },
+
+  { id:"prime-um", cat:"pbm", emp:"Prime Therapeutics", role:"Utilization Management Pharmacist",
+    loc:"Remote / Hybrid", type:"Full-time", fit:"exc", flag:null,
+    sig:"An established PBM with a genuinely strong remote reputation — Prime made FlexJobs' Top 100 remote employers. UM and clinical review map cleanly onto her PBM experience, and 'Hub & Home' keeps it mostly work-from-home.",
+    url:"https://primetherapeutics.wd1.myworkdayjobs.com/PrimeTherapeuticsCareers" },
+
+  { id:"optumrx-pa", cat:"pbm", emp:"OptumRx (UnitedHealth Group)", role:"Prior Authorization / Clinical Pharmacist",
+    loc:"Remote", type:"Full-time", fit:"exc", flag:null,
+    sig:"The largest-scale employer of remote PA pharmacists, so openings are almost always live — search 'prior authorization pharmacist, remote' (roughly $42–83/hr). Her managed-care background is exactly the profile they hire for.",
+    url:"https://careers.unitedhealthgroup.com/" },
+
+  { id:"evernorth-cr", cat:"pbm", emp:"Express Scripts / Evernorth (Cigna)", role:"Coverage Review Clinical Staff Pharmacist",
+    loc:"Remote", type:"Full-time", fit:"exc", flag:null,
+    sig:"'Coverage review' is prior authorization by another name, and a remote posting is live right now. Open the Medical & Pharmacy board and filter for 'coverage review' or 'staff pharmacist, remote' — it's squarely her lane.",
+    url:"https://jobs.thecignagroup.com/us/en/c/medical-pharmacy-jobs" },
+
+  { id:"amazon-rx", cat:"remote", emp:"Amazon Pharmacy", role:"Clinical / Staff Pharmacist",
+    loc:"Remote", type:"Full-time", fit:"dec", flag:null,
+    sig:"Mail-order dispensing plus patient counseling — her retail year translates directly, in the tech-first setting she's curious about. One heads-up: some clinical roles require residing in a specific state (often AZ, NH, or MA), so read the location fine print.",
+    url:"https://www.amazon.jobs/en/search?base_query=pharmacist" },
+
+  { id:"alto-rx", cat:"remote", emp:"Alto Pharmacy (now Fuze Health)", role:"Clinical Staff Pharmacist",
+    loc:"Remote / Hybrid", type:"Full-time", fit:"dec", flag:"Careers now under Fuze Health",
+    sig:"A digital pharmacy that pairs dispensing with a modern, tech-forward workflow — a natural bridge from her retail experience toward health-tech. Note that Alto is now part of Fuze Health, so the openings live on the Fuze careers site.",
+    url:"https://alto.wd1.myworkdayjobs.com/FuzeHealthCareerSite" },
+
+  { id:"cvs-atl", cat:"atlanta", emp:"CVS Health", role:"Staff Pharmacist — Atlanta",
+    loc:"Atlanta, GA", type:"Full-time", fit:"exc", flag:null,
+    sig:"Her exact retail experience, close to home, with several full-time staff pharmacist openings live across metro Atlanta right now. Needs an active GA license; search 'pharmacist, Atlanta' to see current stores.",
+    url:"https://jobs.cvshealth.com/us/en/search-results?keywords=pharmacist%20atlanta" },
+
+  { id:"emory-clin", cat:"atlanta", emp:"Emory Healthcare", role:"Clinical Pharmacist — Inpatient",
+    loc:"Atlanta, GA", type:"Full-time", fit:"amb", flag:null,
+    sig:"A top Atlanta health system with an inpatient clinical opening posted now. These roles usually prefer a PGY1 residency, so it's a reach — but a thoughtful application built on her clinical foundation can still earn a conversation.",
+    url:"https://careers.emory.edu/jobs?keywords=pharmacist" },
+
+  { id:"emory-float", cat:"atlanta", emp:"Emory Healthcare", role:"Pharmacist — Pharmacy Float Pool",
+    loc:"Atlanta, GA", type:"PRN", fit:"dec", flag:"PRN — not full-time",
+    sig:"A realistic way into a prestigious health system without a residency — a PRN float posting is live now. Flagged because it's as-needed rather than full-time, so it works best as a bridge into Emory, not a primary target.",
+    url:"https://careers.emory.edu/jobs?keywords=pharmacist" },
+
+  { id:"piedmont-float", cat:"atlanta", emp:"Piedmont Healthcare", role:"Float Pharmacist",
+    loc:"Atlanta, GA", type:"Full-time", fit:"dec", flag:null,
+    sig:"Full-time hospital float across metro Atlanta, with hospital experience preferred rather than strictly required — a reasonable reach on her clinical training. Piedmont also has a clinical oncology-research pharmacist posting if she wants to aim higher.",
+    url:"https://piedmontcareers.org/search/?filter%5Bcategory%5D%5B%5D=Allied+Health&filter%5Bspecialty%5D%5B%5D=Pharmacy" },
+
+  { id:"costplus", cat:"tech", emp:"Mark Cuban Cost Plus Drugs", role:"Pharmacy & Operations Roles",
+    loc:"Remote / Dallas", type:"Full-time", fit:"dec", flag:"No pharmacist role posted this week",
+    sig:"The flagship drug-pricing disruptor and a dream fit for her interests. Their board shows no pharmacist opening this week — kept here on purpose so she can pounce the moment one posts. Worth a weekly glance.",
+    url:"https://www.markcubancostplusdrugcompany.com/careers" },
+
+  { id:"transcarent", cat:"tech", emp:"Transcarent", role:"Pharmacy Care / Clinical Roles",
+    loc:"Remote", type:"Full-time", fit:"amb", flag:null,
+    sig:"Health-tech reshaping pharmacy benefits, where a PharmD is genuinely valued for turning clinical needs into product and PBM strategy (senior clinical-pharmacy roles run $150–180k). A stretch from a dispensing background, but exactly the pivot lane she's been eyeing.",
+    url:"https://transcarent.com/careers" },
+
+  { id:"waltz", cat:"tech", emp:"Waltz Health (part of EVERSANA)", role:"Pharmacist & PBM-Disruptor Roles",
+    loc:"Remote", type:"Full-time", fit:"amb", flag:"Live Rx posting is IL-based specialty",
+    sig:"A health-tech startup rebuilding the drug supply chain with AI-driven marketplaces — precisely the PBM-disruptor space she's drawn to, now backed by EVERSANA's scale. Their current dedicated pharmacist opening is an Illinois-licensed specialty role, so watch this board for the remote and adjacent roles that fit her better.",
+    url:"https://careers.smartrecruiters.com/EVERSANA1/waltz-health" }
+];
+
+const CATS = [
+  { key:"all",     label:"All roles" },
+  { key:"pbm",     label:"PBM · Managed Care" },
+  { key:"remote",  label:"Remote Dispensing" },
+  { key:"atlanta", label:"Atlanta · On-site" },
+  { key:"tech",    label:"Health-Tech" }
+];
+
+/* ---------------- state ---------------- */
+const LS_APPLIED = "rxboard_applied_v1";
+const LS_REMOVED = "rxboard_removed_v1";
+let applied = load(LS_APPLIED, {});
+let removed = load(LS_REMOVED, []);
+let tab = "open";
+let catFilter = "all";
+let pendingRemove = null;
+
+function load(k, fallback){ try{ return JSON.parse(localStorage.getItem(k)) ?? fallback }catch(e){ return fallback } }
+function save(){ localStorage.setItem(LS_APPLIED, JSON.stringify(applied)); localStorage.setItem(LS_REMOVED, JSON.stringify(removed)); }
+
+/* ---------------- labels + init ---------------- */
+const FITLABEL = { exc:"Excellent Fit", dec:"Decent Fit", amb:"Ambitious Fit" };
+const CATLABEL = { pbm:"PBM · Managed Care", remote:"Remote Dispensing", atlanta:"Atlanta · On-site", tech:"Health-Tech" };
+document.getElementById("patientLine").innerHTML = "Prepared for<br>" + PATIENT;
+document.getElementById("dateFilled").textContent =
+  new Date(WEEK_OF+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+buildChips();
+render();
+
+function buildChips(){
+  const c = document.getElementById("chips");
+  c.innerHTML = CATS.map(cat =>
+    `<button class="chip" role="button" aria-pressed="${cat.key===catFilter}" onclick="setCat('${cat.key}')">${cat.label}</button>`
+  ).join("");
+}
+function setCat(k){ catFilter=k; buildChips(); render(); }
+function setTab(t){
+  tab=t;
+  document.getElementById("tab-open").setAttribute("aria-selected", t==="open");
+  document.getElementById("tab-applied").setAttribute("aria-selected", t==="applied");
+  render();
+}
+
+function visibleJobs(){
+  const q = document.getElementById("searchBox").value.trim().toLowerCase();
+  return JOBS.filter(j => !removed.includes(j.id))
+    .filter(j => tab==="applied" ? applied[j.id] : !applied[j.id])
+    .filter(j => catFilter==="all" ? true : j.cat===catFilter)
+    .filter(j => !q || (j.emp+" "+j.role+" "+j.sig+" "+j.loc).toLowerCase().includes(q));
+}
+
+function render(){
+  // counts
+  const notRemoved = JOBS.filter(j => !removed.includes(j.id));
+  const openN = notRemoved.filter(j => !applied[j.id]).length;
+  const appN  = notRemoved.filter(j => applied[j.id]).length;
+  document.getElementById("openCount").textContent = openN;
+  document.getElementById("appliedCount").textContent = appN;
+  document.getElementById("totalCount").textContent = notRemoved.length;
+
+  const jobs = visibleJobs();
+  const list = document.getElementById("list");
+
+  if(!jobs.length){
+    list.innerHTML = `<div class="empty">
+      <h3>${tab==="applied" ? "No applications logged yet" : "Nothing here right now"}</h3>
+      <p>${tab==="applied"
+        ? "Roles you mark as applied will collect here, with the date you applied."
+        : "Try a different category or clear the search box."}</p></div>`;
+  } else {
+    list.innerHTML = `<div class="grid">` + jobs.map(cardHTML).join("") + `</div>`;
+  }
+
+  // restore line
+  const r = document.getElementById("restoreLine");
+  r.innerHTML = removed.length
+    ? `You've removed <b>${removed.length}</b> role${removed.length>1?"s":""}. <button class="restore" onclick="restoreAll()">Restore all</button>`
+    : "";
+}
+
+function cardHTML(j){
+  const isApplied = !!applied[j.id];
+  const fitClass = "fit-"+j.fit;
+  const appliedMeta = isApplied
+    ? `<div class="applied-meta">✓ Applied ${new Date(applied[j.id]).toLocaleDateString("en-US",{month:"short",day:"numeric"})}</div>` : "";
+  return `<article class="card ${isApplied?'applied-card':''}">
+    <div class="card__eyebrow"><span>${CATLABEL[j.cat]}</span></div>
+    <div class="card__emp">${j.emp}</div>
+    <h2 class="card__role">${j.role}</h2>
+    ${appliedMeta}
+    <div class="tags">
+      <span class="tag loc">📍 ${j.loc}</span>
+      <span class="tag type">${j.type}</span>
+      <span class="tag ${fitClass}">● ${FITLABEL[j.fit]}</span>
+      ${j.flag?`<span class="tag flag">⚑ ${j.flag}</span>`:""}
+    </div>
+    <div class="sig"><span class="lbl">Why her — Sig.</span><p>${j.sig}</p></div>
+    <div class="card__foot">
+      <a class="apply" href="${j.url}" target="_blank" rel="noopener">Open &amp; apply ↗</a>
+      <button class="iconbtn ${isApplied?'done':''}" title="${isApplied?'Applied — click to undo':'Mark as applied'}" aria-label="${isApplied?'Undo applied':'Mark as applied'}" onclick="toggleApplied('${j.id}')">
+        ${isApplied
+          ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>'
+          : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>'}
+      </button>
+      <button class="iconbtn del" title="Remove from board" aria-label="Remove this role" onclick="askRemove('${j.id}')">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
+      </button>
+    </div>
+  </article>`;
+}
+
+function toggleApplied(id){
+  if(applied[id]) delete applied[id];
+  else applied[id] = new Date().toISOString();
+  save(); render();
+}
+
+/* ---- remove w/ confirmation ---- */
+function askRemove(id){
+  pendingRemove = id;
+  const j = JOBS.find(x=>x.id===id);
+  document.getElementById("modalRole").textContent = j ? `${j.role} — ${j.emp}` : "this role";
+  const back = document.getElementById("modalBack");
+  back.classList.add("open");
+  document.getElementById("confirmDel").focus();
+}
+function closeModal(){ document.getElementById("modalBack").classList.remove("open"); pendingRemove=null; }
+document.getElementById("confirmDel").addEventListener("click", ()=>{
+  if(pendingRemove && !removed.includes(pendingRemove)){
+    removed.push(pendingRemove);
+    delete applied[pendingRemove];
+    save();
+  }
+  closeModal(); render();
+});
+document.getElementById("modalBack").addEventListener("click", e=>{ if(e.target.id==="modalBack") closeModal(); });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModal(); });
+function restoreAll(){ removed=[]; save(); render(); }
+</script>
+</body>
+</html>
